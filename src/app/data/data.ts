@@ -79,6 +79,7 @@ export const categoryData = [
 export const listData = [
     {
         id:1,
+        slug:'gran-canaria/pozo-izquierdo',
         image:'/images/spots/pozo-izquierdo.png',
         user:'/img/team-1.jpg',
         status:'open',
@@ -97,6 +98,7 @@ export const listData = [
     },
     {
         id:2,
+        slug:'tenerife/el-medano',
         image:'/img/list-2.jpg',
         user:'/img/team-2.jpg',
         status:'open',
@@ -115,12 +117,13 @@ export const listData = [
     },
     {
         id:3,
+        slug:'central-switzerland/urnersee',
         image:'/images/spots/isleten.jpg',
         user:'/img/team-3.jpg',
-        status:'closed',
+        status:'open',
         featured:true,
-        title:'Isleten',
-        desc:'Cicero famously orated against his political.',
+        title:'Urnersee Grounbach',
+        desc:'Foehn wind spot on the shores of Lake Uri.',
         call:'+42 515 635 4785',
         loction:'Isenthal, Uri, Switzerland',
         tag:'Weddings',
@@ -133,6 +136,7 @@ export const listData = [
     },
     {
         id:4,
+        slug:'south-of-france/gruissan',
         image:'/img/list-4.jpg',
         user:'/img/team-4.jpg',
         status:'open',
@@ -151,6 +155,7 @@ export const listData = [
     },
     {
         id:5,
+        slug:'south-of-france/almanarre',
         image:'/img/list-5.jpg',
         user:'/img/team-5.jpg',
         status:'close',
@@ -169,6 +174,7 @@ export const listData = [
     },
     {
         id:6,
+        slug:'garda-lake/torbole',
         image:'/img/list-6.jpg',
         user:'/img/team-6.jpg',
         status:'open',
@@ -351,7 +357,7 @@ export const footerLink3  = ['Trust & Safety','Investor Relations','Terms of Ser
 
 export const cityData = [
     {
-        image:'/img/city/location-1.jpg',
+        image:'/images/joel-rohland-ON5qDh2m-Ro-unsplash.jpg',
         gridClass:'col-xl-6 col-lg-6 col-md-4 col-sm-6',
         listing:'16 Listing',
         name:'Gran Canaria',

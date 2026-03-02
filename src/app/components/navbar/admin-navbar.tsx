@@ -7,6 +7,7 @@ import { BsPersonCircle,BsBasket2,BsSearch, BsGeoAlt, BsSpeedometer, BsPersonLin
 import { FiX } from 'react-icons/fi';
 import { FaSortDown, FaXmark } from 'react-icons/fa6'
 import { BiSolidShoppingBagAlt } from 'react-icons/bi'
+import { useUser } from '@clerk/nextjs'
 
 
 export default function AdminNavbar() {
@@ -15,30 +16,31 @@ export default function AdminNavbar() {
     const [windowWidth, setWindowWidth] = useState(0);
     const [toggle, setIsToggle] = useState(false);
 
-    const location = usePathname(); 
-    
+    const location = usePathname();
+    const { user } = useUser();
+
     useEffect(()=>{
             if (typeof window === "undefined") return;
             window.scrollTo(0,0)
             setCurrent(location)
-    
+
             const handlerScroll=()=>{
                 if(window.scrollY > 50){
                     setScroll(true)
                 }else{setScroll(false)}
             }
-    
+
             if (typeof window !== "undefined") {
                 setWindowWidth(window.innerWidth);
             }
-    
+
             const handleResize = () => {
                 setWindowWidth(window.innerWidth);
                 };
-    
+
             window.addEventListener('scroll',handlerScroll)
             window.addEventListener('resize', handleResize);
-    
+
             return () => {
                 window.removeEventListener('scroll',handlerScroll)
                 window.removeEventListener('resize', handleResize);
@@ -94,21 +96,21 @@ export default function AdminNavbar() {
                                 <ul className="nav-dropdown nav-submenu">
                                     <li className={`${['/grid-layout-01','/grid-layout-02','/grid-layout-03','/grid-layout-04','/grid-layout-05','/grid-layout-06'].includes(current)? 'active' : ''}`}><Link href="#">Grid Layouts<span className="submenu-indicator"><span className="submenu-indicator-chevron"></span></span></Link>
                                         <ul className="nav-dropdown nav-submenu">
-                                            <li className={`${current === '/grid-layout-01' ? 'active' : ''}`}><Link href="/grid-layout-01">Grid Layout 01</Link></li>                                    
-                                            <li className={`${current === '/grid-layout-02' ? 'active' : ''}`}><Link href="/grid-layout-02">Grid Layout 02</Link></li>                                    
-                                            <li className={`${current === '/grid-layout-03' ? 'active' : ''}`}><Link href="/grid-layout-03">Grid Layout 03</Link></li>                                    
-                                            <li className={`${current === '/grid-layout-04' ? 'active' : ''}`}><Link href="/grid-layout-04">Grid Layout 04</Link></li>                                    
-                                            <li className={`${current === '/grid-layout-05' ? 'active' : ''}`}><Link href="/grid-layout-05">Grid Layout 05</Link></li>                                    
-                                            <li className={`${current === '/grid-layout-06' ? 'active' : ''}`}><Link href="/grid-layout-06">Grid Layout 06</Link></li>                                    
+                                            <li className={`${current === '/grid-layout-01' ? 'active' : ''}`}><Link href="/grid-layout-01">Grid Layout 01</Link></li>
+                                            <li className={`${current === '/grid-layout-02' ? 'active' : ''}`}><Link href="/grid-layout-02">Grid Layout 02</Link></li>
+                                            <li className={`${current === '/grid-layout-03' ? 'active' : ''}`}><Link href="/grid-layout-03">Grid Layout 03</Link></li>
+                                            <li className={`${current === '/grid-layout-04' ? 'active' : ''}`}><Link href="/grid-layout-04">Grid Layout 04</Link></li>
+                                            <li className={`${current === '/grid-layout-05' ? 'active' : ''}`}><Link href="/grid-layout-05">Grid Layout 05</Link></li>
+                                            <li className={`${current === '/grid-layout-06' ? 'active' : ''}`}><Link href="/grid-layout-06">Grid Layout 06</Link></li>
                                         </ul>
                                     </li>
                                     <li className={`${['/list-layout-01','/list-layout-02','/list-layout-03','/list-layout-04','/list-layout-05'].includes(current)? 'active' : ''}`}><Link href="#">List Layouts<span className="submenu-indicator"><span className="submenu-indicator-chevron"></span></span></Link>
                                         <ul className="nav-dropdown nav-submenu">
-                                            <li className={`${current === '/list-layout-01' ? 'active' : ''}`}><Link href="/list-layout-01">List Layout 01</Link></li>                                     
-                                            <li className={`${current === '/list-layout-02' ? 'active' : ''}`}><Link href="/list-layout-02">List Layout 02</Link></li>                                     
-                                            <li className={`${current === '/list-layout-03' ? 'active' : ''}`}><Link href="/list-layout-03">List Layout 03</Link></li>                                     
-                                            <li className={`${current === '/list-layout-04' ? 'active' : ''}`}><Link href="/list-layout-04">List Layout 04</Link></li>                                     
-                                            <li className={`${current === '/list-layout-05' ? 'active' : ''}`}><Link href="/list-layout-05">List Layout 05</Link></li>                                     
+                                            <li className={`${current === '/list-layout-01' ? 'active' : ''}`}><Link href="/list-layout-01">List Layout 01</Link></li>
+                                            <li className={`${current === '/list-layout-02' ? 'active' : ''}`}><Link href="/list-layout-02">List Layout 02</Link></li>
+                                            <li className={`${current === '/list-layout-03' ? 'active' : ''}`}><Link href="/list-layout-03">List Layout 03</Link></li>
+                                            <li className={`${current === '/list-layout-04' ? 'active' : ''}`}><Link href="/list-layout-04">List Layout 04</Link></li>
+                                            <li className={`${current === '/list-layout-05' ? 'active' : ''}`}><Link href="/list-layout-05">List Layout 05</Link></li>
                                         </ul>
                                     </li>
                                     <li className={`${['/half-map-01','/half-map-02','/half-map-03','/half-map-04','/half-map-05'].includes(current)? 'active' : ''}`}><Link href="#">Half Map Screen<span className="submenu-indicator"><span className="submenu-indicator-chevron"></span></span></Link>
@@ -166,11 +168,11 @@ export default function AdminNavbar() {
                                     </li>
                                     <li className={`${current === '/author-profile' ? 'active' : ''}`}><Link href="/author-profile" className='d-flex'><BsPersonVcard className="me-1 align-self-center"/>Author Profile</Link></li>
                                     <li className={`${current === '/booking-page' ? 'active' : ''}`}><Link href="/booking-page" className='d-flex'><BsCalendar2Check className="me-1 align-self-center"/>Booking Page</Link></li>
-                                    <li className={`${current === '/about-us' ? 'active' : ''}`}><Link href="/about-us" className='d-flex'><BsPersonCheck className="me-1 align-self-center"/>About Us</Link></li>                                
+                                    <li className={`${current === '/about-us' ? 'active' : ''}`}><Link href="/about-us" className='d-flex'><BsPersonCheck className="me-1 align-self-center"/>About Us</Link></li>
                                     <li className={`${current === '/blog' ? 'active' : ''}`}><Link href="/blog" className='d-flex'><BsBlockquoteLeft className="me-1 align-self-center"/>Blog Page</Link></li>
                                     <li className={`${current === '/contact-us' ? 'active' : ''}`}><Link href="/contact-us" className='d-flex'><BsEnvelopeCheck className="me-1 align-self-center"/>Contact Us</Link></li>
-                                    <li className={`${current === '/pricing' ? 'active' : ''}`}><Link href="/pricing" className='d-flex'><BsCoin className="bi bi-coin me-1 align-self-center"/>Pricing</Link></li>										
-                                    <li className={`${current === '/privacy-policy' ? 'active' : ''}`}><Link href="/privacy-policy" className='d-flex'><BsCoin className="bi bi-coin me-1 align-self-center"/>Privacy Policy</Link></li>										
+                                    <li className={`${current === '/pricing' ? 'active' : ''}`}><Link href="/pricing" className='d-flex'><BsCoin className="bi bi-coin me-1 align-self-center"/>Pricing</Link></li>
+                                    <li className={`${current === '/privacy-policy' ? 'active' : ''}`}><Link href="/privacy-policy" className='d-flex'><BsCoin className="bi bi-coin me-1 align-self-center"/>Privacy Policy</Link></li>
                                     <li className={`${current === '/help-center' ? 'active' : ''}`}><Link href="/help-center" className='d-flex'><BsPatchQuestion className="me-1 align-self-center"/>Help Center</Link></li>
                                     <li className={`${current === '/comingsoon' ? 'active' : ''}`}><Link href="/comingsoon" className='d-flex'><BsHourglassTop className="me-1 align-self-center"/>Coming Soon</Link></li>
                                     <li className={`${current === '/faq' ? 'active' : ''}`}><Link href="/faq" className='d-flex'><BsInfoCircle className="me-1 align-self-center"/>FAQ's</Link></li>
@@ -178,7 +180,7 @@ export default function AdminNavbar() {
                                     <li className={`${current === '/elements' ? 'active' : ''}`}><Link href="/elements" className='d-flex'><BsGear className="me-1 align-self-center"/>Elements</Link></li>
                                 </ul>
                             </li>
-                            
+
                             <li><Link className="mob-addlisting light" href="#"><BsGeoAltFill className="me-1"/>Add Listing</Link></li>
                         </ul>
 
@@ -190,11 +192,11 @@ export default function AdminNavbar() {
                                 <div className="btn-group account-drop">
                                     <Link href="#" className="nav-link btn-order-by-filt" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <div className="d-inline-flex w-8 h-8 circle overflow-hidden"><img src='/img/team-2.jpg' className="img-fluid" alt=""/></div>
-                                        <span className="fw-medium d-inline-flex ms-2 text-light">Shreethemes<FaSortDown className="ms-1"/></span>
+                                        <span className="fw-medium d-inline-flex ms-2 text-light">{user?.fullName || 'User'}<FaSortDown className="ms-1"/></span>
                                     </Link>
                                     <div className="dropdown-menu pull-right animated flipInX">
                                         <div className="drp_menu_headr bg-primary">
-                                            <h4>Hi, Shreethemes</h4>
+                                            <h4>Hi, {user?.firstName || 'User'}</h4>
                                             <div className="drp_menu_headr-right"><button type="button" className="btn btn-whites text-dark">My Profile</button></div>
                                         </div>
                                         <ul>
@@ -229,7 +231,7 @@ export default function AdminNavbar() {
             <div className="offcanvas-body">
                 <div className="cartItems w-100">
                     <div className="d-flex align-items-center justify-content-start flex-column gap-3">
-                        
+
                         <div className="singleCartitem d-flex align-items-center justify-content-between gap-4 w-100">
                             <div className="d-flex align-items-center justify-content-start gap-3">
                                 <div className="cartiteThumb"><figure className="d-block m-0"><img src='/img/list-3.jpg' className="img-fluid rounded-2" width="60" alt=""/></figure></div>
@@ -238,10 +240,10 @@ export default function AdminNavbar() {
                                     <p className="m-0">1x$25.50</p>
                                 </div>
                             </div>
-                            
+
                             <div className="removeItemcart"><Link href="#" className="square--35 circle badge-secondary"><FiX className=""/></Link></div>
                         </div>
-                        
+
                         <div className="singleCartitem d-flex align-items-center justify-content-between gap-3 w-100">
                             <div className="d-flex align-items-center justify-content-start gap-3">
                                 <div className="cartiteThumb"><figure className="d-block m-0"><img src='/img/list-4.jpg' className="img-fluid rounded-2" width="60" alt=""/></figure></div>
@@ -250,10 +252,10 @@ export default function AdminNavbar() {
                                     <p className="m-0">1x$22.10</p>
                                 </div>
                             </div>
-                            
+
                             <div className="removeItemcart"><Link href="#" className="square--35 circle badge-secondary"><FiX className=""/></Link></div>
                         </div>
-                        
+
                         <div className="singleCartitem d-flex align-items-center justify-content-between gap-3 w-100">
                             <div className="d-flex align-items-center justify-content-start gap-3">
                                 <div className="cartiteThumb"><figure className="d-block m-0"><img src='/img/list-5.jpg' className="img-fluid rounded-2" width="60" alt=""/></figure></div>
@@ -262,18 +264,18 @@ export default function AdminNavbar() {
                                     <p className="m-0">1x$17.40</p>
                                 </div>
                             </div>
-                            
+
                             <div className="removeItemcart"><Link href="" className="square--35 circle badge-secondary"><FiX className=""/></Link></div>
                         </div>
-                    
+
                     </div>
-                    
+
                     <div className="cartSubtotal w-100 py-3 border-top mt-3">
                         <h6 className="m-0">Subtotal: $128.75</h6>
                     </div>
-                    
+
                 </div>
-                
+
                 <div className="cartButtons w-100 py-2">
                     <div className="d-flex align-items-center justify-content-center flex-wrap gap-2">
                         <a href="/viewcart" className="btn btn-md btn-light-primary fw-medium flex-fill">View Cart</a>
@@ -311,11 +313,11 @@ export default function AdminNavbar() {
 						</div>
 					</div>
 					<div className="popularSearches d-flex align-items-center justify-content-center gap-2 flex-wrap">
-						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Real Estate</Link></div>	
-						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Eat & Drink</Link></div>	
-						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Shopping</Link></div>	
-						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Nightlife</Link></div>	
-						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Services</Link></div>	
+						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Real Estate</Link></div>
+						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Eat & Drink</Link></div>
+						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Shopping</Link></div>
+						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Nightlife</Link></div>
+						<div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Services</Link></div>
 					</div>
 				</div>
 			</div>

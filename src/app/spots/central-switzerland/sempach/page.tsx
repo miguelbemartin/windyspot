@@ -1,0 +1,99 @@
+import React from 'react'
+import Link from 'next/link'
+
+import NavbarLight from '../../../components/navbar/navbar-light'
+import Descriptions from '../../../components/list-detail/descriptions'
+import WindguruWidget from '../../../components/windguru-widget'
+import YouTubeEmbed from '../../../components/youtube-embed'
+import Maps from '../../../components/list-detail/maps'
+import Footer from '../../../components/footer/footer'
+import BackToTop from '../../../components/back-to-top'
+
+import { FaLocationDot } from 'react-icons/fa6'
+
+export default function Sempach() {
+  return (
+    <>
+        <NavbarLight/>
+
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/marvin-meyer-ua_tu9vqLAU-unsplash.jpg')`}} data-overlay="4">
+            <div className="container h-100">
+                <div className="row align-items-start">
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div className="mainlistingInfo">
+                            <div className="d-flex align-items-end justify-content-between flex-wrap gap-3">
+                                <div className="firstColumn">
+                                    <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
+                                        <div className="listingCaptioninfo">
+                                            <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
+                                                <h2 className="fw-semibold text-light mb-0">Sempach</h2>
+                                            </div>
+                                            <div className="listingsbasicInfo">
+                                                <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
+                                                    <div className="flexItem me-2"><span className="text-md fw-medium text-light"><FaLocationDot className="me-2"/>Sempach, Lucerne, Switzerland</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section className="gray-simple pt-4 pt-xl-5">
+            <div className="container">
+                <div className="row align-items-start g-4">
+                    <div className="col-12">
+
+                        <div className="listingSingleblock mb-4" id="forecast">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-bs-target="#forecastPanel" aria-controls="forecastPanel" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Forecast</h4></Link>
+                            </div>
+                            <div id="forecastPanel" className="panel-collapse collapse show">
+                            <div className="card-body p-4 pt-2">
+                                <WindguruWidget spotId="905886" uid="wg_fwdg_TODO_100_sempach" />
+                                <div className="row g-4 mt-3">
+                                    <div className="col-md-12">
+                                        <img src="https://profiwetter.ch/mos_06648.svg?t=1772464868" alt="Wind Map" className="img-fluid" />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <img src="https://profiwetter.ch/wind_foehn_ch_en.png" alt="Foehn Wind Map" className="img-fluid" />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <img src="https://profiwetter.ch/wind_bise_en.png" alt="Bise Wind Map" className="img-fluid" />
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div className="listingSingleblock mb-4" id="webcams">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-bs-target="#webcamsPanel" aria-controls="webcamsPanel" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Live Webcams</h4></Link>
+                            </div>
+                            <div id="webcamsPanel" className="panel-collapse collapse show">
+                            <div className="card-body p-4 pt-2">
+                                <div className="row g-4">
+                                    <div className="col-12">
+                                        <div className="ratio ratio-16x9">
+                                            <img src="https://img.destination.one/remote/.webp?url=https%3A%2F%2Fwindsurfclubeich.ch%2Fwebcam%2Fhikvision_current.jpg&scale=both&mode=crop&quality=90&width=2560&height=1440&cacheduration=600" alt="Sempach Webcam" className="object-fit-cover" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <Footer/>
+        <BackToTop/>
+    </>
+  )
+}

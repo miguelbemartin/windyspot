@@ -10,6 +10,7 @@ import { IconType } from 'react-icons'
 
 interface ListData{
     id: number;
+    slug: string;
     image: string;
     user: string;
     status: string;
@@ -47,7 +48,7 @@ export default function ExploreListingOne() {
                         <div className="listingitem-container">
                         <div className="singlelisting-item">
                             <div className="listing-top-item">
-                                <Link href="/single-listing-04" className="topLink">
+                                <Link href={`/spots/${item.slug}`} className="topLink">
                                     {/* <div className="position-absolute start-0 top-0 ms-3 mt-3 z-2">
                                         <div className="d-flex align-items-center justify-content-start gap-2">
                                             {item.status === 'open' ? (<span className="badge badge-xs text-uppercase listOpen">Open</span>) :(<span className="badge badge-xs text-uppercase listClose">Closed</span>)}
@@ -70,7 +71,7 @@ export default function ExploreListingOne() {
                                     <Link href="/single-listing-02" className="avatarImg"><Image src={item.user} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid circle" alt="Avatar"/></Link>
                                 </div> */}
                                 <div className="listing-details">
-                                    <h4 className="listingTitle"><Link href="/single-listing-04" className="titleLink">{item.title}<span className="verified"><BsPatchCheckFill className="bi bi-patch-check-fill m-0"/></span></Link></h4>
+                                    <h4 className="listingTitle"><Link href={`/spots/${item.slug}`} className="titleLink"><b>{item.title}</b><span className="verified"><BsPatchCheckFill className="bi bi-patch-check-fill m-0"/></span></Link></h4>
                                     <p>{item.desc}</p>
                                 </div>
                                 <div className="listing-info-details">

@@ -190,7 +190,7 @@ export default function NavbarLight() {
                                 </li>
                             </SignedOut>
                             <SignedIn>
-                                <li className="d-flex align-items-center">
+                                <li className="d-flex align-items-center px-3 pt-2">
                                     <UserButton afterSignOutUrl="/" />
                                 </li>
                             </SignedIn>
