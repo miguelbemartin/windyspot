@@ -5,7 +5,7 @@ import NavbarLight from '../../../components/navbar/navbar-light'
 import Descriptions from '../../../components/list-detail/descriptions'
 import WindguruWidget from '../../../components/windguru-widget'
 import YouTubeEmbed from '../../../components/youtube-embed'
-import Maps from '../../../components/list-detail/maps'
+import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
 import BackToTop from '../../../components/back-to-top'
 
@@ -16,7 +16,7 @@ export default function ElMedano() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/img/list-2.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -54,31 +54,21 @@ export default function ElMedano() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
-                                <WindguruWidget spotId="TODO" uid="wg_fwdg_TODO_100_elmedano" />
+                                <WindguruWidget spotId="1279560" uid="wg_fwdg_TODO_100_elmedano" />
                             </div>
                             </div>
                         </div>
 
-                        <div className="listingSingleblock mb-4" id="webcams">
+                        <div className="listingSingleblock mb-4" id="windy">
                             <div className="SingleblockHeader">
-                                <Link data-bs-toggle="collapse" data-bs-target="#webcamsPanel" aria-controls="webcamsPanel" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Live Webcams</h4></Link>
+                                <Link data-bs-toggle="collapse" data-bs-target="#windyPanel" aria-controls="windyPanel" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Wind Map</h4></Link>
                             </div>
-                            <div id="webcamsPanel" className="panel-collapse collapse show">
-                            <div className="card-body p-4 pt-2">
-                                <div className="row g-4">
-                                    <div className="col-md-6">
-                                        <YouTubeEmbed videoId="TODO" title="El Médano Webcam" />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <YouTubeEmbed videoId="TODO" title="El Médano Webcam 2" />
-                                    </div>
+                            <div id="windyPanel" className="panel-collapse collapse show">
+                                <div className="card-body p-4 pt-2">
+                                    <WindyEmbed lat={28.276} lon={-15.831} title="El Médano Wind Map" />
                                 </div>
                             </div>
-                            </div>
                         </div>
-
-                        <Descriptions/>
-                        <Maps/>
                     </div>
                 </div>
             </div>

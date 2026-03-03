@@ -4,6 +4,7 @@ import Link from 'next/link'
 import NavbarLight from '../../../components/navbar/navbar-light'
 import Descriptions from '../../../components/list-detail/descriptions'
 import WindguruWidget from '../../../components/windguru-widget'
+import WindguruLive from '../../../components/windguru-live'
 import YouTubeEmbed from '../../../components/youtube-embed'
 import Maps from '../../../components/list-detail/maps'
 import Footer from '../../../components/footer/footer'
@@ -67,6 +68,17 @@ export default function Isleten() {
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                        </div>
+
+                        <div className="listingSingleblock mb-4" id="livestation">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-bs-target="#livestationPanel" aria-controls="livestationPanel" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Live Station</h4></Link>
+                            </div>
+                            <div id="livestationPanel" className="panel-collapse collapse show">
+                                <div className="card-body p-4 pt-2">
+                                    <WindguruLive spotId="772" uid="wglive_772_urnersee" />
+                                </div>
                             </div>
                         </div>
 

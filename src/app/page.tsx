@@ -3,9 +3,10 @@ import Link from 'next/link'
 
 import { categoryData } from './data/data'
 
-import { BsMouse, BsSearch } from 'react-icons/bs'
+import { BsMouse } from 'react-icons/bs'
 
 import NavbarLight from './components/navbar/navbar-light'
+import SpotSearch from './components/spot-search'
 import ExploreListingOne from './components/explore-listing-one'
 import ExploreCity from './components/explore-city'
 import AboutOne from './components/about-one'
@@ -42,21 +43,7 @@ export default function IndexTen() {
 
             <div className="row align-items-start justify-content-center mb-lg-5 mb-4">
                 <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12">
-                    <div className="heroSearch rounded-search style-01">
-                        <div className="row gx-lg-2 gx-md-2 gx-3 gy-sm-2 gy-2">
-                            <div className="col-xl-10 col-lg-9 col-md-8 col-sm-12">
-                                <div className="form-group position-relative">
-                                    <input type="text" className="form-control fs-6 fw-medium border-0" placeholder="What are you looking for?"/>
-                                    <div className="position-absolute top-50 end-0 translate-middle-y d-md-block d-none"><span className="badge badge-xs badge-primary rounded-pill">22k listing found</span></div>
-                                </div>
-                            </div>
-                            <div className="col-xl-2 col-lg-3 col-md-4 col-sm-12">
-                                <div className="form-group">
-                                    <button type="button" className="btn btn-primary full-width fw-medium rounded-pill"><BsSearch className="me-2"/>Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <SpotSearch />
                 </div>
             </div>
         </div>

@@ -99,7 +99,7 @@ export const listData = [
     {
         id:2,
         slug:'tenerife/el-medano',
-        image:'/img/list-2.jpg',
+        image:'/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg',
         user:'/img/team-2.jpg',
         status:'open',
         featured:false,
@@ -190,6 +190,25 @@ export const listData = [
         rating:'excellent',
         ratingRate:'4.8',
         instantBooking:true
+    },
+    {
+        id:10,
+        slug:'crete/falasarna',
+        image:'/images/spots/falasarna.jpg',
+        user:'/img/team-1.jpg',
+        status:'open',
+        featured:true,
+        title:'Falasarna',
+        desc:'Sandy Meltemi paradise on the northwest tip of Crete.',
+        call:'',
+        loction:'Crete, Greece',
+        tag:'Fitness',
+        tagIcon:FaDumbbell,
+        tagIconStyle:'catIcon me-2 cats-1',
+        review:'0 Reviews',
+        rating:'good',
+        ratingRate:'4.5',
+        instantBooking:false
     },
     {
         id:7,
