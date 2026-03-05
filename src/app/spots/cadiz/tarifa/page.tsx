@@ -11,15 +11,15 @@ import BackToTop from '../../../components/back-to-top'
 import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
-  title: 'Pozo Izquierdo, Gran Canaria - Windsurf Spot Guide & Forecast',
+  title: 'Tarifa, Cadiz - Windsurf Spot Guide & Forecast',
 }
 
-export default function PozoIzquierdo() {
+export default function Tarifa() {
   return (
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/IMG_2058.jpeg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/tarifa.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -29,11 +29,11 @@ export default function PozoIzquierdo() {
                                     <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                         <div className="listingCaptioninfo">
                                             <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
-                                                <h2 className="fw-semibold text-light mb-0">Pozo Izquierdo</h2>
+                                                <h2 className="fw-semibold text-light mb-0">Tarifa</h2>
                                             </div>
                                             <div className="listingsbasicInfo">
                                                 <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
-                                                    <div className="flexItem me-2"><span className="text-md fw-medium text-light"><FaLocationDot className="me-2"/>Gran Canaria, Spain</span></div>
+                                                    <div className="flexItem me-2"><span className="text-md fw-medium text-light"><FaLocationDot className="me-2"/>Cadiz, Spain</span></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@ export default function PozoIzquierdo() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
-                                <WindguruWidget spotId="36048" uid="wg_fwdg_36048_100_1772298934612" />
+                                <WindguruWidget spotId="17" uid="wg_fwdg_17_100_1772298934613" />
                             </div>
                             </div>
                         </div>
@@ -70,10 +70,7 @@ export default function PozoIzquierdo() {
                             <div className="card-body p-4 pt-2">
                                 <div className="row g-4">
                                     <div className="col-md-6">
-                                        <YouTubeEmbed videoId="ElZh1azg7c4" title="Pozo Izquierdo Webcam" />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <YouTubeEmbed videoId="eQbpxwKb-BY" title="Pozo Izquierdo Webcam 2" />
+                                        <YouTubeEmbed videoId="cj1j_kdOazY" title="Tarifa Webcam" />
                                     </div>
                                 </div>
                             </div>
@@ -87,11 +84,11 @@ export default function PozoIzquierdo() {
 
                             <div id="description" className="panel-collapse collapse show">
                                 <div className="card-body p-4 pt-2">
-                                    <p>The spot in short: Pozo Izquierdo in southeast Gran Canaria offers reliable wind and waves throughout the year and is on the PWA Windsurfing World Tour. The island has produced riders like the Dunkerbeck family and Philip Köster, who collectively hold almost 100 world championship titles between them.</p>
-                                    <p>Conditions: Winds regularly reach 25 to 35 knots, and the geography helps — Pozo's exposed coastline means nothing stands between the village and the powerful Atlantic breeze. The guard-rail effect of the island's interior can accelerate the air up to 50 knots, though this only works very locally.</p>
-<p>Season: From April until September, the trade wind (Alisio, NE) gives almost daily very strong side-onshore conditions for sail sizes 3.4–4.2. During the rest of the year the trade winds are often a little lighter (4.2–5.3), but often with bigger ground swells that make the winter season epic for those who want bigger waves.</p>
-<p>Hazards: In many areas of Pozo Izquierdo the bottom is rock. When the tide is high, the waves break on the shore — booties and a helmet are strongly recommended, especially for less experienced riders.</p>
-<p>The guide also includes nearby spots (Bahía de Formas, Salinas, Vargas, Ojos de Garza), skill level ratings, pro tips, and practical info on getting there and facilities.</p>
+                                    <p>The spot in short: Tarifa sits at the southernmost tip of continental Europe, where the Atlantic meets the Mediterranean. The Strait of Gibraltar funnels wind between two continents, making Tarifa one of the windiest places in Europe and a world-renowned windsurfing destination.</p>
+                                    <p>Conditions: The two dominant winds are the Levante (easterly) and the Poniente (westerly). The Levante is the stronger of the two, often gusting 30-50 knots, and creates choppy conditions on the Atlantic-facing beaches. The Poniente is lighter and steadier, typically 15-25 knots, with cleaner wave conditions. Both winds can blow for days at a time.</p>
+                                    <p>Season: Tarifa offers wind year-round. The peak season runs from April to October, when thermal effects reinforce the synoptic winds and sessions with 4.0-5.3 sails are almost daily. Winter brings less consistent but sometimes very strong Levante events with bigger Atlantic swells.</p>
+                                    <p>Spots: The main beaches stretch along the Atlantic coast — Playa de Los Lances is the most popular, offering a huge sandy beach with flat-water areas in the lagoon at low tide and small waves further out. Valdevaqueros, a few kilometres north, is the go-to for wave sailing when the Poniente blows. Hurricane Hotel (Playa de Balneario) works best with Levante for side-offshore wave riding.</p>
+                                    <p>Hazards: Strong currents in the Strait can push riders towards Morocco. The Levante can be very gusty near the coastline due to the surrounding mountains. Beginners should stick to the flat-water lagoon at Los Lances during manageable Poniente days.</p>
                                 </div>
                             </div>
                         </div>

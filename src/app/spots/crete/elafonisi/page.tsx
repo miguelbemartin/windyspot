@@ -11,15 +11,15 @@ import BackToTop from '../../../components/back-to-top'
 import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
-  title: 'Pozo Izquierdo, Gran Canaria - Windsurf Spot Guide & Forecast',
+  title: 'Elafonisi, Crete - Windsurf Spot Guide & Forecast',
 }
 
-export default function PozoIzquierdo() {
+export default function Elafonisi() {
   return (
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/IMG_2058.jpeg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/elafonisi.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -29,11 +29,11 @@ export default function PozoIzquierdo() {
                                     <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                         <div className="listingCaptioninfo">
                                             <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
-                                                <h2 className="fw-semibold text-light mb-0">Pozo Izquierdo</h2>
+                                                <h2 className="fw-semibold text-light mb-0">Elafonisi</h2>
                                             </div>
                                             <div className="listingsbasicInfo">
                                                 <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
-                                                    <div className="flexItem me-2"><span className="text-md fw-medium text-light"><FaLocationDot className="me-2"/>Gran Canaria, Spain</span></div>
+                                                    <div className="flexItem me-2"><span className="text-md fw-medium text-light"><FaLocationDot className="me-2"/>Crete, Greece</span></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@ export default function PozoIzquierdo() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
-                                <WindguruWidget spotId="36048" uid="wg_fwdg_36048_100_1772298934612" />
+                                <WindguruWidget spotId="TODO" uid="wg_fwdg_TODO_100_1772298934614" />
                             </div>
                             </div>
                         </div>
@@ -70,10 +70,7 @@ export default function PozoIzquierdo() {
                             <div className="card-body p-4 pt-2">
                                 <div className="row g-4">
                                     <div className="col-md-6">
-                                        <YouTubeEmbed videoId="ElZh1azg7c4" title="Pozo Izquierdo Webcam" />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <YouTubeEmbed videoId="eQbpxwKb-BY" title="Pozo Izquierdo Webcam 2" />
+                                        <YouTubeEmbed videoId="TODO" title="Elafonisi Webcam" />
                                     </div>
                                 </div>
                             </div>
@@ -87,11 +84,10 @@ export default function PozoIzquierdo() {
 
                             <div id="description" className="panel-collapse collapse show">
                                 <div className="card-body p-4 pt-2">
-                                    <p>The spot in short: Pozo Izquierdo in southeast Gran Canaria offers reliable wind and waves throughout the year and is on the PWA Windsurfing World Tour. The island has produced riders like the Dunkerbeck family and Philip Köster, who collectively hold almost 100 world championship titles between them.</p>
-                                    <p>Conditions: Winds regularly reach 25 to 35 knots, and the geography helps — Pozo's exposed coastline means nothing stands between the village and the powerful Atlantic breeze. The guard-rail effect of the island's interior can accelerate the air up to 50 knots, though this only works very locally.</p>
-<p>Season: From April until September, the trade wind (Alisio, NE) gives almost daily very strong side-onshore conditions for sail sizes 3.4–4.2. During the rest of the year the trade winds are often a little lighter (4.2–5.3), but often with bigger ground swells that make the winter season epic for those who want bigger waves.</p>
-<p>Hazards: In many areas of Pozo Izquierdo the bottom is rock. When the tide is high, the waves break on the shore — booties and a helmet are strongly recommended, especially for less experienced riders.</p>
-<p>The guide also includes nearby spots (Bahía de Formas, Salinas, Vargas, Ojos de Garza), skill level ratings, pro tips, and practical info on getting there and facilities.</p>
+                                    <p>The spot in short: Elafonisi is a stunning pink-sand beach on the southwest coast of Crete, connected to a small island by a shallow lagoon. The combination of crystal-clear turquoise water, reliable Meltemi winds, and a natural flat-water lagoon makes it an exceptional windsurfing spot.</p>
+                                    <p>Conditions: The dominant wind is the Meltemi (northwesterly), which funnels along the west coast of Crete and hits the beach side-shore to side-onshore. The shallow lagoon between the beach and Elafonisi island provides flat water ideal for freestyle and freeride, while the open sea beyond offers small to medium wave sailing.</p>
+                                    <p>Season: The Meltemi season runs from June to September, with July and August being the most consistent months. Wind typically builds from late morning, reaching 15-25 knots by early afternoon, with stronger days pushing into the low 30s. Sail sizes range from 4.5 to 6.0 depending on the day.</p>
+                                    <p>Hazards: The lagoon is very shallow in places — watch for rocky patches and sea urchins. The beach is a protected Natura 2000 site, so respect the environment and stay within designated launch areas. The drive to Elafonisi is along narrow mountain roads, so plan extra travel time.</p>
                                 </div>
                             </div>
                         </div>
