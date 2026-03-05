@@ -182,60 +182,7 @@ export const listData = [
         ratingRate:'4.5',
         instantBooking:false
     },
-    {
-        id:7,
-        image:'/img/list-7.jpg',
-        user:'/img/team-7.jpg',
-        status:'open',
-        featured:true,
-        title:'Creative Wedding Planner',
-        desc:'Cicero famously orated against his political.',
-        call:'+42 515 635 4758',
-        loction:'Rome Italy',
-        tag:'Wedding',
-        tagIcon:FaDumbbell,
-        tagIconStyle:'catIcon me-2 cats-1',
-        review:'46 Reviews',
-        rating:'good',
-        ratingRate:'4.5',
-        instantBooking:false
-    },
-    {
-        id:8,
-        image:'/img/list-8.jpg',
-        user:'/img/team-8.jpg',
-        status:'close',
-        featured:true,
-        title:'The Great Dream Palace',
-        desc:'Cicero famously orated against his political.',
-        call:'+42 515 635 5426',
-        loction:'Mumbai India',
-        tag:'Spa',
-        tagIcon:BsCupHot,
-        tagIconStyle:'catIcon me-2 cats-1',
-        review:'42 Reviews',
-        rating:'excellent',
-        ratingRate:'4.9',
-        instantBooking:true
-    },
-    {
-        id:9,
-        image:'/img/list-9.jpg',
-        user:'/img/team-9.jpg',
-        status:'open',
-        featured:true,
-        title:'Agroo Spa & Massage Center',
-        desc:'Cicero famously orated against his political.',
-        call:'+42 515 635 2136',
-        loction:'Athens Greece',
-        tag:'Eat & Drink ',
-        tagIcon:BsBasket2,
-        tagIconStyle:'catIcon me-2 cats-8',
-        review:'76 Reviews',
-        rating:'good',
-        ratingRate:'4.7',
-        instantBooking:false
-    },
+
 ]
 
 export const reviewData = [

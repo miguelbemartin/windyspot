@@ -10,7 +10,7 @@ import { IconType } from 'react-icons'
 
 interface ListData{
     id: number;
-    slug: string;
+    slug?: string;
     image: string;
     user: string;
     status: string;
