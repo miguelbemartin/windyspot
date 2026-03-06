@@ -84,6 +84,17 @@ export default function IndexTen() {
         </div>
     </section>
 
+    <section className="bg-cover bg-primary-2 position-relative py-5" style={{backgroundImage:`url('/img/brand-section.png')`}}>
+        <div className="container">
+            <div className="row align-items-center justify-content-center">
+                <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12 text-center">
+                    <h4 className="text-white mb-3">Want to add a spot or offer a service?</h4>
+                    <p className="text-white opacity-75 mb-0">If you want to add any spot or you just want to offer any service in any of the spots, you can just <Link href="/contact-me" className="text-white fw-medium text-decoration-underline">contact me</Link>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <Footer/>
 
     <BackToTop/>

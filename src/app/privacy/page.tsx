@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 import NavbarLight from '../components/navbar/navbar-light'
-import FooterTop from '../components/footer-top'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
