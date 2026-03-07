@@ -58,7 +58,7 @@ export default function Valdevaqueros() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
-                                <WindguruWidget spotId="43" uid="wg_fwdg_43_100_valdevaqueros" />
+                                <WindguruWidget spotId="48772" uid="wg_fwdg_48772_100_valdevaqueros" />
                             </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ export default function Valdevaqueros() {
                             </div>
                             <div id="livestationPanel" className="panel-collapse collapse show">
                                 <div className="card-body p-4 pt-2">
-                                    <WindguruLive spotId="2667" uid="wglive_2667_valdevaqueros" />
+                                    <WindguruLive spotId="269" uid="wglive_269_valdevaqueros" />
                                 </div>
                             </div>
                         </div>

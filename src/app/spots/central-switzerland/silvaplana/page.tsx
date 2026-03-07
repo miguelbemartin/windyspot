@@ -5,7 +5,6 @@ import Link from 'next/link'
 import NavbarLight from '../../../components/navbar/navbar-light'
 
 import WindguruWidget from '../../../components/windguru-widget'
-import WindguruLive from '../../../components/windguru-live'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
 import BackToTop from '../../../components/back-to-top'
@@ -59,19 +58,16 @@ export default function Silvaplana() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
-                                <WindguruWidget spotId="48587" uid="wg_fwdg_48587_100_silvaplana" />
-                            </div>
-                            </div>
-                        </div>
-
-                        <div className="listingSingleblock mb-4" id="livestation">
-                            <div className="SingleblockHeader">
-                                <Link data-bs-toggle="collapse" data-bs-target="#livestationPanel" aria-controls="livestationPanel" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Live Station</h4></Link>
-                            </div>
-                            <div id="livestationPanel" className="panel-collapse collapse show">
-                                <div className="card-body p-4 pt-2">
-                                    <WindguruLive spotId="422" uid="wglive_422_silvaplana" />
+                                <WindguruWidget spotId="1584" uid="wg_fwdg_1584_100_silvaplana" />
+                                <div className="row g-4 mt-3">
+                                    <div className="col-md-6">
+                                        <img src="https://profiwetter.ch/wind_foehn_ch_en.png" alt="Foehn Wind Map" className="img-fluid" />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <img src="https://profiwetter.ch/wind_bise_en.png" alt="Bise Wind Map" className="img-fluid" />
+                                    </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
 

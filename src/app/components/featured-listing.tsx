@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { listData } from '../data/data'
+import { spots } from '../data/data'
 
 import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart } from 'react-icons/bs'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -40,7 +40,7 @@ export default function FeaturedListing() {
                             1440: { slidesPerView: 4 },
                         }}
                     >
-                    {listData.map((item:ListData,index:number)=>{
+                    {spots.map((item:ListData,index:number)=>{
                         return(
                             <SwiperSlide className="singleItem" key={index}>
                                 <div className="listingitem-container">

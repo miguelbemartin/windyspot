@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBriefcase, FaDribbble, FaFacebookF, FaGlobe, FaHeadset, FaInstagram, FaPaperPlane, FaTwitter } from 'react-icons/fa6'
+import { FaEnvelope } from 'react-icons/fa6'
 import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
@@ -21,13 +21,26 @@ export default function ContactUs() {
             </div>
         </section>
 
-        <section className="pb-5">
+        <section className="py-5">
             <div className="container">
-                <div className="row align-items-center justify-content-between g-4">
-                    <div className="col-xl-7 col-lg-7 col-md-12">
-
-                    </div>
-                    <div className="col-xl-5 col-lg-5 col-md-12">
+                <div className="row justify-content-center">
+                    <div className="col-xl-6 col-lg-8 col-md-10 text-center">
+                        <div className="p-5 rounded-4 shadow-sm" style={{backgroundColor:'#f8f9fa'}}>
+                            <div className="mb-4">
+                                <FaEnvelope className="text-primary" size={48} />
+                            </div>
+                            <h3 className="fw-bold mb-3">Get in Touch</h3>
+                            <p className="text-muted mb-4">
+                                Have a question about a spot, want to suggest a new one, or just want to say hi? Feel free to reach out!
+                            </p>
+                            <a
+                                href="mailto:miguel@miguelangelmartin.me"
+                                className="btn btn-primary btn-lg rounded-pill px-4"
+                            >
+                                <FaEnvelope className="me-2" />
+                                miguel@miguelangelmartin.me
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

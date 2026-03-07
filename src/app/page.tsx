@@ -56,6 +56,7 @@ export default function IndexTen() {
                 <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                     <div className="secHeading-wrap text-center">
                         <h3 className="sectionHeading">Explore Trending <span className="text-primary">Spots</span></h3>
+                        <p>Detailed Spot Guides with Forecast, Live Stations and Webcams</p>
                     </div>
                 </div>
             </div>
@@ -88,8 +89,8 @@ export default function IndexTen() {
         <div className="container">
             <div className="row align-items-center justify-content-center">
                 <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12 text-center">
-                    <h4 className="text-white mb-3">Want to add a spot or offer a service?</h4>
-                    <p className="text-white opacity-75 mb-0">If you want to add any spot or you just want to offer any service in any of the spots, you can just <Link href="/contact-me" className="text-white fw-medium text-decoration-underline">contact me</Link>.</p>
+                    <h4 className="text-white mb-3">Want to add a spot?</h4>
+                    <p className="text-white opacity-75 mb-0">If you want to add any spot or update any of the spots, you can just <Link href="/contact-me" className="text-white fw-medium text-decoration-underline">contact me</Link>.</p>
                 </div>
             </div>
         </div>

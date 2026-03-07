@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { listData } from '../data/data'
+import { spots } from '../data/data'
 
 import { BsGeoAlt } from 'react-icons/bs'
 
@@ -21,7 +21,7 @@ interface ListData{
 export default function ExploreListingOne() {
   return (
         <div className="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-1 align-items-center justify-content-center g-4">
-            {listData.filter((item:ListData) => item.featured).slice(0,6).map((item:ListData,index:number)=>{
+            {spots.filter((item:ListData) => item.featured).slice(0,6).map((item:ListData,index:number)=>{
                 return(
                     <div className="col" key={index}>
                         <Link href={`/spots/${item.slug}`} className="text-decoration-none">

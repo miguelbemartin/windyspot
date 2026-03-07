@@ -4,9 +4,9 @@ import { useState, useRef, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import Fuse from 'fuse.js'
 import { BsSearch, BsGeoAlt } from 'react-icons/bs'
-import { listData } from '../data/data'
+import { spots } from '../data/data'
 
-const spotsWithSlugs = listData.filter((item) => item.slug)
+const spotsWithSlugs = spots.filter((item) => item.slug)
 
 export default function SpotSearch() {
   const [query, setQuery] = useState('')

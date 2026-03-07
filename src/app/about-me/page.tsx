@@ -79,8 +79,8 @@ export default function AboutUs() {
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                             <div className="position-relative text-end py-5">
                                 <div className="promoHeading mb-5 mt-4">
-                                    <h5 className="text-light">Embark on your thrilling adventure with us.</h5>
-                                    <h6 className="text-light">Our agency will guide you through the captivating realm of digital innovation.</h6>
+                                    <h5 className="text-light">The best sessions are the ones you almost skipped.</h5>
+                                    <h6 className="text-light">Chase the wind, discover new spots, and let the water remind you what freedom feels like.</h6>
                                 </div>
                             </div>
                         </div>

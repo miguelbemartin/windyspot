@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { listData } from '../data/data'
+import { spots } from '../data/data'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay,Pagination } from 'swiper/modules';
@@ -40,7 +40,7 @@ export default function PopularListingTwo() {
                         1440: { slidesPerView: 4 },
                     }}
                 >
-                {listData.map((item:ListData,index:number)=>{
+                {spots.map((item:ListData,index:number)=>{
                     return(
                         <SwiperSlide className="singleItem" key={index}>
                             <div className="listingitem-container">

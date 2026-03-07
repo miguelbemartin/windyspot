@@ -1,16 +1,72 @@
 import { BsBackpack, BsEnvelopeAt, BsFacebook, BsInstagram, BsLinkedin, BsPatchCheck, BsPinMap, BsPinterest, BsTwitter } from "react-icons/bs";
 import { FaStar } from "react-icons/fa6";
 
-export const categoryData = [
+export const locations = [
     {
-        image:'/img/cats/catt-1.jpg',
-        icon:BsBackpack,
-        title:'Showroom',
-        list:'103 Lists'
+        image:'/images/joel-rohland-ON5qDh2m-Ro-unsplash.jpg',
+        big:true,
+        name:'Gran Canaria',
+        featured:true,
+        spots:['Pozo Izquierdo','Bahía de Formas']
+    },
+    {
+        image:'/images/cities/lina-bob-anCPcwhCQ28-unsplash.jpg',
+        big:false,
+        name:'Tenerife',
+        featured:true,
+        spots:['El Médano']
+    },
+    {
+        image:'/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg',
+        big:false,
+        name:'Fuerteventura',
+        featured:true,
+        spots:['Sotavento','Matas Blancas','Costa Calma','Risco del Paso']
+    },
+    {
+        image:'/images/spots/almanarre.png',
+        big:false,
+        name:'South of France',
+        featured:true,
+        spots:['Gruissan','Almanarre']
+    },
+    {
+        image:'/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg',
+        big:true,
+        name:'Tarifa, Cádiz',
+        featured:true,
+        spots:['Balneario','Campo','Agua','Arte Vida','Valdevaqueros','Paloma Baja']
+    },
+    {
+        image:'/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg',
+        big:false,
+        name:'Garda Lake',
+        featured:true,
+        spots:['Torbole']
+    },
+    {
+        image:'/images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg',
+        big:false,
+        name:'Crete',
+        featured:true,
+        spots:['Falasarna','Elafonisi']
+    },
+    {
+        image:'/images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg',
+        big:false,
+        name:'Maui, Hawaii',
+        featured:true,
+        spots:['Hookipa']
+    },
+    {
+        image:'/images/switzerland.png',
+        big:true,
+        name:'Switzerland',
+        featured:true,
+        spots:['Flüelen','Isleten','Zug','Sisikon','Sempach','Silvaplana']
     },
 ]
-
-export const listData = [
+export const spots = [
     {
         id:1,
         slug:'gran-canaria/pozo-izquierdo',
@@ -20,7 +76,8 @@ export const listData = [
         desc:'The iconic bump and jump spot in the Canary Islands.',
         loction:'Gran Canaria, Spain',
         rentalPlace: true,
-        tag:'Advanced Spot'
+        tag:'Advanced Spot',
+        windguruForecastId:'36048'
     },
     {
         id:12,
@@ -31,7 +88,8 @@ export const listData = [
         desc:'Flat water speed paradise',
         loction:'Gran Canaria, Spain',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'49346'
     },
     {
         id:2,
@@ -42,7 +100,9 @@ export const listData = [
         desc:'Year-round trade wind mecca at the foot of Montaña Roja.',
         loction:'Tenerife, Spain',
         rentalPlace:false,
-        tag:'Real Estate'
+        tag:'Real Estate',
+        windguruForecastId:'1279560',
+        windguruLiveStationId:'14924'
     },
     {
         id:3,
@@ -53,7 +113,9 @@ export const listData = [
         desc:'Foehn wind spot on the shores of Lake Uri.',
         loction:'Flüelen, Uri, Switzerland',
         rentalPlace:false,
-        tag:'Weddings'
+        tag:'Weddings',
+        windguruForecastId:'620377',
+        windguruLiveStationId:'772'
     },
     {
         id:4,
@@ -64,7 +126,9 @@ export const listData = [
         desc:'Shallow lagoon and open-sea spots powered by the Tramontane wind.',
         loction:'Gruissan, France',
         rentalPlace:false,
-        tag:'Restaurant'
+        tag:'Restaurant',
+        windguruForecastId:'242',
+        windguruLiveStationId:'14601'
     },
     {
         id:5,
@@ -75,7 +139,8 @@ export const listData = [
         desc:'Long sandy beach with flat water and Mistral-driven side-shore wind.',
         loction:'Hyères, France',
         rentalPlace:false,
-        tag:'Education'
+        tag:'Education',
+        windguruForecastId:'501010'
     },
     {
         id:6,
@@ -86,7 +151,9 @@ export const listData = [
         desc:'Alpine lake with reliable Ora and Peler thermal winds.',
         loction:'Garda Lake, Italy',
         rentalPlace:false,
-        tag:'Showroom'
+        tag:'Showroom',
+        windguruForecastId:'49192',
+        windguruLiveStationId:'1202'
     },
     {
         id:11,
@@ -97,7 +164,47 @@ export const listData = [
         desc:'World-class freestyle and speed spot on Fuerteventura\'s south coast.',
         loction:'Fuerteventura, Spain',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'559365',
+        windguruLiveStationId:'373'
+    },
+    {
+        id:28,
+        slug:'fuerteventura/matas-blancas',
+        image:'/images/spots/matas-blancas-fuerteventura.png',
+        featured:false,
+        title:'Matas Blancas',
+        desc:'Flat water speed strip on Fuerteventura\'s southeast coast.',
+        loction:'Fuerteventura, Spain',
+        rentalPlace:false,
+        tag:'Speed Spot',
+        windguruForecastId:'53632',
+        windguruLiveStationId:'3428'
+    },
+    {
+        id:29,
+        slug:'fuerteventura/costa-calma',
+        image:'/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg',
+        featured:false,
+        title:'Costa Calma',
+        desc:'Popular freestyle and freeride spot on Fuerteventura\'s south coast.',
+        loction:'Fuerteventura, Spain',
+        rentalPlace:false,
+        tag:'Freestyle',
+        windguruForecastId:'206998'
+    },
+    {
+        id:30,
+        slug:'fuerteventura/risco-del-paso',
+        image:'/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg',
+        featured:false,
+        title:'Risco del Paso',
+        desc:'Shallow lagoon with flat water and steady trade winds near Sotavento.',
+        loction:'Fuerteventura, Spain',
+        rentalPlace:false,
+        tag:'Freestyle',
+        windguruForecastId:'207001',
+        windguruLiveStationId:'373'
     },
     {
         id:10,
@@ -108,7 +215,8 @@ export const listData = [
         desc:'Sandy Meltemi paradise on the northwest tip of Crete.',
         loction:'Crete, Greece',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'49269'
     },
     {
         id:17,
@@ -119,7 +227,8 @@ export const listData = [
         desc:'Foehn wind spot on Lake Uri in central Switzerland.',
         loction:'Isenthal, Uri, Switzerland',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'988948'
     },
     {
         id:18,
@@ -130,7 +239,8 @@ export const listData = [
         desc:'Thermal winds on Lake Zug in central Switzerland.',
         loction:'Zug, Switzerland',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'57008'
     },
     {
         id:19,
@@ -141,7 +251,8 @@ export const listData = [
         desc:'Foehn wind spot on the eastern shore of the Urnersee.',
         loction:'Uri, Switzerland',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'57010'
     },
     {
         id:15,
@@ -152,7 +263,9 @@ export const listData = [
         desc:'Thermal and Bise winds on Lake Sempach in central Switzerland.',
         loction:'Sempach, Lucerne, Switzerland',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'905886',
+        windguruLiveStationId:'2223'
     },
     {
         id:14,
@@ -163,7 +276,9 @@ export const listData = [
         desc:'Pink-sand lagoon with Meltemi winds on Crete\'s southwest coast.',
         loction:'Crete, Greece',
         rentalPlace:false,
-        tag:'Fitness'
+        tag:'Fitness',
+        windguruForecastId:'49268',
+        windguruLiveStationId:'4122'
     },
     {
         id:20,
@@ -174,7 +289,9 @@ export const listData = [
         desc:'Mediterranean-side spot with flat water speed runs and hollow waves in Levante.',
         loction:'Tarifa, Cádiz',
         rentalPlace:false,
-        tag:'Advanced Spot'
+        tag:'Advanced Spot',
+        windguruForecastId:'43',
+        windguruLiveStationId:'2667'
     },
     {
         id:21,
@@ -185,7 +302,9 @@ export const listData = [
         desc:'Flat water paradise with a 2 km speed strip along Los Lances beach.',
         loction:'Tarifa, Cádiz',
         rentalPlace:false,
-        tag:'Speed Spot'
+        tag:'Speed Spot',
+        windguruForecastId:'43',
+        windguruLiveStationId:'2667'
     },
     {
         id:22,
@@ -196,7 +315,9 @@ export const listData = [
         desc:'Less offshore than Campo with a shorter beach walk and a small bar for infrastructure.',
         loction:'Tarifa, Cádiz',
         rentalPlace:false,
-        tag:'All-round Spot'
+        tag:'All-round Spot',
+        windguruForecastId:'43',
+        windguruLiveStationId:'2667'
     },
     {
         id:23,
@@ -207,7 +328,9 @@ export const listData = [
         desc:'Beautiful Poniente spot with short car-to-water distance and stunning scenery.',
         loction:'Tarifa, Cádiz',
         rentalPlace:false,
-        tag:'Poniente Spot'
+        tag:'Poniente Spot',
+        windguruForecastId:'43',
+        windguruLiveStationId:'2667'
     },
     {
         id:24,
@@ -218,7 +341,9 @@ export const listData = [
         desc:'Go-to Poniente spot with onshore waves, slalom conditions and beach lifestyle.',
         loction:'Tarifa, Cádiz',
         rentalPlace:false,
-        tag:'Wave Spot'
+        tag:'Wave Spot',
+        windguruForecastId:'48772',
+        windguruLiveStationId:'269'
     },
     {
         id:25,
@@ -229,7 +354,9 @@ export const listData = [
         desc:'Last spot in the bay with wave protection from the dune and Poniente acceleration.',
         loction:'Tarifa, Cádiz',
         rentalPlace:false,
-        tag:'All-round Spot'
+        tag:'All-round Spot',
+        windguruForecastId:'43',
+        windguruLiveStationId:'2667'
     },
     {
         id:26,
@@ -240,7 +367,9 @@ export const listData = [
         desc:'The world\'s most famous wave sailing spot on Maui\'s north shore.',
         loction:'Maui, Hawaii',
         rentalPlace:false,
-        tag:'Wave Spot'
+        tag:'Wave Spot',
+        windguruForecastId:'26144',
+        windguruLiveStationId:'5931'
     },
     {
         id:27,
@@ -251,7 +380,8 @@ export const listData = [
         desc:'Maloja wind funnelling through the Engadin valley onto Lake Silvaplana.',
         loction:'Engadin, Switzerland',
         rentalPlace:false,
-        tag:'Freestyle'
+        tag:'Freestyle',
+        windguruForecastId:'1584'
     },
 
 ]
@@ -364,69 +494,12 @@ export const footerLink2  = ['Trust & Safety','Investor Relations','Terms of Ser
 
 export const footerLink3  = ['Trust & Safety','Investor Relations','Terms of Services','Paid Advertising','ListingHub Blog']
 
-export const cityData = [
+export const categoryData = [
     {
-        image:'/images/joel-rohland-ON5qDh2m-Ro-unsplash.jpg',
-        big:true,
-        name:'Gran Canaria',
-        featured:true,
-        spots:['Pozo Izquierdo','Bahía de Formas']
-    },
-    {
-        image:'/images/cities/lina-bob-anCPcwhCQ28-unsplash.jpg',
-        big:false,
-        name:'Tenerife',
-        featured:true,
-        spots:['El Médano']
-    },
-    {
-        image:'/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg',
-        big:false,
-        name:'Fuerteventura',
-        featured:true,
-        spots:['Sotavento']
-    },
-    {
-        image:'/images/spots/almanarre.png',
-        big:false,
-        name:'South of France',
-        featured:true,
-        spots:['Gruissan','Almanarre']
-    },
-    {
-        image:'/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg',
-        big:true,
-        name:'Tarifa, Cádiz',
-        featured:true,
-        spots:['Balneario','Campo','Agua','Arte Vida','Valdevaqueros','Paloma Baja']
-    },
-    {
-        image:'/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg',
-        big:false,
-        name:'Garda Lake',
-        featured:true,
-        spots:['Torbole']
-    },
-    {
-        image:'/images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg',
-        big:false,
-        name:'Crete',
-        featured:true,
-        spots:['Falasarna','Elafonisi']
-    },
-    {
-        image:'/images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg',
-        big:false,
-        name:'Maui, Hawaii',
-        featured:true,
-        spots:['Hookipa']
-    },
-    {
-        image:'/images/switzerland.png',
-        big:true,
-        name:'Switzerland',
-        featured:true,
-        spots:['Flüelen','Isleten','Zug','Sisikon','Sempach','Silvaplana']
+        image:'/img/cats/catt-1.jpg',
+        icon:BsBackpack,
+        title:'Showroom',
+        list:'103 Lists'
     },
 ]
 

@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -8,7 +8,7 @@ import FilterOne from '../components/filter-one'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { listData } from '../data/data'
+import { spots, locations as locationsData } from '../data/data'
 
 import { BsGeoAlt } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
@@ -16,10 +16,44 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 const ITEMS_PER_PAGE = 9
 
 export default function SpotsList({ page }: { page: number }) {
-    const totalPages = Math.ceil(listData.length / ITEMS_PER_PAGE)
-    const currentPage = Math.min(Math.max(1, page), totalPages)
+    const [selectedLocations, setSelectedLocations] = useState<string[]>([])
+    const [rentalFilter, setRentalFilter] = useState<boolean | null>(null)
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const locationNames = useMemo(() => locationsData.map(c => c.name), [])
+
+    const spotToCityMap = useMemo(() => {
+        const map: Record<number, string> = {}
+        for (const spot of spots) {
+            const city = locationsData.find(c => c.spots.includes(spot.title))
+            if (city) map[spot.id] = city.name
+        }
+        return map
+    }, [])
+
+    const filteredSpots = useMemo(() => {
+        let result = spots
+        if (searchQuery.trim()) {
+            const q = searchQuery.toLowerCase()
+            result = result.filter(s =>
+                s.title.toLowerCase().includes(q) ||
+                s.desc.toLowerCase().includes(q) ||
+                s.loction.toLowerCase().includes(q)
+            )
+        }
+        if (selectedLocations.length > 0) {
+            result = result.filter(s => selectedLocations.includes(spotToCityMap[s.id] || ''))
+        }
+        if (rentalFilter !== null) {
+            result = result.filter(s => s.rentalPlace === rentalFilter)
+        }
+        return result
+    }, [searchQuery, selectedLocations, rentalFilter, spotToCityMap])
+
+    const totalPages = Math.ceil(filteredSpots.length / ITEMS_PER_PAGE)
+    const currentPage = Math.min(Math.max(1, page), totalPages || 1)
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
-    const paginatedData = listData.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+    const paginatedData = filteredSpots.slice(startIndex, startIndex + ITEMS_PER_PAGE)
 
     useEffect(() => {
         const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -35,15 +69,25 @@ export default function SpotsList({ page }: { page: number }) {
             <NavLightTwo/>
 
             <div className="bg-white py-3 sticky-lg-top z-3">
-                <FilterOne list={false} showToggle={false}/>
+                <FilterOne
+                    list={false}
+                    showToggle={false}
+                    locations={locationNames}
+                    selectedLocations={selectedLocations}
+                    onLocationChange={setSelectedLocations}
+                    rentalFilter={rentalFilter}
+                    onRentalChange={setRentalFilter}
+                    searchQuery={searchQuery}
+                    onSearchChange={setSearchQuery}
+                />
             </div>
 
             <section className="bg-light">
                 <div className="container">
                     <div className="row align-items-center justify-content-between mb-4">
-                        <div className="col-xl- 5 col-lg-5 col-md-5 col-sm-6 col-6">
+                        <div className="col-xl-5 col-lg-5 col-md-5 col-sm-6 col-6">
                             <div className="totalListingshow">
-                                <h6 className="fw-medium text-md mb-0">{listData.length} spots found</h6>
+                                <h6 className="fw-medium text-md mb-0">{filteredSpots.length} spots found</h6>
                             </div>
                         </div>
                     </div>

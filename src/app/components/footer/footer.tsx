@@ -1,12 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
-import {FaLinkedin} from 'react-icons/fa6'
-import {BsGeoAltFill, BsTelephoneOutbound} from 'react-icons/bs'
 import {FaFacebookF, FaHeart, FaInstagram, FaTwitter} from 'react-icons/fa'
-
-import {footerLink1, footerLink2, footerLink3} from '../../data/data'
 
 export default function Footer() {
   return (
@@ -16,7 +11,7 @@ export default function Footer() {
                     <div className="col-6 col-md-5 col-lg-6 col-xl-4 d-flex align-items-end">
                         <div className="footer-widget pe-xl-4 mb-5">
                             <div className="footerLogo"><Image src='/img/logo-light.svg' width={0} height={0} sizes='100vw' style={{width:'160px', height:'auto'}} className="img-fluid"  alt="Footer Logo"/></div>
-                            <div className="footerText"><p>Built with <FaHeart className="ms-1 text-danger"></FaHeart>  by <Link href="/about-me" className="text-light">Miguel Martín</Link></p></div>
+                            <div className="footerText"><p>Built with <FaHeart className="ms-1 text-danger"></FaHeart> by <Link href="/about-me" className="text-light">a Windsurfer</Link></p></div>
                             {/* <div className="footerSocialwrap">
                                 <ul className="footersocial">
                                     <li><Link href="#" className="social-link"><FaFacebookF className=""/></Link></li>
@@ -38,11 +33,10 @@ export default function Footer() {
                     </div>
                     <div className="col-6 col-md-3 col-lg-3 col-xl-2 d-flex align-items-end justify-content-end">
                         <div className="footer-widget mb-5 text-end">
-                            <h4 className="widget-title">About Us</h4>
+                            <h4 className="widget-title">About</h4>
                             <ul className="footer-menu" style={{textAlign:'right'}}>
                                 <li><Link href="/about-me">About Me</Link></li>
-                                {/* <li><Link href="/contact-us">Contact</Link></li>
-                                <li><Link href="/support-us">Support Us</Link></li> */}
+                                <li><Link href="/contact-me">Contact</Link></li>
                             </ul>
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { cityData, listData } from '../data/data'
+import { locations, spots } from '../data/data'
 
 interface CityData{
     image: string;
@@ -15,7 +15,7 @@ interface CityData{
 export default function ExploreCity() {
   return (
     <div className="row align-items-center justify-content-center g-4">
-        {cityData.filter((item:CityData) => item.featured).map((item:CityData,index:number)=>{
+        {locations.filter((item:CityData) => item.featured).map((item:CityData,index:number)=>{
             return(
                 <div className={item.big ? 'col-xl-6 col-lg-6 col-md-4 col-sm-6' : 'col-xl-3 col-lg-3 col-md-4 col-sm-6'} key={index}>
                     <div className="position-relative overflow-hidden rounded-4" style={{height: '300px'}}>
@@ -27,7 +27,7 @@ export default function ExploreCity() {
                             <h4 className="text-white fw-bold mb-1">{item.name}</h4>
                             <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
                                 {item.spots.map((el,index)=>{
-                                    const spot = listData.find((s: any) => s.title === el)
+                                    const spot = spots.find((s: any) => s.title === el)
                                     return spot ? (
                                         <Link href={`/spots/${spot.slug}`} className="badge badge-xs badge-transparent rounded-pill text-decoration-none" key={index}>{el}</Link>
                                     ) : (

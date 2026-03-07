@@ -8,7 +8,7 @@ import { MdArrowForwardIos } from 'react-icons/md'
 import { BsCalendarCheck, BsEyeFill } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 
-import NavbarDark from '../components/navbar/navbar-dark'
+import NavLightTwo from '../components/navbar/nav-light-two'
 import FooterTop from '../components/footer-top'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
@@ -25,7 +25,7 @@ interface BlogData{
 export default function Blog() {
   return (
     <>
-        <NavbarDark/>
+        <NavLightTwo/>
 
         <section className="bg-cover position-relative" style={{backgroundImage:`url('/img/title-banner.jpg')`}} data-overlay="6">
             <div className="container">
@@ -44,7 +44,7 @@ export default function Blog() {
                     </div>
                 </div>
             </div>
-        </section>  
+        </section>
 
         <section className="bg-light">
             <div className="container">
@@ -57,7 +57,7 @@ export default function Blog() {
                                         <Image className="img-fluid rounded" width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}} src='/img/blog-5.jpg' alt="blog image"/>
                                     </Link>
                                 </div>
-                                
+
                                 <div className="col-xl-8 col-lg-8 col-md-8">
                                     <div className="card-body">
                                         <div className="d-flex align-items-center justify-content-start gap-2 mb-3">
@@ -71,7 +71,7 @@ export default function Blog() {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -115,9 +115,9 @@ export default function Blog() {
                             </ul>
                         </nav>
                     </div>
-                </div>	
+                </div>
             </div>
-        </section> 
+        </section>
 
         <FooterTop/>
         <Footer/>
