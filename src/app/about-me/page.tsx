@@ -52,11 +52,11 @@ export default function AboutUs() {
                 <div className="row">
 
                     <div className="row justify-content-between align-items-center g-4 mb-5">
-                        <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        {/* <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                             <div className="missionImg">
                                 <Image src="/img/side-img.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt=""/>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <div className="missioncaps">
                                 <div className="d-block mb-4">
@@ -104,11 +104,11 @@ export default function AboutUs() {
                             </div>
                         </div>
 
-                        <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        {/* <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                             <div className="missionImg">
                                 <Image src="/img/side-img.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt=""/>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -120,11 +120,11 @@ export default function AboutUs() {
                 <div className="row">
 
                     <div className="row justify-content-between align-items-center g-4 mb-5">
-                        <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        {/* <div className="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                             <div className="missionImg">
                                 <Image src="/img/side-img.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt=""/>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <div className="missioncaps">
                                 <div className="d-block mb-4">
