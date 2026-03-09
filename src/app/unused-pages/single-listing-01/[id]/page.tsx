@@ -108,7 +108,7 @@ export default function Page() {
 
                                 <Reviews/>
 
-                                <List/>
+                                <List spots={[]}/>
 
                             </div>
 

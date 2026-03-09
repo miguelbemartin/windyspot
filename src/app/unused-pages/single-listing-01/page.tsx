@@ -98,7 +98,7 @@ export default function SingleListingOne() {
 
                             <Reviews/>
 
-                            <List/>
+                            <List spots={[]}/>
 
                         </div>
 

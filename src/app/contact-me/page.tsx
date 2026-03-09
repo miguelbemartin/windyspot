@@ -33,6 +33,7 @@ export default function ContactUs() {
                             <p className="text-muted mb-4">
                                 Have a question about a spot, want to suggest a new one, or just want to say hi? Feel free to reach out!
                             </p>
+                            <p>If you want to add or update a spot, send me an email. I am still working on this, but in the near future, you could just create an account and add yourself. </p>
                             <a
                                 href="mailto:miguel@miguelangelmartin.me"
                                 className="btn btn-primary btn-lg rounded-pill px-4"

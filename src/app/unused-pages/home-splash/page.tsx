@@ -41,7 +41,7 @@ export default function HomeSplash() {
                         </div>
                     </div>
                 </div>
-                <PopularListingTwo/>
+                <PopularListingTwo spots={[]}/>
             </div>
         </section>
 
@@ -55,7 +55,7 @@ export default function HomeSplash() {
                         </div>
                     </div>
                 </div>
-                <ExploreCity/>
+                <ExploreCity locations={[]} />
             </div>
         </section>
         <section>

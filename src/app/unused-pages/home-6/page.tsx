@@ -90,7 +90,7 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-                <FeaturedListing/>
+                <FeaturedListing spots={[]}/>
             </div>
         </section>
 

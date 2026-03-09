@@ -76,7 +76,7 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-                <FeaturedListing/>
+                <FeaturedListing spots={[]}/>
             </div>
         </section>
 
@@ -104,7 +104,7 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-                <PopularListingOne/>
+                <PopularListingOne spots={[]}/>
             </div>
         </section>
 

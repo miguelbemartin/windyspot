@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { spots } from '../data/data'
+import type { SpotWithLocation } from '../lib/spots'
 
 import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart } from 'react-icons/bs'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,17 +11,7 @@ import { Autoplay,Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-interface ListData{
-    id: number;
-    image: string;
-    featured: boolean;
-    title: string;
-    desc: string;
-    loction: string;
-    tag: string;
-}
-
-export default function FeaturedListing() {
+export default function FeaturedListing({ spots }: { spots: SpotWithLocation[] }) {
   return (
         <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -40,7 +30,7 @@ export default function FeaturedListing() {
                             1440: { slidesPerView: 4 },
                         }}
                     >
-                    {spots.map((item:ListData,index:number)=>{
+                    {spots.map((item,index)=>{
                         return(
                             <SwiperSlide className="singleItem" key={index}>
                                 <div className="listingitem-container">
@@ -67,7 +57,7 @@ export default function FeaturedListing() {
                                                         <h4 className="listingTitle"><Link href="/single-listing-01" className="titleLink">{item.title}<span className="verified"><BsPatchCheckFill className="bi bi-patch-check-fill m-0"/></span></Link></h4>
                                                         <div className="list-infos">
                                                             <div className="gap-3 mt-1">
-                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.loction}</div>
+                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.location.name}</div>
                                                             </div>
                                                         </div>
                                                     </div>

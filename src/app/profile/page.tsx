@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import NavLightThree from '../components/navbar/nav-light-three'
+import NavMinimal from '../components/navbar/nav-minimal'
 import FooterTop from '../components/footer-top'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
@@ -35,7 +35,7 @@ interface ListData{
 export default function AuthorProfile() {
   return (
     <>
-    <NavLightThree/>
+    <NavMinimal/>
 
     <section className="bg-light py-5">
         <div className="container">
@@ -284,30 +284,7 @@ export default function AuthorProfile() {
                             </div>
                         </div>
 
-                        <div className="card">
-                            <div className="card-header py-3">
-                                <div className="headerFirst"><h6><BsEnvelopeCheckFill className="me-2"/>Message To Author</h6></div>
-                            </div>
-                            <div className="p-xl-4 p-3">
-                                <div className="contactForm position-relative">
-                                    <div className="form-group form-border">
-                                        <input type="text" className="form-control" placeholder="Your Name"/>
-                                    </div>
-                                    <div className="form-group form-border">
-                                        <input type="email" className="form-control" placeholder="Your Email"/>
-                                    </div>
-                                    <div className="form-group form-border">
-                                        <input type="tel" className="form-control" placeholder="Your Phone"/>
-                                    </div>
-                                    <div className="form-group form-border">
-                                        <textarea className="form-control" placeholder="Leave a comment here" style={{height:'120px'}}></textarea>
-                                    </div>
-                                    <div className="form-group form-border">
-                                        <button type="button" className="btn btn-primary rounded-pill fw-medium w-100"><BsSend className="me-2"/>Send Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 

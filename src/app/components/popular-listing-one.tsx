@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { spots } from '../data/data'
+import type { SpotWithLocation } from '../lib/spots'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay,Pagination } from 'swiper/modules';
@@ -12,17 +12,7 @@ import 'swiper/css/pagination';
 
 import { BsGeoAlt, BsPatchCheckFill, BsStar, BsSuitHeart } from 'react-icons/bs';
 
-interface ListData{
-    id: number;
-    image: string;
-    featured: boolean;
-    title: string;
-    desc: string;
-    loction: string;
-    tag: string;
-}
-
-export default function PopularListingOne() {
+export default function PopularListingOne({ spots }: { spots: SpotWithLocation[] }) {
   return (
     <div className="row align-items-center justify-content-center">
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -40,7 +30,7 @@ export default function PopularListingOne() {
                         1440: { slidesPerView: 4 },
                     }}
                 >
-                {spots.map((item:ListData,index:number)=>{
+                {spots.map((item,index)=>{
                     return(
                         <SwiperSlide className="singleItem" key={index}>
                             <div className="listingitem-container">
@@ -65,11 +55,11 @@ export default function PopularListingOne() {
                                     <div className="listing-middle-item">
                                         <div className="listing-details">
                                             <h4 className="listingTitle"><Link href="/single-listing-01" className="titleLink">{item.title}<span className="verified"><BsPatchCheckFill className="bi bi-patch-check-fill m-0"/></span></Link></h4>
-                                            <p>{item.desc}</p>
+                                            <p>{item.description}</p>
                                         </div>
                                         <div className="listing-info-details">
                                             <div className="d-flex align-items-center justify-content-start gap-2">
-                                                <div className="list-distance"><BsGeoAlt className="mb-0 me-2"/>{item.loction}</div>
+                                                <div className="list-distance"><BsGeoAlt className="mb-0 me-2"/>{item.location.name}</div>
                                             </div>
                                         </div>
                                     </div>

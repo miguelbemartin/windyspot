@@ -3,24 +3,14 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { spots } from '../data/data'
+import type { SpotWithLocation } from '../lib/spots'
 
 import { BsEyeFill, BsGeoAlt, BsPatchCheckFill, BsShareFill, BsStar, BsSuitHeart } from 'react-icons/bs'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
-interface ListData{
-    id: number;
-    image: string;
-    featured: boolean;
-    title: string;
-    desc: string;
-    loction: string;
-    tag: string;
-}
-
-export default function FeaturedListingTwo() {
+export default function FeaturedListingTwo({ spots }: { spots: SpotWithLocation[] }) {
     useEffect(() => {
         const tooltipTriggerList = Array.from(
             document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -46,7 +36,7 @@ export default function FeaturedListingTwo() {
                             1440: { slidesPerView: 4 },
                         }}
                     >
-                    {spots.map((item:ListData,index:number)=>{
+                    {spots.map((item,index)=>{
                         return(
                             <SwiperSlide className="singleItem" key={index}>
                                 <div className="listingitem-container">
@@ -73,7 +63,7 @@ export default function FeaturedListingTwo() {
                                                         <h4 className="listingTitle"><Link href="/single-listing-03" className="titleLink">{item.title}<span className="verified"><BsPatchCheckFill className="bi bi-patch-check-fill m-0"/></span></Link></h4>
                                                         <div className="list-infos">
                                                             <div className="gap-3 mt-1">
-                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.loction}</div>
+                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.location.name}</div>
                                                             </div>
                                                         </div>
                                                     </div>

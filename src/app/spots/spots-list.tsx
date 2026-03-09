@@ -8,28 +8,25 @@ import FilterOne from '../components/filter-one'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { spots, locations as locationsData } from '../data/data'
+import type { SpotWithLocation, Location } from '../lib/spots'
 
 import { BsGeoAlt } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 
 const ITEMS_PER_PAGE = 9
 
-export default function SpotsList({ page }: { page: number }) {
+interface SpotsListProps {
+    page: number
+    spots: SpotWithLocation[]
+    locations: Location[]
+}
+
+export default function SpotsList({ page, spots, locations }: SpotsListProps) {
     const [selectedLocations, setSelectedLocations] = useState<string[]>([])
     const [rentalFilter, setRentalFilter] = useState<boolean | null>(null)
     const [searchQuery, setSearchQuery] = useState('')
 
-    const locationNames = useMemo(() => locationsData.map(c => c.name), [])
-
-    const spotToCityMap = useMemo(() => {
-        const map: Record<number, string> = {}
-        for (const spot of spots) {
-            const city = locationsData.find(c => c.spots.includes(spot.title))
-            if (city) map[spot.id] = city.name
-        }
-        return map
-    }, [])
+    const locationNames = useMemo(() => locations.map(c => c.name), [locations])
 
     const filteredSpots = useMemo(() => {
         let result = spots
@@ -37,18 +34,18 @@ export default function SpotsList({ page }: { page: number }) {
             const q = searchQuery.toLowerCase()
             result = result.filter(s =>
                 s.title.toLowerCase().includes(q) ||
-                s.desc.toLowerCase().includes(q) ||
-                s.loction.toLowerCase().includes(q)
+                (s.description || '').toLowerCase().includes(q) ||
+                s.location.name.toLowerCase().includes(q)
             )
         }
         if (selectedLocations.length > 0) {
-            result = result.filter(s => selectedLocations.includes(spotToCityMap[s.id] || ''))
+            result = result.filter(s => selectedLocations.includes(s.location.name))
         }
         if (rentalFilter !== null) {
-            result = result.filter(s => s.rentalPlace === rentalFilter)
+            result = result.filter(s => s.rental_place === rentalFilter)
         }
         return result
-    }, [searchQuery, selectedLocations, rentalFilter, spotToCityMap])
+    }, [searchQuery, selectedLocations, rentalFilter, spots])
 
     const totalPages = Math.ceil(filteredSpots.length / ITEMS_PER_PAGE)
     const currentPage = Math.min(Math.max(1, page), totalPages || 1)
@@ -101,9 +98,9 @@ export default function SpotsList({ page }: { page: number }) {
                                             <Image src={item.image} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%', objectFit:'cover'}} className="img-fluid" alt={item.title}/>
                                             <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{background: 'linear-gradient(transparent 0%, rgba(0,0,0,0.85) 100%)', paddingTop: '80px'}}>
                                                 <h5 className="text-white fw-bold mb-1">{item.title}</h5>
-                                                <p className="mb-1 small" style={{color: 'rgba(255,255,255,0.85)'}}>{item.desc}</p>
+                                                <p className="mb-1 small" style={{color: 'rgba(255,255,255,0.85)'}}>{item.description}</p>
                                                 <div className="d-flex align-items-center small" style={{color: 'rgba(255,255,255,0.8)'}}>
-                                                    <BsGeoAlt className="me-1"/>{item.loction}
+                                                    <BsGeoAlt className="me-1"/>{item.location.name}
                                                 </div>
                                             </div>
                                         </div>

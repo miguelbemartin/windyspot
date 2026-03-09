@@ -2,20 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { locations, spots } from '../data/data'
+import type { Location, Spot } from '../lib/spots'
 
-interface CityData{
-    image: string;
-    big: boolean;
-    name: string;
-    featured: boolean;
-    spots: string[];
-}
+type LocationWithSpots = Location & { spots: Spot[] }
 
-export default function ExploreCity() {
+export default function ExploreCity({ locations }: { locations: LocationWithSpots[] }) {
+  const featured = locations.filter(item => item.featured)
   return (
     <div className="row align-items-center justify-content-center g-4">
-        {locations.filter((item:CityData) => item.featured).map((item:CityData,index:number)=>{
+        {featured.map((item, index) => {
             return(
                 <div className={item.big ? 'col-xl-6 col-lg-6 col-md-4 col-sm-6' : 'col-xl-3 col-lg-3 col-md-4 col-sm-6'} key={index}>
                     <div className="position-relative overflow-hidden rounded-4" style={{height: '300px'}}>
@@ -26,21 +21,16 @@ export default function ExploreCity() {
                         <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{background: 'linear-gradient(transparent 0%, rgba(0,0,0,0.85) 100%)', paddingTop: '80px'}}>
                             <h4 className="text-white fw-bold mb-1">{item.name}</h4>
                             <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
-                                {item.spots.map((el,index)=>{
-                                    const spot = spots.find((s: any) => s.title === el)
-                                    return spot ? (
-                                        <Link href={`/spots/${spot.slug}`} className="badge badge-xs badge-transparent rounded-pill text-decoration-none" key={index}>{el}</Link>
-                                    ) : (
-                                        <span className="badge badge-xs badge-transparent rounded-pill" key={index}>{el}</span>
-                                    )
-                                })}
+                                {item.spots.map((spot, i) => (
+                                    <Link href={`/spots/${spot.slug}`} className="badge badge-xs badge-transparent rounded-pill text-decoration-none" key={i}>{spot.title}</Link>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </div>
             )
         })}
-        
+
     </div>
   )
 }

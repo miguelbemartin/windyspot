@@ -108,7 +108,7 @@ export default function SingleListingTwo() {
 
                             <Reviews/>
 
-                            <List/>
+                            <List spots={[]}/>
 
                         </div>
 

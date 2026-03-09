@@ -121,7 +121,7 @@ export default function SingleListingFive() {
 
                             <Maps/>
 
-                            <List/>
+                            <List spots={[]}/>
 
                         </div>
 

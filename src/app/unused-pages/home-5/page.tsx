@@ -101,7 +101,7 @@ export default function HomeFive() {
                         </div>
                     </div>
                 </div>
-                <FeaturedListingTwo/>
+                <FeaturedListingTwo spots={[]}/>
             </div>
         </section>
 

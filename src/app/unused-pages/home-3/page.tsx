@@ -40,7 +40,7 @@ export default function HomeThree() {
                         </div>
                     </div>
                 </div>
-                <FeaturedListing/>
+                <FeaturedListing spots={[]}/>
             </div>
         </section>
 
@@ -68,7 +68,7 @@ export default function HomeThree() {
                         </div>
                     </div>
                 </div>
-                <PopularListingOne/>
+                <PopularListingOne spots={[]}/>
             </div>
         </section>
 

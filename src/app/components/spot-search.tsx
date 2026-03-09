@@ -4,22 +4,24 @@ import { useState, useRef, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import Fuse from 'fuse.js'
 import { BsSearch, BsGeoAlt } from 'react-icons/bs'
-import { spots } from '../data/data'
+import type { SpotWithLocation } from '../lib/spots'
 
-const spotsWithSlugs = spots.filter((item) => item.slug)
+interface SpotSearchProps {
+  spots: SpotWithLocation[]
+}
 
-export default function SpotSearch() {
+export default function SpotSearch({ spots }: SpotSearchProps) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const fuse = useMemo(
     () =>
-      new Fuse(spotsWithSlugs, {
-        keys: ['title', 'loction'],
+      new Fuse(spots, {
+        keys: ['title', 'location.name'],
         threshold: 0.4,
       }),
-    []
+    [spots]
   )
 
   const results = query.length > 0 ? fuse.search(query) : []
@@ -59,7 +61,7 @@ export default function SpotSearch() {
             />
             <div className="position-absolute top-50 end-0 translate-middle-y d-md-block d-none">
               <span className="badge badge-xs badge-primary rounded-pill">
-                {query.length > 0 ? `${results.length} match${results.length !== 1 ? 'es' : ''}` : `${spotsWithSlugs.length} spots`}
+                {query.length > 0 ? `${results.length} match${results.length !== 1 ? 'es' : ''}` : `${spots.length} spots`}
               </span>
             </div>
           </div>
@@ -112,7 +114,7 @@ export default function SpotSearch() {
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: 600, fontSize: '15px' }}>{item.title}</div>
                 <div style={{ fontSize: '13px', color: '#777', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <BsGeoAlt /> {item.loction}
+                  <BsGeoAlt /> {item.location.name}
                 </div>
               </div>
             </Link>

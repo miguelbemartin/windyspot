@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { spots } from '../../data/data'
+import type { SpotWithLocation } from '../../lib/spots'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay,Pagination } from 'swiper/modules';
@@ -12,17 +12,7 @@ import 'swiper/css';
 
 import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart } from 'react-icons/bs';
 
-interface ListData{
-    id: number;
-    image: string;
-    featured: boolean;
-    title: string;
-    desc: string;
-    loction: string;
-    tag: string;
-}
-
-export default function List() {
+export default function List({ spots }: { spots: SpotWithLocation[] }) {
   return (
         <div className="listingSingleblock">
             <div className="SingleblockHeader">
@@ -46,7 +36,7 @@ export default function List() {
                             1440: { slidesPerView: 2 },
                         }}
                     >
-                    {spots.map((item:ListData,index:number)=>{
+                    {spots.map((item,index)=>{
                         return(
                             <SwiperSlide className="singleItem" key={index}>
                                 <div className="listingitem-container">
@@ -73,7 +63,7 @@ export default function List() {
                                                         <h4 className="listingTitle"><Link href="#" className="titleLink">{item.title}<span className="verified"><BsPatchCheckFill className="bi bi-patch-check-fill m-0"/></span></Link></h4>
                                                         <div className="list-infos">
                                                             <div className="gap-3 mt-1">
-                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.loction}</div>
+                                                                <div className="list-distance text-light d-flex align-items-center"><BsGeoAlt className="mb-0 me-2"/>{item.location.name}</div>
                                                             </div>
                                                         </div>
                                                     </div>

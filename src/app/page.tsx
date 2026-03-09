@@ -1,30 +1,23 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { categoryData } from './data/data'
-
 import { BsMouse } from 'react-icons/bs'
 
 import NavbarLight from './components/navbar/navbar-light'
 import SpotSearch from './components/spot-search'
 import ExploreListingOne from './components/explore-listing-one'
 import ExploreCity from './components/explore-city'
-import AboutOne from './components/about-one'
-import ClientOne from './components/client-one'
-import BlogOne from './components/blog-one'
-import FooterTop from './components/footer-top'
 import Footer from './components/footer/footer'
 import BackToTop from './components/back-to-top'
-import { IconType } from 'react-icons'
 
-interface CategoryData{
-    image: string;
-    icon: IconType;
-    title: string;
-    list: string;
-}
+import { getSpots, getFeaturedSpots, getLocationsWithSpots } from './lib/spots'
 
-export default function IndexTen() {
+export default async function IndexTen() {
+  const [spots, featuredSpots, locationsWithSpots] = await Promise.all([
+    getSpots(),
+    getFeaturedSpots(),
+    getLocationsWithSpots(),
+  ])
   return (
     <>
 
@@ -36,14 +29,14 @@ export default function IndexTen() {
                 <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                     <div className="position-relative text-center">
                         <h1>WE LOVE WIND</h1>
-                        <p className="fs-5 fw-light">Find the best forecast to your next adventure</p>
+                        <p className="fs-5 fw-light">All I want for life is some knots</p>
                     </div>
                 </div>
             </div>
 
             <div className="row align-items-start justify-content-center mb-lg-5 mb-4">
                 <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12">
-                    <SpotSearch />
+                    <SpotSearch spots={spots} />
                 </div>
             </div>
         </div>
@@ -61,7 +54,7 @@ export default function IndexTen() {
                 </div>
             </div>
 
-            <ExploreListingOne/>
+            <ExploreListingOne spots={featuredSpots} />
 
             <div className="row align-items-center justify-content-center mt-5">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -81,7 +74,7 @@ export default function IndexTen() {
                     </div>
                 </div>
             </div>
-            <ExploreCity/>
+            <ExploreCity locations={locationsWithSpots} />
         </div>
     </section>
 
@@ -90,7 +83,7 @@ export default function IndexTen() {
             <div className="row align-items-center justify-content-center">
                 <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12 text-center">
                     <h4 className="text-white mb-3">Want to add a spot?</h4>
-                    <p className="text-white opacity-75 mb-0">If you want to add any spot or update any of the spots, you can just <Link href="/contact-me" className="text-white fw-medium text-decoration-underline">contact me</Link>.</p>
+                    <p className="text-white opacity-75 mb-0">If you want to add or update any of the spots, you can just <Link href="/contact-me" className="text-white fw-medium text-decoration-underline">contact me</Link>.</p>
                 </div>
             </div>
         </div>

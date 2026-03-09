@@ -127,7 +127,7 @@ export default function IndexSeven() {
                         </div>
                     </div>
                 </div>
-                <FeaturedListingTwo/>
+                <FeaturedListingTwo spots={[]}/>
             </div>
         </section>
 
@@ -155,7 +155,7 @@ export default function IndexSeven() {
                         </div>
                     </div>
                 </div>
-                <PopularListingTwo/>
+                <PopularListingTwo spots={[]}/>
             </div>
         </section>
 
@@ -169,7 +169,7 @@ export default function IndexSeven() {
                         </div>
                     </div>
                 </div>
-                <ExploreCity/>
+                <ExploreCity locations={[]} />
             </div>
         </section>
 

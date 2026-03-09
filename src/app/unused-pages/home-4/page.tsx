@@ -65,7 +65,7 @@ export default function HomeFour() {
                         </div>
                     </div>
                 </div>
-                <ExploreListingOne/>
+                <ExploreListingOne spots={[]} />
                 <div className="row align-items-center justify-content-center mt-5">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
                         <div className="text-center"><button type="button" className="btn btn-light-primary fw-medium rounded-pill px-md-5">Explore More listings</button></div>
@@ -84,7 +84,7 @@ export default function HomeFour() {
                         </div>
                     </div>
                 </div>
-                <ExploreCity/>
+                <ExploreCity locations={[]} />
             </div>
         </section>
 

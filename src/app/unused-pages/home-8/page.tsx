@@ -96,7 +96,7 @@ export default function IndexEight() {
                         </div>
                     </div>
                 </div>
-                <FeaturedListingTwo/>
+                <FeaturedListingTwo spots={[]}/>
             </div>
         </section>
 

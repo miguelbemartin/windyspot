@@ -95,7 +95,7 @@ export default function SingleListingThree() {
 
                         <Reviews/>
 
-                        <List/>
+                        <List spots={[]}/>
 
                     </div>
 

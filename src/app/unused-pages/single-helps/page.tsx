@@ -5,12 +5,12 @@ import {Link as Link1} from 'react-scroll'
 
 import { MdArrowForwardIos } from 'react-icons/md'
 
-import { articles } from '../data/data'
+import { articles } from '../../data/data'
 
-import NavbarDark from '../components/navbar/navbar-dark'
-import FooterTop from '../components/footer-top'
-import Footer from '../components/footer/footer'
-import BackToTop from '../components/back-to-top'
+import NavbarDark from '../../components/navbar/navbar-dark'
+import FooterTop from '../../components/footer-top'
+import Footer from '../../components/footer/footer'
+import BackToTop from '../../components/back-to-top'
 
 interface Articles{
     title: string;

@@ -49,7 +49,7 @@ export default function HomeMap() {
 						</div>
 					</div>
 				</div>
-				<FeaturedListing/>
+				<FeaturedListing spots={[]}/>
 			</div>
 		</section>
 

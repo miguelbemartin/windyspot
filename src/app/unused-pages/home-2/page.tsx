@@ -66,7 +66,7 @@ export default function Index() {
                         </div>
                     </div>
                 </div>
-                <PopularListingTwo/>
+                <PopularListingTwo spots={[]}/>
             </div>
         </section>
 
@@ -80,7 +80,7 @@ export default function Index() {
                         </div>
                     </div>
                 </div>
-                <ExploreCity/>
+                <ExploreCity locations={[]} />
             </div>
         </section>
 

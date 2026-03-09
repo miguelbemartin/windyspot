@@ -25,7 +25,7 @@ export default function Footer() {
                         <div className="footer-widget mb-5 text-end">
                             <h4 className="widget-title">Explore</h4>
                             <ul className="footer-menu" style={{textAlign:'right'}}>
-                                <li><Link href="/resources">Resources</Link></li>
+                                {/* <li><Link href="/resources">Resources</Link></li> */}
                                 <li><Link href="/spots">Spots</Link></li>
                                 {/* <li><Link href="/cities">Cities</Link></li> */}
                             </ul>
