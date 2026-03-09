@@ -52,7 +52,7 @@ export default function NavbarLight() {
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header">
-                        <Link className="nav-brand" href="/"><Image src='/img/logo-light.svg' width={0} height={0} sizes='100vw' style={{width:'166px', height:'auto'}} className="logo" alt=""/></Link>
+                        <Link className="nav-brand" href="/"><Image src='/images/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'166px', height:'auto'}} className="logo" alt=""/></Link>
                         {/* <div className="nav-toggle" onClick={()=>setIsToggle(!toggle)}></div> */}
                         {/* <div className="mobile_nav">
                             <ul>

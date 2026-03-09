@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="row">
                     <div className="col-6 col-md-5 col-lg-6 col-xl-4 d-flex align-items-end">
                         <div className="footer-widget pe-xl-4 mb-5">
-                            <div className="footerLogo"><Image src='/img/logo-light.svg' width={0} height={0} sizes='100vw' style={{width:'160px', height:'auto'}} className="img-fluid"  alt="Footer Logo"/></div>
+                            <div className="footerLogo"><Image src='/images/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'160px', height:'auto'}} className="img-fluid"  alt="Footer Logo"/></div>
                             <div className="footerText"><p>Built with <FaHeart className="ms-1 text-danger"></FaHeart> by <Link href="/about-me" className="text-light">a Windsurfer</Link></p></div>
                             {/* <div className="footerSocialwrap">
                                 <ul className="footersocial">
