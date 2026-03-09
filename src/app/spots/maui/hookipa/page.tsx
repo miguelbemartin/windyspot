@@ -13,6 +13,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Hookipa, Maui - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg'],
+  },
 }
 
 export default function Hookipa() {

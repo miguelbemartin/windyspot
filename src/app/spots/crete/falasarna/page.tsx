@@ -12,6 +12,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Falasarna, Crete - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg'],
+  },
 }
 
 export default function Falasarna() {

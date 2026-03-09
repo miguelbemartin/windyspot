@@ -14,6 +14,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Isleten, Uri - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/isleten.jpg'],
+  },
 }
 
 export default function Isleten() {

@@ -7,6 +7,7 @@ import 'animate.css/animate.css'
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.windyspot.com'),
   title: "Windy Spots - Find the best forecast to windsurf",
   description: "Windy Spots - Find the best forecast to windsurf",
 };

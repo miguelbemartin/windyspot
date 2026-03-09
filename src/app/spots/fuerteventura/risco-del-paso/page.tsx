@@ -13,6 +13,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Risco del Paso, Fuerteventura - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg'],
+  },
 }
 
 export default function RiscoDelPaso() {

@@ -15,6 +15,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Bahía de Formas, Gran Canaria - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/IMG_1185.jpeg'],
+  },
 }
 
 export default function BahiaDeFormas() {

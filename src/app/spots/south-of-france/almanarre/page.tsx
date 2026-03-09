@@ -14,6 +14,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Almanarre, Hyères - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/almanarre.png'],
+  },
 }
 
 export default function Almanarre() {

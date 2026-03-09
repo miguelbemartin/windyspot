@@ -15,6 +15,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Flüelen, Uri - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/isleten.jpg'],
+  },
 }
 
 export default function Fluelen() {

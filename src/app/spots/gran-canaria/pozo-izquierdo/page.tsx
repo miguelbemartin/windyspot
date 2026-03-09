@@ -13,6 +13,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Pozo Izquierdo, Gran Canaria - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/IMG_2058.jpeg'],
+  },
 }
 
 export default function PozoIzquierdo() {

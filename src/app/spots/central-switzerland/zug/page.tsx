@@ -13,6 +13,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Zug, Switzerland - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg'],
+  },
 }
 
 export default function Zug() {

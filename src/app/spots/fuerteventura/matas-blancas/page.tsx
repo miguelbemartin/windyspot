@@ -13,6 +13,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Matas Blancas, Fuerteventura - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/matas-blancas-fuerteventura.png'],
+  },
 }
 
 export default function MatasBlancas() {

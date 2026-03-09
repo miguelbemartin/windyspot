@@ -13,6 +13,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Tarifa, Cadiz - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
+  },
 }
 
 export default function Tarifa() {

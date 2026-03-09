@@ -15,6 +15,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Gruissan, France - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg'],
+  },
 }
 
 export default function Gruissan() {

@@ -15,6 +15,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'El Médano, Tenerife - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg'],
+  },
 }
 
 export default function ElMedano() {

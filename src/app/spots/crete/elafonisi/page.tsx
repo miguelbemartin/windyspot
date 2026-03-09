@@ -14,6 +14,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Elafonisi, Crete - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg'],
+  },
 }
 
 export default function Elafonisi() {

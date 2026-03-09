@@ -12,6 +12,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Costa Calma, Fuerteventura - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg'],
+  },
 }
 
 export default function CostaCalma() {

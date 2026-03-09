@@ -14,6 +14,9 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Torbole, Lake Garda - Windsurf Spot Guide & Forecast',
+  openGraph: {
+    images: ['/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg'],
+  },
 }
 
 export default function GardaLake() {
