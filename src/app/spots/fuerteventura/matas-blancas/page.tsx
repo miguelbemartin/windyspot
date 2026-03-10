@@ -9,6 +9,7 @@ import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
 import BackToTop from '../../../components/back-to-top'
 
+import AddToMySpotsButton from '../../../components/add-to-my-spots-button'
 import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
@@ -42,6 +43,9 @@ export default function MatasBlancas() {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <AddToMySpotsButton spotId={16} />
                                 </div>
                             </div>
                         </div>

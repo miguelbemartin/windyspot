@@ -9,6 +9,7 @@ import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
 import BackToTop from '../../../components/back-to-top'
 
+import AddToMySpotsButton from '../../../components/add-to-my-spots-button'
 import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
@@ -42,6 +43,9 @@ export default function PozoIzquierdo() {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <AddToMySpotsButton spotId={21} />
                                 </div>
                             </div>
                         </div>
@@ -77,7 +81,7 @@ export default function PozoIzquierdo() {
                                         <YouTubeEmbed videoId="ElZh1azg7c4" title="Pozo Izquierdo Webcam" />
                                     </div>
                                     <div className="col-md-6">
-                                        <YouTubeEmbed videoId="f1eZuztlKKY" title="Pozo Izquierdo Webcam 2" />
+                                        <YouTubeEmbed videoId="qZ0RmfinBC8" title="Pozo Izquierdo Webcam 2" />
                                     </div>
                                 </div>
                             </div>

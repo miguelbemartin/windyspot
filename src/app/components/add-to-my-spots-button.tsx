@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useUser, useSignIn } from '@clerk/nextjs'
+import { useState, useEffect } from 'react'
+import { useUser } from '@clerk/nextjs'
 import { useSupabase } from '../lib/supabase'
 
 export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
@@ -9,7 +9,23 @@ export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
     const supabase = useSupabase()
     const [loading, setLoading] = useState(false)
     const [added, setAdded] = useState(false)
-    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        if (!isSignedIn || !user) return
+
+        async function checkIfAdded() {
+            const { data } = await supabase
+                .from('user_spots')
+                .select('spot_id')
+                .eq('user_id', user!.id)
+                .eq('spot_id', spotId)
+                .maybeSingle()
+
+            setAdded(!!data)
+        }
+
+        checkIfAdded()
+    }, [isSignedIn, user, supabase, spotId])
 
     async function handleClick() {
         if (!isSignedIn || !user) {
@@ -18,28 +34,34 @@ export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
         }
 
         setLoading(true)
-        setError(null)
 
-        const { error: insertError } = await supabase
-            .from('user_spots')
-            .upsert({ user_id: user.id, spot_id: spotId }, { onConflict: 'user_id,spot_id' })
+        if (added) {
+            const { error } = await supabase
+                .from('user_spots')
+                .delete()
+                .eq('user_id', user.id)
+                .eq('spot_id', spotId)
 
-        setLoading(false)
-
-        if (insertError) {
-            setError('Something went wrong')
+            setLoading(false)
+            if (!error) setAdded(false)
         } else {
-            setAdded(true)
+            const { error } = await supabase
+                .from('user_spots')
+                .upsert({ user_id: user.id, spot_id: spotId }, { onConflict: 'user_id,spot_id' })
+
+            setLoading(false)
+            if (!error) setAdded(true)
         }
     }
 
     return (
         <button
-            className={`btn btn-sm ${added ? 'btn-light' : 'btn-outline-light'} rounded-pill fw-medium`}
+            className="btn btn-sm rounded-pill fw-semibold text-white"
+            style={{backgroundColor: added ? '#999' : '#e05565'}}
             onClick={handleClick}
-            disabled={loading || added}
+            disabled={loading}
         >
-            {loading ? 'Saving...' : added ? 'Added!' : 'Add to my spots'}
+            {loading ? 'Saving...' : added ? 'Remove spot' : 'Add to my spots'}
         </button>
     )
 }
