@@ -47,7 +47,7 @@ export default function BahiaDeFormas() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={20} />
+                                    <AddToMySpotsButton spotId={2} />
                                 </div>
                             </div>
                         </div>

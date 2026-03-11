@@ -46,7 +46,7 @@ export default function Sotavento() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={18} />
+                                    <AddToMySpotsButton spotId={8} />
                                 </div>
                             </div>
                         </div>

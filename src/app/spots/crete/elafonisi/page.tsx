@@ -46,7 +46,7 @@ export default function Elafonisi() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={13} />
+                                    <AddToMySpotsButton spotId={17} />
                                 </div>
                             </div>
                         </div>

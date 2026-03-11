@@ -47,7 +47,7 @@ export default function Gruissan() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={24} />
+                                    <AddToMySpotsButton spotId={5} />
                                 </div>
                             </div>
                         </div>

@@ -47,7 +47,7 @@ export default function ElMedano() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={25} />
+                                    <AddToMySpotsButton spotId={3} />
                                 </div>
                             </div>
                         </div>

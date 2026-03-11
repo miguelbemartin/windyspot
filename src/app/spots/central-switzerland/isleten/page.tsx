@@ -46,7 +46,7 @@ export default function Isleten() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={8} />
+                                    <AddToMySpotsButton spotId={13} />
                                 </div>
                             </div>
                         </div>

@@ -46,7 +46,7 @@ export default function GardaLake() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={19} />
+                                    <AddToMySpotsButton spotId={7} />
                                 </div>
                             </div>
                         </div>

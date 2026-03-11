@@ -45,7 +45,7 @@ export default function Balneario() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={3} />
+                                    <AddToMySpotsButton spotId={18} />
                                 </div>
                             </div>
                         </div>

@@ -44,7 +44,7 @@ export default function CostaCalma() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={15} />
+                                    <AddToMySpotsButton spotId={10} />
                                 </div>
                             </div>
                         </div>

@@ -45,7 +45,7 @@ export default function PalomaBaja() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={6} />
+                                    <AddToMySpotsButton spotId={23} />
                                 </div>
                             </div>
                         </div>

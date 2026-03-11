@@ -47,7 +47,7 @@ export default function Fluelen() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={5} />
+                                    <AddToMySpotsButton spotId={4} />
                                 </div>
                             </div>
                         </div>

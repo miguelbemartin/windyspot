@@ -46,7 +46,7 @@ export default function Almanarre() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={23} />
+                                    <AddToMySpotsButton spotId={6} />
                                 </div>
                             </div>
                         </div>

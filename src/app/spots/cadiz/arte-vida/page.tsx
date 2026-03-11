@@ -45,7 +45,7 @@ export default function ArteVida() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={2} />
+                                    <AddToMySpotsButton spotId={21} />
                                 </div>
                             </div>
                         </div>

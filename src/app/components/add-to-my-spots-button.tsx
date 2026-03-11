@@ -61,7 +61,7 @@ export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
             onClick={handleClick}
             disabled={loading}
         >
-            {loading ? 'Saving...' : added ? 'Remove spot' : 'Add to my spots'}
+            {loading ? 'Saving...' : added ? 'Remove from my spots' : 'Add to my spots'}
         </button>
     )
 }

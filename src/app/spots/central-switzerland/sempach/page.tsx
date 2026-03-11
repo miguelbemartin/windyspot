@@ -46,7 +46,7 @@ export default function Sempach() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={9} />
+                                    <AddToMySpotsButton spotId={16} />
                                 </div>
                             </div>
                         </div>

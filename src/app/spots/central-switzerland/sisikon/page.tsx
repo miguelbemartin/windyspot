@@ -44,7 +44,7 @@ export default function Sisikon() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={11} />
+                                    <AddToMySpotsButton spotId={15} />
                                 </div>
                             </div>
                         </div>

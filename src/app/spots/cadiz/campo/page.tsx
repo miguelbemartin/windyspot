@@ -45,7 +45,7 @@ export default function Campo() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={5} />
+                                    <AddToMySpotsButton spotId={19} />
                                 </div>
                             </div>
                         </div>

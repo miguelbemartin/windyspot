@@ -191,7 +191,11 @@ export default function NavbarLight() {
                             </SignedOut>
                             <SignedIn>
                                 <li className="d-flex align-items-center px-3 pt-2">
-                                    <UserButton afterSignOutUrl="/" />
+                                    <UserButton afterSignOutUrl="/">
+                                        <UserButton.MenuItems>
+                                            <UserButton.Link label="My Profile" labelIcon={<BsPersonCircle />} href="/profile" />
+                                        </UserButton.MenuItems>
+                                    </UserButton>
                                 </li>
                             </SignedIn>
                         </ul>

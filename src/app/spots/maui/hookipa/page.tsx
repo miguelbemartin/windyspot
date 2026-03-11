@@ -45,7 +45,7 @@ export default function Hookipa() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={22} />
+                                    <AddToMySpotsButton spotId={24} />
                                 </div>
                             </div>
                         </div>

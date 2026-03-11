@@ -45,7 +45,7 @@ export default function Zug() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={12} />
+                                    <AddToMySpotsButton spotId={14} />
                                 </div>
                             </div>
                         </div>

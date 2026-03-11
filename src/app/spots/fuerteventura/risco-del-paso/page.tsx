@@ -45,7 +45,7 @@ export default function RiscoDelPaso() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={17} />
+                                    <AddToMySpotsButton spotId={11} />
                                 </div>
                             </div>
                         </div>

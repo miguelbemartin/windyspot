@@ -45,7 +45,7 @@ export default function Agua() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={1} />
+                                    <AddToMySpotsButton spotId={20} />
                                 </div>
                             </div>
                         </div>

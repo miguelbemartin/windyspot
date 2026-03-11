@@ -45,7 +45,7 @@ export default function PozoIzquierdo() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={21} />
+                                    <AddToMySpotsButton spotId={1} />
                                 </div>
                             </div>
                         </div>

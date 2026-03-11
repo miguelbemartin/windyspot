@@ -45,7 +45,7 @@ export default function Silvaplana() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={10} />
+                                    <AddToMySpotsButton spotId={25} />
                                 </div>
                             </div>
                         </div>

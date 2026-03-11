@@ -45,7 +45,7 @@ export default function MatasBlancas() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={16} />
+                                    <AddToMySpotsButton spotId={9} />
                                 </div>
                             </div>
                         </div>

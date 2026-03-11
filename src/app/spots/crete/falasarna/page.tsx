@@ -44,7 +44,7 @@ export default function Falasarna() {
                                     </div>
                                 </div>
                                 <div>
-                                    <AddToMySpotsButton spotId={14} />
+                                    <AddToMySpotsButton spotId={12} />
                                 </div>
                             </div>
                         </div>
