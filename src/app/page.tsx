@@ -29,7 +29,7 @@ export default async function IndexTen() {
                 <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                     <div className="position-relative text-center">
                         <h1>WE LOVE WIND</h1>
-                        <p className="fs-5 fw-light">All I want for life is some knots</p>
+                        <p className="fs-5 fw-light">all we want for life is some knots</p>
                     </div>
                 </div>
             </div>

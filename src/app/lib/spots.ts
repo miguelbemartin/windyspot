@@ -6,6 +6,7 @@ export interface Location {
     image: string
     big: boolean
     featured: boolean
+    country: string | null
 }
 
 export interface Spot {

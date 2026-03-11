@@ -18,7 +18,7 @@ export default function SpotSearch({ spots }: SpotSearchProps) {
   const fuse = useMemo(
     () =>
       new Fuse(spots, {
-        keys: ['title', 'location.name'],
+        keys: ['title', 'location.name', 'location.country'],
         threshold: 0.4,
       }),
     [spots]

@@ -35,7 +35,8 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
             result = result.filter(s =>
                 s.title.toLowerCase().includes(q) ||
                 (s.description || '').toLowerCase().includes(q) ||
-                s.location.name.toLowerCase().includes(q)
+                s.location.name.toLowerCase().includes(q) ||
+                (s.location.country || '').toLowerCase().includes(q)
             )
         }
         if (selectedLocations.length > 0) {
