@@ -16,8 +16,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Bahía de Formas, Gran Canaria - Windsurf Spot Guide & Forecast',
+  description: 'Bahía de Formas windsurf spot guide in Gran Canaria, Spain. Forecast, wind map, and conditions for this sheltered bay near Pozo Izquierdo.',
   openGraph: {
+    title: 'Bahía de Formas, Gran Canaria - Windsurf Spot Guide & Forecast',
+    description: 'Bahía de Formas windsurf spot guide in Gran Canaria, Spain. Forecast, wind map, and conditions for this sheltered bay near Pozo Izquierdo.',
+    url: 'https://www.windyspot.com/spots/gran-canaria/bahia-de-formas',
+    images: [{ url: '/images/spots/IMG_1185.jpeg', width: 1200, height: 630, alt: 'Bahía de Formas Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bahía de Formas, Gran Canaria - Windsurf Spot Guide & Forecast',
+    description: 'Bahía de Formas windsurf spot guide in Gran Canaria, Spain. Forecast, wind map, and conditions for this sheltered bay near Pozo Izquierdo.',
     images: ['/images/spots/IMG_1185.jpeg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/gran-canaria/bahia-de-formas',
   },
 }
 

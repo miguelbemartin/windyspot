@@ -8,8 +8,55 @@ import 'animate.css/animate.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.windyspot.com'),
-  title: "Windy Spots - Find the best forecast to windsurf",
-  description: "Windy Spots - Find the best forecast to windsurf",
+  title: {
+    default: "Windy Spots - Find the Best Windsurf Forecast & Spot Guides",
+    template: "%s | Windy Spots",
+  },
+  description: "Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides. Find your next windsurf session today.",
+  keywords: ["windsurf", "windsurf spots", "wind forecast", "windsurf forecast", "kitesurf", "windsurf guide", "windsurf locations", "wind conditions", "windsurfing"],
+  authors: [{ name: "Windy Spots" }],
+  creator: "Windy Spots",
+  publisher: "Windy Spots",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.windyspot.com",
+    siteName: "Windy Spots",
+    title: "Windy Spots - Find the Best Windsurf Forecast & Spot Guides",
+    description: "Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides. Find your next windsurf session today.",
+    images: [
+      {
+        url: "/images/homepage.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Windy Spots - Windsurf Spot Finder",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Windy Spots - Find the Best Windsurf Forecast & Spot Guides",
+    description: "Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides.",
+    images: ["/images/homepage.jpg"],
+  },
+  alternates: {
+    canonical: "https://www.windyspot.com",
+  },
+  icons: {
+    icon: "/img/favicon.png",
+    apple: "/img/favicon.png",
+  },
 };
 
 export default function RootLayout({

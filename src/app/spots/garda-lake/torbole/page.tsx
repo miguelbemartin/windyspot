@@ -15,8 +15,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Torbole, Lake Garda - Windsurf Spot Guide & Forecast',
+  description: 'Torbole windsurf spot guide on Lake Garda, Italy. Live station, webcams, forecast, and wind map for Europe\'s most famous lake windsurfing destination.',
   openGraph: {
+    title: 'Torbole, Lake Garda - Windsurf Spot Guide & Forecast',
+    description: 'Torbole windsurf spot guide on Lake Garda, Italy. Live station, webcams, forecast, and wind map for Europe\'s most famous lake windsurfing destination.',
+    url: 'https://www.windyspot.com/spots/garda-lake/torbole',
+    images: [{ url: '/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg', width: 1200, height: 630, alt: 'Torbole Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Torbole, Lake Garda - Windsurf Spot Guide & Forecast',
+    description: 'Torbole windsurf spot guide on Lake Garda, Italy. Live station, webcams, forecast, and wind map.',
     images: ['/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/garda-lake/torbole',
   },
 }
 

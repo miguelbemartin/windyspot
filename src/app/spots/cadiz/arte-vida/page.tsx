@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Arte Vida, Tarifa - Windsurf Spot Guide & Forecast',
+  description: 'Arte Vida windsurf spot guide in Tarifa, Spain. Best Poniente spot with stunning scenery, live station, forecast, and wind map.',
   openGraph: {
+    title: 'Arte Vida, Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Arte Vida windsurf spot guide in Tarifa, Spain. Best Poniente spot with stunning scenery, live station, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/cadiz/arte-vida',
+    images: [{ url: '/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg', width: 1200, height: 630, alt: 'Arte Vida Windsurf Spot, Tarifa' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Arte Vida, Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Arte Vida windsurf spot guide in Tarifa, Spain. Best Poniente spot with stunning scenery and short walk to water.',
     images: ['/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/cadiz/arte-vida',
   },
 }
 

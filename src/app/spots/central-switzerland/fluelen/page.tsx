@@ -16,8 +16,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Flüelen, Uri - Windsurf Spot Guide & Forecast',
+  description: 'Flüelen windsurf spot guide on Lake Uri, Switzerland. Foehn wind conditions with live station, webcams, forecast, and wind map.',
   openGraph: {
+    title: 'Flüelen, Uri - Windsurf Spot Guide & Forecast',
+    description: 'Flüelen windsurf spot guide on Lake Uri, Switzerland. Foehn wind conditions with live station, webcams, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/central-switzerland/fluelen',
+    images: [{ url: '/images/spots/isleten.jpg', width: 1200, height: 630, alt: 'Flüelen Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Flüelen, Uri - Windsurf Spot Guide & Forecast',
+    description: 'Flüelen windsurf spot guide on Lake Uri, Switzerland. Foehn wind conditions with live station, webcams, forecast, and wind map.',
     images: ['/images/spots/isleten.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/central-switzerland/fluelen',
   },
 }
 

@@ -13,8 +13,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Sisikon, Uri - Windsurf Spot Guide & Forecast',
+  description: 'Sisikon windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with forecast, spot guide, and wind map.',
   openGraph: {
+    title: 'Sisikon, Uri - Windsurf Spot Guide & Forecast',
+    description: 'Sisikon windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with forecast, spot guide, and wind map.',
+    url: 'https://www.windyspot.com/spots/central-switzerland/sisikon',
+    images: [{ url: '/images/spots/isleten.jpg', width: 1200, height: 630, alt: 'Sisikon Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sisikon, Uri - Windsurf Spot Guide & Forecast',
+    description: 'Sisikon windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with forecast and spot guide.',
     images: ['/images/spots/isleten.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/central-switzerland/sisikon',
   },
 }
 

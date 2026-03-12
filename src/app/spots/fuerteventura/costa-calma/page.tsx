@@ -13,8 +13,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Costa Calma, Fuerteventura - Windsurf Spot Guide & Forecast',
+  description: 'Costa Calma windsurf spot guide in Fuerteventura, Spain. Forecast and wind map for this beginner-friendly trade wind beach.',
   openGraph: {
+    title: 'Costa Calma, Fuerteventura - Windsurf Spot Guide & Forecast',
+    description: 'Costa Calma windsurf spot guide in Fuerteventura, Spain. Forecast and wind map for this beginner-friendly trade wind beach.',
+    url: 'https://www.windyspot.com/spots/fuerteventura/costa-calma',
+    images: [{ url: '/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg', width: 1200, height: 630, alt: 'Costa Calma Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Costa Calma, Fuerteventura - Windsurf Spot Guide & Forecast',
+    description: 'Costa Calma windsurf spot guide in Fuerteventura, Spain. Forecast and wind map for this beginner-friendly trade wind beach.',
     images: ['/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/fuerteventura/costa-calma',
   },
 }
 

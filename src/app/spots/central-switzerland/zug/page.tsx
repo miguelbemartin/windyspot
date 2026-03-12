@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Zug, Switzerland - Windsurf Spot Guide & Forecast',
+  description: 'Zug windsurf spot guide on Lake Zug, Switzerland. Webcams, forecast, and wind map for this central Swiss lake windsurfing spot.',
   openGraph: {
+    title: 'Zug, Switzerland - Windsurf Spot Guide & Forecast',
+    description: 'Zug windsurf spot guide on Lake Zug, Switzerland. Webcams, forecast, and wind map for this central Swiss lake windsurfing spot.',
+    url: 'https://www.windyspot.com/spots/central-switzerland/zug',
+    images: [{ url: '/images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg', width: 1200, height: 630, alt: 'Zug Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Zug, Switzerland - Windsurf Spot Guide & Forecast',
+    description: 'Zug windsurf spot guide on Lake Zug, Switzerland. Webcams, forecast, and wind map.',
     images: ['/images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/central-switzerland/zug',
   },
 }
 

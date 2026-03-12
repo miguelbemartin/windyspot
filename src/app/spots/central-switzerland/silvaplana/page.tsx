@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Silvaplana, Engadin - Windsurf Spot Guide & Forecast',
+  description: 'Silvaplana windsurf spot guide in Engadin, Switzerland. Alpine lake windsurfing with Maloja wind, forecast, and wind map.',
   openGraph: {
+    title: 'Silvaplana, Engadin - Windsurf Spot Guide & Forecast',
+    description: 'Silvaplana windsurf spot guide in Engadin, Switzerland. Alpine lake windsurfing with Maloja wind, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/central-switzerland/silvaplana',
+    images: [{ url: '/images/spots/uwe-conrad-MralC-Em90w-unsplash.jpg', width: 1200, height: 630, alt: 'Silvaplana Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Silvaplana, Engadin - Windsurf Spot Guide & Forecast',
+    description: 'Silvaplana windsurf spot guide in Engadin, Switzerland. Alpine lake windsurfing with Maloja wind.',
     images: ['/images/spots/uwe-conrad-MralC-Em90w-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/central-switzerland/silvaplana',
   },
 }
 

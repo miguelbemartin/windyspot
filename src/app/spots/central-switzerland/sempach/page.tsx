@@ -15,8 +15,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Sempach, Lucerne - Windsurf Spot Guide & Forecast',
+  description: 'Sempach windsurf spot guide on Lake Sempach, Lucerne, Switzerland. Live station, webcams, forecast, and wind map.',
   openGraph: {
+    title: 'Sempach, Lucerne - Windsurf Spot Guide & Forecast',
+    description: 'Sempach windsurf spot guide on Lake Sempach, Lucerne, Switzerland. Live station, webcams, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/central-switzerland/sempach',
+    images: [{ url: '/images/spots/marvin-meyer-ua_tu9vqLAU-unsplash.jpg', width: 1200, height: 630, alt: 'Sempach Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sempach, Lucerne - Windsurf Spot Guide & Forecast',
+    description: 'Sempach windsurf spot guide on Lake Sempach, Lucerne, Switzerland. Live station, webcams, and forecast.',
     images: ['/images/spots/marvin-meyer-ua_tu9vqLAU-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/central-switzerland/sempach',
   },
 }
 

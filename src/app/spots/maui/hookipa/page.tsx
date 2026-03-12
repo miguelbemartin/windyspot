@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Hookipa, Maui - Windsurf Spot Guide & Forecast',
+  description: 'Hookipa windsurf spot guide in Maui, Hawaii. The most iconic wave sailing spot in the world with live station, forecast, wind map, and expert spot guide.',
   openGraph: {
+    title: 'Hookipa, Maui - Windsurf Spot Guide & Forecast',
+    description: 'Hookipa windsurf spot guide in Maui, Hawaii. The most iconic wave sailing spot in the world with live station, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/maui/hookipa',
+    images: [{ url: '/images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg', width: 1200, height: 630, alt: 'Hookipa Windsurf Spot, Maui' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hookipa, Maui - Windsurf Spot Guide & Forecast',
+    description: 'Hookipa windsurf spot guide in Maui, Hawaii. The most iconic wave sailing spot in the world.',
     images: ['/images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/maui/hookipa',
   },
 }
 

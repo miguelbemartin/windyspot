@@ -15,8 +15,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Sotavento, Fuerteventura - Windsurf Spot Guide & Forecast',
+  description: 'Sotavento windsurf spot guide in Fuerteventura, Spain. PWA World Cup venue with live station, webcams, forecast, and wind map.',
   openGraph: {
+    title: 'Sotavento, Fuerteventura - Windsurf Spot Guide & Forecast',
+    description: 'Sotavento windsurf spot guide in Fuerteventura, Spain. PWA World Cup venue with live station, webcams, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/fuerteventura/sotavento',
+    images: [{ url: '/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg', width: 1200, height: 630, alt: 'Sotavento Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sotavento, Fuerteventura - Windsurf Spot Guide & Forecast',
+    description: 'Sotavento windsurf spot guide in Fuerteventura, Spain. PWA World Cup venue with live station, webcams, forecast, and wind map.',
     images: ['/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/fuerteventura/sotavento',
   },
 }
 

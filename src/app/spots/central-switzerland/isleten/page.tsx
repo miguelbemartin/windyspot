@@ -15,8 +15,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Isleten, Uri - Windsurf Spot Guide & Forecast',
+  description: 'Isleten windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with webcams, forecast, and wind map.',
   openGraph: {
+    title: 'Isleten, Uri - Windsurf Spot Guide & Forecast',
+    description: 'Isleten windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with webcams, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/central-switzerland/isleten',
+    images: [{ url: '/images/spots/isleten.jpg', width: 1200, height: 630, alt: 'Isleten Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Isleten, Uri - Windsurf Spot Guide & Forecast',
+    description: 'Isleten windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with webcams and forecast.',
     images: ['/images/spots/isleten.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/central-switzerland/isleten',
   },
 }
 

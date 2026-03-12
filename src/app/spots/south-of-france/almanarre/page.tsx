@@ -15,8 +15,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Almanarre, Hyères - Windsurf Spot Guide & Forecast',
+  description: 'Almanarre windsurf spot guide in Hyères, South of France. Webcams, forecast, and wind map for this iconic French Riviera windsurfing beach.',
   openGraph: {
+    title: 'Almanarre, Hyères - Windsurf Spot Guide & Forecast',
+    description: 'Almanarre windsurf spot guide in Hyères, South of France. Webcams, forecast, and wind map for this iconic French Riviera windsurfing beach.',
+    url: 'https://www.windyspot.com/spots/south-of-france/almanarre',
+    images: [{ url: '/images/spots/almanarre.png', width: 1200, height: 630, alt: 'Almanarre Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Almanarre, Hyères - Windsurf Spot Guide & Forecast',
+    description: 'Almanarre windsurf spot guide in Hyères, South of France. Webcams, forecast, and wind map.',
     images: ['/images/spots/almanarre.png'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/south-of-france/almanarre',
   },
 }
 

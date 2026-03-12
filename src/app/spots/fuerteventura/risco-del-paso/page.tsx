@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Risco del Paso, Fuerteventura - Windsurf Spot Guide & Forecast',
+  description: 'Risco del Paso windsurf spot guide in Fuerteventura, Spain. Live station, forecast, and wind map for this flat water paradise near Sotavento.',
   openGraph: {
+    title: 'Risco del Paso, Fuerteventura - Windsurf Spot Guide & Forecast',
+    description: 'Risco del Paso windsurf spot guide in Fuerteventura, Spain. Live station, forecast, and wind map for this flat water paradise near Sotavento.',
+    url: 'https://www.windyspot.com/spots/fuerteventura/risco-del-paso',
+    images: [{ url: '/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg', width: 1200, height: 630, alt: 'Risco del Paso Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Risco del Paso, Fuerteventura - Windsurf Spot Guide & Forecast',
+    description: 'Risco del Paso windsurf spot guide in Fuerteventura, Spain. Live station, forecast, and wind map.',
     images: ['/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/fuerteventura/risco-del-paso',
   },
 }
 

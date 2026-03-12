@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Paloma Baja (Las Dunas), Tarifa - Windsurf Spot Guide & Forecast',
+  description: 'Paloma Baja (Las Dunas) windsurf spot guide in Tarifa, Spain. Wave-protected slalom spot near Punta Paloma with live station, forecast, and wind map.',
   openGraph: {
+    title: 'Paloma Baja (Las Dunas), Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Paloma Baja (Las Dunas) windsurf spot guide in Tarifa, Spain. Wave-protected slalom spot near Punta Paloma.',
+    url: 'https://www.windyspot.com/spots/cadiz/paloma-baja',
+    images: [{ url: '/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg', width: 1200, height: 630, alt: 'Paloma Baja Windsurf Spot, Tarifa' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Paloma Baja (Las Dunas), Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Paloma Baja windsurf spot guide in Tarifa, Spain. Wave-protected slalom spot near Punta Paloma.',
     images: ['/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/cadiz/paloma-baja',
   },
 }
 

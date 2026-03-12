@@ -15,8 +15,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Elafonisi, Crete - Windsurf Spot Guide & Forecast',
+  description: 'Elafonisi windsurf spot guide in Crete, Greece. Pink-sand beach with Meltemi winds, flat-water lagoon, live station, forecast, and wind map.',
   openGraph: {
+    title: 'Elafonisi, Crete - Windsurf Spot Guide & Forecast',
+    description: 'Elafonisi windsurf spot guide in Crete, Greece. Pink-sand beach with Meltemi winds, flat-water lagoon, live station, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/crete/elafonisi',
+    images: [{ url: '/images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg', width: 1200, height: 630, alt: 'Elafonisi Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Elafonisi, Crete - Windsurf Spot Guide & Forecast',
+    description: 'Elafonisi windsurf spot guide in Crete, Greece. Pink-sand beach with Meltemi winds, flat-water lagoon, live station, and forecast.',
     images: ['/images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/crete/elafonisi',
   },
 }
 

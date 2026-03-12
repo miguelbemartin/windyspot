@@ -14,6 +14,22 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Valdevaqueros, Tarifa - Windsurf Spot Guide & Forecast',
+  description: 'Valdevaqueros windsurf spot guide in Tarifa, Spain. Strongest Poniente spot with live station, forecast, wind map, and detailed conditions guide.',
+  openGraph: {
+    title: 'Valdevaqueros, Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Valdevaqueros windsurf spot guide in Tarifa, Spain. Strongest Poniente spot with live station, forecast, and wind map.',
+    url: 'https://www.windyspot.com/spots/cadiz/valdevaqueros',
+    images: [{ url: '/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg', width: 1200, height: 630, alt: 'Valdevaqueros Windsurf Spot, Tarifa' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Valdevaqueros, Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Valdevaqueros windsurf spot guide in Tarifa, Spain. Strongest Poniente spot with live station, forecast, and wind map.',
+    images: ['/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/cadiz/valdevaqueros',
+  },
 }
 
 export default function Valdevaqueros() {

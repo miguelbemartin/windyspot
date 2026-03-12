@@ -14,8 +14,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Balneario (Playa Chica), Tarifa - Windsurf Spot Guide & Forecast',
+  description: 'Balneario (Playa Chica) windsurf spot guide in Tarifa, Spain. Levante flat water and wave conditions where the Mediterranean meets the Atlantic.',
   openGraph: {
+    title: 'Balneario (Playa Chica), Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Balneario (Playa Chica) windsurf spot guide in Tarifa, Spain. Levante flat water and wave conditions where the Mediterranean meets the Atlantic.',
+    url: 'https://www.windyspot.com/spots/cadiz/balneario',
+    images: [{ url: '/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg', width: 1200, height: 630, alt: 'Balneario Windsurf Spot, Tarifa' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Balneario (Playa Chica), Tarifa - Windsurf Spot Guide & Forecast',
+    description: 'Balneario windsurf spot guide in Tarifa, Spain. Levante flat water and wave conditions.',
     images: ['/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/cadiz/balneario',
   },
 }
 

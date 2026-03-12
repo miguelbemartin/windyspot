@@ -16,8 +16,21 @@ import { FaLocationDot } from 'react-icons/fa6'
 
 export const metadata: Metadata = {
   title: 'Gruissan, France - Windsurf Spot Guide & Forecast',
+  description: 'Gruissan windsurf spot guide in South of France. Live station, webcams, forecast, and wind map for this popular Mediterranean windsurfing destination.',
   openGraph: {
+    title: 'Gruissan, France - Windsurf Spot Guide & Forecast',
+    description: 'Gruissan windsurf spot guide in South of France. Live station, webcams, forecast, and wind map for this popular Mediterranean windsurfing destination.',
+    url: 'https://www.windyspot.com/spots/south-of-france/gruissan',
+    images: [{ url: '/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg', width: 1200, height: 630, alt: 'Gruissan Windsurf Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gruissan, France - Windsurf Spot Guide & Forecast',
+    description: 'Gruissan windsurf spot guide in South of France. Live station, webcams, forecast, and wind map.',
     images: ['/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/spots/south-of-france/gruissan',
   },
 }
 
