@@ -3,6 +3,7 @@ import { createAdminClient } from './supabase-server'
 export interface Location {
     id: number
     name: string
+    slug: string
     image: string
     big: boolean
     featured: boolean
@@ -21,6 +22,7 @@ export interface Spot {
     tag: string
     windguru_forecast_id: string | null
     windguru_live_station_id: string | null
+    custom_page: boolean
 }
 
 export interface SpotWithLocation extends Spot {

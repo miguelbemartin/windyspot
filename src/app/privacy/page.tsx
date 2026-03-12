@@ -1,11 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
 import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
 import { MdArrowForwardIos } from 'react-icons/md'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Windy Spot privacy policy — how we collect, use, and protect your data.',
+  alternates: {
+    canonical: 'https://www.windyspot.com/privacy',
+  },
+}
 
 export default function PrivacyPolicy() {
   return (
@@ -30,7 +39,7 @@ export default function PrivacyPolicy() {
                 <div className="row justify-content-center g-4">
                     <div className="col-xl-8 col-lg-10 col-md-12">
                         <article className="article">
-                            <p>At Windy Spots ("we", "us", or "our"), we respect your privacy and are committed to protecting any personal information you share with us. This Privacy Policy explains what data we collect, how we use it, and your rights regarding that data when you use our website windyspot.com (the "Site").</p>
+                            <p>At Windy Spot ("we", "us", or "our"), we respect your privacy and are committed to protecting any personal information you share with us. This Privacy Policy explains what data we collect, how we use it, and your rights regarding that data when you use our website windyspot.com (the "Site").</p>
 
                             <h4 className="fs-4 mt-5">Information we collect</h4>
                             <p>When you create an account on our Site, we collect your name and email address through our authentication provider (Clerk). We do not store passwords directly — authentication is handled securely by Clerk. We do not collect billing information, mailing addresses, or any other personal details beyond what is needed to identify your account.</p>

@@ -1,38 +1,50 @@
-"use client"
 import React from 'react'
-import Link from 'next/link'
-
-import CountUp from 'react-countup'
-
-import { counterData, workData } from '../data/data'
-
-import { MdArrowForwardIos } from 'react-icons/md'
-import { BsCaretRight, BsPlayCircleFill } from 'react-icons/bs'
+import { Metadata } from 'next'
 
 import NavbarLight from '../components/navbar/navbar-light'
-import ClientOne from '../components/client-one'
-import TeamOne from '../components/team-one'
-import FooterTop from '../components/footer-top'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
-import Image from 'next/image'
-import { IconType } from 'react-icons'
 
-interface CounterData{
-    number: number;
-    symbol: string;
-    title: string;
+export const metadata: Metadata = {
+  title: 'About Me - The Story Behind Windy Spot',
+  description: 'Learn about the windsurfer behind Windy Spot — why I started this project, my passion for windsurfing, and the motivation to build the spot guide I wished existed.',
+  openGraph: {
+    title: 'About Me - The Story Behind Windy Spot',
+    description: 'Learn about the windsurfer behind Windy Spot — why I started this project and my passion for windsurfing.',
+    url: 'https://www.windyspot.com/about-me',
+    images: [{ url: '/images/about-me/miguel-02.jpg', width: 1200, height: 630, alt: 'About Windy Spot' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Me - The Story Behind Windy Spot',
+    description: 'Learn about the windsurfer behind Windy Spot — why I started this project and my passion for windsurfing.',
+    images: ['/images/about-me/miguel-02.jpg'],
+  },
+  alternates: {
+    canonical: 'https://www.windyspot.com/about-me',
+  },
 }
 
-interface WorkData{
-    icon: IconType;
-    title: string;
-    desc: string;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Miguel',
+    description: 'Windsurfer and creator of Windy Spot — a windsurf spot guide with forecasts, live stations, and webcams.',
+    url: 'https://www.windyspot.com/about-me',
+    image: 'https://www.windyspot.com/images/about-me/miguel-02.jpg',
+  },
 }
 
 export default function AboutUs() {
   return (
     <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <NavbarLight/>
 
         <section className="bg-cover position-relative" style={{backgroundImage:`url('/images/about-me/miguel-02.jpg')`}} data-overlay="6">
@@ -100,7 +112,7 @@ export default function AboutUs() {
                                     <h2>The motivation to start this project</h2>
                                 </div>
                                 <p>When I moved to Switzerland, I quickly realized that windsurfing on lakes is a completely different world compared to the ocean. The wind patterns are complex — foehn, bise, thermals — and each lake has its own microclimate. Information was scattered across local club websites, forums in German, and word of mouth. As a newcomer, it was incredibly hard to figure out where to go, when to go, and what to expect.</p>
-                                <p>That frustration became the spark for Windy Spots. I wanted to build the resource I wished I had when I arrived: a single place where you can check the forecast, see live conditions, watch webcams, and read a proper spot guide — all in one page. Whether you are a local looking for a quick session or a traveler planning a windsurf trip, the goal is to make it simple to find your next spot and get on the water with confidence.</p>
+                                <p>That frustration became the spark for Windy Spot. I wanted to build the resource I wished I had when I arrived: a single place where you can check the forecast, see live conditions, watch webcams, and read a proper spot guide — all in one page. Whether you are a local looking for a quick session or a traveler planning a windsurf trip, the goal is to make it simple to find your next spot and get on the water with confidence.</p>
                             </div>
                         </div>
 

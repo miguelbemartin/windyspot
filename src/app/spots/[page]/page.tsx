@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ page: str
       title: `All Windsurf Spots - Page ${page}`,
       description: 'Browse all windsurf spots worldwide with forecast, live wind stations, webcams, and detailed spot guides.',
       url: `https://www.windyspot.com/spots/${page}`,
-      images: [{ url: '/images/homepage.jpg', width: 1200, height: 630, alt: 'Windy Spots - Browse Windsurf Spots' }],
+      images: [{ url: '/images/homepage.jpg', width: 1200, height: 630, alt: 'Windy Spot - Browse Windsurf Spots' }],
     },
     twitter: {
       card: 'summary_large_image',

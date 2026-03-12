@@ -18,8 +18,29 @@ export default async function IndexTen() {
     getFeaturedSpots(),
     getLocationsWithSpots(),
   ])
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Windy Spot',
+    url: 'https://www.windyspot.com',
+    description: 'Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://www.windyspot.com/spots?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
   return (
     <>
+
+     <script
+       type="application/ld+json"
+       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+     />
 
      <NavbarLight/>
 

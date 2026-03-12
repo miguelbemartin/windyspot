@@ -1,8 +1,17 @@
 import React from 'react'
+import { Metadata } from 'next'
 import { FaEnvelope } from 'react-icons/fa6'
 import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
+
+export const metadata: Metadata = {
+  title: 'Contact Me - Suggest a Spot or Say Hi',
+  description: 'Get in touch to suggest a new windsurf spot, update an existing one, or just say hi. Reach out via email.',
+  alternates: {
+    canonical: 'https://www.windyspot.com/contact-me',
+  },
+}
 
 export default function ContactUs() {
   return (
