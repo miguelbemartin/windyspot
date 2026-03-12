@@ -28,22 +28,25 @@ export default function MapKitMap({ spots }: MapKitMapProps) {
 
         function initMap() {
             if (!window.mapkit || !mapRef.current) return
-            if (mapInstanceRef.current) return
 
-            window.mapkit.init({
-                authorizationCallback: (done: (token: string) => void) => {
-                    done(token!)
-                },
-            })
+            if (!mapInstanceRef.current) {
+                window.mapkit.init({
+                    authorizationCallback: (done: (token: string) => void) => {
+                        done(token!)
+                    },
+                })
 
-            const map = new window.mapkit.Map(mapRef.current, {
-                colorScheme: window.mapkit.Map.ColorSchemes.Light,
-                mapType: window.mapkit.Map.MapTypes.Standard,
-                showsCompass: window.mapkit.FeatureVisibility.Hidden,
-                showsZoomControl: false,
-                showsMapTypeControl: false,
-            })
-            mapInstanceRef.current = map
+                mapInstanceRef.current = new window.mapkit.Map(mapRef.current, {
+                    colorScheme: window.mapkit.Map.ColorSchemes.Light,
+                    mapType: window.mapkit.Map.MapTypes.Standard,
+                    showsCompass: window.mapkit.FeatureVisibility.Hidden,
+                    showsZoomControl: false,
+                    showsMapTypeControl: false,
+                })
+            }
+
+            const map = mapInstanceRef.current
+            map.removeAnnotations(map.annotations)
 
             if (spots.length === 0) {
                 map.region = new window.mapkit.CoordinateRegion(
@@ -58,6 +61,7 @@ export default function MapKitMap({ spots }: MapKitMapProps) {
                 return new window.mapkit.MarkerAnnotation(coord, {
                     title: spot.title,
                     color: '#e05565',
+                    clusteringIdentifier: 'spots',
                 })
             })
 

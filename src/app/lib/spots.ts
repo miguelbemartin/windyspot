@@ -23,6 +23,8 @@ export interface Spot {
     windguru_forecast_id: string | null
     windguru_live_station_id: string | null
     custom_page: boolean
+    lat: number | null
+    lon: number | null
 }
 
 export interface SpotWithLocation extends Spot {

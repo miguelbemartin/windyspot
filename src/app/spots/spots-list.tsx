@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import NavLightTwo from '../components/navbar/nav-light-two'
 import FilterOne from '../components/filter-one'
+import MapKitMap from '../components/mapkit-map'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
@@ -48,6 +49,13 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
         return result
     }, [searchQuery, selectedLocations, rentalFilter, spots])
 
+    const mapMarkers = useMemo(() =>
+        filteredSpots
+            .filter((s) => s.lat != null && s.lon != null)
+            .map((s) => ({ title: s.title, lat: s.lat!, lon: s.lon! })),
+        [filteredSpots]
+    )
+
     const totalPages = Math.ceil(filteredSpots.length / ITEMS_PER_PAGE)
     const currentPage = Math.min(Math.max(1, page), totalPages || 1)
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
@@ -79,6 +87,12 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
                     onSearchChange={setSearchQuery}
                 />
             </div>
+
+            <section className="py-4">
+                <div className="container">
+                    <MapKitMap spots={mapMarkers} />
+                </div>
+            </section>
 
             <section className="bg-light">
                 <div className="container">

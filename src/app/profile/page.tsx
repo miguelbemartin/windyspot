@@ -12,7 +12,8 @@ import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
 import { FaLocationDot } from 'react-icons/fa6'
-import { BsPersonCheck } from 'react-icons/bs'
+import { BsThreeDots } from 'react-icons/bs'
+import { FaRegTrashCan } from 'react-icons/fa6'
 
 interface UserSpot {
     spot_id: number
@@ -22,6 +23,8 @@ interface UserSpot {
         title: string
         image: string
         location_id: number
+        lat: number | null
+        lon: number | null
         locations: {
             name: string
         }
@@ -32,6 +35,25 @@ export default function AuthorProfile() {
   const { isSignedIn, user } = useUser()
   const supabase = useSupabase()
   const [userSpots, setUserSpots] = useState<UserSpot[]>([])
+  const [openMenuId, setOpenMenuId] = useState<number | null>(null)
+
+  async function removeSpot(spotId: number) {
+      if (!user) return
+      await supabase
+          .from('user_spots')
+          .delete()
+          .eq('user_id', user.id)
+          .eq('spot_id', spotId)
+      setUserSpots((prev) => prev.filter((s) => s.spot_id !== spotId))
+      setOpenMenuId(null)
+  }
+
+  useEffect(() => {
+      if (openMenuId === null) return
+      function handleClick() { setOpenMenuId(null) }
+      document.addEventListener('click', handleClick)
+      return () => document.removeEventListener('click', handleClick)
+  }, [openMenuId])
 
   useEffect(() => {
       if (!isSignedIn || !user) return
@@ -39,7 +61,7 @@ export default function AuthorProfile() {
       async function fetchUserSpots() {
           const { data } = await supabase
               .from('user_spots')
-              .select('spot_id, spots(id, slug, title, image, location_id, locations(name))')
+              .select('spot_id, spots(id, slug, title, image, location_id, lat, lon, locations(name))')
               .eq('user_id', user!.id)
 
           if (data) setUserSpots(data as unknown as UserSpot[])
@@ -105,14 +127,12 @@ export default function AuthorProfile() {
                 <div className="col-xl-8 col-lg-8 col-md-12 pt-lg-0 pt-5">
                     <div className="authorBoxesGroups d-flex align-items-start flex-column gap-4 w-100">
 
-                        {/* <div className="w-100">
-                            <MapKitMap spots={[
-                                { title: 'Pozo Izquierdo', lat: 27.840, lon: -15.382 },
-                                { title: 'Tarifa', lat: 36.014, lon: -5.604 },
-                                { title: 'Flüelen', lat: 46.928, lon: 8.604 },
-                                { title: 'Hookipa', lat: 20.934, lon: -156.356 },
-                            ]} />
-                        </div> */}
+                        <div className="w-100">
+                            <MapKitMap spots={userSpots
+                                .filter((s) => s.spots.lat != null && s.spots.lon != null)
+                                .map((s) => ({ title: s.spots.title, lat: s.spots.lat!, lon: s.spots.lon! }))}
+                            />
+                        </div>
 
                         <div className="singleauthorBox d-block w-100">
 
@@ -124,8 +144,8 @@ export default function AuthorProfile() {
                                 {userSpots.map((item)=>{
                                     const spot = item.spots
                                     return(
-                                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12" key={spot.id}>
-                                            <div className="listingCard listLayouts card rounded-3 border-0">
+                                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12" key={spot.id} style={{ position: 'relative', zIndex: openMenuId === spot.id ? 10 : 'auto' }}>
+                                            <div className="listingCard listLayouts card rounded-3 border-0" style={{ overflow: 'visible' }}>
                                                 <div className="row align-items-center justify-content-start g-3">
 
                                                     <div className="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
@@ -142,6 +162,33 @@ export default function AuthorProfile() {
                                                                     <div className="d-flex align-items-center justify-content-start flex-wrap gap-3">
                                                                         <div className="flex-start"><div className="list-location text-muted text-sm"><span><FaLocationDot className="me-1"/>{spot.locations?.name}</span></div></div>
                                                                     </div>
+                                                                </div>
+                                                                <div className="position-relative">
+                                                                    <button
+                                                                        className="btn btn-sm border rounded-3 d-flex align-items-center justify-content-center"
+                                                                        style={{ width: '32px', height: '32px', padding: 0, backgroundColor: '#f8f9fa' }}
+                                                                        onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === spot.id ? null : spot.id) }}
+                                                                    >
+                                                                        <BsThreeDots size={16} className="text-muted" />
+                                                                    </button>
+                                                                    {openMenuId === spot.id && (
+                                                                        <div
+                                                                            className="position-absolute end-0 bg-white rounded-4 py-2"
+                                                                            style={{ minWidth: '180px', marginTop: '4px', boxShadow: '0 4px 24px rgba(0,0,0,0.12)', border: '1px solid rgba(0,0,0,0.06)' }}
+                                                                            onClick={(e) => e.stopPropagation()}
+                                                                        >
+                                                                            <button
+                                                                                className="d-flex align-items-center gap-2 w-100 border-0 bg-transparent text-danger px-3 py-2"
+                                                                                style={{ fontSize: '14px' }}
+                                                                                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8f9fa'}
+                                                                                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                                                                                onClick={() => removeSpot(spot.id)}
+                                                                            >
+                                                                                <FaRegTrashCan size={14} />
+                                                                                Remove spot
+                                                                            </button>
+                                                                        </div>
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                         </div>
