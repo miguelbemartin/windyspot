@@ -1,0 +1,28 @@
+ALTER TABLE spots ADD COLUMN lat DOUBLE PRECISION;
+ALTER TABLE spots ADD COLUMN lon DOUBLE PRECISION;
+
+UPDATE spots SET lat = 27.840, lon = -15.382 WHERE slug = 'gran-canaria/pozo-izquierdo';
+UPDATE spots SET lat = 27.794, lon = -15.444 WHERE slug = 'gran-canaria/bahia-de-formas';
+UPDATE spots SET lat = 28.044, lon = -16.536 WHERE slug = 'tenerife/el-medano';
+UPDATE spots SET lat = 46.907, lon = 8.627 WHERE slug = 'central-switzerland/fluelen';
+UPDATE spots SET lat = 43.104, lon = 3.103 WHERE slug = 'south-of-france/gruissan';
+UPDATE spots SET lat = 43.056, lon = 6.129 WHERE slug = 'south-of-france/almanarre';
+UPDATE spots SET lat = 45.872, lon = 10.876 WHERE slug = 'garda-lake/torbole';
+UPDATE spots SET lat = 28.068, lon = -14.228 WHERE slug = 'fuerteventura/sotavento';
+UPDATE spots SET lat = 28.113, lon = -14.197 WHERE slug = 'fuerteventura/matas-blancas';
+UPDATE spots SET lat = 28.157, lon = -14.228 WHERE slug = 'fuerteventura/costa-calma';
+UPDATE spots SET lat = 28.074, lon = -14.215 WHERE slug = 'fuerteventura/risco-del-paso';
+UPDATE spots SET lat = 35.488, lon = 23.561 WHERE slug = 'crete/falasarna';
+UPDATE spots SET lat = 46.933, lon = 8.605 WHERE slug = 'central-switzerland/isleten';
+UPDATE spots SET lat = 47.172, lon = 8.517 WHERE slug = 'central-switzerland/zug';
+UPDATE spots SET lat = 46.940, lon = 8.658 WHERE slug = 'central-switzerland/sisikon';
+UPDATE spots SET lat = 47.131, lon = 8.192 WHERE slug = 'central-switzerland/sempach';
+UPDATE spots SET lat = 35.272, lon = 23.541 WHERE slug = 'crete/elafonisi';
+UPDATE spots SET lat = 36.014, lon = -5.604 WHERE slug = 'cadiz/balneario';
+UPDATE spots SET lat = 36.025, lon = -5.618 WHERE slug = 'cadiz/campo';
+UPDATE spots SET lat = 36.030, lon = -5.620 WHERE slug = 'cadiz/agua';
+UPDATE spots SET lat = 36.044, lon = -5.638 WHERE slug = 'cadiz/arte-vida';
+UPDATE spots SET lat = 36.060, lon = -5.660 WHERE slug = 'cadiz/valdevaqueros';
+UPDATE spots SET lat = 36.063, lon = -5.665 WHERE slug = 'cadiz/paloma-baja';
+UPDATE spots SET lat = 20.934, lon = -156.356 WHERE slug = 'maui/hookipa';
+UPDATE spots SET lat = 46.448, lon = 9.796 WHERE slug = 'central-switzerland/silvaplana';
