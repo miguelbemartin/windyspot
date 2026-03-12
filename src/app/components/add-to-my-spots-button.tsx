@@ -29,7 +29,7 @@ export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
 
     async function handleClick() {
         if (!isSignedIn || !user) {
-            window.location.href = '/sign-in'
+            window.location.href = '/login'
             return
         }
 

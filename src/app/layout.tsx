@@ -53,10 +53,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.windyspot.com",
   },
-  icons: {
-    icon: "/img/favicon.png",
-    apple: "/img/favicon.png",
-  },
 };
 
 export default function RootLayout({
