@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: 'Agua Chiringuito, Tarifa - Windsurf Spot Guide & Forecast',
     description: 'Agua Chiringuito windsurf spot guide in Tarifa, Spain. Side-shore Levante conditions with live station, forecast, and wind map.',
     url: 'https://www.windyspot.com/spots/cadiz/agua',
-    images: [{ url: '/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg', width: 1200, height: 630, alt: 'Agua Chiringuito Windsurf Spot, Tarifa' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/david-vives-zD6sFNw__u4-unsplash.jpg', width: 1200, height: 630, alt: 'Agua Chiringuito Windsurf Spot, Tarifa' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Agua Chiringuito, Tarifa - Windsurf Spot Guide & Forecast',
     description: 'Agua Chiringuito windsurf spot guide in Tarifa, Spain. Side-shore Levante conditions with live station and forecast.',
-    images: ['/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/david-vives-zD6sFNw__u4-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/cadiz/agua',
@@ -37,7 +37,7 @@ export default function Agua() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/david-vives-zD6sFNw__u4-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

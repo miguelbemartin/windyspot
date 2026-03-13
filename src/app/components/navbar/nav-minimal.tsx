@@ -50,7 +50,7 @@ export default function NavMinimal() {
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header">
-                        <Link className="nav-brand" href="/"><img src='/images/windy-spot-logo.png' style={{width:'166px', height:'auto'}} className="logo" alt=""/></Link>
+                        <Link className="nav-brand" href="/"><img src='/windy-spot-logo.png' style={{width:'166px', height:'auto'}} className="logo" alt=""/></Link>
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <ul className="nav-menu nav-menu-social align-to-right">

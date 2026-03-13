@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: 'Gruissan, France - Windsurf Spot Guide & Forecast',
     description: 'Gruissan windsurf spot guide in South of France. Live station, webcams, forecast, and wind map for this popular Mediterranean windsurfing destination.',
     url: 'https://www.windyspot.com/spots/south-of-france/gruissan',
-    images: [{ url: '/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg', width: 1200, height: 630, alt: 'Gruissan Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg', width: 1200, height: 630, alt: 'Gruissan Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Gruissan, France - Windsurf Spot Guide & Forecast',
     description: 'Gruissan windsurf spot guide in South of France. Live station, webcams, forecast, and wind map.',
-    images: ['/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/south-of-france/gruissan',
@@ -39,7 +39,7 @@ export default function Gruissan() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

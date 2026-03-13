@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: 'Risco del Paso, Fuerteventura - Windsurf Spot Guide & Forecast',
     description: 'Risco del Paso windsurf spot guide in Fuerteventura, Spain. Live station, forecast, and wind map for this flat water paradise near Sotavento.',
     url: 'https://www.windyspot.com/spots/fuerteventura/risco-del-paso',
-    images: [{ url: '/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg', width: 1200, height: 630, alt: 'Risco del Paso Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg', width: 1200, height: 630, alt: 'Risco del Paso Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Risco del Paso, Fuerteventura - Windsurf Spot Guide & Forecast',
     description: 'Risco del Paso windsurf spot guide in Fuerteventura, Spain. Live station, forecast, and wind map.',
-    images: ['/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/fuerteventura/risco-del-paso',
@@ -37,7 +37,7 @@ export default function RiscoDelPaso() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

@@ -56,7 +56,7 @@ export const resourcesData = [
     {
         id:1,
         slug:'how-to-read-a-wind-forecast',
-        image:'/images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg',
         title:'How to Read a Wind Forecast',
         desc:'Understanding wind models, GFS vs ECMWF, and how to interpret Windguru forecasts for your next session.',
         date:'15th Jan 2026',
@@ -65,7 +65,7 @@ export const resourcesData = [
     {
         id:2,
         slug:'choosing-the-right-sail-size',
-        image:'/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg',
         title:'Choosing the Right Sail Size',
         desc:'A practical guide to matching sail size with wind strength, rider weight, and board type.',
         date:'2nd Feb 2026',
@@ -74,7 +74,7 @@ export const resourcesData = [
     {
         id:3,
         slug:'lake-vs-ocean-windsurfing',
-        image:'/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg',
         title:'Lake Windsurfing vs Ocean Windsurfing',
         desc:'Key differences between lake and ocean sailing — from wind patterns to gear choices and safety considerations.',
         date:'18th Feb 2026',
@@ -83,7 +83,7 @@ export const resourcesData = [
     {
         id:4,
         slug:'understanding-thermal-winds',
-        image:'/images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg',
         title:'Understanding Thermal Winds',
         desc:'How thermal winds work, where they are most reliable, and how to plan your sessions around them.',
         date:'5th Mar 2026',
@@ -92,7 +92,7 @@ export const resourcesData = [
     {
         id:5,
         slug:'windsurfing-in-strong-levante',
-        image:'/images/spots/david-vives-zD6sFNw__u4-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/david-vives-zD6sFNw__u4-unsplash.jpg',
         title:'Windsurfing in Strong Levante',
         desc:'Tips and safety advice for sailing Tarifa in strong Levante conditions — gear, spot choice, and hazards.',
         date:'10th Mar 2026',
@@ -101,7 +101,7 @@ export const resourcesData = [
     {
         id:6,
         slug:'wave-sailing-basics',
-        image:'/images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg',
         title:'Wave Sailing Basics',
         desc:'From reading the lineup to timing your jibes on the wave face — an intro to wave riding.',
         date:'20th Mar 2026',
@@ -110,7 +110,7 @@ export const resourcesData = [
     {
         id:7,
         slug:'the-mistral-a-windsurfers-best-friend',
-        image:'/images/spots/almanarre.png',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png',
         title:'The Mistral: A Windsurfer\'s Best Friend',
         desc:'Everything about the Mistral wind — when it blows, where to sail it, and what to expect.',
         date:'1st Apr 2026',
@@ -119,7 +119,7 @@ export const resourcesData = [
     {
         id:8,
         slug:'planning-a-windsurf-trip-to-greece',
-        image:'/images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg',
         title:'Planning a Windsurf Trip to Greece',
         desc:'Best islands, Meltemi season, gear rental options, and spot recommendations for the Greek islands.',
         date:'15th Apr 2026',
@@ -128,7 +128,7 @@ export const resourcesData = [
     {
         id:9,
         slug:'foehn-wind-explained',
-        image:'/images/spots/uwe-conrad-MralC-Em90w-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/uwe-conrad-MralC-Em90w-unsplash.jpg',
         title:'Foehn Wind Explained',
         desc:'What causes the foehn, how to spot it in the forecast, and the best Swiss lake spots for foehn sessions.',
         date:'25th Apr 2026',

@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: 'Torbole, Lake Garda - Windsurf Spot Guide & Forecast',
     description: 'Torbole windsurf spot guide on Lake Garda, Italy. Live station, webcams, forecast, and wind map for Europe\'s most famous lake windsurfing destination.',
     url: 'https://www.windyspot.com/spots/garda-lake/torbole',
-    images: [{ url: '/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg', width: 1200, height: 630, alt: 'Torbole Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg', width: 1200, height: 630, alt: 'Torbole Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Torbole, Lake Garda - Windsurf Spot Guide & Forecast',
     description: 'Torbole windsurf spot guide on Lake Garda, Italy. Live station, webcams, forecast, and wind map.',
-    images: ['/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/garda-lake/torbole',
@@ -38,7 +38,7 @@ export default function GardaLake() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: 'Zug, Switzerland - Windsurf Spot Guide & Forecast',
     description: 'Zug windsurf spot guide on Lake Zug, Switzerland. Webcams, forecast, and wind map for this central Swiss lake windsurfing spot.',
     url: 'https://www.windyspot.com/spots/central-switzerland/zug',
-    images: [{ url: '/images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg', width: 1200, height: 630, alt: 'Zug Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg', width: 1200, height: 630, alt: 'Zug Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Zug, Switzerland - Windsurf Spot Guide & Forecast',
     description: 'Zug windsurf spot guide on Lake Zug, Switzerland. Webcams, forecast, and wind map.',
-    images: ['/images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/central-switzerland/zug',
@@ -37,7 +37,7 @@ export default function Zug() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

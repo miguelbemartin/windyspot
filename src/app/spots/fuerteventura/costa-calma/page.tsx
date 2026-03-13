@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     title: 'Costa Calma, Fuerteventura - Windsurf Spot Guide & Forecast',
     description: 'Costa Calma windsurf spot guide in Fuerteventura, Spain. Forecast and wind map for this beginner-friendly trade wind beach.',
     url: 'https://www.windyspot.com/spots/fuerteventura/costa-calma',
-    images: [{ url: '/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg', width: 1200, height: 630, alt: 'Costa Calma Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg', width: 1200, height: 630, alt: 'Costa Calma Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Costa Calma, Fuerteventura - Windsurf Spot Guide & Forecast',
     description: 'Costa Calma windsurf spot guide in Fuerteventura, Spain. Forecast and wind map for this beginner-friendly trade wind beach.',
-    images: ['/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/fuerteventura/costa-calma',
@@ -36,7 +36,7 @@ export default function CostaCalma() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

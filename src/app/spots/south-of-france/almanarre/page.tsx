@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: 'Almanarre, Hyères - Windsurf Spot Guide & Forecast',
     description: 'Almanarre windsurf spot guide in Hyères, South of France. Webcams, forecast, and wind map for this iconic French Riviera windsurfing beach.',
     url: 'https://www.windyspot.com/spots/south-of-france/almanarre',
-    images: [{ url: '/images/spots/almanarre.png', width: 1200, height: 630, alt: 'Almanarre Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png', width: 1200, height: 630, alt: 'Almanarre Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Almanarre, Hyères - Windsurf Spot Guide & Forecast',
     description: 'Almanarre windsurf spot guide in Hyères, South of France. Webcams, forecast, and wind map.',
-    images: ['/images/spots/almanarre.png'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/south-of-france/almanarre',
@@ -38,7 +38,7 @@ export default function Almanarre() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/almanarre.png')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

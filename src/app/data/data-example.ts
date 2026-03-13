@@ -80,7 +80,7 @@ export const listData = [
     {
         id:1,
         slug:'gran-canaria/pozo-izquierdo',
-        image:'/images/spots/pozo-izquierdo.png',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pozo-izquierdo.png',
         user:'/img/team-1.jpg',
         status:'open',
         featured:true,
@@ -99,7 +99,7 @@ export const listData = [
     {
         id:2,
         slug:'tenerife/el-medano',
-        image:'/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg',
         user:'/img/team-2.jpg',
         status:'open',
         featured:false,
@@ -118,7 +118,7 @@ export const listData = [
     {
         id:3,
         slug:'central-switzerland/urnersee',
-        image:'/images/spots/isleten.jpg',
+        image:'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/isleten.jpg',
         user:'/img/team-3.jpg',
         status:'open',
         featured:true,

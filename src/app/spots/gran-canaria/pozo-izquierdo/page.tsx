@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: 'Pozo Izquierdo, Gran Canaria - Windsurf Spot Guide & Forecast',
     description: 'Pozo Izquierdo windsurf spot guide in Gran Canaria, Spain. PWA World Tour venue with reliable 25-35 knot trade winds.',
     url: 'https://www.windyspot.com/spots/gran-canaria/pozo-izquierdo',
-    images: [{ url: '/images/IMG_2058.jpeg', width: 1200, height: 630, alt: 'Pozo Izquierdo Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pozo-izquierdo.jpeg', width: 1200, height: 630, alt: 'Pozo Izquierdo Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pozo Izquierdo, Gran Canaria - Windsurf Spot Guide & Forecast',
     description: 'Pozo Izquierdo windsurf spot guide in Gran Canaria, Spain. PWA World Tour venue with reliable 25-35 knot trade winds.',
-    images: ['/images/IMG_2058.jpeg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pozo-izquierdo.jpeg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/gran-canaria/pozo-izquierdo',
@@ -37,7 +37,7 @@ export default function PozoIzquierdo() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/IMG_2058.jpeg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pozo-izquierdo.jpeg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

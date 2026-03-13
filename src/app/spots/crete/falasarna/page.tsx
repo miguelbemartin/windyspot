@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     title: 'Falasarna, Crete - Windsurf Spot Guide & Forecast',
     description: 'Falasarna windsurf spot guide in Crete, Greece. Meltemi wind conditions with forecast, spot guide, and wind map.',
     url: 'https://www.windyspot.com/spots/crete/falasarna',
-    images: [{ url: '/images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg', width: 1200, height: 630, alt: 'Falasarna Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg', width: 1200, height: 630, alt: 'Falasarna Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Falasarna, Crete - Windsurf Spot Guide & Forecast',
     description: 'Falasarna windsurf spot guide in Crete, Greece. Meltemi wind conditions with forecast, spot guide, and wind map.',
-    images: ['/images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/crete/falasarna',
@@ -36,7 +36,7 @@ export default function Falasarna() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

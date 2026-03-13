@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: 'El Médano, Tenerife - Windsurf Spot Guide & Forecast',
     description: 'El Médano windsurf spot guide in Tenerife, Spain. Trade wind conditions with live station, forecast, and wind map.',
     url: 'https://www.windyspot.com/spots/tenerife/el-medano',
-    images: [{ url: '/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg', width: 1200, height: 630, alt: 'El Médano Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg', width: 1200, height: 630, alt: 'El Médano Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'El Médano, Tenerife - Windsurf Spot Guide & Forecast',
     description: 'El Médano windsurf spot guide in Tenerife, Spain. Trade wind conditions with live station, forecast, and wind map.',
-    images: ['/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/tenerife/el-medano',
@@ -39,7 +39,7 @@ export default function ElMedano() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('/images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
