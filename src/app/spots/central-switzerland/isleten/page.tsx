@@ -136,6 +136,21 @@ export default function Isleten() {
                             </div>
                         </div>
 
+                        <div className="listingSingleblock mb-4" id="descriptions">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-parent="#description" data-bs-target="#description" aria-controls="description" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Spot Guide</h4></Link>
+                            </div>
+
+                            <div id="description" className="panel-collapse collapse show">
+                                <div className="card-body p-4 pt-2">
+                                    <p>Isleten is a small bay on the western shore of the Urnersee, tucked into the entrance of the Isenthal valley. It is one of the most popular windsurfing spots in Central Switzerland and a classic Foehn riding location alongside Flüelen and Sisikon.</p>
+                                    <p>Conditions: The Foehn (south) is the main wind, channelled by the steep alpine terrain surrounding the Urnersee. It typically arrives as a steady 20–35 knot breeze with stronger gusts near the valley walls. The lake surface stays relatively flat, offering clean freeride and slalom conditions. A light northerly (Bise) can also work here on occasion.</p>
+                                    <p>Season: Peak Foehn season is spring (March–May) and autumn (October–November). Summer brings lighter thermal winds in the afternoon, suitable for recreational sailing and foiling. Winter Foehn events are rarer but can be exceptionally strong.</p>
+                                    <p>Hazards: The water temperature is cold year-round — a good wetsuit is essential, especially outside summer. Foehn gusts can be violent and unpredictable near the cliffs. The launch area is small and can get busy; be considerate of other sailors. Always check the Foehn forecast before heading out, as conditions can change rapidly.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

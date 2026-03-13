@@ -95,6 +95,22 @@ export default function BahiaDeFormas() {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="listingSingleblock mb-4" id="descriptions">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-parent="#description" data-bs-target="#description" aria-controls="description" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Spot Guide</h4></Link>
+                            </div>
+
+                            <div id="description" className="panel-collapse collapse show">
+                                <div className="card-body p-4 pt-2">
+                                    <p>Bahía de Formas is a sheltered bay on the southeast coast of Gran Canaria, just south of the famous Pozo Izquierdo. The bay offers flatter water than its neighbour, making it a great alternative when Pozo is too gnarly or when you want a more relaxed freeride session.</p>
+                                    <p>Conditions: The trade wind (Alisio) blows side-shore from the northeast, typically 15–25 knots during the season. The bay's shape provides natural protection from the bigger swells, resulting in choppy but manageable water conditions. Sail sizes range from 4.5 to 6.0 depending on the day.</p>
+                                    <p>Season: The main wind season runs from April to September, with the strongest and most consistent trade winds from June through August. Winter months can still deliver good sessions, particularly during stronger trade wind episodes or with westerly swells.</p>
+                                    <p>Hazards: The bottom is a mix of sand and rock — booties are recommended. The bay is relatively safe, but watch for currents near the rocky edges. The area can get gusty when the trade wind accelerates around the headlands.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

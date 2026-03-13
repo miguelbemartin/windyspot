@@ -134,6 +134,21 @@ export default function Sempach() {
                             </div>
                         </div>
 
+                        <div className="listingSingleblock mb-4" id="descriptions">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-parent="#description" data-bs-target="#description" aria-controls="description" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Spot Guide</h4></Link>
+                            </div>
+
+                            <div id="description" className="panel-collapse collapse show">
+                                <div className="card-body p-4 pt-2">
+                                    <p>Lake Sempach is a small, scenic lake in the canton of Lucerne, popular with local windsurfers and foilers. The lake is relatively shallow and warms up quickly in summer, making it one of the more comfortable inland spots in Central Switzerland.</p>
+                                    <p>Conditions: The main winds are the Bise (northeast) and westerly/southwesterly breezes, typically ranging from 12–20 knots. The lake's compact size means short, choppy waves rather than swell — good for freeride and foiling. Stronger wind days are less frequent than on the larger alpine lakes but can still deliver solid sessions.</p>
+                                    <p>Season: The best wind months are spring (March–May) when frontal systems bring stronger westerlies and Bise events. Summer thermals provide lighter afternoon winds. Autumn can also be good, particularly during Bise episodes. The lake is sailable year-round for those with the right gear.</p>
+                                    <p>Hazards: The lake is relatively safe with no strong currents. The main concern is boat traffic during summer weekends. The water can be shallow near the edges — watch for weed patches. A wetsuit is recommended outside the peak summer months.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

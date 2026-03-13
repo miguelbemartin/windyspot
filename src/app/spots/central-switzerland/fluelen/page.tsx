@@ -146,6 +146,21 @@ export default function Fluelen() {
                             </div>
                         </div>
 
+                        <div className="listingSingleblock mb-4" id="descriptions">
+                            <div className="SingleblockHeader">
+                                <Link data-bs-toggle="collapse" data-parent="#description" data-bs-target="#description" aria-controls="description" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Spot Guide</h4></Link>
+                            </div>
+
+                            <div id="description" className="panel-collapse collapse show">
+                                <div className="card-body p-4 pt-2">
+                                    <p>Flüelen sits at the southern tip of the Urnersee, where the Reuss valley opens into the lake. Together with Isleten and Sisikon, it forms part of the Urnersee windsurfing triangle — one of the best inland sailing areas in Switzerland, powered by the Foehn.</p>
+                                    <p>Conditions: The primary wind is the Foehn (south), which funnels through the Reuss valley and accelerates over the lake. Speeds of 25–40 knots are common during events, with gusts potentially exceeding 50 knots. The water is flat to lightly choppy, perfect for freeride and slalom. On lighter days, a lake thermal can provide gentle afternoon winds.</p>
+                                    <p>Season: Foehn events are most frequent in spring (March–May) and autumn (October–November) but can occur any time of year. Events typically last a few hours to several days. Summer thermals offer lighter but more predictable afternoon sessions.</p>
+                                    <p>Hazards: Foehn conditions can escalate quickly — always check the forecast and watch for darkening skies over the southern mountains. The lake is deep and cold year-round; a wetsuit is essential. Strong gusts can roll off the valley walls without warning. The launch area can get crowded on strong Foehn days.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

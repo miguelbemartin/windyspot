@@ -121,9 +121,9 @@ export default function PozoIzquierdo() {
                                 <div className="card-body p-4 pt-2">
                                     <p>The spot in short: Pozo Izquierdo in southeast Gran Canaria offers reliable wind and waves throughout the year and is on the PWA Windsurfing World Tour. The island has produced riders like the Dunkerbeck family and Philip Köster, who collectively hold almost 100 world championship titles between them.</p>
                                     <p>Conditions: Winds regularly reach 25 to 35 knots, and the geography helps — Pozo's exposed coastline means nothing stands between the village and the powerful Atlantic breeze. The guard-rail effect of the island's interior can accelerate the air up to 50 knots, though this only works very locally.</p>
-<p>Season: From April until September, the trade wind (Alisio, NE) gives almost daily very strong side-onshore conditions for sail sizes 3.4–4.2. During the rest of the year the trade winds are often a little lighter (4.2–5.3), but often with bigger ground swells that make the winter season epic for those who want bigger waves.</p>
-<p>Hazards: In many areas of Pozo Izquierdo the bottom is rock. When the tide is high, the waves break on the shore — booties and a helmet are strongly recommended, especially for less experienced riders.</p>
-<p>The guide also includes nearby spots (Bahía de Formas, Salinas, Vargas, Ojos de Garza), skill level ratings, pro tips, and practical info on getting there and facilities.</p>
+                                    <p>Season: From April until September, the trade wind (Alisio, NE) gives almost daily very strong side-onshore conditions for sail sizes 3.4–4.2. During the rest of the year the trade winds are often a little lighter (4.2–5.3), but often with bigger ground swells that make the winter season epic for those who want bigger waves.</p>
+                                    <p>Hazards: In many areas of Pozo Izquierdo the bottom is rock. When the tide is high, the waves break on the shore — booties and a helmet are strongly recommended, especially for less experienced riders.</p>
+                                    <p>The guide also includes nearby spots (Bahía de Formas, Salinas, Vargas, Ojos de Garza), skill level ratings, pro tips, and practical info on getting there and facilities.</p>
                                 </div>
                             </div>
                         </div>
