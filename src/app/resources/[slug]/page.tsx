@@ -26,9 +26,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params
     const resource = resourcesData.find((r) => r.slug === slug)
     if (!resource) return { title: 'Resource Not Found' }
+    const url = `https://www.windyspot.com/resources/${resource.slug}`
     return {
-        title: `${resource.title} - Windy Spots`,
+        title: `${resource.title} - Windy Spot`,
         description: resource.desc,
+        openGraph: {
+            title: `${resource.title} - Windy Spot`,
+            description: resource.desc,
+            url,
+            images: [{ url: resource.image, width: 1200, height: 630, alt: resource.title }],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${resource.title} - Windy Spot`,
+            description: resource.desc,
+            images: [resource.image],
+        },
+        alternates: {
+            canonical: url,
+        },
     }
 }
 

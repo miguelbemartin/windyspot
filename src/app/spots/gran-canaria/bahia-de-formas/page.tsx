@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: 'Bahía de Formas, Gran Canaria - Windsurf Spot Guide & Forecast',
     description: 'Bahía de Formas windsurf spot guide in Gran Canaria, Spain. Forecast, wind map, and conditions for this sheltered bay near Pozo Izquierdo.',
     url: 'https://www.windyspot.com/spots/gran-canaria/bahia-de-formas',
-    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/IMG_1185.jpeg', width: 1200, height: 630, alt: 'Bahía de Formas Windsurf Spot' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/bahia-de-formas.jpeg', width: 1200, height: 630, alt: 'Bahía de Formas Windsurf Spot' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Bahía de Formas, Gran Canaria - Windsurf Spot Guide & Forecast',
     description: 'Bahía de Formas windsurf spot guide in Gran Canaria, Spain. Forecast, wind map, and conditions for this sheltered bay near Pozo Izquierdo.',
-    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/IMG_1185.jpeg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/bahia-de-formas.jpeg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots/gran-canaria/bahia-de-formas',
@@ -39,7 +39,7 @@ export default function BahiaDeFormas() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/IMG_1185.jpeg')`}} data-overlay="4">
+        <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/bahia-de-formas.jpeg')`}} data-overlay="4">
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">
