@@ -83,8 +83,11 @@ export default function NavbarLight() {
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header ">
+
                         <Link href="/"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt=""/></Link>
+
                         <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '120px', top: '50%', transform: 'translateY(-50%)' }}>
+
                             <style>{`.nav-search-mobile, .nav-search-mobile:focus { background: transparent !important; box-shadow: none !important; color: #fff !important; } .nav-search-mobile::placeholder { color: rgba(255,255,255,0.5) !important; }`}</style>
                             <div ref={searchRef} style={{ position: 'relative' }}>
                                 <div className="position-relative">
@@ -155,10 +158,6 @@ export default function NavbarLight() {
                         </div>
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
-                        <div className='mobLogos'>
-                            <Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'50px', height:'auto'}} className='img-fluid lightLogo' alt='Logo'/>
-                        </div>
-                        <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
 
                         <ul className="nav-menu">
                             <li className="d-none d-lg-flex align-items-center">
@@ -218,12 +217,9 @@ export default function NavbarLight() {
                                     )}
                                 </div>
                             </li>
-                            {/* <li className={`${current === '/' ? 'active' : ''}`}><Link href="/">Home</Link></li>
-                            <li className={`${current === '/spots' ? 'active' : ''}`}><Link href="/spots">Spots</Link></li> */}
                         </ul>
 
-                        <ul className="nav-menu nav-menu-social align-to-right">
-
+                        <ul className="nav-menu align-to-right">
                             <SignedOut>
                                 <li>
                                     <Link href="/login" className="d-flex align-items-center"><BsPersonCircle className="fs-6 me-1"/><span className="navCl">Login</span></Link>
@@ -241,88 +237,6 @@ export default function NavbarLight() {
                         </ul>
                     </div>
                 </nav>
-            </div>
-        </div>
-        <div className="clearfix"></div>
-
-
-        <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabIndex={-1} id="cartSlider" aria-labelledby="cartSliderLabel">
-            <div className="offcanvas-header border-bottom d-flex justify-content-between">
-                <h6 className="offcanvas-title" id="cartSliderLabel">Your cart Items</h6>
-                <Link href="#" className="square--35 circle text-muted-2 border" data-bs-dismiss="offcanvas" aria-label="Close"><FiX className=""/></Link>
-            </div>
-            <div className="offcanvas-body">
-                <div className="cartItems w-100">
-                    <div className="d-flex align-items-center justify-content-start flex-column gap-3">
-
-                        <div className="singleCartitem d-flex align-items-center justify-content-between gap-4 w-100">
-                            <div className="d-flex align-items-center justify-content-start gap-3">
-                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src='/img/list-3.jpg' width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2"  alt=""/></figure></div>
-                                <div className="cartCaption">
-                                    <h6 className="lh-base m-0">Spicy Burger</h6>
-                                    <p className="m-0">1x$25.50</p>
-                                </div>
-                            </div>
-
-                            <div className="removeItemcart"><Link href="#" className="square--35 circle badge-secondary"><FiX className=""/></Link></div>
-                        </div>
-
-                        <div className="singleCartitem d-flex align-items-center justify-content-between gap-3 w-100">
-                            <div className="d-flex align-items-center justify-content-start gap-3">
-                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src='/img/list-4.jpg' width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2"  alt=""/></figure></div>
-                                <div className="cartCaption">
-                                    <h6 className="lh-base m-0">Premium Package</h6>
-                                    <p className="m-0">1x$22.10</p>
-                                </div>
-                            </div>
-
-                            <div className="removeItemcart"><Link href="#" className="square--35 circle badge-secondary"><FiX className=""/></Link></div>
-                        </div>
-
-                        <div className="singleCartitem d-flex align-items-center justify-content-between gap-3 w-100">
-                            <div className="d-flex align-items-center justify-content-start gap-3">
-                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src='/img/list-5.jpg' width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2"  alt=""/></figure></div>
-                                <div className="cartCaption">
-                                    <h6 className="lh-base m-0">Platinum Plaster</h6>
-                                    <p className="m-0">1x$17.40</p>
-                                </div>
-                            </div>
-
-                            <div className="removeItemcart"><Link href="" className="square--35 circle badge-secondary"><FiX className=""/></Link></div>
-                        </div>
-
-                    </div>
-
-                    <div className="cartSubtotal w-100 py-3 border-top mt-3">
-                        <h6 className="m-0">Subtotal: $128.75</h6>
-                    </div>
-
-                </div>
-
-                <div className="cartButtons w-100 py-2">
-                    <div className="d-flex align-items-center justify-content-center flex-wrap gap-2">
-                        <a href="/viewcart" className="btn btn-md btn-light-primary fw-medium flex-fill">View Cart</a>
-                        <a href="/checkout-page" className="btn btn-md btn-primary fw-medium flex-fill">Checkout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div className="offcanvas offcanvas-top h-auto" tabIndex={-1} id="searchSlider" aria-labelledby="searchSliderLabel">
-            <div className="offcanvas-body" id="searchSliderLabel">
-                <div className="searchForm w-100 mb-3">
-                    <div className="p-2 ps-3 rounded border d-flex align-items-center justify-content-between gap-2">
-                        <div className="searchicons"><span><BsSearch className="fs-4 opacity-75"/></span></div>
-                        <div className="flex-fill"><input type="search" className="form-control border-0 ps-0" placeholder="What are you looking for?"/></div>
-                        <div className="closeSlides"><Link href="#" className="square--35 circle text-muted-2 border" data-bs-dismiss="offcanvas" aria-label="Close"><BsX /></Link></div>
-                    </div>
-                </div>
-                <div className="popularSearches d-flex align-items-center justify-content-center gap-2 flex-wrap">
-                    <div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Real Estate</Link></div>
-                    <div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Eat & Drink</Link></div>
-                    <div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Shopping</Link></div>
-                    <div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Nightlife</Link></div>
-                    <div className="singleItem"><Link href="#" className="badge badge-xs badge-primary rounded-pill">Services</Link></div>
-                </div>
             </div>
         </div>
     </>

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides. Find your next windsurf session today.",
     images: [
       {
-        url: "/images/homepage.jpg",
+        url: "https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg",
         width: 1200,
         height: 630,
         alt: "Windy Spot - Windsurf Spot Finder",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Windy Spot - Find the Best Windsurf Forecast & Spot Guides",
     description: "Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides.",
-    images: ["/images/homepage.jpg"],
+    images: ["https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg"],
   },
   alternates: {
     canonical: "https://www.windyspot.com",
