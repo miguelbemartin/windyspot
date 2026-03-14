@@ -44,7 +44,7 @@ export default function NavLightTwo() {
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header">
-                        <Link className="nav-brand" href="/"><img src='/img/logo-light.svg' className="logo" alt=""/></Link>
+                        <Link className="nav-brand" href="/"><img src='windy-spot-logo.png' className="logo" alt=""/></Link>
                         <div className="nav-toggle" onClick={()=>setIsToggle(!toggle)}></div>
                         <div className="mobile_nav">
                             <ul>
@@ -67,7 +67,7 @@ export default function NavLightTwo() {
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <div className='mobLogos'>
-                            <img src='/img/logo.svg' className='img-fluid lightLogo' alt='Logo'/>
+                            <img src='/windy-spot-logo.png' className='img-fluid lightLogo' alt='Logo'/>
                         </div>
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
 

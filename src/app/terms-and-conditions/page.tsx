@@ -17,20 +17,20 @@ export default function TermsAndConditions() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative" style={{backgroundColor:'#212529'}} >
+        <section className="pb-0">
             <div className="container">
-                <div className="row justify-content-center align-items-center">
-                    <div className="col-xl-7 col-lg-9 col-md-12 col-sm-12">
-                        <div className="position-relative text-center mb-5 pt-5 pt-lg-0">
-                            <h1 className="text-light xl-heading">Terms & Conditions</h1>
-                            <p className="text-light">Last updated: March 6th, 2026</p>
+                <div className="row align-items-center justify-content-center pt-5">
+                    <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
+                        <div className="secHeading-wrap text-center">
+                            <h3 className="sectionHeading">Terms & Conditions</h3>
+                            <p className="fs-6">Last updated: March 6th, 2026</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section className="pb-5">
+        <section className="pb-10 pt-5">
             <div className="container">
                 <div className="row justify-content-center g-4">
                     <div className="col-xl-8 col-lg-10 col-md-12">

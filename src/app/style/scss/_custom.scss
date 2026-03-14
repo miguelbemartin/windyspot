@@ -43,3 +43,13 @@
 
 // Import Font Family
 @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+.nav-menu .form-control{
+  height: 20px;
+  margin-left: 20px;
+}
+
+.header.header-fixed {
+  transition: none !important;
+  animation: none !important;
+}

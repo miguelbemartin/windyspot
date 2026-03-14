@@ -48,30 +48,42 @@ export default function AboutUs() {
 
         <NavbarLight/>
 
-        <section className="bg-cover position-relative" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-02.jpg')`}} data-overlay="6">
+        <section className="pb-0">
             <div className="container">
-                <div className="row justify-content-center align-items-center">
-                    <div className="col-xl-7 col-lg-9 col-md-12 col-sm-12">
-                        <div className="position-relative text-center mb-5 pt-5 pt-lg-0">
-                            <h1 className="text-light xl-heading">About Me</h1>
+                <div className="row align-items-center justify-content-center pt-5">
+                    <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
+                        <div className="secHeading-wrap text-center">
+                            <h3 className="sectionHeading">About <span className="text-primary">Me</span></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section className="pb-5">
+        <section className="bg-cover " style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-02.jpg')`, backgroundColor:'#ffffff'}} data-overlay="5">
             <div className="container">
                 <div className="row">
+                    <div className="row justify-content-center align-items-center mb-0">
+                        <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div className="position-relative py-2">
+                                <div className="promoHeading mb-5 mt-0">
+                                    <h2 className="text-light">It was never part of the plan</h2>
+                                    <h5 className="text-light">I wasn't supposed to fall in love with windsurfing.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+
+        <section className="pb-5 pt-5">
+            <div className="container">
+                <div className="row">
                     <div className="row justify-content-between align-items-top g-4 mb-5">
-
                         <div className="col-xl-7 col-lg-7 col-md-7 col-sm-12">
                             <div className="missioncaps">
-                                <div className="d-block mb-4">
-                                    <h3>Windsurfing was never part of the plan</h3>
-                                </div>
-                                <p>I wasn't supposed to fall in love with windsurfing.</p>
                                 <p>I was on vacation in the South of France, in the postcard-perfect village of Les Salles-sur-Verdon. The lake was calm, framed by cliffs and summer light, when I noticed a few windsurfers gliding across the water. They looked weightless, almost unreal, balancing between air and lake.</p>
                                 <p>My first thought was simple: That looks impossible.</p>
                                 <p>This was not part of the plan. We were there for camping, swimming, long lunches — not extreme sports. But my wife, who knows me better than I know myself, insisted I try it “just for fun.” So I booked a lesson for that afternoon.</p>
@@ -111,7 +123,7 @@ export default function AboutUs() {
             </div>
         </section>
 
-        <section className="pb-5">
+        <section className="pb-5 pt-5">
             <div className="container">
                 <div className="row">
                     <div className="row justify-content-center align-items-center g-4 mb-5">

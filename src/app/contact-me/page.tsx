@@ -18,12 +18,12 @@ export default function ContactUs() {
     <>
         <NavbarLight/>
 
-        <section className="bg-cover position-relative" style={{backgroundColor:'#212529'}} >
+        <section className="pb-0">
             <div className="container">
-                <div className="row justify-content-center align-items-center">
-                    <div className="col-xl-7 col-lg-9 col-md-12 col-sm-12">
-                        <div className="position-relative text-center mb-5 pt-5 pt-lg-0">
-                            <h1 className="text-light xl-heading">Contact Me</h1>
+                <div className="row align-items-center justify-content-center pt-5">
+                    <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
+                        <div className="secHeading-wrap text-center">
+                            <h3 className="sectionHeading">Contact Me</h3>
                         </div>
                     </div>
                 </div>

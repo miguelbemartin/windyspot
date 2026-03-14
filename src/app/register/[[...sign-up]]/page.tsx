@@ -5,8 +5,10 @@ import NavbarLight from '../../components/navbar/navbar-light'
 export default function Register() {
   return (
     <>
+
     <NavbarLight/>
-    <section style={{backgroundImage:`url('/images/homepage.jpg')`, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover'}} data-overlay="6">
+
+    <section style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg')`, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover'}} data-overlay="6">
       <div className="container position-relative z-1">
         <div className="row align-items-center justify-content-center" style={{minHeight: '100vh'}}>
           <div className="col-xl-5 col-lg-7 col-md-9">

@@ -1,9 +1,10 @@
 'use client'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import NavLightTwo from '../components/navbar/nav-light-two'
+import NavbarLight from '../components/navbar/navbar-light'
 import FilterOne from '../components/filter-one'
 import MapKitMap from '../components/mapkit-map'
 import Footer from '../components/footer/footer'
@@ -23,9 +24,10 @@ interface SpotsListProps {
 }
 
 export default function SpotsList({ page, spots, locations }: SpotsListProps) {
+    const searchParams = useSearchParams()
     const [selectedLocations, setSelectedLocations] = useState<string[]>([])
     const [rentalFilter, setRentalFilter] = useState<boolean | null>(null)
-    const [searchQuery, setSearchQuery] = useState('')
+    const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '')
 
     const locationNames = useMemo(() => locations.map(c => c.name), [locations])
 
@@ -72,9 +74,33 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
 
     return (
         <>
-            <NavLightTwo/>
+            <NavbarLight/>
 
-            <div className="bg-white py-3 sticky-lg-top z-3">
+            <section className="bg-cover position-relative ht-50 py-0" style={{backgroundColor:'#2b2b2b'}} data-overlay="4">
+                <div className="container h-100">
+                    <div className="row align-items-start">
+                        <div className="col-xl-12 col-lg-12 col-md-12 col-12">
+                            <div className="mainlistingInfo">
+                                <div className="d-flex align-items-end justify-content-between flex-wrap gap-3">
+                                    <div className="firstColumn">
+                                        <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
+                                            <div className="listingCaptioninfo">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="p-0" >
+                <MapKitMap spots={mapMarkers} />
+            </section>
+
+            <div className="bg-white py-3 sticky-lg-top z-3" style={{ top: '54px' }}>
                 <FilterOne
                     list={false}
                     showToggle={false}
@@ -87,12 +113,6 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
                     onSearchChange={setSearchQuery}
                 />
             </div>
-
-            <section className="py-4">
-                <div className="container">
-                    <MapKitMap spots={mapMarkers} />
-                </div>
-            </section>
 
             <section className="bg-light">
                 <div className="container">

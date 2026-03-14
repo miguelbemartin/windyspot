@@ -1,5 +1,5 @@
 /*
-* Theme Name: ListingHub Business Listing HTML Template By Shreethemes 
+* Theme Name: ListingHub Business Listing HTML Template By Shreethemes
 * Author: Shreethemes
 * Version: 3
 * Last Change: 22 Jan 2025
@@ -11,14 +11,14 @@ This files table contents are outlined below>>>>>
 *******************************************
 
 ** - Default Style
-** - Common Elentns 
+** - Common Elentns
 ** - Navbar & Header Styles
 ** - Intro Banner & Hero Header
 ** - ListingHub Elements Styles
 ** - ListingHub Half Map Elements Design
 ** - Single Listing Design
-** - Inner Page Design 
-** - User Dashboard Design 
+** - Inner Page Design
+** - User Dashboard Design
 ** - Footer Style
 ** - Responsiveness Start
 */
@@ -221,7 +221,7 @@ section.min {
 }
 .text-primary{
  color: var(--bs-primary) !important;
-} 
+}
 
 .text-sm-muted {
   font-size: 12px;
@@ -1391,7 +1391,7 @@ blockquote:not(:last-child) {
       border-color: var(--bs-primary-border-subtle) !important;
       outline: 0;
     }
-  } 
+  }
 }
 
 
@@ -1926,7 +1926,7 @@ textarea.form-control {
 }
 
 /*--------------------------------------------------
- Common Elentns 
+ Common Elentns
 ---------------------------------------------------*/
 .progress {
   margin-bottom: 1.5em;
@@ -4621,7 +4621,7 @@ button.disabled {
   font-size: 15px;
   font-weight: 400;
   color: var(--bs-body-color);
-  
+
 
   ul {
     margin: 0;
@@ -4718,9 +4718,9 @@ ul {
   display: none;
 }
 
-.navigation-portrait {
-  height: 48px;
-}
+// .navigation-portrait {
+//   height: 48px;
+// }
 
 .navigation-fixed {
   position: fixed;
@@ -7592,7 +7592,7 @@ ListingHub Elements Styles
 }
 
 /*----------------------------------------------
-  Single Listing Design 
+  Single Listing Design
 ----------------------------------------------*/
 .sticky-lg-top,
 .sticky-xl-top,
@@ -8058,7 +8058,7 @@ ListingHub Elements Styles
 }
 
 /*----------------------------------------------
-  Inner Page Design 
+  Inner Page Design
 ----------------------------------------------*/
 /*-------------- Inner Page Design: Blog Page Design ------------*/
 .blogcommentsBox {
@@ -8629,7 +8629,7 @@ ListingHub Elements Styles
 }
 
 /*----------------------------------------------
-  User Dashboard Design 
+  User Dashboard Design
 ----------------------------------------------*/
 .user-dashboard-inner {
   background-color: var(--bs-dashboard-bg);
@@ -9715,15 +9715,15 @@ Responsiveness Start
     z-index: 999;
     width: 100%;
     top: 0;
-    -webkit-transition: 0.2s ease-in;
-    -o-transition: 0.2s ease-in;
-    transition: 0.2s ease-in;
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    -webkit-animation-name: slideInDown;
-    animation-name: slideInDown;
-    box-shadow: 0 .5rem 2rem -.25rem hsl(224.29deg 100% 16.47% / 10%);
-    -webkit-box-shadow: 0 .5rem 2rem -.25rem hsl(224.29deg 100% 16.47% / 10%);
+    // -webkit-transition: 0.2s ease-in;
+    // -o-transition: 0.2s ease-in;
+    // transition: 0.2s ease-in;
+    // -webkit-animation-duration: 0.5s;
+    // animation-duration: 0.5s;
+    // -webkit-animation-name: slideInDown;
+    // animation-name: slideInDown;
+    // box-shadow: 0 .5rem 2rem -.25rem hsl(224.29deg 100% 16.47% / 10%);
+    // -webkit-box-shadow: 0 .5rem 2rem -.25rem hsl(224.29deg 100% 16.47% / 10%);
   }
 
   .header.header-light.head-fixed {
@@ -9789,7 +9789,7 @@ Responsiveness Start
     background: var(--bs-primary);
     border-color: var(--bs-primary);
   }
- 
+
 
   .header.header-dark {
     background: var(--bs-dark);
@@ -9888,7 +9888,7 @@ Responsiveness Start
   .header.header-dark .nav-menu>li>a {
     color: var(--bs-white);
   }
-  
+
 
   // .submenu-indicator-chevron {
   //   border-color: transparent var(--bs-nav-color) var(--bs-nav-color) transparent;
@@ -10764,7 +10764,7 @@ Responsiveness Start
   border-radius: 50%;
 
   .backIcon{
-   color: var( --bs-white); 
+   color: var( --bs-white);
    &:hover{
     color: var( --bs-white);
    }

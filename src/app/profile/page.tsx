@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useUser } from '@clerk/nextjs'
 import { useSupabase } from '../lib/supabase'
 
-import NavMinimal from '../components/navbar/nav-minimal'
+import NavbarLight from '../components/navbar/navbar-light'
 import MapKitMap from '../components/mapkit-map'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
@@ -72,13 +72,22 @@ export default function AuthorProfile() {
 
   return (
     <>
-    <NavMinimal/>
+    <NavbarLight/>
+
+
 
     <section className="bg-light py-5">
+        <div className="ro">
+            <div className="w-100">
+                <MapKitMap spots={userSpots
+                    .filter((s) => s.spots.lat != null && s.spots.lon != null)
+                    .map((s) => ({ title: s.spots.title, lat: s.spots.lat!, lon: s.spots.lon! }))}
+                />
+            </div>
+        </div>
         <div className="container">
-            <div className="row g-4">
-
-            <div className="col-xl-4 col-lg-4 col-md-12">
+            <div className="row g-4 mt-3">
+                <div className="col-xl-4 col-lg-4 col-md-12">
                     <div className="sidebarGroups d-flex flex-column gap-4">
 
                         <div className="card">
@@ -127,12 +136,7 @@ export default function AuthorProfile() {
                 <div className="col-xl-8 col-lg-8 col-md-12 pt-lg-0 pt-5">
                     <div className="authorBoxesGroups d-flex align-items-start flex-column gap-4 w-100">
 
-                        <div className="w-100">
-                            <MapKitMap spots={userSpots
-                                .filter((s) => s.spots.lat != null && s.spots.lon != null)
-                                .map((s) => ({ title: s.spots.title, lat: s.spots.lat!, lon: s.spots.lon! }))}
-                            />
-                        </div>
+
 
                         <div className="singleauthorBox d-block w-100">
 
