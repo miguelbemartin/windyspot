@@ -82,7 +82,7 @@ export default function NavbarLight() {
         <div className={`header header-transparent dark navdark header-fixed `} data-sticky-element="">
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
-                    <div className="nav-header">
+                    <div className="nav-header ">
                         <Link href="/"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt=""/></Link>
                         <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '120px', top: '50%', transform: 'translateY(-50%)' }}>
                             <style>{`.nav-search-mobile, .nav-search-mobile:focus { background: transparent !important; box-shadow: none !important; color: #fff !important; } .nav-search-mobile::placeholder { color: rgba(255,255,255,0.5) !important; }`}</style>
@@ -141,7 +141,7 @@ export default function NavbarLight() {
                                 )}
                             </div>
                         </div>
-                        <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', right: '60px', top: '50%', transform: 'translateY(-50%)' }}>
+                        <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', right: '0px', top: '50%', transform: 'translateY(-50%)' }}>
                             <SignedIn>
                                 <UserButton afterSignOutUrl="/">
                                     <UserButton.MenuItems>
@@ -156,7 +156,7 @@ export default function NavbarLight() {
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <div className='mobLogos'>
-                            <Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className='img-fluid lightLogo' alt='Logo'/>
+                            <Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'50px', height:'auto'}} className='img-fluid lightLogo' alt='Logo'/>
                         </div>
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
 
@@ -230,7 +230,7 @@ export default function NavbarLight() {
                                 </li>
                             </SignedOut>
                             <SignedIn>
-                                <li className="d-flex align-items-center px-3">
+                                <li className="d-flex align-items-center px-0">
                                     <UserButton afterSignOutUrl="/">
                                         <UserButton.MenuItems>
                                             <UserButton.Link label="My Profile" labelIcon={<BsPersonCircle />} href="/profile" />
