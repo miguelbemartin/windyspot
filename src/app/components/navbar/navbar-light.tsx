@@ -84,7 +84,7 @@ export default function NavbarLight() {
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header ">
 
-                        <Link href="/"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt=""/></Link>
+                        <Link href="/"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></Link>
 
                         <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '120px', top: '50%', transform: 'translateY(-50%)' }}>
 

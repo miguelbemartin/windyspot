@@ -31,9 +31,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Falasarna',
+  description: 'Falasarna windsurf spot guide in Crete, Greece. Meltemi wind conditions with forecast, spot guide, and wind map for this sandy beach on the northwest coast.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/crete/falasarna',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Crete, Greece',
+  },
+}
+
 export default function Falasarna() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/evangelos-mpikakis-Kq5zEZgz-MM-unsplash.jpg')`}} data-overlay="4">

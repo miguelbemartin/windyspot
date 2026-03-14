@@ -32,9 +32,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Matas Blancas',
+  description: 'Matas Blancas windsurf spot guide in Fuerteventura, Spain. Live station, forecast, and wind map for this consistent trade wind spot.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/matas-blancas-fuerteventura.png',
+  url: 'https://www.windyspot.com/spots/fuerteventura/matas-blancas',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Fuerteventura, Spain',
+  },
+}
+
 export default function MatasBlancas() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/matas-blancas-fuerteventura.png')`}} data-overlay="4">

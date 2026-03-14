@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: 'All Windsurf Spots - Browse by Location & Conditions',
     description: 'Browse all windsurf spots worldwide with forecast, live wind stations, webcams, and detailed spot guides. Filter by location and find your next session.',
     url: 'https://www.windyspot.com/spots',
-    images: [{ url: '/images/homepage.jpg', width: 1200, height: 630, alt: 'Windy Spot - Browse Windsurf Spots' }],
+    images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg', width: 1200, height: 630, alt: 'Windy Spot - Browse Windsurf Spots' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'All Windsurf Spots - Browse by Location & Conditions',
     description: 'Browse all windsurf spots worldwide with forecast, live wind stations, webcams, and detailed spot guides.',
-    images: ['/images/homepage.jpg'],
+    images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg'],
   },
   alternates: {
     canonical: 'https://www.windyspot.com/spots',

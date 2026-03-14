@@ -1,7 +1,7 @@
-'use client'
-import React, { useState, useMemo } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Metadata } from 'next'
 
 import { resourcesData } from '../data/data'
 
@@ -13,19 +13,31 @@ import BackToTop from '../components/back-to-top'
 
 const ITEMS_PER_PAGE = 6
 
-export default function Resources() {
-    const [currentPage, setCurrentPage] = useState(1)
+export const metadata: Metadata = {
+    title: 'Resources - Windy Spot',
+    description: 'Guides, tips and resources for windsurfing.',
+    openGraph: {
+        title: 'Resources - Windy Spot',
+        description: 'Guides, tips and resources for windsurfing.',
+        url: 'https://www.windyspot.com/resources',
+    },
+    alternates: {
+        canonical: 'https://www.windyspot.com/resources',
+    },
+}
 
+interface Props {
+    searchParams: Promise<{ page?: string }>
+}
+
+export default async function Resources({ searchParams }: Props) {
+    const { page } = await searchParams
     const totalPages = Math.ceil(resourcesData.length / ITEMS_PER_PAGE)
+    const currentPage = Math.min(Math.max(1, Number(page) || 1), totalPages)
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
     const paginatedData = resourcesData.slice(startIndex, startIndex + ITEMS_PER_PAGE)
 
-    const goToPage = (page: number) => {
-        if (page >= 1 && page <= totalPages) {
-            setCurrentPage(page)
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
-    }
+    const pageLink = (p: number) => p === 1 ? '/resources' : `/resources?page=${p}`
 
     return (
         <>
@@ -80,15 +92,15 @@ export default function Resources() {
                                 <nav aria-label="Page navigation">
                                     <ul className="pagination justify-content-center">
                                         <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                            <button className="page-link" onClick={() => goToPage(currentPage - 1)}><FaArrowLeft/></button>
+                                            <Link href={pageLink(currentPage - 1)} className="page-link"><FaArrowLeft/></Link>
                                         </li>
                                         {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                                             <li className={`page-item ${p === currentPage ? 'active' : ''}`} key={p}>
-                                                <button className="page-link" onClick={() => goToPage(p)}>{p}</button>
+                                                <Link href={pageLink(p)} className="page-link">{p}</Link>
                                             </li>
                                         ))}
                                         <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                            <button className="page-link" onClick={() => goToPage(currentPage + 1)}><FaArrowRight/></button>
+                                            <Link href={pageLink(currentPage + 1)} className="page-link"><FaArrowRight/></Link>
                                         </li>
                                     </ul>
                                 </nav>

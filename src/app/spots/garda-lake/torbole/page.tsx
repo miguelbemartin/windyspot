@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Torbole',
+  description: 'Torbole windsurf spot guide on Lake Garda, Italy. Live station, webcams, forecast, and wind map for Europe\'s most famous lake windsurfing destination.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/garda-lake/torbole',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Garda Lake, Italy',
+  },
+}
+
 export default function GardaLake() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/klaus-huber-QfMCwSfmiuc-unsplash.jpg')`}} data-overlay="4">

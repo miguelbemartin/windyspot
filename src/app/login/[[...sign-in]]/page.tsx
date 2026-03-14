@@ -1,6 +1,11 @@
 import { SignIn } from '@clerk/nextjs'
 import React from 'react'
+import { Metadata } from 'next'
 import NavbarLight from '../../components/navbar/navbar-light'
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
 
 export default function Login() {
   return (

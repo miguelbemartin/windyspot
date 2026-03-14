@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Elafonisi',
+  description: 'Elafonisi windsurf spot guide in Crete, Greece. Pink-sand beach with Meltemi winds, flat-water lagoon, live station, forecast, and wind map.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/crete/elafonisi',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Crete, Greece',
+  },
+}
+
 export default function Elafonisi() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/dimitris-kiriakakis-yGA8EEV2xtU-unsplash.jpg')`}} data-overlay="4">

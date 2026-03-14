@@ -31,9 +31,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Costa Calma',
+  description: 'Costa Calma windsurf spot guide in Fuerteventura, Spain. Forecast and wind map for this beginner-friendly trade wind beach.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/fuerteventura/costa-calma',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Fuerteventura, Spain',
+  },
+}
+
 export default function CostaCalma() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/paul-treubrodt-6CIQG_tIQAk-unsplash.jpg')`}} data-overlay="4">

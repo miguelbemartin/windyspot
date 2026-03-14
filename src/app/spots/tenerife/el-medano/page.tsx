@@ -34,9 +34,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'El Médano',
+  description: 'El Médano windsurf spot guide in Tenerife, Spain. Trade wind conditions with live station, forecast, and wind map for this popular Canary Islands spot.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/tenerife/el-medano',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Tenerife, Spain',
+  },
+}
+
 export default function ElMedano() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michal-hejmann--oBMHfF2R18-unsplash.jpg')`}} data-overlay="4">

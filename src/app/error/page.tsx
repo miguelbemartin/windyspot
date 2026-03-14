@@ -38,7 +38,7 @@ export default function Error() {
                     <div className="col-xl-7 col-lg-8 col-md-12">
                         <div className="404-capstion text-center my-4">
                             <div className="404-captions mb-5">
-                                <img src='/img/error.svg' className="img-fluid mb-3" alt=""/>
+                                <img src='/img/error.svg' className="img-fluid mb-3" alt="Page not found illustration"/>
                                 <h2>Ohhh ho, something went wrong!</h2>
                                 <p className="fs-6">Cicero famously orated against his political opponent.</p>
                             </div>

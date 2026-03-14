@@ -34,9 +34,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Bahía de Formas',
+  description: 'Bahía de Formas windsurf spot guide in Gran Canaria, Spain. Forecast, wind map, and conditions for this sheltered bay near Pozo Izquierdo.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/bahia-de-formas.jpeg',
+  url: 'https://www.windyspot.com/spots/gran-canaria/bahia-de-formas',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Gran Canaria, Spain',
+  },
+}
+
 export default function BahiaDeFormas() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/bahia-de-formas.jpeg')`}} data-overlay="4">

@@ -32,9 +32,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Zug',
+  description: 'Zug windsurf spot guide on Lake Zug, Switzerland. Webcams, forecast, and wind map for this central Swiss lake windsurfing spot.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/central-switzerland/zug',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Zug, Switzerland',
+  },
+}
+
 export default function Zug() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/louis-droege-k6rwCx5oAS8-unsplash.jpg')`}} data-overlay="4">

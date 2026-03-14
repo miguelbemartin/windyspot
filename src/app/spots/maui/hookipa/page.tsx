@@ -32,9 +32,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Hookipa',
+  description: 'Hookipa windsurf spot guide in Maui, Hawaii. The most iconic wave sailing spot in the world with live station, forecast, wind map, and expert spot guide.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/maui/hookipa',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Maui, Hawaii',
+  },
+}
+
 export default function Hookipa() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/luke-scarpino-ngRNC_h2G8E-unsplash.jpg')`}} data-overlay="4">

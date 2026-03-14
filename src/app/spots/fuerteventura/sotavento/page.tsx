@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Sotavento',
+  description: 'Sotavento windsurf spot guide in Fuerteventura, Spain. PWA World Cup venue with live station, webcams, forecast, and wind map.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/fuerteventura/sotavento',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Fuerteventura, Spain',
+  },
+}
+
 export default function Sotavento() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/michele-marchesi-o3ys6oKoHtA-unsplash.jpg')`}} data-overlay="4">

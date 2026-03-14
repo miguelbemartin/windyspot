@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Almanarre',
+  description: 'Almanarre windsurf spot guide in Hyères, South of France. Webcams, forecast, and wind map for this iconic French Riviera windsurfing beach.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png',
+  url: 'https://www.windyspot.com/spots/south-of-france/almanarre',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Hyères, France',
+  },
+}
+
 export default function Almanarre() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png')`}} data-overlay="4">

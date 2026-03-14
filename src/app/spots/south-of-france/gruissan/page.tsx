@@ -34,9 +34,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Gruissan',
+  description: 'Gruissan windsurf spot guide in South of France. Live station, webcams, forecast, and wind map for this popular Mediterranean windsurfing destination.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/south-of-france/gruissan',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Gruissan, France',
+  },
+}
+
 export default function Gruissan() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pierre-cazenave-kaufman-yLU-JkF5yjk-unsplash.jpg')`}} data-overlay="4">

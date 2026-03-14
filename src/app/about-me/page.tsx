@@ -97,7 +97,7 @@ export default function AboutUs() {
                         </div>
                         <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                             <div className="missionImg">
-                                <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-03.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt=""/>
+                                <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-03.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt="Miguel, windsurfer and creator of Windy Spot"/>
                             </div>
                         </div>
                     </div>

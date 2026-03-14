@@ -32,9 +32,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Pozo Izquierdo',
+  description: 'Pozo Izquierdo windsurf spot guide in Gran Canaria, Spain. PWA World Tour venue with reliable 25-35 knot trade winds. Forecast, live webcams, and wind map.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pozo-izquierdo.jpeg',
+  url: 'https://www.windyspot.com/spots/gran-canaria/pozo-izquierdo',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Gran Canaria, Spain',
+  },
+}
+
 export default function PozoIzquierdo() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/pozo-izquierdo.jpeg')`}} data-overlay="4">

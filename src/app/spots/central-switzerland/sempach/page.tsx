@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Sempach',
+  description: 'Sempach windsurf spot guide on Lake Sempach, Lucerne, Switzerland. Live station, webcams, forecast, and wind map.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/marvin-meyer-ua_tu9vqLAU-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/central-switzerland/sempach',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Sempach, Lucerne, Switzerland',
+  },
+}
+
 export default function Sempach() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/marvin-meyer-ua_tu9vqLAU-unsplash.jpg')`}} data-overlay="4">

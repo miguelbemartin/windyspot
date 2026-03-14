@@ -68,6 +68,18 @@ export default function RootLayout({
            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
          </head>
         <body>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Windy Spot',
+              url: 'https://www.windyspot.com',
+              logo: 'https://www.windyspot.com/windy-spot-logo.png',
+              description: 'Discover the best windsurf spots worldwide with detailed forecast, live wind stations, webcams, and spot guides.',
+              sameAs: [],
+            }) }}
+          />
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-XRCNG25M9V" strategy="afterInteractive" />
           <Script id="google-analytics" strategy="afterInteractive">
             {`

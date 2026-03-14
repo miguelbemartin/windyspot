@@ -33,9 +33,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Isleten',
+  description: 'Isleten windsurf spot guide on Urnersee, Uri, Switzerland. Foehn wind conditions with webcams, forecast, and wind map.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/isleten.jpg',
+  url: 'https://www.windyspot.com/spots/central-switzerland/isleten',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Isenthal, Uri, Switzerland',
+  },
+}
+
 export default function Isleten() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/isleten.jpg')`}} data-overlay="4">

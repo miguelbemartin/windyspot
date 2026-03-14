@@ -32,9 +32,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'SportsActivityLocation'],
+  name: 'Silvaplana',
+  description: 'Silvaplana windsurf spot guide in Engadin, Switzerland. Alpine lake windsurfing with Maloja wind, forecast, and wind map.',
+  image: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/uwe-conrad-MralC-Em90w-unsplash.jpg',
+  url: 'https://www.windyspot.com/spots/central-switzerland/silvaplana',
+  containedInPlace: {
+    '@type': 'Place',
+    name: 'Silvaplana, Engadin, Switzerland',
+  },
+}
+
 export default function Silvaplana() {
   return (
     <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <NavbarLight/>
 
         <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/uwe-conrad-MralC-Em90w-unsplash.jpg')`}} data-overlay="4">

@@ -66,7 +66,7 @@ export default async function SpotPage({ params }: PageProps) {
   const spotUrl = `https://www.windyspot.com/spot/${spot.slug}`
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'TouristAttraction',
+    '@type': ['TouristAttraction', 'SportsActivityLocation'],
     name: spot.title,
     description: spot.description || `${spot.title} windsurf spot in ${locationLabel}.`,
     image: `https://www.windyspot.com${spot.image}`,
