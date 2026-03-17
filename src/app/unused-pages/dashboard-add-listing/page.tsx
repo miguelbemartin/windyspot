@@ -5,9 +5,9 @@ import dynamic from 'next/dynamic'
 
 const Select = dynamic(()=>import('react-select'),{ssr:false})
 
-import AdminNavbar from '../../components/navbar/admin-navbar'
-import AdminSidebar from '../../components/admin/admin-sidebar'
-import ImageUplod from '../../components/admin/image-uplod'
+import AdminNavbar from '../../unused-components/navbar/admin-navbar'
+import AdminSidebar from '../../unused-components/admin/admin-sidebar'
+import ImageUplod from '../../unused-components/admin/image-uplod'
 
 import { FaFile, FaHeart } from 'react-icons/fa6'
 import { BsArrowRightCircle, BsFeather, BsGeoAlt, BsImages, BsPatchQuestionFill, BsPlusCircle, BsStopwatch, BsX } from 'react-icons/bs'

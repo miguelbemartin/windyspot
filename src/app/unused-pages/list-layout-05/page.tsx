@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 import { listData } from '../../data/data-example'
 
-import ThemNavbar from '../../components/navbar/them-navbar'
-import ListSidebarOne from '../../components/list-sidebar-one'
+import ThemNavbar from '../../unused-components/navbar/them-navbar'
+import ListSidebarOne from '../../unused-components/list-sidebar-one'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'

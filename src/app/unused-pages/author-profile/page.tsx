@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import NavLightThree from '../../components/navbar/nav-light-three'
+import NavLightThree from '../../unused-components/navbar/nav-light-three'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'

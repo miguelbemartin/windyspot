@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 
 import NavbarDark from "../../components/navbar/navbar-dark";
-import CategoryFive from "../../components/categories/categories-five";
-import FeaturedListing from "../../components/featured-listing";
-import HowItsWork from "../../components/how-its-work";
-import WorkingProcessTwo from "../../components/working-process-two";
-import ClientOne from "../../components/client-one";
-import BlogOne from "../../components/blog-one";
+import CategoryFive from "../../unused-components/categories/categories-five";
+import FeaturedListing from "../../unused-components/featured-listing";
+import HowItsWork from "../../unused-components/how-its-work";
+import WorkingProcessTwo from "../../unused-components/working-process-two";
+import ClientOne from "../../unused-components/client-one";
+import BlogOne from "../../unused-components/blog-one";
 import FooterTop from "../../components/footer-top";
 import Footer from "../../components/footer/footer";
 import BackToTop from "../../components/back-to-top";

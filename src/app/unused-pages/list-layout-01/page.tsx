@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import NavbarDark from '../../components/navbar/navbar-dark'
-import ListSidebarOne from '../../components/list-sidebar-one'
+import ListSidebarOne from '../../unused-components/list-sidebar-one'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'

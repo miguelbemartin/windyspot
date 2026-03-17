@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
-import AdminNavbar from '../../components/navbar/admin-navbar'
+import AdminNavbar from '../../unused-components/navbar/admin-navbar'
 import BackToTop from '../../components/back-to-top'
-import AdminSidebar from '../../components/admin/admin-sidebar'
+import AdminSidebar from '../../unused-components/admin/admin-sidebar'
 
 import { BsEmojiLaughing, BsPatchPlusFill, BsSend, BsX } from 'react-icons/bs'
 import { FaHeart } from 'react-icons/fa6'

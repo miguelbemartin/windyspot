@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import AdminNavbar from '../../components/navbar/admin-navbar'
-import AdminSidebar from '../../components/admin/admin-sidebar'
+import AdminNavbar from '../../unused-components/navbar/admin-navbar'
+import AdminSidebar from '../../unused-components/admin/admin-sidebar'
 import BackToTop from '../../components/back-to-top'
 
 import { adminListing } from '../../data/data-example'

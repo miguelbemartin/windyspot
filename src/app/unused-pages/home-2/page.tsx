@@ -1,18 +1,18 @@
 'use client'
 import React from 'react'
 
-import FormOne from '../../components/form/form-one'
+import FormOne from '../../unused-components/form/form-one'
 import NavbarLight from '../../components/navbar/navbar-light'
-import CategoryTwo from '../../components/categories/category-two'
-import PopularListingTwo from '../../components/popular-listing-two'
+import CategoryTwo from '../../unused-components/categories/category-two'
+import PopularListingTwo from '../../unused-components/popular-listing-two'
 import ExploreCity from '../../components/explore-city'
-import ClientOne from '../../components/client-one'
-import BlogOne from '../../components/blog-one'
-import EventOne from '../../components/event-one'
+import ClientOne from '../../unused-components/client-one'
+import BlogOne from '../../unused-components/blog-one'
+import EventOne from '../../unused-components/event-one'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'
-import PopularSearch from '../../components/popular-search'
+import PopularSearch from '../../unused-components/popular-search'
 
 export default function Index() {
   return (

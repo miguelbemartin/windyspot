@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import NavbarFull from '../../components/navbar/navbar-full'
-import Map from '../../components/map'
-import FilterTwo from '../../components/footer/filter-two'
+import NavbarFull from '../../unused-components/navbar/navbar-full'
+import Map from '../../unused-components/map'
+import FilterTwo from '../../unused-components/footer/filter-two'
 
 import { listData } from '../../data/data-example'
 

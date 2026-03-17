@@ -3,9 +3,9 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import AdminNavbar from '../../components/navbar/admin-navbar'
-import AdminSidebar from '../../components/admin/admin-sidebar'
-import RecentActivity from '../../components/admin/recent-activity'
+import AdminNavbar from '../../unused-components/navbar/admin-navbar'
+import AdminSidebar from '../../unused-components/admin/admin-sidebar'
+import RecentActivity from '../../unused-components/admin/recent-activity'
 import BackToTop from '../../components/back-to-top'
 
 import { adminCounter, chatData, invoiceData } from '../../data/data-example'

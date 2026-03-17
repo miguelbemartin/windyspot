@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getSpotBySlug } from '../lib/spots'
-import WindguruWidget from './windguru-widget'
-import WindguruLive from './windguru-live'
+import WindguruWidget from '../components/windguru-widget'
+import WindguruLive from '../components/windguru-live'
 
 export default async function SpotWindguruBlocks({ slug, forecastExtra }: { slug: string, forecastExtra?: React.ReactNode }) {
     const spot = await getSpotBySlug(slug)

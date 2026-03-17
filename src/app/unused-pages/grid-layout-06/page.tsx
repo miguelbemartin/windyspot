@@ -9,7 +9,7 @@ import { BsGeoAlt, BsPatchCheckFill, BsStar, BsStarFill, BsSuitHeart, BsTelephon
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import { IconType } from 'react-icons'
 
-import ListSidebarOne from '../../components/list-sidebar-one'
+import ListSidebarOne from '../../unused-components/list-sidebar-one'
 import NavbarDark from '../../components/navbar/navbar-dark'
 import FooterTop from '../../components/footer-top'
 import Footer from '../../components/footer/footer'
