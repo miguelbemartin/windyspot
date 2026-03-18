@@ -25,6 +25,7 @@ export interface Spot {
     custom_page: boolean
     lat: number | null
     lon: number | null
+    created_by: string | null
 }
 
 export interface SpotWithLocation extends Spot {
