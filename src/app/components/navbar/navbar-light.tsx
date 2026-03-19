@@ -90,8 +90,8 @@ export default function NavbarLight() {
                     <div className="nav-header ">
 
                         <Link href="/">
-                            <div className="d-none d-md-block"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo mt-1" alt="Windy Spot - Windsurf Spot Finder"/></div>
-                            <div className="d-md-none"><Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'30px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
+                            <div className="show-desktop"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo mt-1" alt="Windy Spot - Windsurf Spot Finder"/></div>
+                            <div className="show-mobile"><Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'30px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
                         </Link>
 
                         <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '40px', top: '50%', transform: 'translateY(-50%)' }}>
@@ -179,7 +179,7 @@ export default function NavbarLight() {
                                             value={searchQuery}
                                             onChange={(e) => { setSearchQuery(e.target.value); setSearchOpen(true) }}
                                             onFocus={() => { if (searchQuery.length > 0) setSearchOpen(true) }}
-                                            style={{ width: '180px', fontSize: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
+                                            style={{ width: '180px', fontSize: '14px', background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
                                         />
                                         <BsSearch className="position-absolute top-50 end-0 translate-middle-y me-2" style={{ fontSize: '11px', color: '#fff', opacity: 0.5, pointerEvents: 'none' }} />
                                     </div>
