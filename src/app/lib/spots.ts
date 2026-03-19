@@ -26,6 +26,7 @@ export interface Spot {
     lat: number | null
     lon: number | null
     created_by: string | null
+    spot_guide: string | null
 }
 
 export interface SpotWithLocation extends Spot {

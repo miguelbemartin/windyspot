@@ -126,6 +126,7 @@ export default async function SpotPage({ params }: PageProps) {
                                 spotId={spot.id}
                                 initialTitle={spot.title}
                                 initialDescription={spot.description}
+                                initialSpotGuide={spot.spot_guide}
                                 initialWindguruForecastId={spot.windguru_forecast_id}
                                 initialWindguruLiveStationId={spot.windguru_live_station_id}
                             />
@@ -169,16 +170,18 @@ export default async function SpotPage({ params }: PageProps) {
                                 </div>
                             )}
 
+                            {(spot.spot_guide || spot.description) && (
                             <div className="listingSingleblock mb-4" id="descriptions">
                                 <div className="SingleblockHeader">
                                     <Link data-bs-toggle="collapse" data-parent="#description" data-bs-target="#description" aria-controls="description" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Spot Guide</h4></Link>
                                 </div>
                                 <div id="description" className="panel-collapse collapse show">
                                     <div className="card-body p-4 pt-2">
-                                        <div dangerouslySetInnerHTML={{ __html: spot.description || '' }} />
+                                        <div dangerouslySetInnerHTML={{ __html: spot.spot_guide || spot.description || '' }} />
                                     </div>
                                 </div>
                             </div>
+                            )}
 
                         </div>
                     </div>

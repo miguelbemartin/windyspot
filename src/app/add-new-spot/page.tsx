@@ -29,6 +29,7 @@ export default function AddNewSpot() {
     const [locations, setLocations] = useState<Location[]>([])
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [spotGuide, setSpotGuide] = useState('')
     const [selectedLocation, setSelectedLocation] = useState<SelectOption | null>(null)
     const [isNewLocation, setIsNewLocation] = useState(false)
     const [newLocationName, setNewLocationName] = useState('')
@@ -62,6 +63,7 @@ export default function AddNewSpot() {
         const payload: Record<string, unknown> = {
             title,
             description,
+            spot_guide: spotGuide || null,
             windguru_forecast_id: windguruForecastId || null,
             windguru_live_station_id: windguruLiveStationId || null,
         }
@@ -132,9 +134,22 @@ export default function AddNewSpot() {
                                             <div className="col-12">
                                                 <div className="form-group form-border">
                                                     <label className="lableTitle">Description</label>
-                                                    <Editor
+                                                    <input
+                                                        type="text"
+                                                        className="form-control rounded"
+                                                        placeholder="Short description of the spot"
                                                         value={description}
-                                                        onChange={(e: { target: { value: string } }) => setDescription(e.target.value)}
+                                                        onChange={(e) => setDescription(e.target.value)}
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-12">
+                                                <div className="form-group form-border">
+                                                    <label className="lableTitle">Spot Guide</label>
+                                                    <Editor
+                                                        value={spotGuide}
+                                                        onChange={(e: { target: { value: string } }) => setSpotGuide(e.target.value)}
                                                         style={{ minHeight: '150px' }}
                                                     />
                                                 </div>

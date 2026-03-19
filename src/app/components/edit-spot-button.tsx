@@ -53,15 +53,17 @@ interface EditSpotFormProps {
     spotId: number
     initialTitle: string
     initialDescription: string
+    initialSpotGuide: string | null
     initialWindguruForecastId: string | null
     initialWindguruLiveStationId: string | null
 }
 
-export function EditSpotForm({ spotId, initialTitle, initialDescription, initialWindguruForecastId, initialWindguruLiveStationId }: EditSpotFormProps) {
+export function EditSpotForm({ spotId, initialTitle, initialDescription, initialSpotGuide, initialWindguruForecastId, initialWindguruLiveStationId }: EditSpotFormProps) {
     const router = useRouter()
     const { editing, setEditing } = useContext(EditSpotContext)
     const [title, setTitle] = useState(initialTitle)
     const [description, setDescription] = useState(initialDescription)
+    const [spotGuide, setSpotGuide] = useState(initialSpotGuide || '')
     const [windguruForecastId, setWindguruForecastId] = useState(initialWindguruForecastId || '')
     const [windguruLiveStationId, setWindguruLiveStationId] = useState(initialWindguruLiveStationId || '')
     const [submitting, setSubmitting] = useState(false)
@@ -81,6 +83,7 @@ export function EditSpotForm({ spotId, initialTitle, initialDescription, initial
                     id: spotId,
                     title,
                     description,
+                    spot_guide: spotGuide,
                     windguru_forecast_id: windguruForecastId,
                     windguru_live_station_id: windguruLiveStationId,
                 }),
@@ -119,9 +122,18 @@ export function EditSpotForm({ spotId, initialTitle, initialDescription, initial
                 </div>
                 <div className="mb-3">
                     <label className="form-label fw-medium">Description</label>
-                    <Editor
+                    <input
+                        type="text"
+                        className="form-control"
                         value={description}
-                        onChange={(e: { target: { value: string } }) => setDescription(e.target.value)}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label fw-medium">Spot Guide</label>
+                    <Editor
+                        value={spotGuide}
+                        onChange={(e: { target: { value: string } }) => setSpotGuide(e.target.value)}
                         style={{ minHeight: '150px' }}
                     />
                 </div>
@@ -160,6 +172,7 @@ export function EditSpotForm({ spotId, initialTitle, initialDescription, initial
                             setEditing(false)
                             setTitle(initialTitle)
                             setDescription(initialDescription)
+                            setSpotGuide(initialSpotGuide || '')
                             setWindguruForecastId(initialWindguruForecastId || '')
                             setWindguruLiveStationId(initialWindguruLiveStationId || '')
                             setError('')

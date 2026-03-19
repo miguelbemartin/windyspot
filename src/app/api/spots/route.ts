@@ -15,7 +15,7 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { id, title, description, windguru_forecast_id, windguru_live_station_id } = body
+    const { id, title, description, spot_guide, windguru_forecast_id, windguru_live_station_id } = body
 
     if (!id) {
         return NextResponse.json({ error: 'Spot ID is required' }, { status: 400 })
@@ -40,6 +40,7 @@ export async function PATCH(request: NextRequest) {
     const updates: Record<string, unknown> = {}
     if (title !== undefined) updates.title = title
     if (description !== undefined) updates.description = description
+    if (spot_guide !== undefined) updates.spot_guide = spot_guide || null
     if (windguru_forecast_id !== undefined) updates.windguru_forecast_id = windguru_forecast_id || null
     if (windguru_live_station_id !== undefined) updates.windguru_live_station_id = windguru_live_station_id || null
 
@@ -64,7 +65,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { title, description, location_id, new_location_name, new_location_country, windguru_forecast_id, windguru_live_station_id } = body
+    const { title, description, spot_guide, location_id, new_location_name, new_location_country, windguru_forecast_id, windguru_live_station_id } = body
 
     if (!title || !description) {
         return NextResponse.json({ error: 'Title and description are required' }, { status: 400 })
@@ -128,6 +129,7 @@ export async function POST(request: NextRequest) {
             tag: '',
             windguru_forecast_id: windguru_forecast_id || null,
             windguru_live_station_id: windguru_live_station_id || null,
+            spot_guide: spot_guide || null,
             custom_page: false,
             lat: null,
             lon: null,
