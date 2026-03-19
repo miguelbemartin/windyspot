@@ -104,7 +104,7 @@ export default async function IndexTen() {
             <div className="row align-items-center justify-content-center">
                 <div className="col-xl-8 col-lg-10 col-md-12 col-sm-12 text-center">
                     <h4 className="text-white mb-3">Want to add a spot?</h4>
-                    <p className="text-white opacity-75 mb-0">If you want to add or update any of the spots, you can just <Link href="/contact-me" className="text-white fw-medium text-decoration-underline">contact me</Link>.</p>
+                    <p className="text-white opacity-75 mb-0"><Link href="/add-new-spot" className="text-white fw-medium text-decoration-underline">Create an account and become a local legend</Link>.</p>
                 </div>
             </div>
         </div>

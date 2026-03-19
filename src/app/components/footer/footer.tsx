@@ -27,6 +27,7 @@ export default function Footer() {
                             <ul className="footer-menu">
                                 {/* <li><Link href="/resources">Resources</Link></li> */}
                                 <li><Link href="/spots">Spots</Link></li>
+                                <li><Link href="/add-spot">Add New Spot</Link></li>
                                 {/* <li><Link href="/cities">Cities</Link></li> */}
                             </ul>
                         </div>
