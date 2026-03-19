@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 
 const Select = dynamic(() => import('react-select'), { ssr: false })
+const Editor = dynamic(() => import('react-simple-wysiwyg').then(mod => mod.default), { ssr: false })
 
 import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
@@ -131,12 +132,10 @@ export default function AddNewSpot() {
                                             <div className="col-12">
                                                 <div className="form-group form-border">
                                                     <label className="lableTitle">Description</label>
-                                                    <textarea
-                                                        className="form-control rounded ht-150"
-                                                        placeholder="Describe the spot, wind conditions, best season, etc."
+                                                    <Editor
                                                         value={description}
-                                                        onChange={(e) => setDescription(e.target.value)}
-                                                        required
+                                                        onChange={(e: { target: { value: string } }) => setDescription(e.target.value)}
+                                                        style={{ minHeight: '150px' }}
                                                     />
                                                 </div>
                                             </div>

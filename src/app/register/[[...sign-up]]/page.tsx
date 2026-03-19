@@ -1,5 +1,6 @@
 import { SignUp } from '@clerk/nextjs'
 import React from 'react'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import NavbarLight from '../../components/navbar/navbar-light'
 
@@ -13,7 +14,8 @@ export default function Register() {
 
     <NavbarLight/>
 
-    <section style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg')`, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover'}} data-overlay="6">
+    <section className="position-relative" data-overlay="6">
+      <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
       <div className="container position-relative z-1">
         <div className="row align-items-center justify-content-center" style={{minHeight: '100vh'}}>
           <div className="col-xl-5 col-lg-7 col-md-9">

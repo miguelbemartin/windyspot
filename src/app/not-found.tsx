@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 
 import NavMinimal from './components/navbar/nav-minimal'
@@ -14,7 +15,8 @@ export default function NotFound() {
     <>
       <NavMinimal />
 
-      <section className="image-cover position-relative d-flex align-items-center justify-content-center" style={{ backgroundImage: "url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/mark-mc-neill-O3Gb3J2HSdA-unsplash.jpg')", minHeight: '80vh' }} data-overlay="5">
+      <section className="image-cover position-relative d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }} data-overlay="5">
+        <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/mark-mc-neill-O3Gb3J2HSdA-unsplash.jpg" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} />
         <div className="container position-relative z-1">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-6 col-lg-8 col-md-10 text-center">

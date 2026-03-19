@@ -8,6 +8,55 @@ export async function GET() {
     return NextResponse.json(spots)
 }
 
+export async function PATCH(request: NextRequest) {
+    const { userId } = await auth()
+    if (!userId) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    const body = await request.json()
+    const { id, title, description, windguru_forecast_id, windguru_live_station_id } = body
+
+    if (!id) {
+        return NextResponse.json({ error: 'Spot ID is required' }, { status: 400 })
+    }
+
+    const supabase = createAdminClient()
+
+    const { data: existing, error: fetchError } = await supabase
+        .from('spots')
+        .select('created_by')
+        .eq('id', id)
+        .single()
+
+    if (fetchError || !existing) {
+        return NextResponse.json({ error: 'Spot not found' }, { status: 404 })
+    }
+
+    if (existing.created_by !== userId) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+
+    const updates: Record<string, unknown> = {}
+    if (title !== undefined) updates.title = title
+    if (description !== undefined) updates.description = description
+    if (windguru_forecast_id !== undefined) updates.windguru_forecast_id = windguru_forecast_id || null
+    if (windguru_live_station_id !== undefined) updates.windguru_live_station_id = windguru_live_station_id || null
+
+    const { data: spot, error } = await supabase
+        .from('spots')
+        .update(updates)
+        .eq('id', id)
+        .select('*')
+        .single()
+
+    if (error) {
+        return NextResponse.json({ error: 'Failed to update spot' }, { status: 500 })
+    }
+
+    return NextResponse.json(spot)
+}
+
 export async function POST(request: NextRequest) {
     const { userId } = await auth()
     if (!userId) {

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { BsMouse } from 'react-icons/bs'
 
@@ -44,7 +45,8 @@ export default async function IndexTen() {
 
      <NavbarLight/>
 
-    <div className="image-cover hero-header bg-primary position-relative d-none d-md-block" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg')`}} data-overlay="6">
+    <div className="image-cover hero-header bg-primary position-relative d-none d-md-block" data-overlay="6">
+        <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg" alt="Windy Spot Homepage" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
         <div className="container position-relative z-1">
             <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                 <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">

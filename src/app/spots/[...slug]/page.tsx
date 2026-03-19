@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
+import Image from 'next/image'
 import NavbarLight from '../../components/navbar/navbar-light'
 import WindguruWidget from '../../components/windguru-widget'
 import WindguruLive from '../../components/windguru-live'
@@ -10,6 +11,7 @@ import WindyEmbed from '../../components/windy-embed'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'
 import AddToMySpotsButton from '../../components/add-to-my-spots-button'
+import { EditSpotProvider, EditSpotButton, EditSpotForm } from '../../components/edit-spot-button'
 
 import { getSpotBySlug } from '../../lib/spots'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -82,7 +84,9 @@ export default async function SpotPage({ params }: PageProps) {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <NavbarLight />
 
-            <section className="bg-cover position-relative ht-200 py-0" style={spot.image ? { backgroundImage: `url('${spot.image}')` } : { backgroundColor: '#1a2332' }} data-overlay="4">
+            <EditSpotProvider createdBy={spot.created_by}>
+            <section className="position-relative ht-200 py-0" style={{ backgroundColor: '#1a2332' }} data-overlay="4">
+                {spot.image && <Image src={spot.image} alt={spot.title} fill sizes="100vw" style={{ objectFit: 'cover' }} priority />}
                 <div className="container h-100">
                     <div className="row align-items-start">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-12">
@@ -102,7 +106,8 @@ export default async function SpotPage({ params }: PageProps) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div className="d-flex gap-2">
+                                        <EditSpotButton />
                                         <AddToMySpotsButton spotId={spot.id} />
                                     </div>
                                 </div>
@@ -116,6 +121,14 @@ export default async function SpotPage({ params }: PageProps) {
                 <div className="container">
                     <div className="row align-items-start g-4">
                         <div className="col-12">
+
+                            <EditSpotForm
+                                spotId={spot.id}
+                                initialTitle={spot.title}
+                                initialDescription={spot.description}
+                                initialWindguruForecastId={spot.windguru_forecast_id}
+                                initialWindguruLiveStationId={spot.windguru_live_station_id}
+                            />
 
                             {spot.windguru_forecast_id && (
                                 <div className="listingSingleblock mb-4" id="forecast">
@@ -162,7 +175,7 @@ export default async function SpotPage({ params }: PageProps) {
                                 </div>
                                 <div id="description" className="panel-collapse collapse show">
                                     <div className="card-body p-4 pt-2">
-                                        <p>{spot.description}</p>
+                                        <div dangerouslySetInnerHTML={{ __html: spot.description || '' }} />
                                     </div>
                                 </div>
                             </div>
@@ -171,6 +184,8 @@ export default async function SpotPage({ params }: PageProps) {
                     </div>
                 </div>
             </section>
+
+            </EditSpotProvider>
 
             <Footer />
             <BackToTop />

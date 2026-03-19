@@ -27,6 +27,7 @@
     "react-icons": "^5.5.0",
     "react-scroll": "^1.9.3",
     "react-select": "^5.10.1",
+    "react-simple-wysiwyg": "^3.4.1",
     "sass": "^1.87.0",
     "swiper": "^11.2.6",
     "yet-another-react-lightbox": "^3.23.0"

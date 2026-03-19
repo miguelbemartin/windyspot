@@ -60,8 +60,9 @@ export default function AboutUs() {
             </div>
         </section>
 
-        <section className="bg-cover " style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-02.jpg')`, backgroundColor:'#ffffff'}} data-overlay="5">
-            <div className="container">
+        <section className="position-relative" style={{ backgroundColor:'#ffffff' }} data-overlay="5">
+            <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-02.jpg" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+            <div className="container position-relative z-1">
                 <div className="row">
                     <div className="row justify-content-center align-items-center mb-0">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -106,8 +107,9 @@ export default function AboutUs() {
             </div>
         </section>
 
-        <section className="bg-cover" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-almanarre.png')`, backgroundColor:'#ffffff'}} data-overlay="1">
-            <div className="container">
+        <section className="position-relative" style={{ backgroundColor:'#ffffff' }} data-overlay="1">
+            <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-almanarre.png" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+            <div className="container position-relative z-1">
                 <div className="row">
                     <div className="row justify-content-center align-items-center mb-5">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
