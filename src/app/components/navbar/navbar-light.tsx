@@ -82,10 +82,11 @@ export default function NavbarLight() {
         <div className={`header header-transparent dark navdark header-fixed `} data-sticky-element="">
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
+
                     <div className="nav-header ">
 
                         <Link href="/">
-                            <div className="d-none d-md-block"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
+                            <div className="d-none d-md-block"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo mt-1" alt="Windy Spot - Windsurf Spot Finder"/></div>
                             <div className="d-md-none"><Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'20px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
                         </Link>
 
@@ -101,7 +102,7 @@ export default function NavbarLight() {
                                         value={searchQuery}
                                         onChange={(e) => { setSearchQuery(e.target.value); setSearchOpen(true) }}
                                         onFocus={() => { if (searchQuery.length > 0) setSearchOpen(true) }}
-                                        style={{ width: '310px', fontSize: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
+                                        style={{ width: '310px', fontSize: '16px', background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
                                     />
                                     <BsSearch className="position-absolute top-50 end-0 translate-middle-y me-2" style={{ fontSize: '11px', color: '#fff', opacity: 0.5, pointerEvents: 'none' }} />
                                 </div>
