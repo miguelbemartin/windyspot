@@ -20,6 +20,7 @@ export default function NavbarLight() {
     const [searchOpen, setSearchOpen] = useState(false);
     const [spots, setSpots] = useState<SpotWithLocation[]>([]);
     const searchRef = useRef<HTMLDivElement>(null);
+    const searchRefMobile = useRef<HTMLDivElement>(null);
 
     const location = usePathname();
     const router = useRouter();
@@ -64,7 +65,10 @@ export default function NavbarLight() {
 
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
-            if (searchRef.current && !searchRef.current.contains(e.target as Node)) setSearchOpen(false)
+            const target = e.target as Node
+            const inDesktop = searchRef.current?.contains(target)
+            const inMobile = searchRefMobile.current?.contains(target)
+            if (!inDesktop && !inMobile) setSearchOpen(false)
         }
         function handleEscape(e: KeyboardEvent) {
             if (e.key === 'Escape') setSearchOpen(false)
@@ -87,13 +91,13 @@ export default function NavbarLight() {
 
                         <Link href="/">
                             <div className="d-none d-md-block"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo mt-1" alt="Windy Spot - Windsurf Spot Finder"/></div>
-                            <div className="d-md-none"><Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'20px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
+                            <div className="d-md-none"><Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'30px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
                         </Link>
 
                         <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '40px', top: '50%', transform: 'translateY(-50%)' }}>
 
                             <style>{`.nav-search-mobile, .nav-search-mobile:focus { background: transparent !important; box-shadow: none !important; color: #fff !important; } .nav-search-mobile::placeholder { color: rgba(255,255,255,0.5) !important; }`}</style>
-                            <div ref={searchRef} style={{ position: 'relative' }}>
+                            <div ref={searchRefMobile} style={{ position: 'relative' }}>
                                 <div className="position-relative">
                                     <input
                                         type="text"
