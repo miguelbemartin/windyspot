@@ -44,7 +44,7 @@ export default async function IndexTen() {
 
      <NavbarLight/>
 
-    <div className="image-cover hero-header bg-primary position-relative" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg')`}} data-overlay="6">
+    <div className="image-cover hero-header bg-primary position-relative d-none d-md-block" style={{backgroundImage:`url('https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg')`}} data-overlay="6">
         <div className="container position-relative z-1">
             <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                 <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">

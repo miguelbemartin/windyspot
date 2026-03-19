@@ -84,9 +84,12 @@ export default function NavbarLight() {
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : "navigation navigation-portrait"}>
                     <div className="nav-header ">
 
-                        <Link href="/"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></Link>
+                        <Link href="/">
+                            <div className="d-none d-md-block"><Image src='/windy-spot-logo.png' width={0} height={0} sizes='100vw' style={{width:'100px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
+                            <div className="d-md-none"><Image src='/ws.png' width={0} height={0} sizes='100vw' style={{width:'20px', height:'auto'}} className="logo" alt="Windy Spot - Windsurf Spot Finder"/></div>
+                        </Link>
 
-                        <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '120px', top: '50%', transform: 'translateY(-50%)' }}>
+                        <div className="d-flex d-lg-none align-items-center gap-2" style={{ position: 'absolute', left: '40px', top: '50%', transform: 'translateY(-50%)' }}>
 
                             <style>{`.nav-search-mobile, .nav-search-mobile:focus { background: transparent !important; box-shadow: none !important; color: #fff !important; } .nav-search-mobile::placeholder { color: rgba(255,255,255,0.5) !important; }`}</style>
                             <div ref={searchRef} style={{ position: 'relative' }}>
@@ -98,7 +101,7 @@ export default function NavbarLight() {
                                         value={searchQuery}
                                         onChange={(e) => { setSearchQuery(e.target.value); setSearchOpen(true) }}
                                         onFocus={() => { if (searchQuery.length > 0) setSearchOpen(true) }}
-                                        style={{ width: '140px', fontSize: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
+                                        style={{ width: '310px', fontSize: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.3)', color: '#fff' }}
                                     />
                                     <BsSearch className="position-absolute top-50 end-0 translate-middle-y me-2" style={{ fontSize: '11px', color: '#fff', opacity: 0.5, pointerEvents: 'none' }} />
                                 </div>
@@ -221,8 +224,8 @@ export default function NavbarLight() {
 
                         <ul className="nav-menu align-to-right">
                             <SignedOut>
-                                <li>
-                                    <Link href="/login" className="d-flex align-items-center"><BsPersonCircle className="fs-6 me-1"/><span className="navCl">Login</span></Link>
+                                <li className="d-flex align-items-center px-0 mt-2">
+                                    <Link href="/login" className="d-flex align-items-center" style={{ padding: 0 }}><BsPersonCircle className="fs-6 me-1"/><span className="navCl">Login</span></Link>
                                 </li>
                             </SignedOut>
                             <SignedIn>

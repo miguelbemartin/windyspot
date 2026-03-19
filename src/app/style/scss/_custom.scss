@@ -53,3 +53,10 @@
   transition: none !important;
   animation: none !important;
 }
+
+.explore-listing-card {
+  height: 280px;
+  @media (max-width: 767.98px) {
+    height: 130px;
+  }
+}
