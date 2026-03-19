@@ -57,7 +57,7 @@ export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
     return (
         <button
             className="btn btn-sm rounded-pill fw-semibold text-white"
-            style={{backgroundColor: added ? '#999' : '#e05565'}}
+            style={{backgroundColor: added ? '#999' : '#e05565', maxWidth: '130px'}}
             onClick={handleClick}
             disabled={loading}
         >
