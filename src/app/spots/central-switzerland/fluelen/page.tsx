@@ -97,7 +97,7 @@ export default function Fluelen() {
                                 <WindguruWidget spotId="620377" uid="wg_fwdg_620377_100_1772444520906" />
                                 <div className="row g-4 mt-3">
                                     <div className="col-md-12 text-center">
-                                        <img src="https://profiwetter.ch/mos_06672.svg?t=1699802746" alt="Wind Map" className="img-fluid" style={{maxWidth:'900px'}} />
+                                        <img src="https://profiwetter.ch/mos_06672.svg?t=1699802746" alt="Wind Map" className="img-fluid" style={{maxWidth:'100%', width:'900px'}} />
                                     </div>
                                     <div className="col-md-6">
                                         <img src="https://profiwetter.ch/wind_foehn_ch_en.png" alt="Foehn Wind Map" className="img-fluid" />
