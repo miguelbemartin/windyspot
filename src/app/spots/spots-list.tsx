@@ -76,7 +76,7 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
         <>
             <NavbarLight/>
 
-            <section className="bg-cover position-relative ht-50 py-0" style={{backgroundColor:'#2b2b2b'}} data-overlay="4">
+            <section className="bg-cover position-relative ht-41 py-0" style={{backgroundColor:'#2b2b2b'}} data-overlay="4">
                 <div className="container h-100">
                     <div className="row align-items-start">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-12">
