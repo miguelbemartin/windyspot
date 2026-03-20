@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import { BsGeoAlt } from 'react-icons/bs'
 import type { SpotWithLocation } from '../lib/spots'
+import { DEFAULT_SPOT_IMAGE } from '../lib/constants'
 
 export default function ExploreListingOne({ spots }: { spots: SpotWithLocation[] }) {
   return (
@@ -13,7 +14,7 @@ export default function ExploreListingOne({ spots }: { spots: SpotWithLocation[]
                     <div className="col" key={index}>
                         <Link href={`/spots/${item.slug}`} className="text-decoration-none">
                             <div className="position-relative overflow-hidden rounded-4 explore-listing-card">
-                                <Image src={item.image} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%', objectFit:'cover'}} className="img-fluid" alt={item.title}/>
+                                <Image src={item.image || DEFAULT_SPOT_IMAGE} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%', objectFit:'cover'}} className="img-fluid" alt={item.title}/>
                                 <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{background: 'linear-gradient(transparent 0%, rgba(0,0,0,0.85) 100%)', paddingTop: '80px'}}>
                                     <h5 className="text-white fw-bold mb-1">{item.title}</h5>
                                     <p className="mb-1 small" style={{color: 'rgba(255,255,255,0.85)'}}>{item.description}</p>

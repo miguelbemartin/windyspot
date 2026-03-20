@@ -11,6 +11,7 @@ import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
 import type { SpotWithLocation, Location } from '../lib/spots'
+import { DEFAULT_SPOT_IMAGE } from '../lib/constants'
 
 import { BsGeoAlt } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
@@ -130,7 +131,7 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
                                 <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" key={index}>
                                     <Link href={`/spots/${item.slug}`} className="text-decoration-none">
                                         <div className="position-relative overflow-hidden rounded-4 explore-listing-card">
-                                            <Image src={item.image} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%', objectFit:'cover'}} className="img-fluid" alt={item.title}/>
+                                            <Image src={item.image || DEFAULT_SPOT_IMAGE} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%', objectFit:'cover'}} className="img-fluid" alt={item.title}/>
                                             <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{background: 'linear-gradient(transparent 0%, rgba(0,0,0,0.85) 100%)', paddingTop: '80px'}}>
                                                 <h5 className="text-white fw-bold mb-1">{item.title}</h5>
                                                 <p className="mb-1 small" style={{color: 'rgba(255,255,255,0.85)'}}>{item.description}</p>

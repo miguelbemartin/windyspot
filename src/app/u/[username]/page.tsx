@@ -13,6 +13,8 @@ import BackToTop from '../../components/back-to-top'
 
 import { FaLocationDot } from 'react-icons/fa6'
 import { BsThreeDots } from 'react-icons/bs'
+
+const DEFAULT_SPOT_IMAGE = 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/akira-hojo-ZxGdri2EWzk-unsplash.jpg'
 import { FaRegTrashCan } from 'react-icons/fa6'
 
 interface SpotData {
@@ -172,7 +174,7 @@ export default function UserProfile() {
 
                                                     <div className="col-xl-3 col-lg-3 col-md-4 col-sm-12 col-12">
                                                         <div className="listThumb overflow-hidden position-relative" style={{height:'80px'}}>
-                                                            <Link href={`/spots/${spot.slug}`} className="d-block h-100"><Image src={spot.image} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid object-fit-cover rounded-3" alt="Listing Img"/></Link>
+                                                            <Link href={`/spots/${spot.slug}`} className="d-block h-100"><Image src={spot.image || DEFAULT_SPOT_IMAGE} width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid object-fit-cover rounded-3" alt="Listing Img"/></Link>
                                                         </div>
                                                     </div>
 

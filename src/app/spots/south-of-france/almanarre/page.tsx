@@ -110,6 +110,16 @@ export default function Almanarre() {
                                     <div className="col-md-6">
                                         <YouTubeEmbed videoId="YK4fczY50Bk" title="Almanarre Webcam" />
                                     </div>
+                                    <div className="col-md-6">
+                                        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '8px' }}>
+                                            <iframe
+                                                src="https://www.vision-environnement.com/live/player/hyereskite.php"
+                                                title="Almanarre Kite Webcam"
+                                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                                                allowFullScreen
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             </div>

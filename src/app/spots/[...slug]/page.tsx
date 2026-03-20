@@ -14,6 +14,7 @@ import AddToMySpotsButton from '../../components/add-to-my-spots-button'
 import { EditSpotProvider, EditSpotButton, EditSpotForm } from '../../components/edit-spot-button'
 
 import { getSpotBySlug } from '../../lib/spots'
+import { DEFAULT_SPOT_IMAGE } from '../../lib/constants'
 import { FaLocationDot } from 'react-icons/fa6'
 
 interface PageProps {
@@ -86,7 +87,7 @@ export default async function SpotPage({ params }: PageProps) {
 
             <EditSpotProvider createdBy={spot.created_by}>
             <section className="position-relative ht-200 py-0" style={{ backgroundColor: '#1a2332' }} data-overlay="4">
-                {spot.image && <Image src={spot.image} alt={spot.title} fill sizes="100vw" style={{ objectFit: 'cover' }} priority />}
+                <Image src={spot.image || DEFAULT_SPOT_IMAGE} alt={spot.title} fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
                 <div className="container h-100">
                     <div className="row align-items-start">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-12">
