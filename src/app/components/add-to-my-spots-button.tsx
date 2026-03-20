@@ -2,33 +2,28 @@
 
 import { useState, useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
-import { useSupabase } from '../lib/supabase'
 
 export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
-    const { isSignedIn, user } = useUser()
-    const supabase = useSupabase()
+    const { isSignedIn } = useUser()
     const [loading, setLoading] = useState(false)
     const [added, setAdded] = useState(false)
 
     useEffect(() => {
-        if (!isSignedIn || !user) return
+        if (!isSignedIn) return
 
         async function checkIfAdded() {
-            const { data } = await supabase
-                .from('user_spots')
-                .select('spot_id')
-                .eq('user_id', user!.id)
-                .eq('spot_id', spotId)
-                .maybeSingle()
-
-            setAdded(!!data)
+            const res = await fetch('/api/my-spots')
+            if (res.ok) {
+                const data = await res.json()
+                setAdded(data.some((s: { spot_id: number }) => s.spot_id === spotId))
+            }
         }
 
         checkIfAdded()
-    }, [isSignedIn, user, supabase, spotId])
+    }, [isSignedIn, spotId])
 
     async function handleClick() {
-        if (!isSignedIn || !user) {
+        if (!isSignedIn) {
             window.location.href = '/login'
             return
         }
@@ -36,21 +31,21 @@ export default function AddToMySpotsButton({ spotId }: { spotId: number }) {
         setLoading(true)
 
         if (added) {
-            const { error } = await supabase
-                .from('user_spots')
-                .delete()
-                .eq('user_id', user.id)
-                .eq('spot_id', spotId)
-
+            const res = await fetch('/api/my-spots', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ spot_id: spotId }),
+            })
             setLoading(false)
-            if (!error) setAdded(false)
+            if (res.ok) setAdded(false)
         } else {
-            const { error } = await supabase
-                .from('user_spots')
-                .upsert({ user_id: user.id, spot_id: spotId }, { onConflict: 'user_id,spot_id' })
-
+            const res = await fetch('/api/my-spots', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ spot_id: spotId }),
+            })
             setLoading(false)
-            if (!error) setAdded(true)
+            if (res.ok) setAdded(true)
         }
     }
 
