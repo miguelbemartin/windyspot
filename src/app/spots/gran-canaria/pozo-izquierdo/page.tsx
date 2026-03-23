@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import YouTubeEmbed from '../../../components/youtube-embed'
 import WindyEmbed from '../../../components/windy-embed'
@@ -98,7 +97,7 @@ export default function PozoIzquierdo() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={27.840} lon={-15.382} />
                                 </div>
-                                <WindguruWidget spotId="36048" uid="wg_fwdg_36048_100_1772298934612" />
+
                             </div>
                             </div>
                         </div>

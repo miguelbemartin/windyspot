@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 import Descriptions from '../../../components/list-detail/descriptions'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 
 
@@ -100,7 +99,7 @@ export default function BahiaDeFormas() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={27.794} lon={-15.444} />
                                 </div>
-                                <WindguruWidget spotId="49346" uid="wg_fwdg_TODO_100_bahiadeformas" />
+
                             </div>
                             </div>
                         </div>

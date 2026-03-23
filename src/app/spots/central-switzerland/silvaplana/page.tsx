@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
@@ -98,7 +97,6 @@ export default function Silvaplana() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={46.448} lon={9.796} />
                                 </div>
-                                <WindguruWidget spotId="1584" uid="wg_fwdg_1584_100_silvaplana" />
                                 <div className="row g-4 mt-3">
                                     <div className="col-md-6">
                                         <img src="https://profiwetter.ch/wind_foehn_ch_en.png" alt="Foehn Wind Map" className="img-fluid" />

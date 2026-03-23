@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 
@@ -99,7 +98,7 @@ export default function Elafonisi() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={35.272} lon={23.541} />
                                 </div>
-                                <WindguruWidget spotId="49268" uid="wg_fwdg_49268_100_1772298934614" />
+
                             </div>
                             </div>
                         </div>

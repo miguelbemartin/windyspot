@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 
@@ -100,7 +99,7 @@ export default function Gruissan() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={43.104} lon={3.103} />
                                 </div>
-                                <WindguruWidget spotId="242" uid="wg_fwdg_242_100_gruissan" />
+
                             </div>
                             </div>
                         </div>

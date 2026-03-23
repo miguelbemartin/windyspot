@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 import WindyEmbed from '../../../components/windy-embed'
@@ -98,7 +97,7 @@ export default function Agua() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={36.030} lon={-5.620} />
                                 </div>
-                                <WindguruWidget spotId="43" uid="wg_fwdg_43_100_agua" />
+
                             </div>
                             </div>
                         </div>

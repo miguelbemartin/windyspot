@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 import YouTubeEmbed from '../../../components/youtube-embed'
@@ -99,7 +98,7 @@ export default function Sotavento() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={28.068} lon={-14.228} />
                                 </div>
-                                <WindguruWidget spotId="559365" uid="wg_fwdg_559365_sotavento" />
+
                             </div>
                             </div>
                         </div>

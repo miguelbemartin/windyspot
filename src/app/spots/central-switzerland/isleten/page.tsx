@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import YouTubeEmbed from '../../../components/youtube-embed'
 import WindyEmbed from '../../../components/windy-embed'
@@ -99,7 +98,6 @@ export default function Isleten() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={46.933} lon={8.605} />
                                 </div>
-                                <WindguruWidget spotId="988948" uid="wg_fwdg_620377_100_1772444520906" />
                                 <div className="row g-4 mt-3">
                                     <div className="col-md-12">
                                         <img src="https://profiwetter.ch/mos_06672.svg?t=1699802746" alt="Wind Map" className="img-fluid" style={{maxWidth:'100%', width:'900px'}} />

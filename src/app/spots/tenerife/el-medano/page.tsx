@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 import Descriptions from '../../../components/list-detail/descriptions'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 import YouTubeEmbed from '../../../components/youtube-embed'
@@ -100,7 +99,7 @@ export default function ElMedano() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={28.044} lon={-16.536} />
                                 </div>
-                                <WindguruWidget spotId="1279560" uid="wg_fwdg_TODO_100_elmedano" />
+
                             </div>
                             </div>
                         </div>

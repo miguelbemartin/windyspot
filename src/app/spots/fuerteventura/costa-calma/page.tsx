@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
@@ -97,7 +96,7 @@ export default function CostaCalma() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={28.157} lon={-14.228} />
                                 </div>
-                                <WindguruWidget spotId="206998" uid="wg_fwdg_206998_costa_calma" />
+
                             </div>
                             </div>
                         </div>

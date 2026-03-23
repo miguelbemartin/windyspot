@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
@@ -97,7 +96,7 @@ export default function Sisikon() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={46.940} lon={8.658} />
                                 </div>
-                                <WindguruWidget spotId="57010" uid="wg_fwdg_57010_100_sisikon" />
+
                             </div>
                             </div>
                         </div>

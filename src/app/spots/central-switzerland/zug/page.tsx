@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
@@ -98,7 +97,7 @@ export default function Zug() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={47.172} lon={8.517} />
                                 </div>
-                                <WindguruWidget spotId="57008" uid="wg_fwdg_57008_100_zug" />
+
                             </div>
                             </div>
                         </div>

@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 import WindyEmbed from '../../../components/windy-embed'
@@ -99,7 +98,6 @@ export default function Sempach() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={47.131} lon={8.192} />
                                 </div>
-                                <WindguruWidget spotId="905886" uid="wg_fwdg_TODO_100_sempach" />
                                 <div className="row g-4 mt-3">
                                     <div className="col-md-12">
                                         <img src="https://profiwetter.ch/mos_06648.svg?t=1772464868" alt="Wind Map" className="img-fluid" />

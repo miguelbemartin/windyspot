@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 import WindyEmbed from '../../../components/windy-embed'
@@ -98,7 +97,7 @@ export default function RiscoDelPaso() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={28.074} lon={-14.215} />
                                 </div>
-                                <WindguruWidget spotId="207001" uid="wg_fwdg_207001_risco_del_paso" />
+
                             </div>
                             </div>
                         </div>

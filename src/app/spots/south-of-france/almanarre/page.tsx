@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 
-import WindguruWidget from '../../../components/windguru-widget'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
 import YouTubeEmbed from '../../../components/youtube-embed'
 import WindyEmbed from '../../../components/windy-embed'
@@ -99,7 +98,7 @@ export default function Almanarre() {
                                 <div className="mb-4">
                                     <WeatherForecastTable lat={43.056} lon={6.129} />
                                 </div>
-                                <WindguruWidget spotId="501010" uid="wg_fwdg_501010_100_almanarre" />
+
                             </div>
                             </div>
                         </div>

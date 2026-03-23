@@ -244,17 +244,18 @@ export default function ForecastPage() {
                 fetch(`/api/weather?lat=${lat}&lon=${lon}&dataSets=currentWeather`).then(r => r.ok ? r.json() : null).catch(() => null),
             ])
 
-            setSpots(spotsRes)
+            const nearbySpots = spotsRes.filter((s: NearbySpot) => s.distance_km <= 70)
+            setSpots(nearbySpots)
             setLoading(false)
 
             if (weatherRes?.currentWeather) setWeather(weatherRes.currentWeather)
             setWeatherLoading(false)
 
-            console.log('Spots loaded:', spotsRes.length)
+            console.log('Spots loaded:', nearbySpots.length)
 
-            if (spotsRes.length > 0) {
+            if (nearbySpots.length > 0) {
                 const allForecasts = await Promise.all(
-                    spotsRes.map((spot: NearbySpot) =>
+                    nearbySpots.map((spot: NearbySpot) =>
                         fetch(`/api/weather?lat=${spot.lat}&lon=${spot.lon}&dataSets=forecastHourly`)
                             .then(r => {
                                 console.log(`Weather fetch ${spot.title}: status=${r.status}`)
