@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 interface HourlyForecast {
     forecastStart: string
@@ -123,7 +123,7 @@ function avgDir(hours: HourlyForecast[]): number {
     return avg
 }
 
-function buildColumns(hours: HourlyForecast[]): { dayLabels: { label: string; colSpan: number }[]; columns: Column[] } {
+function buildColumns(hours: HourlyForecast[], compactFromDay = 5): { dayLabels: { label: string; colSpan: number }[]; columns: Column[] } {
     const dayMap = new Map<string, HourlyForecast[]>()
     const dayOrder: string[] = []
     for (const h of hours) {
@@ -141,7 +141,7 @@ function buildColumns(hours: HourlyForecast[]): { dayLabels: { label: string; co
 
     dayOrder.forEach((dayKey, dayIndex) => {
         const dayHours = dayMap.get(dayKey)!
-        const isCompact = dayIndex >= 5
+        const isCompact = dayIndex >= compactFromDay
 
         if (!isCompact) {
             dayLabels.push({ label: dayKey, colSpan: dayHours.length })
@@ -198,6 +198,17 @@ export default function WeatherForecastTable({ lat, lon }: WeatherForecastTableP
     const [hours, setHours] = useState<HourlyForecast[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
+
+    const checkMobile = useCallback(() => {
+        setIsMobile(window.innerWidth < 768)
+    }, [])
+
+    useEffect(() => {
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [checkMobile])
 
     useEffect(() => {
         fetch(`/api/weather?lat=${lat}&lon=${lon}&dataSets=forecastHourly`)
@@ -216,14 +227,14 @@ export default function WeatherForecastTable({ lat, lon }: WeatherForecastTableP
     if (loading) {
         return (
             <div className="text-center py-3">
-                <div className="spinner-border spinner-border-sm text-secondary" role="status" />
+                <div className="spinner-border spinner-border-sm text-primary" role="status" />
             </div>
         )
     }
 
     if (error || hours.length === 0) return null
 
-    const { dayLabels, columns } = buildColumns(hours)
+    const { dayLabels, columns } = buildColumns(hours, isMobile ? 0 : 5)
 
     const cellBase: React.CSSProperties = {
         minWidth: '26px',
@@ -244,15 +255,16 @@ export default function WeatherForecastTable({ lat, lon }: WeatherForecastTableP
         fontSize: '10px',
         color: '#888',
         borderRight: '1px solid #eee',
+        ...(isMobile ? { display: 'none' } : {}),
     }
 
     return (
         <div>
-            <div className="overflow-auto" style={{ borderRadius: '6px', border: '1px solid #eee' }}>
-                <table style={{ borderCollapse: 'collapse', width: 'max-content', minWidth: '100%' }}>
+            <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', borderRadius: '6px', border: '1px solid #eee' }}>
+                <table className="forecast-table" style={{ borderCollapse: 'collapse' }}>
                     <thead>
                         <tr>
-                            <th style={{ ...labelStyle, background: '#fafafa', borderBottom: '1px solid #eee' }}></th>
+                            {!isMobile && <th style={{ ...labelStyle, background: '#fafafa', borderBottom: '1px solid #eee' }}></th>}
                             {dayLabels.map((day, di) => (
                                 <th
                                     key={di}

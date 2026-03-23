@@ -10273,7 +10273,7 @@ Responsiveness Start
     font-size: 1.3em;
   }
 
-  table thead {
+  table:not(.forecast-table) thead {
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -10284,19 +10284,19 @@ Responsiveness Start
     width: 1px;
   }
 
-  table tr {
+  table:not(.forecast-table) tr {
     border-bottom: 2px solid var(--bs-border-color);
     display: block;
     margin-bottom: .625em;
   }
 
-  table td {
+  table:not(.forecast-table) td {
     border-bottom: 1px solid var(--bs-border-color);
     display: block;
     text-align: right;
   }
 
-  table td::before {
+  table:not(.forecast-table) td::before {
     content: attr(data-label);
     float: left;
     font-weight: 600;
@@ -10304,7 +10304,7 @@ Responsiveness Start
     font-size: 12px;
   }
 
-  table td:last-child {
+  table:not(.forecast-table) td:last-child {
     border-bottom: 0;
   }
 

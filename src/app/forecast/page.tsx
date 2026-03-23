@@ -462,7 +462,7 @@ export default function ForecastPage() {
                                                 {dayAlerts.map((day) => {
                                                     const windSpots = day.spots.filter(s => s.isWindsurfable)
                                                     return (
-                                                        <div key={day.dateKey} className="col-6 col-md-4 col-lg-3 col-xl-2">
+                                                        <div key={day.dateKey} className="col-12 col-md-4 col-lg-3 col-xl-2">
                                                             <div
                                                                 className="card border-0 shadow-sm h-100"
                                                                 style={{
