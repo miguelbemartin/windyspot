@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { SignJWT, importPKCS8 } from 'jose'
+import { getCached, setCached } from '../../lib/api-cache'
 
 async function getWeatherKitToken() {
     const teamId = process.env.APPLE_TEAM_ID!
@@ -31,9 +32,15 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-        const token = await getWeatherKitToken()
-
         const dataSets = searchParams.get('dataSets') || 'currentWeather'
+        const cacheKey = `weather:${lat}:${lon}:${dataSets}`
+
+        const cached = await getCached(cacheKey)
+        if (cached) {
+            return NextResponse.json(cached)
+        }
+
+        const token = await getWeatherKitToken()
 
         const now = new Date()
         const end = new Date(now.getTime() + 10 * 24 * 60 * 60 * 1000)
@@ -43,10 +50,7 @@ export async function GET(request: NextRequest) {
 
         const res = await fetch(
             `https://weatherkit.apple.com/api/v1/weather/en/${lat}/${lon}?dataSets=${dataSets}${hourlyParams}`,
-            {
-                headers: { Authorization: `Bearer ${token}` },
-                next: { revalidate: 600 },
-            }
+            { headers: { Authorization: `Bearer ${token}` } }
         )
 
         if (!res.ok) {
@@ -55,6 +59,7 @@ export async function GET(request: NextRequest) {
         }
 
         const data = await res.json()
+        await setCached(cacheKey, data)
         return NextResponse.json(data)
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err)
