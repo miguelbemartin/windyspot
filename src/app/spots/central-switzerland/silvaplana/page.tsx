@@ -6,6 +6,7 @@ import Link from 'next/link'
 import NavbarLight from '../../../components/navbar/navbar-light'
 
 import WindguruWidget from '../../../components/windguru-widget'
+import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
 import BackToTop from '../../../components/back-to-top'
@@ -63,7 +64,7 @@ export default function Silvaplana() {
                                     <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                         <div className="listingCaptioninfo">
                                             <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
-                                                <h2 className="fw-semibold text-light mb-0">Silvaplana</h2>
+                                                <h1 className="fw-semibold text-light mb-0">Silvaplana</h1>
                                             </div>
                                             <div className="listingsbasicInfo">
                                                 <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
@@ -94,6 +95,9 @@ export default function Silvaplana() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
+                                <div className="mb-4">
+                                    <WeatherForecastTable lat={46.448} lon={9.796} />
+                                </div>
                                 <WindguruWidget spotId="1584" uid="wg_fwdg_1584_100_silvaplana" />
                                 <div className="row g-4 mt-3">
                                     <div className="col-md-6">

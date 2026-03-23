@@ -35,10 +35,18 @@ interface UserSpot {
     spots: SpotData
 }
 
+interface UserLocation {
+    text?: string
+    lat?: number
+    lon?: number
+}
+
 interface ProfileUser {
+    id: string
     fullName: string | null
     imageUrl: string
     username: string
+    location: UserLocation | null
 }
 
 export default function UserProfile() {
@@ -49,6 +57,20 @@ export default function UserProfile() {
   const [userSpots, setUserSpots] = useState<UserSpot[]>([])
   const [loading, setLoading] = useState(true)
   const [openMenuId, setOpenMenuId] = useState<number | null>(null)
+  const [isFollowing, setIsFollowing] = useState(false)
+  const [followersCount, setFollowersCount] = useState(0)
+  const [followingCount, setFollowingCount] = useState(0)
+  const [followLoading, setFollowLoading] = useState(false)
+  const [editingLocation, setEditingLocation] = useState(false)
+  const [locationText, setLocationText] = useState('')
+  const [locationLat, setLocationLat] = useState<number | null>(null)
+  const [locationLon, setLocationLon] = useState<number | null>(null)
+  const [geoQuery, setGeoQuery] = useState('')
+  const [geoResults, setGeoResults] = useState<{ display_name: string; lat: string; lon: string }[]>([])
+  const [geoSearching, setGeoSearching] = useState(false)
+  const [locationSaving, setLocationSaving] = useState(false)
+  const [nearbySpots, setNearbySpots] = useState<{ id: number; slug: string; title: string; image: string; distance_km: number; location_name: string }[]>([])
+  const [nearbyLoading, setNearbyLoading] = useState(false)
 
   const isOwner = currentUser?.username === username || currentUser?.id === username
 
@@ -59,11 +81,110 @@ export default function UserProfile() {
               const data = await res.json()
               setProfileUser(data.user)
               setUserSpots(data.spots)
+
+              if (data.user?.id) {
+                  const followRes = await fetch(`/api/follows?user_id=${data.user.id}`)
+                  if (followRes.ok) {
+                      const followData = await followRes.json()
+                      setIsFollowing(followData.is_following)
+                      setFollowersCount(followData.followers_count)
+                      setFollowingCount(followData.following_count)
+                  }
+              }
           }
           setLoading(false)
       }
       fetchProfile()
   }, [username])
+
+  useEffect(() => {
+      if (!profileUser?.location?.lat || !profileUser?.location?.lon) return
+      setNearbyLoading(true)
+      fetch(`/api/spots/nearby?lat=${profileUser.location.lat}&lon=${profileUser.location.lon}&limit=5`)
+          .then(r => r.ok ? r.json() : [])
+          .then(setNearbySpots)
+          .catch(() => {})
+          .finally(() => setNearbyLoading(false))
+  }, [profileUser?.location?.lat, profileUser?.location?.lon])
+
+  async function toggleFollow() {
+      if (!profileUser || isOwner || followLoading) return
+      setFollowLoading(true)
+      const res = await fetch('/api/follows', {
+          method: isFollowing ? 'DELETE' : 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ following_id: profileUser.id }),
+      })
+      if (res.ok || res.status === 409) {
+          setIsFollowing(!isFollowing)
+          setFollowersCount(prev => isFollowing ? prev - 1 : prev + 1)
+      }
+      setFollowLoading(false)
+  }
+
+  function openLocationEditor() {
+      const loc = profileUser?.location
+      setLocationText(loc?.text || '')
+      setLocationLat(loc?.lat ?? null)
+      setLocationLon(loc?.lon ?? null)
+      setGeoQuery(loc?.text || '')
+      setGeoResults([])
+      setEditingLocation(true)
+  }
+
+  async function searchGeo() {
+      const q = geoQuery.trim()
+      if (!q) return
+      setGeoSearching(true)
+      setGeoResults([])
+      try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=5`, {
+              headers: { 'User-Agent': 'WindySpot/1.0' },
+          })
+          if (res.ok) {
+              const data = await res.json()
+              setGeoResults(data)
+          }
+      } catch { /* ignore */ }
+      setGeoSearching(false)
+  }
+
+  function selectGeoResult(result: { display_name: string; lat: string; lon: string }) {
+      setLocationText(result.display_name)
+      setLocationLat(parseFloat(result.lat))
+      setLocationLon(parseFloat(result.lon))
+      setGeoQuery(result.display_name)
+      setGeoResults([])
+  }
+
+  async function saveLocation() {
+      if (!currentUser) return
+      setLocationSaving(true)
+      try {
+          await currentUser.update({
+              unsafeMetadata: {
+                  ...currentUser.unsafeMetadata,
+                  location: {
+                      text: locationText || undefined,
+                      lat: locationLat ?? undefined,
+                      lon: locationLon ?? undefined,
+                  },
+              },
+          })
+          setProfileUser(prev => prev ? {
+              ...prev,
+              location: {
+                  text: locationText || undefined,
+                  lat: locationLat ?? undefined,
+                  lon: locationLon ?? undefined,
+              },
+          } : prev)
+          setEditingLocation(false)
+      } catch {
+          // silently fail
+      }
+      setLocationSaving(false)
+  }
 
   async function removeSpot(spotId: number) {
       if (!isOwner) return
@@ -139,18 +260,134 @@ export default function UserProfile() {
                                     </div>
                                     <div className="listingInfo text-center">
                                         <h6 className="mb-0">{profileUser.fullName || profileUser.username}</h6>
+                                        {editingLocation ? (
+                                            <div className="mt-2 px-3">
+                                                <div className="input-group input-group-sm mb-1">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        placeholder="Search for a place..."
+                                                        value={geoQuery}
+                                                        onChange={(e) => setGeoQuery(e.target.value)}
+                                                        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); searchGeo() } }}
+                                                    />
+                                                    <button className="btn btn-outline-secondary" type="button" onClick={searchGeo} disabled={geoSearching || !geoQuery.trim()}>
+                                                        {geoSearching ? '...' : 'Search'}
+                                                    </button>
+                                                </div>
+                                                {geoResults.length > 0 && (
+                                                    <div className="list-group mb-1" style={{ maxHeight: '160px', overflowY: 'auto', fontSize: '12px' }}>
+                                                        {geoResults.map((r, i) => (
+                                                            <button
+                                                                key={i}
+                                                                type="button"
+                                                                className="list-group-item list-group-item-action py-1 px-2"
+                                                                onClick={() => selectGeoResult(r)}
+                                                            >
+                                                                {r.display_name}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                                {locationText && (
+                                                    <p className="text-muted mb-1" style={{ fontSize: '11px' }}>
+                                                        <FaLocationDot className="me-1" />{locationText}
+                                                    </p>
+                                                )}
+                                                <div className="d-flex gap-1 justify-content-center">
+                                                    <button className="btn btn-sm btn-primary" onClick={saveLocation} disabled={locationSaving || !locationText}>
+                                                        {locationSaving ? 'Saving...' : 'Save'}
+                                                    </button>
+                                                    <button className="btn btn-sm btn-outline-secondary" onClick={() => setEditingLocation(false)}>
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            profileUser.location?.text ? (
+                                                <p className="text-muted m-0 mt-1" style={{ fontSize: '13px' }}>
+                                                    <FaLocationDot className="me-1" />
+                                                    {profileUser.location.text}
+                                                    {isOwner && (
+                                                        <button className="btn btn-link btn-sm p-0 ms-1 text-muted" style={{ fontSize: '11px' }} onClick={openLocationEditor}>Edit</button>
+                                                    )}
+                                                </p>
+                                            ) : isOwner ? (
+                                                <button className="btn btn-link btn-sm text-muted p-0 mt-1" style={{ fontSize: '12px' }} onClick={openLocationEditor}>
+                                                    <FaLocationDot className="me-1" />Add your location
+                                                </button>
+                                            ) : null
+                                        )}
                                     </div>
                                     <div className="followButtons d-block mt-4">
                                         <div className="d-flex align-items-center justify-content-center gap-3 px-4">
                                             <div className="authPlaces text-center flex-fill">
+                                                <h5 className="mb-0 ctr">{followersCount}</h5>
+                                                <p className="text-muted m-0">Followers</p>
+                                            </div>
+                                            <div className="authPlaces text-center flex-fill">
+                                                <h5 className="mb-0 ctr">{followingCount}</h5>
+                                                <p className="text-muted m-0">Following</p>
+                                            </div>
+                                            <div className="authPlaces text-center flex-fill">
                                                 <h5 className="mb-0 ctr">{userSpots.length}</h5>
-                                                <p className="text-muted m-0">Sailed spots</p>
+                                                <p className="text-muted m-0">Spots</p>
                                             </div>
                                         </div>
+                                        {!isOwner && currentUser && (
+                                            <div className="d-flex justify-content-center mt-3 px-4">
+                                                <button
+                                                    className={`btn btn-sm rounded-pill px-4 ${isFollowing ? 'btn-outline-secondary' : 'btn-primary'}`}
+                                                    onClick={toggleFollow}
+                                                    disabled={followLoading}
+                                                >
+                                                    {isFollowing ? 'Unfollow' : 'Follow'}
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        {profileUser.location?.lat && nearbySpots.length > 0 && (
+                            <div className="card">
+                                <div className="card-body">
+                                    <h6 className="fw-medium mb-3">Nearby Spots</h6>
+                                    {nearbyLoading ? (
+                                        <div className="text-center py-3"><div className="spinner-border spinner-border-sm text-primary" role="status" /></div>
+                                    ) : (
+                                        <div className="d-flex flex-column gap-2">
+                                            {nearbySpots.map((spot) => (
+                                                <Link
+                                                    key={spot.id}
+                                                    href={`/spots/${spot.slug}`}
+                                                    className="d-flex align-items-center gap-2 text-decoration-none"
+                                                    style={{ color: '#333' }}
+                                                >
+                                                    {spot.image && (
+                                                        <Image
+                                                            src={spot.image || DEFAULT_SPOT_IMAGE}
+                                                            width={50}
+                                                            height={35}
+                                                            className="rounded-2 object-fit-cover"
+                                                            alt={spot.title}
+                                                            style={{ width: '50px', height: '35px' }}
+                                                        />
+                                                    )}
+                                                    <div style={{ flex: 1, minWidth: 0 }}>
+                                                        <div style={{ fontWeight: 600, fontSize: '13px' }}>{spot.title}</div>
+                                                        <div style={{ fontSize: '11px', color: '#777' }}>
+                                                            <FaLocationDot className="me-1" />{spot.location_name} &middot; {Math.round(spot.distance_km)} km
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
 
                     </div>
                 </div>

@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { title, description, spot_guide, location_id, new_location_name, new_location_country, windguru_forecast_id, windguru_live_station_id } = body
+    const { title, description, image, spot_guide, location_id, new_location_name, new_location_country, windguru_forecast_id, windguru_live_station_id, lat, lon } = body
 
     if (!title || !description) {
         return NextResponse.json({ error: 'Title and description are required' }, { status: 400 })
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
             title,
             slug,
             description,
-            image: '',
+            image: image || '',
             featured: false,
             location_id: finalLocationId,
             rental_place: false,
@@ -131,8 +131,8 @@ export async function POST(request: NextRequest) {
             windguru_live_station_id: windguru_live_station_id || null,
             spot_guide: spot_guide || null,
             custom_page: false,
-            lat: null,
-            lon: null,
+            lat: lat ?? null,
+            lon: lon ?? null,
             created_by: userId,
         })
         .select('*')

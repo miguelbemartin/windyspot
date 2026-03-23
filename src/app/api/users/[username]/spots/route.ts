@@ -25,11 +25,16 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
         return NextResponse.json({ error: 'Failed to fetch spots' }, { status: 500 })
     }
 
+    const locationMeta = (clerkUser.unsafeMetadata as Record<string, unknown>)?.location as
+        { text?: string; lat?: number; lon?: number } | undefined
+
     return NextResponse.json({
         user: {
+            id: clerkUser.id,
             fullName: clerkUser.fullName,
             imageUrl: clerkUser.imageUrl,
             username: clerkUser.username,
+            location: locationMeta || null,
         },
         spots: data,
     })

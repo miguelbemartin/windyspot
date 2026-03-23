@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 import WindguruWidget from '../../../components/windguru-widget'
+import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindguruLive from '../../../components/windguru-live'
 
 import WindyEmbed from '../../../components/windy-embed'
@@ -64,7 +65,7 @@ export default function Elafonisi() {
                                     <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                         <div className="listingCaptioninfo">
                                             <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
-                                                <h2 className="fw-semibold text-light mb-0">Elafonisi</h2>
+                                                <h1 className="fw-semibold text-light mb-0">Elafonisi</h1>
                                             </div>
                                             <div className="listingsbasicInfo">
                                                 <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
@@ -95,6 +96,9 @@ export default function Elafonisi() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
+                                <div className="mb-4">
+                                    <WeatherForecastTable lat={35.272} lon={23.541} />
+                                </div>
                                 <WindguruWidget spotId="49268" uid="wg_fwdg_49268_100_1772298934614" />
                             </div>
                             </div>

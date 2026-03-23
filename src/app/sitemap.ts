@@ -18,9 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   const spotPages: MetadataRoute.Sitemap = spots.map((spot) => ({
-    url: spot.custom_page
-      ? `${BASE_URL}/spots/${spot.slug}`
-      : `${BASE_URL}/spot/${spot.slug}`,
+    url: `${BASE_URL}/spots/${spot.slug}`,
     lastModified,
     changeFrequency: 'weekly',
     priority: 0.8,

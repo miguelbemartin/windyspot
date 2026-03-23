@@ -6,6 +6,7 @@ import Link from 'next/link'
 import NavbarLight from '../../../components/navbar/navbar-light'
 
 import WindguruWidget from '../../../components/windguru-widget'
+import WeatherForecastTable from '../../../components/weather-forecast-table'
 import YouTubeEmbed from '../../../components/youtube-embed'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
@@ -64,7 +65,7 @@ export default function Isleten() {
                                     <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                         <div className="listingCaptioninfo">
                                             <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
-                                                <h2 className="fw-semibold text-light mb-0">Isleten</h2>
+                                                <h1 className="fw-semibold text-light mb-0">Isleten</h1>
                                             </div>
                                             <div className="listingsbasicInfo">
                                                 <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
@@ -95,6 +96,9 @@ export default function Isleten() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                             <div className="card-body p-4 pt-2">
+                                <div className="mb-4">
+                                    <WeatherForecastTable lat={46.933} lon={8.605} />
+                                </div>
                                 <WindguruWidget spotId="988948" uid="wg_fwdg_620377_100_1772444520906" />
                                 <div className="row g-4 mt-3">
                                     <div className="col-md-12">

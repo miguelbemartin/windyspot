@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 import WindguruWidget from '../../../components/windguru-widget'
+import WeatherForecastTable from '../../../components/weather-forecast-table'
 import WindyEmbed from '../../../components/windy-embed'
 import Footer from '../../../components/footer/footer'
 import BackToTop from '../../../components/back-to-top'
@@ -62,7 +63,7 @@ export default function Falasarna() {
                                     <div className="listingFirstinfo d-flex align-items-center justify-content-start gap-3 flex-wrap">
                                         <div className="listingCaptioninfo">
                                             <div className="propertyTitlename d-flex align-items-center gap-2 mb-1">
-                                                <h2 className="fw-semibold text-light mb-0">Falasarna</h2>
+                                                <h1 className="fw-semibold text-light mb-0">Falasarna</h1>
                                             </div>
                                             <div className="listingsbasicInfo">
                                                 <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
@@ -93,6 +94,9 @@ export default function Falasarna() {
                             </div>
                             <div id="forecastPanel" className="panel-collapse collapse show">
                                 <div className="card-body p-4 pt-2">
+                                    <div className="mb-4">
+                                        <WeatherForecastTable lat={35.488} lon={23.561} />
+                                    </div>
                                     <WindguruWidget spotId="49269" uid="wg_fwdg_49269_100_falasarna" />
                                 </div>
                             </div>

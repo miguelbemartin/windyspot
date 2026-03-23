@@ -30,7 +30,7 @@ export default function BlogDetail() {
                 <div className="row justify-content-start align-items-center">
                     <div className="col-xl-7 col-lg-9 col-md-12 col-sm-12 pt-lg-0 pt-5">
                         <div className="position-relative">
-                            <h1 className="xl-heading">Latest Article</h1>
+                            <h1 className="xl-heading">{data ? data.title : 'Latest Article'}</h1>
                             <nav id="breadcrumbs" className="breadcrumbs">
                                 <ul>
                                     <li><Link href="#">Home</Link></li><MdArrowForwardIos className='ms-2'/>
@@ -55,7 +55,7 @@ export default function BlogDetail() {
                                 </div>
                                 <div className="card-body">
                                     <div className="d-inline-flex mb-2"><span className="badge badge-xs badge-primary rounded-pill">Software & Tools</span></div>
-                                    <h1 className="fs-3">{data && data.title}</h1>
+                                    <h2 className="fs-3">{data && data.title}</h2>
                                     <div className="d-flex align-items-center justify-content-start flex-wrap gap-3 mb-3">
                                         <div>By <Link href="#" className="link">Adam Michel</Link></div>
                                         <div>{data && data.date}</div>
