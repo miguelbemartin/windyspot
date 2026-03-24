@@ -55,7 +55,7 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
     const mapMarkers = useMemo(() =>
         filteredSpots
             .filter((s) => s.lat != null && s.lon != null)
-            .map((s) => ({ title: s.title, lat: s.lat!, lon: s.lon! })),
+            .map((s) => ({ title: s.title, slug: s.slug, lat: s.lat!, lon: s.lon! })),
         [filteredSpots]
     )
 

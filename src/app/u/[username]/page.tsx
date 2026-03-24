@@ -243,7 +243,7 @@ export default function UserProfile() {
             <div className="w-100">
                 <MapKitMap spots={userSpots
                     .filter((s) => s.spots.lat != null && s.spots.lon != null)
-                    .map((s) => ({ title: s.spots.title, lat: s.spots.lat!, lon: s.spots.lon! }))}
+                    .map((s) => ({ title: s.spots.title, slug: s.spots.slug, lat: s.spots.lat!, lon: s.spots.lon! }))}
                 />
             </div>
         </div>

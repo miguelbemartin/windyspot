@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 
 interface SpotMarker {
     title: string
+    slug: string
     lat: number
     lon: number
 }
@@ -58,11 +59,21 @@ export default function MapKitMap({ spots }: MapKitMapProps) {
 
             const annotations = spots.map((spot) => {
                 const coord = new window.mapkit.Coordinate(spot.lat, spot.lon)
-                return new window.mapkit.MarkerAnnotation(coord, {
+                const annotation = new window.mapkit.MarkerAnnotation(coord, {
                     title: spot.title,
                     color: '#e05565',
                     clusteringIdentifier: 'spots',
+                    callout: {
+                        calloutElementForAnnotation: () => {
+                            const el = document.createElement('a')
+                            el.href = `/spots/${spot.slug}`
+                            el.textContent = spot.title
+                            el.style.cssText = 'color:#e05565;font-weight:600;font-size:14px;text-decoration:none;padding:4px 8px;display:block;white-space:nowrap;'
+                            return el
+                        },
+                    },
                 })
+                return annotation
             })
 
             map.showItems(annotations, {
