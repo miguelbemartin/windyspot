@@ -1,4 +1,4 @@
-import { BsBackpack, BsEnvelopeAt, BsFacebook, BsInstagram, BsLinkedin, BsPatchCheck, BsPinMap, BsPinterest, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsLinkedin, BsPinterest, BsTwitter } from "react-icons/bs";
 import { FaStar } from "react-icons/fa6";
 
 export const reviewData = [
@@ -187,98 +187,6 @@ export const blogData = [
     },
 ]
 
-export const footerLink1  = ['About ListingHub','Submit Listing']
-
-export const footerLink2  = ['Trust & Safety','Investor Relations','Terms of Services','Paid Advertising','ListingHub Blog']
-
-export const footerLink3  = ['Trust & Safety','Investor Relations','Terms of Services','Paid Advertising','ListingHub Blog']
-
-export const categoryData = [
-    {
-        image:'/img/cats/catt-1.jpg',
-        icon:BsBackpack,
-        title:'Showroom',
-        list:'103 Lists'
-    },
-]
-
-export const workData = [
-    {
-        icon:BsPinMap,
-        title:'Find Your Dream Place',
-        desc:'Cicero famously orated against his political opponent Lucius wow abutere Sergius Catilina. Occasionally the first Oration.'
-    },
-    {
-        icon:BsEnvelopeAt,
-        title:'Contact Listing Owners',
-        desc:'Cicero famously orated against his political opponent Lucius wow abutere Sergius Catilina. Occasionally the first Oration.'
-    },
-    {
-        icon:BsPatchCheck,
-        title:'Make Your Reservation',
-        desc:'Cicero famously orated against his political opponent Lucius wow abutere Sergius Catilina. Occasionally the first Oration.'
-    },
-]
-export const counterData = [
-    {
-        number:145,
-        symbol:'K',
-        title:'Daily New Visitors'
-    },
-    {
-        number:670,
-        symbol:'',
-        title:'Active Listings'
-    },
-    {
-        number:22,
-        symbol:'',
-        title:'Won Awards'
-    },
-    {
-        number:642,
-        symbol:'K',
-        title:'Happy Customers'
-    },
-]
-
-export const teamData = [
-    {
-        image:'/img/team-1.jpg',
-        name:'Julia F. Mitchell',
-        position:'Chief Executive'
-    },
-    {
-        image:'/img/team-2.jpg',
-        name:'Maria P. Thomas',
-        position:'Co-Founder'
-    },
-    {
-        image:'/img/team-3.jpg',
-        name:'Willa R. Fontaine',
-        position:'Field Manager'
-    },
-    {
-        image:'/img/team-4.jpg',
-        name:'Rosa R. Anderson',
-        position:'Business Executive'
-    },
-    {
-        image:'/img/team-5.jpg',
-        name:'Jacqueline J. Miller',
-        position:'Account Manager'
-    },
-    {
-        image:'/img/team-6.jpg',
-        name:'Oralia R. Castillo',
-        position:'Writing Manager'
-    },
-    {
-        image:'/img/team-7.jpg',
-        name:'Lynda W. Ruble',
-        position:'Team Manager'
-    },
-]
 export const mostViewBlog = [
     {
         image:'/img/blog-2.jpg',
@@ -313,101 +221,16 @@ export const blogSocial = [
     BsFacebook,BsTwitter,BsInstagram,BsPinterest,BsLinkedin
 ]
 
-export const articles = [
-    {
-        title:'What are Favorites?',
-        desc:`"Favorites" is a feature that allows you to save your treasured items on Envato Market. So if you see something you like, but you’re not ready to u...`
-    },
-    {
-        title:'How Do I Add Or Change My Billing Details?',
-        desc:`"Favorites" is a feature that allows you to save your treasured items on Envato Market. So if you see something you like, but you’re not ready to u...`
-    },
-    {
-        title:'How do I change my username?',
-        desc:`"Favorites" is a feature that allows you to save your treasured items on Envato Market. So if you see something you like, but you’re not ready to u...`
-    },
-    {
-        title:'How do I change my email address?',
-        desc:`"Favorites" is a feature that allows you to save your treasured items on Envato Market. So if you see something you like, but you’re not ready to u...`
-    },
-    {
-        title:`I'm not receiving the verification email`,
-        desc:`"Favorites" is a feature that allows you to save your treasured items on Envato Market. So if you see something you like, but you’re not ready to u...`
-    },
-    {
-        title:'How do I change my password?',
-        desc:`"Favorites" is a feature that allows you to save your treasured items on Envato Market. So if you see something you like, but you’re not ready to u...`
-    },
-]
-
-export const faqData1 = [
-    {
-        id:'collapseOne',
-        title:'How to Meet ListingHub Directory Agents?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseTwo',
-        title:'Can I see Property Visualy?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseThree',
-        title:'Can We Sell it?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseFour',
-        title:'Can We Customized it According me?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseFive',
-        title:'Can We Get Any Extra Services?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-]
-export const faqData2 = [
-    {
-        id:'collapseOne2',
-        title:'Can We Refund it Within 7 Days?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseTwo2',
-        title:'Can We Pay Via PayPal Service?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseThree2',
-        title:'Will You Accept American Express Card?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseFour2',
-        title:'Will You Charge Monthly Wise?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseFive2',
-        title:'Can We Get Any Extra Services?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-]
-export const faqData3 = [
-    {
-        id:'collapseOne3',
-        title:'Realcout Agent Can Chat Online?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseTwo3',
-        title:'Can I Call Agent on Site?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-    {
-        id:'collapseThree3',
-        title:'Is This Collaborate with Oyo?',
-        desc:`In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements.`
-    },
-]
+// Stub exports for unused template pages/components
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const articles: any[] = []
+export const footerLink1: any[] = []
+export const footerLink2: any[] = []
+export const footerLink3: any[] = []
+export const teamData: any[] = []
+export const workData: any[] = []
+export const categoryData: any[] = []
+export const counterData: any[] = []
+export const faqData1: any[] = []
+export const faqData2: any[] = []
+export const faqData3: any[] = []

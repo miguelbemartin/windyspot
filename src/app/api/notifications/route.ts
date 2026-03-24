@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../lib/supabase-server'
+import { requireAuth } from '../../lib/auth'
+import { NOTIFICATIONS_PAGE_SIZE } from '../../lib/constants'
 
 export async function GET(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const cursor = request.nextUrl.searchParams.get('cursor')
 
@@ -17,7 +16,7 @@ export async function GET(request: NextRequest) {
         .select('*, user_profiles!notifications_actor_id_fkey(user_id, username, full_name, avatar_url)')
         .eq('user_id', userId)
         .order('created_at', { ascending: false })
-        .limit(20)
+        .limit(NOTIFICATIONS_PAGE_SIZE)
 
     if (cursor) {
         query = query.lt('created_at', cursor)
@@ -31,7 +30,7 @@ export async function GET(request: NextRequest) {
             .select('*')
             .eq('user_id', userId)
             .order('created_at', { ascending: false })
-            .limit(20)
+            .limit(NOTIFICATIONS_PAGE_SIZE)
 
         const { data: notifications } = cursor
             ? await fallbackQuery.lt('created_at', cursor)
@@ -47,7 +46,7 @@ export async function GET(request: NextRequest) {
             const profileMap = Object.fromEntries((profiles || []).map(p => [p.user_id, p]))
             const items = notifications.map(n => ({ ...n, actor: profileMap[n.actor_id] || null }))
 
-            const nextCursor = items.length === 20 ? items[items.length - 1].created_at : null
+            const nextCursor = items.length === NOTIFICATIONS_PAGE_SIZE ? items[items.length - 1].created_at : null
             return NextResponse.json({ items, nextCursor })
         }
 
@@ -59,15 +58,13 @@ export async function GET(request: NextRequest) {
         return { ...rest, actor: user_profiles || null }
     })
 
-    const nextCursor = items.length === 20 ? items[items.length - 1].created_at : null
+    const nextCursor = items.length === NOTIFICATIONS_PAGE_SIZE ? items[items.length - 1].created_at : null
     return NextResponse.json({ items, nextCursor })
 }
 
 export async function PATCH() {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const supabase = createAdminClient()
 

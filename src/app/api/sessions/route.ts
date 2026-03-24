@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../lib/supabase-server'
 import { fanoutToFollowers } from '../../lib/fanout'
-
-const VALID_TYPES = ['windsurfing', 'kitesurfing', 'windfoiling', 'wingfoiling', 'parawing']
+import { requireAuth } from '../../lib/auth'
+import { SPORT_TYPES } from '../../lib/constants'
 
 export async function POST(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const body = await request.json()
     const { spot_id, type, duration_minutes, avg_wind_kts, max_speed_kts, distance_km, notes } = body
@@ -18,8 +15,8 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'spot_id and type are required' }, { status: 400 })
     }
 
-    if (!VALID_TYPES.includes(type)) {
-        return NextResponse.json({ error: `type must be one of: ${VALID_TYPES.join(', ')}` }, { status: 400 })
+    if (!SPORT_TYPES.includes(type)) {
+        return NextResponse.json({ error: `type must be one of: ${SPORT_TYPES.join(', ')}` }, { status: 400 })
     }
 
     const supabase = createAdminClient()

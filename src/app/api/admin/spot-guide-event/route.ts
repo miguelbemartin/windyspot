@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../../lib/supabase-server'
-
-const SYSTEM_ACTOR = 'system_windyspot'
+import { requireAuth } from '../../../lib/auth'
+import { SYSTEM_ACTOR } from '../../../lib/constants'
 
 export async function POST(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const { spot_id, title, description, image_url } = await request.json()
     if (!spot_id || !title) {

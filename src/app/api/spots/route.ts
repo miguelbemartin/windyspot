@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { getSpots } from '../../lib/spots'
 import { createAdminClient } from '../../lib/supabase-server'
+import { requireAuth } from '../../lib/auth'
 
 export async function GET() {
     const spots = await getSpots()
@@ -9,10 +9,8 @@ export async function GET() {
 }
 
 export async function PATCH(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const body = await request.json()
     const { id, title, description, spot_guide, windguru_forecast_id, windguru_live_station_id } = body
@@ -59,10 +57,8 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const body = await request.json()
     const { title, description, image, spot_guide, location_id, new_location_name, new_location_country, windguru_forecast_id, windguru_live_station_id, lat, lon } = body

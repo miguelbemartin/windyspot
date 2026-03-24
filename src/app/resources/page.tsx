@@ -10,8 +10,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
-
-const ITEMS_PER_PAGE = 6
+import { RESOURCES_PAGE_SIZE } from '../lib/constants'
 
 export const metadata: Metadata = {
     title: 'Resources - Windy Spot',
@@ -32,10 +31,10 @@ interface Props {
 
 export default async function Resources({ searchParams }: Props) {
     const { page } = await searchParams
-    const totalPages = Math.ceil(resourcesData.length / ITEMS_PER_PAGE)
+    const totalPages = Math.ceil(resourcesData.length / RESOURCES_PAGE_SIZE)
     const currentPage = Math.min(Math.max(1, Number(page) || 1), totalPages)
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
-    const paginatedData = resourcesData.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+    const startIndex = (currentPage - 1) * RESOURCES_PAGE_SIZE
+    const paginatedData = resourcesData.slice(startIndex, startIndex + RESOURCES_PAGE_SIZE)
 
     const pageLink = (p: number) => p === 1 ? '/resources' : `/resources?page=${p}`
 

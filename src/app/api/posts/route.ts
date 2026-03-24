@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../lib/supabase-server'
 import { fanoutToFollowers } from '../../lib/fanout'
+import { requireAuth } from '../../lib/auth'
 
 export async function POST(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const body = await request.json()
     const { text, image_url, video_url } = body
@@ -39,10 +37,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const { id, text } = await request.json()
     if (!id) {
@@ -80,10 +76,8 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const { id } = await request.json()
     if (!id) {

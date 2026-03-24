@@ -124,6 +124,7 @@ export default function FeedPage() {
     const [newPostText, setNewPostText] = useState('')
     const [posting, setPosting] = useState(false)
     const [composerOpen, setComposerOpen] = useState(false)
+    const [activeTab, setActiveTab] = useState<'you' | 'community' | 'all'>('all')
     const [newItemsCount, setNewItemsCount] = useState(0)
     const [editingId, setEditingId] = useState<string | null>(null)
     const [editText, setEditText] = useState('')
@@ -143,21 +144,30 @@ export default function FeedPage() {
         await fetch('/api/user-profile', { method: 'POST' })
     }, [])
 
-    const fetchFeed = useCallback(async (cursor?: string) => {
-        const url = cursor ? `/api/feed?cursor=${encodeURIComponent(cursor)}` : '/api/feed'
+    const fetchFeed = useCallback(async (cursor?: string, scope?: string) => {
+        const params = new URLSearchParams()
+        if (cursor) params.set('cursor', cursor)
+        params.set('scope', scope || activeTab)
+        const url = `/api/feed?${params.toString()}`
         const res = await fetch(url)
         if (!res.ok) return { items: [], nextCursor: null }
         return res.json()
-    }, [])
+    }, [activeTab])
 
     useEffect(() => {
         syncProfile()
-        fetchFeed().then(data => {
+    }, [syncProfile])
+
+    useEffect(() => {
+        setLoading(true)
+        setFeed([])
+        setNextCursor(null)
+        fetchFeed(undefined, activeTab).then(data => {
             setFeed(data.items || [])
             setNextCursor(data.nextCursor)
             setLoading(false)
         })
-    }, [syncProfile, fetchFeed])
+    }, [activeTab, fetchFeed])
 
     useEffect(() => {
         if (!user?.id) return
@@ -366,6 +376,19 @@ export default function FeedPage() {
                         <div className="row justify-content-center">
                             <div className="col-xl-7 col-lg-8 col-md-10 col-12">
 
+                                <div className="d-flex gap-2 mb-4">
+                                    {(['you', 'community', 'all'] as const).map(tab => (
+                                        <button
+                                            key={tab}
+                                            className={`btn btn-sm rounded-pill px-3 ${activeTab === tab ? 'btn-dark' : 'btn-outline-secondary'}`}
+                                            onClick={() => setActiveTab(tab)}
+                                            disabled={tab === 'community'}
+                                        >
+                                            {tab === 'you' ? 'You' : tab === 'community' ? 'Local community' : 'All'}
+                                        </button>
+                                    ))}
+                                </div>
+
                                 <div className="card border-0 rounded-4 mb-4" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                                     <div className="card-body p-3">
                                         <div className="d-flex gap-3 align-items-start">
@@ -465,8 +488,8 @@ export default function FeedPage() {
 
                                 {!loading && feed.length === 0 && (
                                     <div className="text-center py-5 text-muted">
-                                        <p className="fs-5">Your feed is empty</p>
-                                        <p>Follow other windsurfers or share your first post!</p>
+                                        <p className="fs-5">{activeTab === 'you' ? 'No activity yet' : 'Your feed is empty'}</p>
+                                        <p>{activeTab === 'you' ? 'Log a session or share a post to see your activity here.' : 'Follow other windsurfers or share your first post!'}</p>
                                     </div>
                                 )}
 

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../../lib/supabase-server'
 import { createNotification } from '../../../lib/notifications'
+import { requireAuth } from '../../../lib/auth'
 
 export async function GET(request: NextRequest) {
     const feedItemId = request.nextUrl.searchParams.get('feed_item_id')
@@ -25,10 +25,8 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const { feed_item_id, text } = await request.json()
 

@@ -1,25 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../lib/supabase-server'
-
-const PAGE_SIZE = 10
+import { requireAuth } from '../../lib/auth'
+import { FEED_PAGE_SIZE } from '../../lib/constants'
 
 export async function GET(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const cursor = request.nextUrl.searchParams.get('cursor')
+    const scope = request.nextUrl.searchParams.get('scope') || 'all'
 
     const supabase = createAdminClient()
 
     let query = supabase
         .from('feed_items')
         .select('*')
-        .eq('user_id', userId)
         .order('created_at', { ascending: false })
-        .limit(PAGE_SIZE)
+        .limit(FEED_PAGE_SIZE)
+
+    if (scope === 'you') {
+        query = query.eq('actor_id', userId)
+    } else {
+        query = query.eq('user_id', userId)
+    }
 
     if (cursor) {
         query = query.lt('created_at', cursor)
@@ -70,7 +73,7 @@ export async function GET(request: NextRequest) {
         }
     })
 
-    const nextCursor = feedItems.length === PAGE_SIZE
+    const nextCursor = feedItems.length === FEED_PAGE_SIZE
         ? feedItems[feedItems.length - 1].created_at
         : null
 

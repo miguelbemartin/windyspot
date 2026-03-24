@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../lib/supabase-server'
 import { createNotification } from '../../lib/notifications'
-
-const BACKFILL_LIMIT = 50
+import { requireAuth } from '../../lib/auth'
+import { FOLLOW_BACKFILL_LIMIT } from '../../lib/constants'
 
 export async function GET(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const targetUserId = request.nextUrl.searchParams.get('user_id')
     if (!targetUserId) {
@@ -32,10 +29,8 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const { following_id } = await request.json()
     if (!following_id) {
@@ -67,7 +62,7 @@ export async function POST(request: NextRequest) {
         .eq('user_id', following_id)
         .eq('actor_id', following_id)
         .order('created_at', { ascending: false })
-        .limit(BACKFILL_LIMIT)
+        .limit(FOLLOW_BACKFILL_LIMIT)
 
     if (recentItems && recentItems.length > 0) {
         const backfillRows = recentItems.map(item => ({
@@ -84,10 +79,8 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-    const { userId } = await auth()
-    if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    const { userId, response } = await requireAuth()
+    if (response) return response
 
     const { following_id } = await request.json()
     if (!following_id) {
