@@ -10,7 +10,7 @@ import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { BsHeart, BsHeartFill, BsChatDots, BsWind, BsImage, BsThreeDots, BsPencil } from 'react-icons/bs'
+import { BsHeart, BsHeartFill, BsChatDots, BsWind, BsImage, BsThreeDots, BsPencil, BsUpload } from 'react-icons/bs'
 import { FaRegTrashCan } from 'react-icons/fa6'
 import { FaRegCompass } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -31,6 +31,8 @@ interface SessionContent {
     max_speed_kts: number | null
     distance_km: number | null
     notes: string | null
+    track_url: string | null
+    track_thumbnail_url: string | null
     spots: { id: number; title: string; slug: string; image: string; locations: { name: string } } | null
 }
 
@@ -376,18 +378,20 @@ export default function FeedPage() {
                         <div className="row justify-content-center">
                             <div className="col-xl-7 col-lg-8 col-md-10 col-12">
 
-                                <div className="d-flex gap-2 mb-4">
-                                    {(['you', 'community', 'all'] as const).map(tab => (
-                                        <button
-                                            key={tab}
-                                            className={`btn btn-sm rounded-pill px-3 ${activeTab === tab ? 'btn-dark' : 'btn-outline-secondary'}`}
-                                            onClick={() => setActiveTab(tab)}
-                                            disabled={tab === 'community'}
-                                        >
-                                            {tab === 'you' ? 'You' : tab === 'community' ? 'Local community' : 'All'}
-                                        </button>
+                                <ul className="nav nav-tabs mb-4 border-bottom">
+                                    {([['you', 'You'], ['community', 'Local community'], ['all', 'All']] as const).map(([key, label]) => (
+                                        <li key={key} className="nav-item">
+                                            <button
+                                                className={`nav-link ${activeTab === key ? 'active' : ''} ${key === 'community' ? 'text-muted' : ''}`}
+                                                onClick={() => setActiveTab(key)}
+                                                disabled={key === 'community'}
+                                                style={{ border: 'none', borderBottom: activeTab === key ? '2px solid var(--bs-primary)' : '2px solid transparent', background: 'none' }}
+                                            >
+                                                {label}
+                                            </button>
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
 
                                 <div className="card border-0 rounded-4 mb-4" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                                     <div className="card-body p-3">
@@ -448,6 +452,12 @@ export default function FeedPage() {
                                                             >
                                                                 <BsImage size={14} /> Photo
                                                             </button>
+                                                            <Link
+                                                                href="/sessions/import"
+                                                                className="btn btn-sm btn-light rounded-pill d-flex align-items-center gap-1 text-decoration-none"
+                                                            >
+                                                                <BsUpload size={14} /> Import GPX
+                                                            </Link>
                                                         </div>
                                                         <div className="d-flex gap-2">
                                                             <button
@@ -585,18 +595,31 @@ export default function FeedPage() {
                                                 const session = item.content as SessionContent
                                                 const spot = session.spots
                                                 return (
+                                                    <Link href={`/sessions/${session.id}`} className="text-decoration-none text-dark">
                                                     <div className="mb-3">
                                                         {session.notes && <p className="mb-3">{session.notes}</p>}
-                                                        {spot?.image && (
+                                                        {session.track_thumbnail_url ? (
+                                                            <div className="mb-3">
+                                                                <div className="rounded-3 overflow-hidden">
+                                                                    <Image src={session.track_thumbnail_url} width={800} height={400} alt="Session track" sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: 'auto' }} />
+                                                                </div>
+                                                                {spot && (
+                                                                    <div className="d-flex align-items-center gap-1 mt-2">
+                                                                        <FaLocationDot className="text-primary" size={12} />
+                                                                        <span className="fw-medium" style={{ fontSize: '0.85rem' }}>{spot.title}</span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        ) : spot?.image ? (
                                                             <div className="position-relative rounded-3 overflow-hidden mb-3" style={{ height: '200px' }}>
                                                                 <Image src={spot.image} fill className="object-fit-cover" alt={spot.title} sizes="(max-width: 768px) 100vw, 600px" />
                                                                 <div className="position-absolute bottom-0 start-0 w-100 p-3" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.7))' }}>
-                                                                    <Link href={`/spots/${spot.slug}`} className="text-white text-decoration-none fw-semibold">
+                                                                    <span className="text-white fw-semibold">
                                                                         <FaLocationDot className="me-1" />{spot.title}
-                                                                    </Link>
+                                                                    </span>
                                                                 </div>
                                                             </div>
-                                                        )}
+                                                        ) : null}
                                                         <div className="row g-2">
                                                             <div className="col-6 col-md-3">
                                                                 <div className="bg-light rounded-3 p-2 text-center">
@@ -624,6 +647,7 @@ export default function FeedPage() {
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    </Link>
                                                 )
                                             })()}
 

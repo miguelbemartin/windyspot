@@ -227,6 +227,21 @@ export default function NavbarLight() {
                             </li>
                         </ul>
 
+                        <ul className="nav-menu">
+                            {/* <li className={`${current === '/feed' ? 'active' : ''}`}>
+                                <Link href="/feed">Activity</Link>
+                            </li> */}
+                            <li className={`${current === '/forecast' ? 'active' : ''}`}>
+                                <Link href="/forecast">Forecast</Link>
+                            </li>
+                            <li className={`${current === '/spots' ? 'active' : ''}`}>
+                                <Link href="/spots">Explore</Link>
+                            </li>
+                            <li className={`${current === '/profile' ? 'active' : ''}`}>
+                                <Link href="/profile">Profile</Link>
+                            </li>
+                        </ul>
+
                         <ul className="nav-menu align-to-right">
                             <SignedOut>
                                 <li className="d-flex align-items-center px-0 mt-2">

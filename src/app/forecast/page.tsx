@@ -294,12 +294,9 @@ export default function ForecastPage() {
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-11 col-md-12">
 
-                            <div className="mb-4 mt-5">
-                                <h3 className="fw-bold">Forecast</h3>
+                            <div className="mb-4 mt-3">
                                 <p className="text-muted">
-                                    {locationText
-                                        ? <>Current conditions in <strong>{locationText}</strong></>
-                                        : 'Wind forecast for the spots closest to you.'}
+
                                 </p>
                             </div>
 
@@ -311,7 +308,6 @@ export default function ForecastPage() {
                                 </div>
                             ) : (
                                 <>
-                                    <h5 className="fw-semibold mb-3">Current Weather</h5>
                                     {weatherLoading ? (
                                         <div className="d-flex flex-column align-items-center justify-content-center mb-4" style={{ minHeight: '160px' }}>
                                             <div className="spinner-border spinner-border-sm text-primary" role="status" />
@@ -322,6 +318,10 @@ export default function ForecastPage() {
                                             <div className="card-body">
                                                 <div className="d-flex align-items-center justify-content-between mb-3">
                                                     <div>
+                                                        <p>{locationText
+                                                            ? <>Current conditions in <strong>{locationText}</strong></>
+                                                            : 'Wind forecast for the spots closest to you.'}
+                                                        </p>
                                                         <h5 className="mb-1 d-flex align-items-center gap-2">
                                                             <FaCloudSun className="text-warning" />
                                                             {conditionLabel(weather.conditionCode)}

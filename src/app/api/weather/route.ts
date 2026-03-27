@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { SignJWT, importPKCS8 } from 'jose'
 import { getCached, setCached } from '../../lib/api-cache'
+import { rateLimit } from '../../lib/rate-limit'
 
 async function getWeatherKitToken() {
     const teamId = process.env.APPLE_TEAM_ID!
@@ -31,6 +32,10 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: 'lat and lon are required' }, { status: 400 })
     }
 
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
+    const limited = rateLimit(`weather:${ip}`, { limit: 30, windowMs: 60_000 })
+    if (limited) return limited
+
     try {
         const dataSets = searchParams.get('dataSets') || 'currentWeather'
         const cacheKey = `weather:${lat}:${lon}:${dataSets}`
@@ -54,16 +59,14 @@ export async function GET(request: NextRequest) {
         )
 
         if (!res.ok) {
-            const text = await res.text()
-            return NextResponse.json({ error: 'WeatherKit request failed', detail: text }, { status: res.status })
+            return NextResponse.json({ error: 'WeatherKit request failed' }, { status: 502 })
         }
 
         const data = await res.json()
         await setCached(cacheKey, data)
         return NextResponse.json(data)
     } catch (err) {
-        const message = err instanceof Error ? err.message : String(err)
-        console.error('WeatherKit error:', message)
-        return NextResponse.json({ error: 'Failed to fetch weather', detail: message }, { status: 500 })
+        console.error('WeatherKit error:', err instanceof Error ? err.message : String(err))
+        return NextResponse.json({ error: 'Failed to fetch weather' }, { status: 500 })
     }
 }

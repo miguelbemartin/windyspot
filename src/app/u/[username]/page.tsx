@@ -8,6 +8,7 @@ import { useUser } from '@clerk/nextjs'
 
 import NavbarLight from '../../components/navbar/navbar-light'
 import MapKitMap from '../../components/mapkit-map'
+import ActivityGraph from '../../components/activity-graph'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'
 
@@ -71,6 +72,7 @@ export default function UserProfile() {
   const [locationSaving, setLocationSaving] = useState(false)
   const [nearbySpots, setNearbySpots] = useState<{ id: number; slug: string; title: string; image: string; distance_km: number; location_name: string }[]>([])
   const [nearbyLoading, setNearbyLoading] = useState(false)
+  const [activity, setActivity] = useState<Record<string, number>>({})
 
   const isOwner = currentUser?.username === username || currentUser?.id === username
 
@@ -90,6 +92,12 @@ export default function UserProfile() {
                       setFollowersCount(followData.followers_count)
                       setFollowingCount(followData.following_count)
                   }
+              }
+
+              const activityRes = await fetch(`/api/users/${username}/activity`)
+              if (activityRes.ok) {
+                  const activityData = await activityRes.json()
+                  setActivity(activityData.activity)
               }
           }
           setLoading(false)
@@ -394,6 +402,13 @@ export default function UserProfile() {
 
                 <div className="col-xl-8 col-lg-8 col-md-12 pt-lg-0 pt-5">
                     <div className="authorBoxesGroups d-flex align-items-start flex-column gap-4 w-100">
+
+                        <div className="card w-100">
+                            <div className="card-body">
+                                <h6 className="fw-medium mb-3">Activity</h6>
+                                <ActivityGraph activity={activity} />
+                            </div>
+                        </div>
 
                         <div className="singleauthorBox d-block w-100">
 
