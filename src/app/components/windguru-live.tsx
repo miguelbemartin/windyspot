@@ -1,40 +1,18 @@
-'use client'
-import { useEffect, useRef } from 'react'
-
 interface WindguruLiveProps {
   spotId: string
   uid: string
 }
 
 export default function WindguruLive({ spotId, uid }: WindguruLiveProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const initialized = useRef(false)
+  const src = `https://www.windguru.cz/wglive-iframe.php?s=${spotId}&wj=knots&tj=c&m=3&ai=0&gsize=400&msize=400&show=n,g,c&direct=1`
 
-  useEffect(() => {
-    if (initialized.current) return
-    initialized.current = true
-
-    const container = containerRef.current
-    if (!container) return
-
-    const arg = [
-      `spot=${spotId}`,
-      `uid=${uid}`,
-      'direct=1',
-      'wj=knots',
-      'tj=c',
-      'avg_min=0',
-      'gsize=400',
-      'msize=400',
-      'm=3',
-      'ai=0',
-      'show=n,g,c',
-    ]
-    const script = document.createElement('script')
-    script.src = 'https://www.windguru.cz/js/wglive.php?' + arg.join('&')
-    script.id = uid
-    container.appendChild(script)
-  }, [spotId, uid])
-
-  return <div ref={containerRef} />
+  return (
+    <iframe
+      id={`wglive-iframe-${uid}`}
+      src={src}
+      scrolling="no"
+      seamless
+      style={{ width: '100%', border: 'none', height: '530px' }}
+    />
+  )
 }
