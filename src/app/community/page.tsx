@@ -30,6 +30,7 @@ interface SessionContent {
     duration_minutes: number | null
     avg_wind_kts: number | null
     max_speed_kts: number | null
+    max_hr: number | null
     distance_km: number | null
     notes: string | null
     track_url: string | null
