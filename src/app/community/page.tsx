@@ -3,14 +3,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useUser, RedirectToSignIn, SignedIn, SignedOut } from '@clerk/nextjs'
+import { useUser, SignedIn, SignedOut } from '@clerk/nextjs'
 
 import { useSupabase } from '../lib/supabase'
 import NavbarLight from '../components/navbar/navbar-light'
+import SessionCard from '../components/session-card'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { BsHeart, BsHeartFill, BsChatDots, BsWind, BsImage, BsThreeDots, BsPencil, BsUpload } from 'react-icons/bs'
+import { BsHeart, BsHeartFill, BsChatDots, BsWind, BsImage, BsThreeDots, BsPencil, BsUpload, BsPeople, BsCamera, BsGlobe } from 'react-icons/bs'
 import { FaRegTrashCan } from 'react-icons/fa6'
 import { FaRegCompass } from 'react-icons/fa'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -106,13 +107,6 @@ function activityLabel(type: string, sessionType?: string) {
     }
 }
 
-function formatDuration(minutes: number | null): string {
-    if (!minutes) return '-'
-    const h = Math.floor(minutes / 60)
-    const m = minutes % 60
-    return h > 0 ? `${h}h ${m.toString().padStart(2, '0')}min` : `${m}min`
-}
-
 export default function FeedPage() {
     const { user } = useUser()
     const supabase = useSupabase()
@@ -126,7 +120,7 @@ export default function FeedPage() {
     const [newPostText, setNewPostText] = useState('')
     const [posting, setPosting] = useState(false)
     const [composerOpen, setComposerOpen] = useState(false)
-    const [activeTab, setActiveTab] = useState<'you' | 'community' | 'all'>('all')
+    const [activeTab, setActiveTab] = useState<'community' | 'all'>('all')
     const [newItemsCount, setNewItemsCount] = useState(0)
     const [editingId, setEditingId] = useState<string | null>(null)
     const [editText, setEditText] = useState('')
@@ -379,7 +373,7 @@ export default function FeedPage() {
                             <div className="col-xl-7 col-lg-8 col-md-10 col-12">
 
                                 <ul className="nav nav-tabs mb-4 border-bottom">
-                                    {([['you', 'You'], ['community', 'Local community'], ['all', 'All']] as const).map(([key, label]) => (
+                                    {([['all', 'All'], ['community', 'Local community']] as const).map(([key, label]) => (
                                         <li key={key} className="nav-item">
                                             <button
                                                 className={`nav-link ${activeTab === key ? 'active' : ''} ${key === 'community' ? 'text-muted' : ''}`}
@@ -498,8 +492,8 @@ export default function FeedPage() {
 
                                 {!loading && feed.length === 0 && (
                                     <div className="text-center py-5 text-muted">
-                                        <p className="fs-5">{activeTab === 'you' ? 'No activity yet' : 'Your feed is empty'}</p>
-                                        <p>{activeTab === 'you' ? 'Log a session or share a post to see your activity here.' : 'Follow other windsurfers or share your first post!'}</p>
+                                        <p className="fs-5">Your feed is empty</p>
+                                        <p>Follow other windsurfers or share your first post!</p>
                                     </div>
                                 )}
 
@@ -591,65 +585,9 @@ export default function FeedPage() {
                                                 </>
                                             )}
 
-                                            {item.type === 'session' && (item.content as SessionContent) && (() => {
-                                                const session = item.content as SessionContent
-                                                const spot = session.spots
-                                                return (
-                                                    <Link href={`/sessions/${session.id}`} className="text-decoration-none text-dark">
-                                                    <div className="mb-3">
-                                                        {session.notes && <p className="mb-3">{session.notes}</p>}
-                                                        {session.track_thumbnail_url ? (
-                                                            <div className="mb-3">
-                                                                <div className="rounded-3 overflow-hidden">
-                                                                    <Image src={session.track_thumbnail_url} width={800} height={400} alt="Session track" sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: 'auto' }} />
-                                                                </div>
-                                                                {spot && (
-                                                                    <div className="d-flex align-items-center gap-1 mt-2">
-                                                                        <FaLocationDot className="text-primary" size={12} />
-                                                                        <span className="fw-medium" style={{ fontSize: '0.85rem' }}>{spot.title}</span>
-                                                                    </div>
-                                                                )}
-                                                            </div>
-                                                        ) : spot?.image ? (
-                                                            <div className="position-relative rounded-3 overflow-hidden mb-3" style={{ height: '200px' }}>
-                                                                <Image src={spot.image} fill className="object-fit-cover" alt={spot.title} sizes="(max-width: 768px) 100vw, 600px" />
-                                                                <div className="position-absolute bottom-0 start-0 w-100 p-3" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.7))' }}>
-                                                                    <span className="text-white fw-semibold">
-                                                                        <FaLocationDot className="me-1" />{spot.title}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        ) : null}
-                                                        <div className="row g-2">
-                                                            <div className="col-6 col-md-3">
-                                                                <div className="bg-light rounded-3 p-2 text-center">
-                                                                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>Duration</div>
-                                                                    <div className="fw-semibold">{formatDuration(session.duration_minutes)}</div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-6 col-md-3">
-                                                                <div className="bg-light rounded-3 p-2 text-center">
-                                                                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>Avg Wind</div>
-                                                                    <div className="fw-semibold">{session.avg_wind_kts ? `${session.avg_wind_kts} kts` : '-'}</div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-6 col-md-3">
-                                                                <div className="bg-light rounded-3 p-2 text-center">
-                                                                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>Max Speed</div>
-                                                                    <div className="fw-semibold">{session.max_speed_kts ? `${session.max_speed_kts} kts` : '-'}</div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="col-6 col-md-3">
-                                                                <div className="bg-light rounded-3 p-2 text-center">
-                                                                    <div className="text-muted" style={{ fontSize: '0.75rem' }}>Distance</div>
-                                                                    <div className="fw-semibold">{session.distance_km ? `${session.distance_km} km` : '-'}</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </Link>
-                                                )
-                                            })()}
+                                            {item.type === 'session' && (item.content as SessionContent) && (
+                                                <SessionCard session={item.content as SessionContent} />
+                                            )}
 
                                             {item.type === 'spot_guide' && (item.content as SpotGuideContent) && (() => {
                                                 const sg = item.content as SpotGuideContent
@@ -785,7 +723,84 @@ export default function FeedPage() {
                 <BackToTop />
             </SignedIn>
             <SignedOut>
-                <RedirectToSignIn />
+                <NavbarLight />
+
+                <section className="bg-light pt-5 mt-5" style={{ minHeight: '100vh' }}>
+                    <div className="container">
+
+                        <div className="row align-items-center justify-content-center">
+                            <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
+                                <div className="secHeading-wrap text-center">
+                                    <h3 className="sectionHeading">Join the <span className="text-primary">Community</span></h3>
+                                    <p>Connect with wind lovers around the world. <br />Share your sessions, post photos, and follow riders whose spots inspire you.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row justify-content-center">
+                            <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
+
+                                <div className="row g-3 mb-5 text-start">
+                                    <div className="col-md-6">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4">
+                                                <BsWind className="text-primary mb-2" size={24} />
+                                                <h6 className="fw-semibold">Share Sessions</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    Post your sessions with stats, GPS tracks, and spot info. Let others see where and how you ride.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4">
+                                                <BsCamera className="text-primary mb-2" size={24} />
+                                                <h6 className="fw-semibold">Photos & Posts</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    Share photos from the water, write about conditions, or just tell the story of a great day on the board.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4">
+                                                <BsPeople className="text-primary mb-2" size={24} />
+                                                <h6 className="fw-semibold">Follow Riders</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    Follow other riders and build your feed. Discover new spots through the sessions others share.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4">
+                                                <BsGlobe className="text-primary mb-2" size={24} />
+                                                <h6 className="fw-semibold">Spot Guides & Forecasts</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    See spot guides and wind forecasts shared by the community. Learn from locals who know the conditions best.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <Link href="/login" className="btn btn-primary rounded-pill px-4 py-2 me-2">
+                                    Log in
+                                </Link>
+                                <Link href="/register" className="btn btn-outline-primary rounded-pill px-4 py-2">
+                                    Create a free account
+                                </Link>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <Footer />
+                <BackToTop />
             </SignedOut>
         </>
     )

@@ -193,8 +193,8 @@ export default function SessionDetailPage() {
                         <div className="row justify-content-center">
                             <div className="col-xl-8 col-lg-10 col-12">
 
-                                <Link href="/feed" className="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3">
-                                    <BsArrowLeft /> Back to feed
+                                <Link href="/community" className="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3">
+                                    <BsArrowLeft /> Back to community
                                 </Link>
 
                                 {loading && (

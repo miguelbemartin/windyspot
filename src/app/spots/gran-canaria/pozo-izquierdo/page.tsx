@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import SpotLegend from '../../../components/spot-legend'
 
 import NavbarLight from '../../../components/navbar/navbar-light'
 import WeatherForecastTable from '../../../components/weather-forecast-table'
@@ -146,6 +147,8 @@ export default function PozoIzquierdo() {
                                 </div>
                             </div>
                         </div>
+
+                        <SpotLegend createdBy="user_3AB9Qy8Jp6dB0b9JEvR2FUIrTG8" />
 
                     </div>
                 </div>

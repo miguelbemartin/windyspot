@@ -28,17 +28,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!resource) return { title: 'Resource Not Found' }
     const url = `https://www.windyspot.com/resources/${resource.slug}`
     return {
-        title: `${resource.title} - Windy Spot`,
+        title: resource.title,
         description: resource.desc,
         openGraph: {
-            title: `${resource.title} - Windy Spot`,
+            title: resource.title,
             description: resource.desc,
             url,
+            type: 'article',
+            publishedTime: resource.date,
+            authors: ['Windy Spot'],
             images: [{ url: resource.image, width: 1200, height: 630, alt: resource.title }],
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${resource.title} - Windy Spot`,
+            title: resource.title,
             description: resource.desc,
             images: [resource.image],
         },
@@ -60,15 +63,57 @@ export default async function ResourceDetail({ params }: Props) {
     const others = resourcesData.filter((r) => r.slug !== slug && r.tag !== resource.tag)
     const relatedArticles = [...sameTag, ...others].slice(0, 3)
 
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: resource.title,
+        description: resource.desc,
+        image: resource.image,
+        datePublished: resource.date,
+        author: {
+            '@type': 'Organization',
+            name: 'Windy Spot',
+            url: 'https://www.windyspot.com',
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Windy Spot',
+            url: 'https://www.windyspot.com',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-logo.png',
+            },
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://www.windyspot.com/resources/${resource.slug}`,
+        },
+    }
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <NavbarLight/>
 
-            <section className="bg-cover position-relative ht-200 py-0" style={{backgroundImage:`url('${resource.image}')`}} data-overlay="5">
-                <div className="container h-100">
+            <section className="position-relative" style={{ height: '320px' }}>
+                <Image
+                    src={resource.image}
+                    fill
+                    className="object-fit-cover"
+                    alt={resource.title}
+                    sizes="100vw"
+                    priority
+                />
+                <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: 'linear-gradient(transparent 30%, rgba(0,0,0,0.6))' }} />
+                <div className="container position-relative h-100">
                     <div className="row align-items-end h-100">
                         <div className="col-xl-8 col-lg-10 col-md-12 col-12 pb-4">
-                            <h1 className="text-white fw-bold mb-2">{resource.title}</h1>
+                            <span className="badge bg-primary rounded-pill mb-2">{resource.tag}</span>
+                            <h1 className="text-white fw-bold mb-0">{resource.title}</h1>
                         </div>
                     </div>
                 </div>
@@ -79,20 +124,20 @@ export default async function ResourceDetail({ params }: Props) {
                     <div className="row justify-content-center">
                         <div className="col-xl-8 col-lg-10 col-md-12">
 
-                            <div className="card shadow-sm rounded-4 mb-4">
+                            <article className="card shadow-sm rounded-4 mb-4">
                                 <div className="card-body p-4 p-md-5">
                                     <p className="lead mb-4">{resource.desc}</p>
-                                    <p className="text-muted">Full article content coming soon. Stay tuned for an in-depth guide on this topic.</p>
+                                    {resource.content.map((paragraph, i) => (
+                                        <p key={i} className={i === resource.content.length - 1 ? 'mb-0' : 'mb-3'}>
+                                            {paragraph}
+                                        </p>
+                                    ))}
                                 </div>
-                            </div>
-
-                            <div className="d-inline-flex mb-4">
-                                <span className="badge badge-xs bg-primary rounded-pill">{resource.tag}</span>
-                            </div>
+                            </article>
 
                             {relatedArticles.length > 0 && (
                                 <div className="mt-4 mb-4">
-                                    <h5 className="fw-semibold mb-3">Related Articles</h5>
+                                    <h2 className="fw-semibold fs-5 mb-3">Related Articles</h2>
                                     <div className="row g-3">
                                         {relatedArticles.map((item) => (
                                             <div className="col-md-4" key={item.id}>

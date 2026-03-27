@@ -228,14 +228,17 @@ export default function NavbarLight() {
                         </ul>
 
                         <ul className="nav-menu">
-                            {/* <li className={`${current === '/feed' ? 'active' : ''}`}>
-                                <Link href="/feed">Activity</Link>
-                            </li> */}
+                            <li className={`${current === '/activity' ? 'active' : ''}`}>
+                                <Link href="/activity">Activity</Link>
+                            </li>
                             <li className={`${current === '/forecast' ? 'active' : ''}`}>
                                 <Link href="/forecast">Forecast</Link>
                             </li>
                             <li className={`${current === '/spots' ? 'active' : ''}`}>
                                 <Link href="/spots">Explore</Link>
+                            </li>
+                            <li className={`${current === '/community' ? 'active' : ''}`}>
+                                <Link href="/community">Community</Link>
                             </li>
                             <li className={`${current === '/profile' ? 'active' : ''}`}>
                                 <Link href="/profile">Profile</Link>

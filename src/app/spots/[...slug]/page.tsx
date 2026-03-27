@@ -12,6 +12,7 @@ import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'
 import AddToMySpotsButton from '../../components/add-to-my-spots-button'
 import { EditSpotProvider, EditSpotButton, EditSpotForm } from '../../components/edit-spot-button'
+import SpotLegend from '../../components/spot-legend'
 
 import { getSpotBySlug } from '../../lib/spots'
 import { DEFAULT_SPOT_IMAGE } from '../../lib/constants'
@@ -183,6 +184,10 @@ export default async function SpotPage({ params }: PageProps) {
                                     </div>
                                 </div>
                             </div>
+                            )}
+
+                            {spot.created_by && (
+                                <SpotLegend createdBy={spot.created_by} />
                             )}
 
                         </div>

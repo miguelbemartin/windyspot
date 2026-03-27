@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         destination: '/add-new-spot',
         permanent: true,
       },
+      {
+        source: '/feed',
+        destination: '/community',
+        permanent: true,
+      },
     ]
   },
   images: {

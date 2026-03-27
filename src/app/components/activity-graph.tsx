@@ -36,10 +36,13 @@ export default function ActivityGraph({ activity }: ActivityGraphProps) {
             const count = activity[dateStr] || 0
             total += count
 
-            // Track month labels
+            // Track month labels (skip if too close to previous)
             const month = cursor.getMonth()
             if (month !== lastMonth) {
-                monthLabels.push({ label: MONTHS[month], col: weekIndex })
+                const lastCol = monthLabels.length > 0 ? monthLabels[monthLabels.length - 1].col : -4
+                if (weekIndex - lastCol >= 3) {
+                    monthLabels.push({ label: MONTHS[month], col: weekIndex })
+                }
                 lastMonth = month
             }
 

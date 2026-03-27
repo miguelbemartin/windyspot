@@ -23,7 +23,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
 
     const { data, error } = await supabase
         .from('sessions')
-        .select('created_at')
+        .select('created_at, start_time')
         .eq('user_id', userId)
         .gte('created_at', sinceStr)
         .order('created_at', { ascending: true })
@@ -32,10 +32,10 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
         return NextResponse.json({ error: 'Failed to fetch activity' }, { status: 500 })
     }
 
-    // Group by date
+    // Group by date (prefer start_time over created_at)
     const counts: Record<string, number> = {}
     for (const row of data) {
-        const date = row.created_at.slice(0, 10)
+        const date = (row.start_time || row.created_at).slice(0, 10)
         counts[date] = (counts[date] || 0) + 1
     }
 

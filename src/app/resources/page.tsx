@@ -13,12 +13,19 @@ import BackToTop from '../components/back-to-top'
 import { RESOURCES_PAGE_SIZE } from '../lib/constants'
 
 export const metadata: Metadata = {
-    title: 'Resources - Windy Spot',
-    description: 'Guides, tips and resources for windsurfing.',
+    title: 'Windsurf Articles, Guides & Resources',
+    description: 'Read in-depth articles on wind forecasting, sail and gear selection, wave sailing technique, and the best windsurf travel destinations across Europe and beyond.',
     openGraph: {
-        title: 'Resources - Windy Spot',
-        description: 'Guides, tips and resources for windsurfing.',
+        title: 'Windsurf Articles, Guides & Resources',
+        description: 'Read in-depth articles on wind forecasting, sail and gear selection, wave sailing technique, and the best windsurf travel destinations across Europe and beyond.',
         url: 'https://www.windyspot.com/resources',
+        images: [{ url: 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg', width: 1200, height: 630, alt: 'Windy Spot - Windsurf Resources' }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Windsurf Articles, Guides & Resources',
+        description: 'Read in-depth articles on wind forecasting, gear selection, wave sailing technique, and the best windsurf destinations.',
+        images: ['https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/windy-spot-homepage.jpg'],
     },
     alternates: {
         canonical: 'https://www.windyspot.com/resources',
@@ -42,13 +49,13 @@ export default async function Resources({ searchParams }: Props) {
         <>
             <NavbarLight/>
 
-            <section className="bg-cover position-relative" style={{backgroundColor:'#212529'}} >
+            <section className="pt-5 mt-5">
                 <div className="container">
-                    <div className="row justify-content-center align-items-center">
-                        <div className="col-xl-7 col-lg-9 col-md-12 col-sm-12">
-                            <div className="position-relative text-center mb-5 pt-5 pt-lg-0">
-                                <h1 className="text-light xl-heading">Resources</h1>
-                                <p className="text-light">Guide, tips and resources</p>
+                    <div className="row align-items-center justify-content-center">
+                        <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
+                            <div className="secHeading-wrap text-center">
+                                <h1 className="sectionHeading">Articles & <span className="text-primary">Resources</span></h1>
+                                <p>Guides, tips and resources for windsurfing, wingfoil and windfoil.</p>
                             </div>
                         </div>
                     </div>

@@ -3,13 +3,13 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useUser, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/nextjs'
+import { useUser, SignedIn, SignedOut } from '@clerk/nextjs'
 
 import NavbarLight from '../components/navbar/navbar-light'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { BsHeart, BsChatDots, BsPersonPlus } from 'react-icons/bs'
+import { BsHeart, BsChatDots, BsPersonPlus, BsBell } from 'react-icons/bs'
 
 interface NotificationActor {
     user_id: string
@@ -141,7 +141,7 @@ export default function NotificationsPage() {
                                                     </Link>
                                                 )}
                                                 {(n.type === 'like' || n.type === 'comment') && n.feed_item_id && (
-                                                    <Link href="/feed" className="btn btn-sm btn-outline-primary rounded-pill">
+                                                    <Link href="/community" className="btn btn-sm btn-outline-primary rounded-pill">
                                                         View
                                                     </Link>
                                                 )}
@@ -167,7 +167,68 @@ export default function NotificationsPage() {
                 <BackToTop />
             </SignedIn>
             <SignedOut>
-                <RedirectToSignIn />
+                <NavbarLight />
+
+                <section className="bg-light pt-5 mt-5" style={{ minHeight: '100vh' }}>
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
+
+                                <h1 className="fw-bold mb-3">Stay in the Loop</h1>
+                                <p className="text-muted fs-5 mb-5">
+                                    Get notified when someone likes your session, comments on your post, or starts following you. Never miss a beat in the windsurf community.
+                                </p>
+
+                                <div className="row g-3 mb-5 text-start">
+                                    <div className="col-md-4">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4 text-center">
+                                                <BsHeart className="text-danger mb-2" size={24} />
+                                                <h6 className="fw-semibold">Likes</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    Know when someone likes your sessions or posts.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4 text-center">
+                                                <BsChatDots className="text-primary mb-2" size={24} />
+                                                <h6 className="fw-semibold">Comments</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    Get notified when others comment on your content.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="card border-0 shadow-sm rounded-4 h-100">
+                                            <div className="card-body p-4 text-center">
+                                                <BsPersonPlus className="text-success mb-2" size={24} />
+                                                <h6 className="fw-semibold">Followers</h6>
+                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                                                    See when new riders start following you.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <Link href="/login" className="btn btn-primary rounded-pill px-4 py-2 me-2">
+                                    Log in
+                                </Link>
+                                <Link href="/register" className="btn btn-outline-primary rounded-pill px-4 py-2">
+                                    Create a free account
+                                </Link>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <Footer />
+                <BackToTop />
             </SignedOut>
         </>
     )
