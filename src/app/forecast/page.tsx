@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useUser } from '@clerk/nextjs'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -12,6 +12,27 @@ import BackToTop from '../components/back-to-top'
 
 import { FaLocationDot, FaWind, FaTemperatureHalf, FaDroplet, FaEye, FaCompass, FaCloudSun, FaGauge } from 'react-icons/fa6'
 import { WiSunrise, WiSunset, WiCloudDown } from 'react-icons/wi'
+import { BsSearch, BsGeoAlt, BsXCircle } from 'react-icons/bs'
+
+interface NominatimResult {
+    display_name: string
+    lat: string
+    lon: string
+}
+
+const SESSION_KEY = 'windyspot_forecast_location'
+
+function getSavedLocation(): { text: string; lat: number; lon: number } | null {
+    try {
+        const raw = sessionStorage.getItem(SESSION_KEY)
+        if (!raw) return null
+        return JSON.parse(raw)
+    } catch { return null }
+}
+
+function saveLocation(loc: { text: string; lat: number; lon: number }) {
+    try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(loc)) } catch {}
+}
 
 const DEFAULT_SPOT_IMAGE = 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/akira-hojo-ZxGdri2EWzk-unsplash.jpg'
 
@@ -219,71 +240,145 @@ export default function ForecastPage() {
     const [userLat, setUserLat] = useState<number | null>(null)
     const [userLon, setUserLon] = useState<number | null>(null)
 
+    const [searchQuery, setSearchQuery] = useState('')
+    const [searchResults, setSearchResults] = useState<NominatimResult[]>([])
+    const [searching, setSearching] = useState(false)
+    const [geolocating, setGeolocating] = useState(false)
+
+    const loadForecast = useCallback(async (lat: number, lon: number, text: string) => {
+        setLocationText(text)
+        setUserLat(lat)
+        setUserLon(lon)
+        setNoLocation(false)
+        setLoading(true)
+        setWeatherLoading(true)
+        setAlertsLoading(true)
+        setSpots([])
+        setWeather(null)
+        setDayAlerts([])
+
+        const [spotsRes, weatherRes] = await Promise.all([
+            fetch(`/api/spots/nearby?lat=${lat}&lon=${lon}&limit=5`).then(r => r.ok ? r.json() : []).catch(() => []),
+            fetch(`/api/weather?lat=${lat}&lon=${lon}&dataSets=currentWeather`).then(r => r.ok ? r.json() : null).catch(() => null),
+        ])
+
+        const nearbySpots = spotsRes.filter((s: NearbySpot) => s.distance_km <= 70)
+        setSpots(nearbySpots)
+        setLoading(false)
+
+        if (weatherRes?.currentWeather) setWeather(weatherRes.currentWeather)
+        setWeatherLoading(false)
+
+        if (nearbySpots.length > 0) {
+            const allForecasts = await Promise.all(
+                nearbySpots.map((spot: NearbySpot) =>
+                    fetch(`/api/weather?lat=${spot.lat}&lon=${spot.lon}&dataSets=forecastHourly`)
+                        .then(r => r.ok ? r.json() : null)
+                        .then(data => {
+                            if (data?.forecastHourly?.hours) {
+                                return buildSpotDayForecasts(spot, data.forecastHourly.hours)
+                            }
+                            return []
+                        })
+                        .catch(() => [] as { dateKey: string; forecast: SpotDayForecast }[])
+                )
+            )
+            const alerts = buildDayAlerts(allForecasts)
+            setDayAlerts(alerts)
+        }
+        setAlertsLoading(false)
+    }, [])
+
+    function handleLocationSelect(result: NominatimResult) {
+        const loc = {
+            text: result.display_name.split(',').slice(0, 2).join(',').trim(),
+            lat: parseFloat(result.lat),
+            lon: parseFloat(result.lon),
+        }
+        saveLocation(loc)
+        setSearchResults([])
+        setSearchQuery('')
+        loadForecast(loc.lat, loc.lon, loc.text)
+    }
+
+    async function handleSearch() {
+        const q = searchQuery.trim()
+        if (!q) return
+        setSearching(true)
+        try {
+            const res = await fetch(
+                `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=5`,
+                { headers: { 'Accept-Language': 'en' } }
+            )
+            if (res.ok) setSearchResults(await res.json())
+        } catch {}
+        setSearching(false)
+    }
+
+    function handleGeolocate() {
+        if (!navigator.geolocation) return
+        setGeolocating(true)
+        navigator.geolocation.getCurrentPosition(
+            async (pos) => {
+                const { latitude, longitude } = pos.coords
+                let text = `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`
+                try {
+                    const res = await fetch(
+                        `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+                        { headers: { 'Accept-Language': 'en' } }
+                    )
+                    if (res.ok) {
+                        const data = await res.json()
+                        const addr = data.address
+                        text = [addr?.city || addr?.town || addr?.village, addr?.country].filter(Boolean).join(', ') || text
+                    }
+                } catch {}
+                const loc = { text, lat: latitude, lon: longitude }
+                saveLocation(loc)
+                setGeolocating(false)
+                loadForecast(loc.lat, loc.lon, loc.text)
+            },
+            () => { setGeolocating(false) },
+            { enableHighAccuracy: false, timeout: 10000 }
+        )
+    }
+
+    function clearLocation() {
+        try { sessionStorage.removeItem(SESSION_KEY) } catch {}
+        setNoLocation(true)
+        setSpots([])
+        setWeather(null)
+        setDayAlerts([])
+        setLocationText('')
+        setUserLat(null)
+        setUserLon(null)
+    }
+
     useEffect(() => {
+        // Try sessionStorage first (works for both logged-in and anonymous)
+        const saved = getSavedLocation()
+        if (saved) {
+            loadForecast(saved.lat, saved.lon, saved.text)
+            return
+        }
+
+        // For logged-in users, try profile location
         if (!isLoaded) return
 
         const locationMeta = (user?.unsafeMetadata as Record<string, unknown>)?.location as
             { text?: string; lat?: number; lon?: number } | undefined
 
-        if (!locationMeta?.lat || !locationMeta?.lon) {
-            setNoLocation(true)
-            setLoading(false)
-            setWeatherLoading(false)
+        if (locationMeta?.lat && locationMeta?.lon) {
+            loadForecast(locationMeta.lat, locationMeta.lon, locationMeta.text || '')
             return
         }
 
-        const lat = locationMeta.lat
-        const lon = locationMeta.lon
-        setLocationText(locationMeta.text || '')
-        setUserLat(lat)
-        setUserLon(lon)
-
-        async function loadAll() {
-            const [spotsRes, weatherRes] = await Promise.all([
-                fetch(`/api/spots/nearby?lat=${lat}&lon=${lon}&limit=5`).then(r => r.ok ? r.json() : []).catch(() => []),
-                fetch(`/api/weather?lat=${lat}&lon=${lon}&dataSets=currentWeather`).then(r => r.ok ? r.json() : null).catch(() => null),
-            ])
-
-            const nearbySpots = spotsRes.filter((s: NearbySpot) => s.distance_km <= 70)
-            setSpots(nearbySpots)
-            setLoading(false)
-
-            if (weatherRes?.currentWeather) setWeather(weatherRes.currentWeather)
-            setWeatherLoading(false)
-
-            console.log('Spots loaded:', nearbySpots.length)
-
-            if (nearbySpots.length > 0) {
-                const allForecasts = await Promise.all(
-                    nearbySpots.map((spot: NearbySpot) =>
-                        fetch(`/api/weather?lat=${spot.lat}&lon=${spot.lon}&dataSets=forecastHourly`)
-                            .then(r => {
-                                console.log(`Weather fetch ${spot.title}: status=${r.status}`)
-                                return r.ok ? r.json() : null
-                            })
-                            .then(data => {
-                                if (data?.forecastHourly?.hours) {
-                                    const forecasts = buildSpotDayForecasts(spot, data.forecastHourly.hours)
-                                    console.log(`${spot.title}: ${data.forecastHourly.hours.length} hours, ${forecasts.filter(f => f.forecast.isWindsurfable).length} windsurfable days`)
-                                    return forecasts
-                                }
-                                console.log(`${spot.title}: no hourly data`)
-                                return []
-                            })
-                            .catch((err) => { console.error(`Weather error ${spot.title}:`, err); return [] as { dateKey: string; forecast: SpotDayForecast }[] })
-                    )
-                )
-                const alerts = buildDayAlerts(allForecasts)
-                console.log('Day alerts:', alerts.length, alerts.map(a => `${a.shortLabel}: ${a.hasWind ? 'WIND' : 'no wind'} (${a.spots.filter(s => s.isWindsurfable).map(s => s.spotTitle).join(', ')})`))
-                setDayAlerts(alerts)
-                console.log('dayAlerts state set, alertsLoading about to be set false')
-            }
-            setAlertsLoading(false)
-            console.log('alertsLoading set to false')
-        }
-
-        loadAll()
-    }, [isLoaded, user])
+        // No location found
+        setNoLocation(true)
+        setLoading(false)
+        setWeatherLoading(false)
+        setAlertsLoading(false)
+    }, [isLoaded, user, loadForecast])
 
     return (
         <>
@@ -294,17 +389,71 @@ export default function ForecastPage() {
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-11 col-md-12">
 
-                            <div className="mb-4 mt-3">
-                                <p className="text-muted">
-
-                                </p>
-                            </div>
+                            {locationText && !noLocation && (
+                                <div className="d-flex align-items-center gap-2 mb-4 mt-3">
+                                    <FaLocationDot className="text-primary" />
+                                    <span className="fw-medium">{locationText}</span>
+                                    <button
+                                        className="btn btn-sm btn-outline-secondary rounded-pill d-inline-flex align-items-center gap-1 ms-2"
+                                        onClick={clearLocation}
+                                    >
+                                        <BsXCircle size={12} /> Change
+                                    </button>
+                                </div>
+                            )}
 
                             {noLocation ? (
                                 <div className="text-center py-5">
                                     <FaLocationDot className="text-muted mb-3" size={32} />
                                     <h5>Set your location to see nearby forecasts</h5>
-                                    <p className="text-muted">Go to your <Link href="/profile" className="text-primary">profile</Link> and add your location.</p>
+                                    <p className="text-muted mb-4">Enter a city or place name, or use your current position.</p>
+
+                                    <div className="row justify-content-center">
+                                        <div className="col-md-8 col-lg-6">
+                                            <div className="input-group mb-3">
+                                                <input
+                                                    type="text"
+                                                    className="form-control rounded-start-pill border-0 bg-light ps-4"
+                                                    placeholder="Search a location..."
+                                                    value={searchQuery}
+                                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                                    onKeyDown={(e) => { if (e.key === 'Enter') handleSearch() }}
+                                                />
+                                                <button
+                                                    className="btn btn-primary rounded-end-pill d-flex align-items-center gap-1"
+                                                    onClick={handleSearch}
+                                                    disabled={searching || !searchQuery.trim()}
+                                                >
+                                                    <BsSearch size={14} />
+                                                    {searching ? 'Searching...' : 'Search'}
+                                                </button>
+                                            </div>
+
+                                            <button
+                                                className="btn btn-outline-secondary rounded-pill btn-sm d-inline-flex align-items-center gap-1"
+                                                onClick={handleGeolocate}
+                                                disabled={geolocating}
+                                            >
+                                                <BsGeoAlt size={14} />
+                                                {geolocating ? 'Locating...' : 'Use my current location'}
+                                            </button>
+
+                                            {searchResults.length > 0 && (
+                                                <div className="list-group mt-3 text-start">
+                                                    {searchResults.map((r, i) => (
+                                                        <button
+                                                            key={i}
+                                                            className="list-group-item list-group-item-action d-flex align-items-center gap-2"
+                                                            onClick={() => handleLocationSelect(r)}
+                                                        >
+                                                            <FaLocationDot className="text-primary flex-shrink-0" size={14} />
+                                                            <span className="text-truncate">{r.display_name}</span>
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
                             ) : (
                                 <>
