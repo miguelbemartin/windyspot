@@ -38,6 +38,7 @@ export default function Footer() {
                             <ul className="footer-menu">
                                 <li><Link href="/about-me">About Me</Link></li>
                                 <li><Link href="/contact-me">Contact</Link></li>
+                                <li><Link href="/faq">FAQ</Link></li>
                             </ul>
                         </div>
                     </div>

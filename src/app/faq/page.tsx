@@ -110,7 +110,7 @@ export default function FaqPage() {
                 </div>
             </section>
 
-            <section className="pb-5">
+            <div className="pb-0">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-8 col-lg-10 col-md-12">
@@ -144,7 +144,7 @@ export default function FaqPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <Footer />
             <BackToTop />
