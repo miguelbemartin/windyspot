@@ -13,14 +13,16 @@ import CommunityPromo from './components/community-promo'
 import Footer from './components/footer/footer'
 import BackToTop from './components/back-to-top'
 
+import { currentUser } from '@clerk/nextjs/server'
 import { getSpots, getFeaturedSpots, getLocationsWithSpots } from './lib/spots'
 import ForecastPromo from './components/forecast-promo'
 
 export default async function IndexTen() {
-  const [spots, featuredSpots, locationsWithSpots] = await Promise.all([
+  const [spots, featuredSpots, locationsWithSpots, user] = await Promise.all([
     getSpots(),
     getFeaturedSpots(),
     getLocationsWithSpots(),
+    currentUser(),
   ])
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -54,7 +56,7 @@ export default async function IndexTen() {
             <div className="row justify-content-center align-items-center mb-5 pt-lg-0 pt-5">
                 <div className="col-xl-10 col-lg-11 col-md-12 col-sm-12">
                     <div className="position-relative text-center">
-                        <h1>WE LOVE WIND</h1>
+                        <h1>{user ? `Hello, ${user.firstName}` : 'WE LOVE WIND'}</h1>
                         <p className="fs-5 fw-light">all we want for life is some knots</p>
                     </div>
                 </div>

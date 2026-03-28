@@ -450,31 +450,26 @@ export default function ForecastPage() {
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-11 col-md-12">
 
-                            {locationText && (
-                                <div className="d-flex align-items-center gap-2 mb-4 mt-3">
-                                    <FaLocationDot className="text-primary" />
-                                    <span className="fw-medium">{locationText}</span>
-                                    <button
-                                        className="btn btn-sm btn-outline-secondary rounded-pill d-inline-flex align-items-center gap-1 ms-2"
-                                        onClick={clearLocation}
-                                    >
-                                        <BsXCircle size={12} /> Change
-                                    </button>
-                                </div>
-                            )}
-
                                     {weatherLoading ? (
-                                        <div className="d-flex flex-column align-items-center justify-content-center mb-4" style={{ minHeight: '160px' }}>
+                                        <div className="d-flex flex-column align-items-center justify-content-center mb-4 mt-3" style={{ minHeight: '160px' }}>
                                             <div className="spinner-border spinner-border-sm text-primary" role="status" />
                                             <div className="text-muted mt-1" style={{ fontSize: '12px' }}>Loading current weather...</div>
                                         </div>
                                     ) : weather ? (
-                                        <div className="card rounded-3 border-0 shadow-sm mb-4">
+                                        <div className="card rounded-3 border-0 shadow-sm mb-4 mt-3">
                                             <div className="card-body">
                                                 <div className="d-flex align-items-center justify-content-between mb-3">
                                                     <div>
-                                                        <p>{locationText
-                                                            ? <>Current conditions in <strong>{locationText}</strong></>
+                                                        <p className="d-flex align-items-center gap-2 flex-wrap">{locationText
+                                                            ? <>Current conditions in <strong>{locationText}</strong>
+                                                                <button
+                                                                    className="btn btn-sm btn-outline-secondary rounded-pill d-inline-flex align-items-center gap-1"
+                                                                    onClick={clearLocation}
+                                                                    style={{ fontSize: '12px' }}
+                                                                >
+                                                                    <BsXCircle size={10} /> Change
+                                                                </button>
+                                                            </>
                                                             : 'Wind forecast for the spots closest to you.'}
                                                         </p>
                                                         <h5 className="mb-1 d-flex align-items-center gap-2">

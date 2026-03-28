@@ -4,7 +4,7 @@ const hits = new Map<string, number[]>()
 
 export function rateLimit(
     key: string,
-    { limit = 30, windowMs = 60_000 } = {}
+    { limit = 100, windowMs = 60_000 } = {}
 ): NextResponse | null {
     const now = Date.now()
     const timestamps = (hits.get(key) || []).filter((t) => now - t < windowMs)
