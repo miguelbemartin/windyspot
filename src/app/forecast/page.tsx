@@ -13,6 +13,7 @@ import BackToTop from '../components/back-to-top'
 import { FaLocationDot, FaWind, FaTemperatureHalf, FaDroplet, FaEye, FaCompass, FaCloudSun, FaGauge } from 'react-icons/fa6'
 import { WiSunrise, WiSunset, WiCloudDown } from 'react-icons/wi'
 import { BsSearch, BsGeoAlt, BsXCircle } from 'react-icons/bs'
+import ForecastPromo from '../components/forecast-promo'
 
 interface NominatimResult {
     display_name: string
@@ -384,12 +385,72 @@ export default function ForecastPage() {
         <>
             <NavbarLight />
 
+            {noLocation ? (
+                <>
+                    <div className='bg-light'>
+                        <ForecastPromo />
+                    </div>
+
+                    <div className="container mt-5 pb-5">
+                        <div className="row justify-content-center">
+                            <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
+                                <div className="row justify-content-center">
+                                    <div className="col-md-10 col-lg-8">
+                                        <div className="input-group mb-3">
+                                            <input
+                                                type="text"
+                                                className="form-control rounded-start-pill border-0 bg-light ps-4"
+                                                placeholder="Search a location..."
+                                                value={searchQuery}
+                                                onChange={(e) => setSearchQuery(e.target.value)}
+                                                onKeyDown={(e) => { if (e.key === 'Enter') handleSearch() }}
+                                            />
+                                            <button
+                                                className="btn btn-primary rounded-end-pill d-flex align-items-center gap-1"
+                                                onClick={handleSearch}
+                                                disabled={searching || !searchQuery.trim()}
+                                            >
+                                                <BsSearch size={14} />
+                                                {searching ? 'Searching...' : 'Search'}
+                                            </button>
+                                        </div>
+
+                                        <button
+                                            className="btn btn-outline-secondary rounded-pill btn-sm d-inline-flex align-items-center gap-1"
+                                            onClick={handleGeolocate}
+                                            disabled={geolocating}
+                                        >
+                                            <BsGeoAlt size={14} />
+                                            {geolocating ? 'Locating...' : 'Use my current location'}
+                                        </button>
+
+                                        {searchResults.length > 0 && (
+                                            <div className="list-group mt-3 text-start">
+                                                {searchResults.map((r, i) => (
+                                                    <button
+                                                        key={i}
+                                                        className="list-group-item list-group-item-action d-flex align-items-center gap-2"
+                                                        onClick={() => handleLocationSelect(r)}
+                                                    >
+                                                        <FaLocationDot className="text-primary flex-shrink-0" size={14} />
+                                                        <span className="text-truncate">{r.display_name}</span>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            ) : (
             <section className="py-5">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-11 col-md-12">
 
-                            {locationText && !noLocation && (
+                            {locationText && (
                                 <div className="d-flex align-items-center gap-2 mb-4 mt-3">
                                     <FaLocationDot className="text-primary" />
                                     <span className="fw-medium">{locationText}</span>
@@ -402,61 +463,6 @@ export default function ForecastPage() {
                                 </div>
                             )}
 
-                            {noLocation ? (
-                                <div className="text-center py-5">
-                                    <FaLocationDot className="text-muted mb-3" size={32} />
-                                    <h5>Set your location to see nearby forecasts</h5>
-                                    <p className="text-muted mb-4">Enter a city or place name, or use your current position.</p>
-
-                                    <div className="row justify-content-center">
-                                        <div className="col-md-8 col-lg-6">
-                                            <div className="input-group mb-3">
-                                                <input
-                                                    type="text"
-                                                    className="form-control rounded-start-pill border-0 bg-light ps-4"
-                                                    placeholder="Search a location..."
-                                                    value={searchQuery}
-                                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                                    onKeyDown={(e) => { if (e.key === 'Enter') handleSearch() }}
-                                                />
-                                                <button
-                                                    className="btn btn-primary rounded-end-pill d-flex align-items-center gap-1"
-                                                    onClick={handleSearch}
-                                                    disabled={searching || !searchQuery.trim()}
-                                                >
-                                                    <BsSearch size={14} />
-                                                    {searching ? 'Searching...' : 'Search'}
-                                                </button>
-                                            </div>
-
-                                            <button
-                                                className="btn btn-outline-secondary rounded-pill btn-sm d-inline-flex align-items-center gap-1"
-                                                onClick={handleGeolocate}
-                                                disabled={geolocating}
-                                            >
-                                                <BsGeoAlt size={14} />
-                                                {geolocating ? 'Locating...' : 'Use my current location'}
-                                            </button>
-
-                                            {searchResults.length > 0 && (
-                                                <div className="list-group mt-3 text-start">
-                                                    {searchResults.map((r, i) => (
-                                                        <button
-                                                            key={i}
-                                                            className="list-group-item list-group-item-action d-flex align-items-center gap-2"
-                                                            onClick={() => handleLocationSelect(r)}
-                                                        >
-                                                            <FaLocationDot className="text-primary flex-shrink-0" size={14} />
-                                                            <span className="text-truncate">{r.display_name}</span>
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <>
                                     {weatherLoading ? (
                                         <div className="d-flex flex-column align-items-center justify-content-center mb-4" style={{ minHeight: '160px' }}>
                                             <div className="spinner-border spinner-border-sm text-primary" role="status" />
@@ -699,13 +705,12 @@ export default function ForecastPage() {
                                             </div>
                                         </>
                                     )}
-                                </>
-                            )}
 
                         </div>
                     </div>
                 </div>
             </section>
+            )}
 
             <Footer />
             <BackToTop />

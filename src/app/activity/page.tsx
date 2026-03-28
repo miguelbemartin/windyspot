@@ -85,19 +85,19 @@ export default function ActivityPage() {
             <SignedOut>
                 <NavbarLight />
 
-                <div className='bg-light '>
+                <div className='bg-light'>
                     <TrackSessionsPromo />
+                </div>
 
-                    <div className="container pb-5 mt-5">
-                        <div className="row justify-content-center">
-                            <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
-                                <Link href="/login" className="btn btn-primary rounded-pill px-4 py-2 me-2">
-                                    Log in
-                                </Link>
-                                <Link href="/register" className="btn btn-outline-primary rounded-pill px-4 py-2">
-                                    Create a free account
-                                </Link>
-                            </div>
+                <div className="container pb-5 mt-5">
+                    <div className="row justify-content-center">
+                        <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
+                            <Link href="/login" className="btn btn-primary rounded-pill px-4 py-2 me-2">
+                                Log in
+                            </Link>
+                            <Link href="/register" className="btn btn-outline-primary rounded-pill px-4 py-2">
+                                Create a free account
+                            </Link>
                         </div>
                     </div>
                 </div>
