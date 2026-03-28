@@ -111,7 +111,7 @@ export default function PozoIzquierdo() {
                             <div className="card-body p-4 pt-2">
                                 <div className="row g-4">
                                     <div className="col-md-6">
-                                        <YouTubeEmbed videoId="ElZh1azg7c4" title="Pozo Izquierdo Webcam" />
+                                        <YouTubeEmbed videoId="KlgntYNkPE0" title="Pozo Izquierdo Webcam" />
                                     </div>
                                     <div className="col-md-6">
                                         <YouTubeEmbed videoId="qZ0RmfinBC8" title="Pozo Izquierdo Webcam 2" />
