@@ -105,7 +105,7 @@ export default function BlogDetail() {
                                             <li>
                                                 <div className="singleComments">
                                                     <div className="blogavatar">
-                                                        <Image src='/img/team-1.jpg' width={80} height={80} className="img-fluid circle" alt=""/>
+                                                        <Image src='/img/team-1.jpg' width={80} height={80} className="img-fluid circle" alt="Commenter avatar"/>
                                                     </div>
                                                     
                                                     <div className="blogCaps">
@@ -129,7 +129,7 @@ export default function BlogDetail() {
                                                     <li>
                                                         <div className="singleComments">
                                                             <div className="blogavatar">
-                                                                <Image src='/img/team-2.jpg' width={80} height={80} className="img-fluid circle" alt=""/>
+                                                                <Image src='/img/team-2.jpg' width={80} height={80} className="img-fluid circle" alt="Commenter avatar"/>
                                                             </div>
                                                             
                                                             <div className="blogCaps">
@@ -152,7 +152,7 @@ export default function BlogDetail() {
                                                             <li>
                                                                 <div className="singleComments">
                                                                     <div className="blogavatar">
-                                                                        <Image src='/img/team-3.jpg' width={80} height={80} className="img-fluid circle" alt=""/>
+                                                                        <Image src='/img/team-3.jpg' width={80} height={80} className="img-fluid circle" alt="Commenter avatar"/>
                                                                     </div>
                                                                     
                                                                     <div className="blogCaps">
@@ -179,7 +179,7 @@ export default function BlogDetail() {
                                             <li>
                                                 <div className="singleComments">
                                                     <div className="blogavatar">
-                                                        <Image src='/img/team-1.jpg' width={80} height={80} className="img-fluid circle" alt=""/>
+                                                        <Image src='/img/team-1.jpg' width={80} height={80} className="img-fluid circle" alt="Commenter avatar"/>
                                                     </div>
                                                     
                                                     <div className="blogCaps">

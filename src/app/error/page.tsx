@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
 import { MdArrowForwardIos } from 'react-icons/md'
 
@@ -7,6 +8,12 @@ import NavbarDark from '../components/navbar/navbar-dark'
 import FooterTop from '../components/footer-top'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
+
+export const metadata: Metadata = {
+  title: 'Error',
+  description: 'Something went wrong. Head back to the homepage to explore windsurf spots worldwide.',
+  robots: { index: false, follow: false },
+}
 
 export default function Error() {
   return (

@@ -8,14 +8,37 @@ import BackToTop from '../components/back-to-top'
 export const metadata: Metadata = {
   title: 'Contact Me - Suggest a Spot or Say Hi',
   description: 'Get in touch to suggest a new windsurf spot, update an existing one, or just say hi. Reach out via email.',
+  openGraph: {
+    title: 'Contact Me - Suggest a Spot or Say Hi',
+    description: 'Get in touch to suggest a new windsurf spot, update an existing one, or just say hi.',
+    url: 'https://www.windyspot.com/contact-me',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Me - Suggest a Spot or Say Hi',
+    description: 'Get in touch to suggest a new windsurf spot, update an existing one, or just say hi.',
+  },
   alternates: {
     canonical: 'https://www.windyspot.com/contact-me',
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Windy Spot',
+  description: 'Get in touch to suggest a new windsurf spot, update an existing one, or just say hi.',
+  url: 'https://www.windyspot.com/contact-me',
+}
+
 export default function ContactUs() {
   return (
     <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <NavbarLight/>
 
         <section className="pb-0">

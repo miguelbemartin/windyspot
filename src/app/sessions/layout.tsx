@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Add a New Spot',
-  description: 'Submit a new windsurf spot to the Windy Spot directory.',
+  title: 'Windsurf Sessions',
   robots: { index: false, follow: false },
 }
 

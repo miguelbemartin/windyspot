@@ -23,11 +23,25 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Explore Windsurf Spots Worldwide',
+  description: 'Browse all windsurf spots worldwide with forecast, live wind stations, webcams, and detailed spot guides.',
+  url: 'https://www.windyspot.com/spots',
+}
+
 export default async function Page() {
     const [spots, locations] = await Promise.all([getSpots(), getLocations()])
     return (
+        <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Suspense>
             <SpotsList page={1} spots={spots} locations={locations} />
         </Suspense>
+        </>
     )
 }

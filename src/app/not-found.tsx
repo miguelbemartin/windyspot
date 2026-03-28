@@ -8,6 +8,8 @@ import Footer from './components/footer/footer'
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
+  description: 'The page you are looking for could not be found. Head back to the homepage to explore windsurf spots worldwide.',
+  robots: { index: false, follow: false },
 }
 
 export default function NotFound() {
@@ -16,7 +18,7 @@ export default function NotFound() {
       <NavMinimal />
 
       <section className="image-cover position-relative d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }} data-overlay="5">
-        <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/mark-mc-neill-O3Gb3J2HSdA-unsplash.jpg" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+        <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/mark-mc-neill-O3Gb3J2HSdA-unsplash.jpg" alt="Ocean waves background" fill sizes="100vw" style={{ objectFit: 'cover' }} />
         <div className="container position-relative z-1">
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-6 col-lg-8 col-md-10 text-center">

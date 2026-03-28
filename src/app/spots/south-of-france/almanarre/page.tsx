@@ -55,7 +55,7 @@ export default function Almanarre() {
         <NavbarLight/>
 
         <section className="position-relative ht-200 py-0" style={{ backgroundColor: '#1a2332' }} data-overlay="4">
-                <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
+                <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/spots/almanarre.png" alt="Windsurfing at Almanarre in Hyeres" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
             <div className="container h-100">
                 <div className="row align-items-start">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-12">

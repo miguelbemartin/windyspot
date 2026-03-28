@@ -52,7 +52,7 @@ export default function NavbarDark() {
             <div className="container-fluid">
                 <nav id="navigation" className={windowWidth > 991 ? "navigation navigation-landscape" : " navigation navigation-portrait "}>
                     <div className="nav-header">
-                        <Link className="nav-brand" href="/"><Image src='/img/logo.svg' width={0} height={0} sizes='100vw' style={{width:'166px', height:'auto'}} className="logo" alt=""/></Link>
+                        <Link className="nav-brand" href="/"><Image src='/img/logo.svg' width={0} height={0} sizes='100vw' style={{width:'166px', height:'auto'}} className="logo" alt="Windy Spot logo"/></Link>
                         <div className="nav-toggle" onClick={()=>setIsToggle(!toggle)}></div>
                         <div className="mobile_nav">
                             <ul>
@@ -70,7 +70,7 @@ export default function NavbarDark() {
                     </div>
                     <div className={`nav-menus-wrapper  ${toggle ? 'nav-menus-wrapper-open' : ''}`} style={{transitionProperty:toggle ? 'none' : 'left'}}>
                         <div className='mobLogos'>
-                            <Image src='/img/logo.svg' width={0} height={0} sizes='100vw' style={{width:'140px', height:'auto'}} className='img-fluid lightLogo' alt='Logo'/>
+                            <Image src='/img/logo.svg' width={0} height={0} sizes='100vw' style={{width:'140px', height:'auto'}} className='img-fluid lightLogo' alt='Windy Spot logo'/>
                         </div>
                         <span className='nav-menus-wrapper-close-button'  onClick={()=>setIsToggle(!toggle)}>✕</span>
                         <ul className="nav-menu">
@@ -215,8 +215,8 @@ export default function NavbarDark() {
 
                         <form className="needs-validation px-lg-2" noValidate>
                             <div className="row align-items-center justify-content-between g-3 mb-4">
-                                <div className="col-xl-6 col-lg-6 col-md-6"><Link href="#" className="btn btn-outline-secondary border rounded-3 text-md px-lg-2 full-width"><img src='/img/google.png' className="img-fluid me-2" width="16" alt=""/>Login with Google</Link></div>
-                                <div className="col-xl-6 col-lg-6 col-md-6"><Link href="#" className="btn btn-outline-secondary border rounded-3 text-md px-lg-2 full-width"><img src='/img/facebook.png' className="img-fluid me-2" width="16" alt=""/>Login with Facebook</Link></div>
+                                <div className="col-xl-6 col-lg-6 col-md-6"><Link href="#" className="btn btn-outline-secondary border rounded-3 text-md px-lg-2 full-width"><img src='/img/google.png' className="img-fluid me-2" width="16" alt="Google logo"/>Login with Google</Link></div>
+                                <div className="col-xl-6 col-lg-6 col-md-6"><Link href="#" className="btn btn-outline-secondary border rounded-3 text-md px-lg-2 full-width"><img src='/img/facebook.png' className="img-fluid me-2" width="16" alt="Facebook logo"/>Login with Facebook</Link></div>
                             </div>
                             
                             <div className="form-group form-border mb-4">
@@ -250,9 +250,9 @@ export default function NavbarDark() {
                     
                     <div className="modal-footer p-3 border-top">
                         <div className="d-flex align-items-center justify-content-between gap-3">
-                            <div className="brand px-lg-4 px-3"><Image src='/img/brand/logo-1.png' width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}}  className="img-fluid" alt=""/></div>
-                            <div className="brand px-lg-4 px-3"><Image src="/img/brand/logo-2.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}} className="img-fluid" alt=""/></div>
-                            <div className="brand px-lg-4 px-3"><Image src="/img/brand/logo-3.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}} className="img-fluid" alt=""/></div>
+                            <div className="brand px-lg-4 px-3"><Image src='/img/brand/logo-1.png' width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}}  className="img-fluid" alt="Partner brand"/></div>
+                            <div className="brand px-lg-4 px-3"><Image src="/img/brand/logo-2.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}} className="img-fluid" alt="Partner brand"/></div>
+                            <div className="brand px-lg-4 px-3"><Image src="/img/brand/logo-3.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'auto'}} className="img-fluid" alt="Partner brand"/></div>
                         </div>
                     </div>
                 </div>
@@ -270,7 +270,7 @@ export default function NavbarDark() {
                         
                         <div className="singleCartitem d-flex align-items-center justify-content-between gap-4 w-100">
                             <div className="d-flex align-items-center justify-content-start gap-3">
-                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src="/img/list-3.jpg" width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2" alt=""/></figure></div>
+                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src="/img/list-3.jpg" width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2" alt="Spicy Burger"/></figure></div>
                                 <div className="cartCaption">
                                     <h6 className="lh-base m-0">Spicy Burger</h6>
                                     <p className="m-0">1x$25.50</p>
@@ -282,7 +282,7 @@ export default function NavbarDark() {
                         
                         <div className="singleCartitem d-flex align-items-center justify-content-between gap-3 w-100">
                             <div className="d-flex align-items-center justify-content-start gap-3">
-                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src="/img/list-4.jpg" width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2" alt=""/></figure></div>
+                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src="/img/list-4.jpg" width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2" alt="Premium Package"/></figure></div>
                                 <div className="cartCaption">
                                     <h6 className="lh-base m-0">Premium Package</h6>
                                     <p className="m-0">1x$22.10</p>
@@ -294,7 +294,7 @@ export default function NavbarDark() {
                         
                         <div className="singleCartitem d-flex align-items-center justify-content-between gap-3 w-100">
                             <div className="d-flex align-items-center justify-content-start gap-3">
-                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src="/img/list-5.jpg" width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2" alt=""/></figure></div>
+                                <div className="cartiteThumb"><figure className="d-block m-0"><Image src="/img/list-5.jpg" width={0} height={0} sizes='100vw' style={{width:'60px', height:'auto'}} className="img-fluid rounded-2" alt="Platinum Plaster"/></figure></div>
                                 <div className="cartCaption">
                                     <h6 className="lh-base m-0">Platinum Plaster</h6>
                                     <p className="m-0">1x$17.40</p>

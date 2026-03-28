@@ -32,6 +32,14 @@ export const metadata: Metadata = {
     },
 }
 
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Windsurf Articles, Guides & Resources',
+    description: 'Read in-depth articles on wind forecasting, sail and gear selection, wave sailing technique, and the best windsurf travel destinations.',
+    url: 'https://www.windyspot.com/resources',
+}
+
 interface Props {
     searchParams: Promise<{ page?: string }>
 }
@@ -47,6 +55,11 @@ export default async function Resources({ searchParams }: Props) {
 
     return (
         <>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <NavbarLight/>
 
             <section className="pt-5 mt-5">

@@ -61,7 +61,7 @@ export default function AboutUs() {
         </section>
 
         <section className="position-relative" style={{ backgroundColor:'#ffffff' }} data-overlay="5">
-            <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-02.jpg" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+            <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-02.jpg" alt="Miguel windsurfing" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
             <div className="container position-relative z-1">
                 <div className="row">
                     <div className="row justify-content-center align-items-center mb-0">
@@ -98,7 +98,7 @@ export default function AboutUs() {
                         </div>
                         <div className="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                             <div className="missionImg">
-                                <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-03.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt="Miguel, windsurfer and creator of Windy Spot"/>
+                                <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-miguel-03.png" width={0} height={0} sizes='100vw' style={{width:'100%', height:'100%'}} className="img-fluid" alt="Miguel, windsurfer and creator of Windy Spot" loading="lazy"/>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ export default function AboutUs() {
         </section>
 
         <section className="position-relative" style={{ backgroundColor:'#ffffff' }} data-overlay="1">
-            <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-almanarre.png" alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+            <Image src="https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/about-me/about-me-almanarre.png" alt="Windsurfing at Almanarre beach in Hyeres" fill sizes="100vw" style={{ objectFit: 'cover' }} loading="lazy" />
             <div className="container position-relative z-1">
                 <div className="row">
                     <div className="row justify-content-center align-items-center mb-5">

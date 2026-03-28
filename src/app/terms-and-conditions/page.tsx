@@ -12,9 +12,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Terms & Conditions',
+  description: 'Windy Spot terms and conditions of use.',
+  url: 'https://www.windyspot.com/terms-and-conditions',
+  publisher: { '@type': 'Organization', name: 'Windy Spot' },
+}
+
 export default function TermsAndConditions() {
   return (
     <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <NavbarLight/>
 
         <section className="pb-0">

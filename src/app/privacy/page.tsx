@@ -16,9 +16,23 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy Policy',
+  description: 'Windy Spot privacy policy — how we collect, use, and protect your data.',
+  url: 'https://www.windyspot.com/privacy',
+  publisher: { '@type': 'Organization', name: 'Windy Spot' },
+}
+
 export default function PrivacyPolicy() {
   return (
     <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <NavbarLight/>
 
         <section className="pb-0">
