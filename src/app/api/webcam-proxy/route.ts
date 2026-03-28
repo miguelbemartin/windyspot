@@ -7,7 +7,7 @@ const ALLOWED_URLS: Record<string, string> = {
 
 export async function GET(request: NextRequest) {
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
-  const limited = rateLimit(`webcam:${ip}`, { limit: 20, windowMs: 60_000 })
+  const limited = await rateLimit(`webcam:${ip}`, { limit: 20, windowMs: 60_000 })
   if (limited) return limited
 
   const cam = request.nextUrl.searchParams.get('cam')

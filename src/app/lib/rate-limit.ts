@@ -1,11 +1,15 @@
 import { NextResponse } from 'next/server'
+import { auth } from '@clerk/nextjs/server'
 
 const hits = new Map<string, number[]>()
 
-export function rateLimit(
+export async function rateLimit(
     key: string,
     { limit = 100, windowMs = 60_000 } = {}
-): NextResponse | null {
+): Promise<NextResponse | null> {
+    const { userId } = await auth()
+    if (userId) return null
+
     const now = Date.now()
     const timestamps = (hits.get(key) || []).filter((t) => now - t < windowMs)
     timestamps.push(now)

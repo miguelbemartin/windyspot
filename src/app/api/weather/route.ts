@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     }
 
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
-    const limited = rateLimit(`weather:${ip}`, { limit: 30, windowMs: 60_000 })
+    const limited = await rateLimit(`weather:${ip}`, { limit: 30, windowMs: 60_000 })
     if (limited) return limited
 
     try {

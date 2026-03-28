@@ -445,7 +445,7 @@ export default function ForecastPage() {
                     </div>
                 </>
             ) : (
-            <section className="py-5">
+            <section className="py-5  gray-simple">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-xl-10 col-lg-11 col-md-12">
