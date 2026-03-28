@@ -8,7 +8,7 @@ export default function CommunityPromo() {
                     <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
 
                         <div className="secHeading-wrap text-center mb-5">
-                            <h3 className="sectionHeading">Join the <span className="text-primary">Community</span></h3>
+                            <h3 className="sectionHeading">Your Wind <span className="text-primary">Crew</span></h3>
                             <p>Connect with wind lovers around the world. <br />Share your sessions, post photos, and follow riders whose spots inspire you.</p>
                         </div>
 

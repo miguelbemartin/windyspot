@@ -14,6 +14,7 @@ import Footer from './components/footer/footer'
 import BackToTop from './components/back-to-top'
 
 import { getSpots, getFeaturedSpots, getLocationsWithSpots } from './lib/spots'
+import ForecastPromo from './components/forecast-promo'
 
 export default async function IndexTen() {
   const [spots, featuredSpots, locationsWithSpots] = await Promise.all([
@@ -104,8 +105,21 @@ export default async function IndexTen() {
     </section>
 
     <TrackSessionsPromo />
+    <div className="text-center pb-5">
+        <Link href="/activity" className="btn btn-light-primary fw-medium rounded-pill px-md-5">Start tracking your sessions</Link>
+    </div>
+
+    <div className='bg-light'>
+        <ForecastPromo />
+        <div className="text-center pb-5">
+            <Link href="/forecast" className="btn btn-light-primary fw-medium rounded-pill px-md-5">Check your local forecast</Link>
+        </div>
+    </div>
 
     <CommunityPromo />
+    <div className="text-center pb-5">
+        <Link href="/community" className="btn btn-light-primary fw-medium rounded-pill px-md-5">Meet the crew</Link>
+    </div>
 
     <section className="bg-cover bg-primary-2 position-relative py-5" style={{backgroundImage:`url('/img/brand-section.png')`}}>
         <div className="container">
