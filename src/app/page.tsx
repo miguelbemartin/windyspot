@@ -8,6 +8,7 @@ import NavbarLight from './components/navbar/navbar-light'
 import SpotSearch from './components/spot-search'
 import ExploreListingOne from './components/explore-listing-one'
 import ExploreCity from './components/explore-city'
+import TrackSessionsPromo from './components/track-sessions-promo'
 import Footer from './components/footer/footer'
 import BackToTop from './components/back-to-top'
 
@@ -100,6 +101,8 @@ export default async function IndexTen() {
             <ExploreCity locations={locationsWithSpots} />
         </div>
     </section>
+
+    <TrackSessionsPromo />
 
     <section className="bg-cover bg-primary-2 position-relative py-5" style={{backgroundImage:`url('/img/brand-section.png')`}}>
         <div className="container">

@@ -10,7 +10,8 @@ import SessionCard from '../components/session-card'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { BsUpload, BsClock, BsSpeedometer, BsGeoAlt, BsHeart, BsFlag, BsGraphUp, BsMap } from 'react-icons/bs'
+import { BsUpload, BsClock, BsSpeedometer, BsGeoAlt, BsHeart, BsFlag } from 'react-icons/bs'
+import TrackSessionsPromo from '../components/track-sessions-promo'
 import { FaLocationDot } from 'react-icons/fa6'
 
 interface Session {
@@ -84,76 +85,25 @@ export default function ActivityPage() {
             <SignedOut>
                 <NavbarLight />
 
-                <section className="bg-light pt-5 mt-5" style={{ minHeight: '100vh' }}>
-                    <div className="container">
+                <div className='bg-light '>
+                    <TrackSessionsPromo />
+
+                    <div className="container pb-5 mt-5">
                         <div className="row justify-content-center">
                             <div className="col-xl-7 col-lg-8 col-md-10 col-12 text-center">
-
-                                <div className="secHeading-wrap text-center mb-5">
-                                    <h3 className="sectionHeading">Track Your <span className="text-primary">Sessions</span></h3>
-                                    <p>Log every session, import GPX tracks, and watch your progress grow over time. <br />Your personal windsurf journal, all in one place.</p>
-                                </div>
-
-                                <div className="row g-3 mb-5 text-start">
-                                    <div className="col-md-6">
-                                        <div className="card border-0 shadow-sm rounded-4 h-100">
-                                            <div className="card-body p-4">
-                                                <BsGraphUp className="text-primary mb-2" size={24} />
-                                                <h6 className="fw-semibold">Activity Graph</h6>
-                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
-                                                    Visualize your windsurf activity with a contribution-style heatmap. See your consistency at a glance.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="card border-0 shadow-sm rounded-4 h-100">
-                                            <div className="card-body p-4">
-                                                <BsUpload className="text-primary mb-2" size={24} />
-                                                <h6 className="fw-semibold">GPX Import</h6>
-                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
-                                                    Import sessions from your GPS watch or tracker. We extract speed, distance, heart rate, and route data.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="card border-0 shadow-sm rounded-4 h-100">
-                                            <div className="card-body p-4">
-                                                <BsSpeedometer className="text-primary mb-2" size={24} />
-                                                <h6 className="fw-semibold">Session Stats</h6>
-                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
-                                                    Track total time on the water, distance covered, max speed, and the number of spots you have visited.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="card border-0 shadow-sm rounded-4 h-100">
-                                            <div className="card-body p-4">
-                                                <BsMap className="text-primary mb-2" size={24} />
-                                                <h6 className="fw-semibold">Route Playback</h6>
-                                                <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
-                                                    Relive your sessions with GPS track maps. See exactly where you sailed and how fast you were going.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <Link href="/login" className="btn btn-primary rounded-pill px-4 py-2 me-2">
                                     Log in
                                 </Link>
                                 <Link href="/register" className="btn btn-outline-primary rounded-pill px-4 py-2">
                                     Create a free account
                                 </Link>
-
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
                 <Footer />
+
                 <BackToTop />
             </SignedOut>
             <SignedIn>
