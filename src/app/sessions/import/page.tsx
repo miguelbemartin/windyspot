@@ -9,6 +9,7 @@ import NavbarLight from '../../components/navbar/navbar-light'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'
 
+import Image from 'next/image'
 import { BsUpload, BsFileEarmarkArrowUp, BsCheckCircleFill, BsXCircleFill, BsArrowLeft } from 'react-icons/bs'
 
 const SPORT_TYPES = [
@@ -134,7 +135,7 @@ export default function ImportSessionsPage() {
                                 </Link>
 
                                 <h1 className="h4 fw-bold mb-1">Import Sessions</h1>
-                                <p className="text-muted mb-4">Upload GPX files from WaterSpeed, Strava, or any GPS tracker to import your sessions.</p>
+                                <p className="text-muted mb-4">Upload GPX files from Suunto, Garmin, Coros, WaterSpeed, Strava, or any GPS tracker to import your sessions.</p>
 
                                 {/* Sport type selector */}
                                 <div className="card border-0 rounded-4 mb-3" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
@@ -179,6 +180,33 @@ export default function ImportSessionsPage() {
                                             className="d-none"
                                             onChange={handleFileSelect}
                                         />
+                                    </div>
+                                </div>
+
+                                {/* Upcoming integrations */}
+                                <div className="card border-0 rounded-4 mb-4" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+                                    <div className="card-body p-4">
+                                        <h6 className="fw-semibold mb-2">Direct integrations coming soon</h6>
+                                        <p className="text-muted mb-3" style={{ fontSize: '0.9rem' }}>
+                                            We&apos;re working on direct integrations so you can sync your sessions automatically — no more manual GPX exports.
+                                        </p>
+                                        <div className="d-flex flex-wrap align-items-center gap-4">
+                                            {[
+                                                { name: 'Suunto', src: '/img/brands/suunto.svg', width: 100, height: 24 },
+                                                { name: 'Garmin', src: '/img/brands/garmin.svg', width: 100, height: 24 },
+                                                { name: 'Coros', src: '/img/brands/coros.png', width: 100, height: 24 },
+                                                { name: 'Strava', src: '/img/brands/strava.svg', width: 80, height: 24 },
+                                            ].map(brand => (
+                                                <Image
+                                                    key={brand.name}
+                                                    src={brand.src}
+                                                    alt={brand.name}
+                                                    width={brand.width}
+                                                    height={brand.height}
+                                                    style={{ objectFit: 'contain', opacity: 0.7 }}
+                                                />
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
 
