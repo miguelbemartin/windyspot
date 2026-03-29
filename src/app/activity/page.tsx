@@ -37,19 +37,6 @@ interface Session {
     } | null
 }
 
-function sportLabel(type: string): string {
-    return type.charAt(0).toUpperCase() + type.slice(1)
-}
-
-function formatDate(dateStr: string): string {
-    return new Date(dateStr).toLocaleDateString('en-US', {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-    })
-}
-
 export default function ActivityPage() {
     const [sessions, setSessions] = useState<Session[]>([])
     const [activity, setActivity] = useState<Record<string, number>>({})
@@ -115,7 +102,7 @@ export default function ActivityPage() {
                             <div className="col-xl-10 col-lg-11 col-md-12">
 
                                 <div className="d-flex align-items-center justify-content-between mb-4">
-                                    <h4 className="fw-semibold mb-0">My Activity</h4>
+                                    <h4 className="fw-semibold mb-0">Activity</h4>
                                     <Link href="/sessions/import" className="btn btn-sm btn-primary rounded-pill d-inline-flex align-items-center gap-1">
                                         <BsUpload /> Import Session
                                     </Link>
@@ -185,18 +172,8 @@ export default function ActivityPage() {
                                 ) : (
                                     <div className="d-flex flex-column gap-3">
                                         {sessions.map((session) => (
-                                            <div className="card border-0 shadow-sm" key={session.id}>
-                                                <div className="card-body">
-                                                    <div className="d-flex align-items-center gap-2 mb-2">
-                                                        <span className="text-muted" style={{ fontSize: '0.85rem' }}>
-                                                            {formatDate(session.start_time || session.created_at)}
-                                                        </span>
-                                                        <span className="fw-semibold">
-                                                            {sportLabel(session.type)}{session.spots && <>{' in '}<Link href={`/spots/${session.spots.slug}`} className="text-decoration-none"><FaLocationDot className="text-primary" size={12} /> {session.spots.title}</Link></>}
-                                                        </span>
-                                                    </div>
-                                                    <SessionCard session={session} />
-                                                </div>
+                                            <div className="card border-0 shadow-sm overflow-hidden" key={session.id}>
+                                                <SessionCard session={session} />
                                             </div>
                                         ))}
                                     </div>

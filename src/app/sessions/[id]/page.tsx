@@ -127,7 +127,7 @@ export default function SessionDetailPage() {
                 setError(data.error || 'Failed to delete session')
                 return
             }
-            router.push('/feed')
+            router.push('/activity')
         } catch {
             setError('Failed to delete session')
         } finally {
@@ -193,8 +193,8 @@ export default function SessionDetailPage() {
                         <div className="row justify-content-center">
                             <div className="col-xl-8 col-lg-10 col-12">
 
-                                <Link href="/community" className="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3">
-                                    <BsArrowLeft /> Back to community
+                                <Link href="/activity" className="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3">
+                                    <BsArrowLeft /> Back to activities
                                 </Link>
 
                                 {loading && (

@@ -141,7 +141,7 @@ export default function Elafonisi() {
                             </div>
                         </div>
 
-                        <SpotLegend createdBy="user_3AB9Qy8Jp6dB0b9JEvR2FUIrTG8" />
+
 
                     </div>
                 </div>

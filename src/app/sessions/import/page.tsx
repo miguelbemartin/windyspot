@@ -129,8 +129,8 @@ export default function ImportSessionsPage() {
                         <div className="row justify-content-center">
                             <div className="col-xl-7 col-lg-8 col-md-10 col-12">
 
-                                <Link href="/community" className="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3">
-                                    <BsArrowLeft /> Back to community
+                                <Link href="/activity" className="d-inline-flex align-items-center gap-1 text-muted text-decoration-none mb-3">
+                                    <BsArrowLeft /> Back to activities
                                 </Link>
 
                                 <h1 className="h4 fw-bold mb-1">Import Sessions</h1>

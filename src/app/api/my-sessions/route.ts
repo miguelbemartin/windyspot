@@ -12,6 +12,7 @@ export async function GET() {
         .from('sessions')
         .select('id, type, duration_minutes, max_speed_kts, max_hr, distance_km, notes, track_url, track_thumbnail_url, start_time, created_at, spots(id, title, slug, image, lat, lon, locations(name))')
         .eq('user_id', userId)
+        .order('start_time', { ascending: false, nullsFirst: false })
         .order('created_at', { ascending: false })
 
     if (error) {

@@ -4,8 +4,8 @@ import fs from 'fs'
 import path from 'path'
 import type { GeoJsonTrack } from './gpx-parser'
 
-const WIDTH = 800
-const HEIGHT = 400
+const WIDTH = 760
+const HEIGHT = 440
 const TILE_SIZE = 256
 const LINE_WIDTH = 3
 
@@ -126,8 +126,10 @@ export async function generateTrackThumbnail(track: GeoJsonTrack): Promise<Buffe
 async function fetchAppleMapSnapshot(lat: number, lon: number, zoom: number): Promise<Buffer> {
     // Request at @2x so Apple returns WIDTH x HEIGHT pixels
     // Apple max is 640x640 per dimension before scaling
+    // Request extra height so we can crop out the Apple logo at the bottom
+    const LOGO_CROP = 40
     const snapshotWidth = Math.min(640, Math.floor(WIDTH / 2))
-    const snapshotHeight = Math.min(640, Math.floor(HEIGHT / 2))
+    const snapshotHeight = Math.min(640, Math.floor((HEIGHT + LOGO_CROP) / 2))
 
     const queryParams = new URLSearchParams({
         center: `${lat},${lon}`,
