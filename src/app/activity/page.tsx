@@ -112,7 +112,7 @@ export default function ActivityPage() {
                 <section className="gray-simple pt-4 pt-xl-5 mt-5">
                     <div className="container">
                         <div className="row justify-content-center">
-                            <div className="col-xl-7 col-lg-8 col-md-10 col-12">
+                            <div className="col-xl-10 col-lg-11 col-md-12">
 
                                 <div className="d-flex align-items-center justify-content-between mb-4">
                                     <h4 className="fw-semibold mb-0">My Activity</h4>

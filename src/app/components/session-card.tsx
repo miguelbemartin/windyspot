@@ -34,51 +34,41 @@ function formatDuration(minutes: number | null): string {
 
 export default function SessionCard({ session }: { session: SessionCardData }) {
     const spot = session.spots
+    const thumbnailSrc = session.track_thumbnail_url || spot?.image || null
+
     return (
         <Link href={`/sessions/${session.id}`} className="text-decoration-none text-dark">
-            <div className="mb-3">
-                {session.notes && <p className="mb-3">{session.notes}</p>}
-                {session.track_thumbnail_url ? (
-                    <div className="mb-3">
-                        <div className="rounded-3 overflow-hidden">
-                            <Image src={session.track_thumbnail_url} width={800} height={400} alt="Session track" sizes="(max-width: 768px) 100vw, 600px" style={{ width: '100%', height: 'auto' }} />
+            <div className="d-flex gap-3">
+                <div className="flex-grow-1">
+                    {session.notes && <p className="mb-2" style={{ fontSize: '0.9rem' }}>{session.notes}</p>}
+                    <div className="d-flex flex-wrap gap-3">
+                        <div className="d-flex align-items-center gap-1">
+                            <BsClock className="text-primary" size={14} />
+                            <span className="text-muted" style={{ fontSize: '0.75rem' }}>Duration</span>
+                            <span className="fw-semibold" style={{ fontSize: '0.85rem' }}>{formatDuration(session.duration_minutes)}</span>
                         </div>
-                    </div>
-                ) : spot?.image ? (
-                    <div className="position-relative rounded-3 overflow-hidden mb-3" style={{ height: '200px' }}>
-                        <Image src={spot.image} fill className="object-fit-cover" alt={spot.title} sizes="(max-width: 768px) 100vw, 600px" />
-                    </div>
-                ) : null}
-                <div className="row g-2">
-                    <div className="col-6 col-md-3">
-                        <div className="bg-light rounded-3 p-2 text-center">
-                            <BsClock className="text-primary mb-1" size={16} />
-                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>Duration</div>
-                            <div className="fw-semibold">{formatDuration(session.duration_minutes)}</div>
+                        <div className="d-flex align-items-center gap-1">
+                            <BsHeart className="text-danger" size={14} />
+                            <span className="text-muted" style={{ fontSize: '0.75rem' }}>Max HR</span>
+                            <span className="fw-semibold" style={{ fontSize: '0.85rem' }}>{session.max_hr ? `${session.max_hr} bpm` : '-'}</span>
                         </div>
-                    </div>
-                    <div className="col-6 col-md-3">
-                        <div className="bg-light rounded-3 p-2 text-center">
-                            <BsHeart className="text-danger mb-1" size={16} />
-                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>Max HR</div>
-                            <div className="fw-semibold">{session.max_hr ? `${session.max_hr} bpm` : '-'}</div>
+                        <div className="d-flex align-items-center gap-1">
+                            <BsSpeedometer className="text-primary" size={14} />
+                            <span className="text-muted" style={{ fontSize: '0.75rem' }}>Max Speed</span>
+                            <span className="fw-semibold" style={{ fontSize: '0.85rem' }}>{session.max_speed_kts ? `${session.max_speed_kts} kts` : '-'}</span>
                         </div>
-                    </div>
-                    <div className="col-6 col-md-3">
-                        <div className="bg-light rounded-3 p-2 text-center">
-                            <BsSpeedometer className="text-primary mb-1" size={16} />
-                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>Max Speed</div>
-                            <div className="fw-semibold">{session.max_speed_kts ? `${session.max_speed_kts} kts` : '-'}</div>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3">
-                        <div className="bg-light rounded-3 p-2 text-center">
-                            <BsGeoAlt className="text-primary mb-1" size={16} />
-                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>Distance</div>
-                            <div className="fw-semibold">{session.distance_km ? `${session.distance_km} km` : '-'}</div>
+                        <div className="d-flex align-items-center gap-1">
+                            <BsGeoAlt className="text-primary" size={14} />
+                            <span className="text-muted" style={{ fontSize: '0.75rem' }}>Distance</span>
+                            <span className="fw-semibold" style={{ fontSize: '0.85rem' }}>{session.distance_km ? `${session.distance_km} km` : '-'}</span>
                         </div>
                     </div>
                 </div>
+                {thumbnailSrc && (
+                    <div className="flex-shrink-0 position-relative rounded-3 overflow-hidden" style={{ width: '580px', height: '280px' }}>
+                        <Image src={thumbnailSrc} fill className="object-fit-cover" alt={spot?.title || 'Session track'} sizes="100px" />
+                    </div>
+                )}
             </div>
         </Link>
     )

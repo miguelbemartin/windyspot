@@ -75,10 +75,10 @@ export default function ActivityGraph({ activity }: ActivityGraphProps) {
             <p className="text-muted mb-2" style={{ fontSize: '13px' }}>
                 {totalSessions} session{totalSessions !== 1 ? 's' : ''} in the last year
             </p>
-            <div style={{ overflowX: 'auto' }}>
+            <div>
                 <svg
-                    width={labelWidth + weeks.length * step + 2}
-                    height={topPadding + 7 * step + 2}
+                    viewBox={`0 0 ${labelWidth + weeks.length * step + 2} ${topPadding + 7 * step + 2}`}
+                    width="100%"
                     style={{ display: 'block' }}
                 >
                     {/* Month labels */}
