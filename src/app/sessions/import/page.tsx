@@ -186,11 +186,11 @@ export default function ImportSessionsPage() {
                                 {/* Upcoming integrations */}
                                 <div className="card border-0 rounded-4 mb-4" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
                                     <div className="card-body p-4">
-                                        <h6 className="fw-semibold mb-2">Direct integrations coming soon</h6>
-                                        <p className="text-muted mb-3" style={{ fontSize: '0.9rem' }}>
-                                            We&apos;re working on direct integrations so you can sync your sessions automatically — no more manual GPX exports.
+                                        <h6 className="fw-semibold mb-2 text-center">Direct integrations coming soon</h6>
+                                        <p className="text-muted mb-3 text-center" style={{ fontSize: '0.9rem' }}>
+                                            We&apos;re working on direct integrations so you can sync your sessions automatically <br /> no more manual GPX exports.
                                         </p>
-                                        <div className="d-flex flex-wrap align-items-center gap-4">
+                                        <div className="d-flex flex-wrap align-items-center justify-content-center gap-4">
                                             {[
                                                 { name: 'Suunto', src: '/img/brands/suunto.svg', width: 100, height: 24 },
                                                 { name: 'Garmin', src: '/img/brands/garmin.svg', width: 100, height: 24 },
