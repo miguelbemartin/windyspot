@@ -36,6 +36,8 @@ interface SessionContent {
     notes: string | null
     track_url: string | null
     track_thumbnail_url: string | null
+    start_time: string | null
+    created_at: string
     spots: { id: number; title: string; slug: string; image: string; locations: { name: string } } | null
 }
 
