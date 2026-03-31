@@ -18,24 +18,24 @@ async function backfill() {
 
         if (users.data.length === 0) break
 
-        const profiles = users.data.map(user => ({
-            user_id: user.id,
-            username: user.username || user.id,
-            full_name: [user.firstName, user.lastName].filter(Boolean).join(' ') || null,
-            avatar_url: user.imageUrl || null,
-            updated_at: new Date().toISOString(),
-        }))
+        for (const user of users.data) {
+            const { error } = await supabase
+                .from('user_profiles')
+                .upsert({
+                    user_id: user.id,
+                    username: user.username || user.id,
+                    full_name: [user.firstName, user.lastName].filter(Boolean).join(' ') || null,
+                    avatar_url: user.imageUrl || null,
+                    updated_at: new Date().toISOString(),
+                }, { onConflict: 'user_id' })
 
-        const { error } = await supabase
-            .from('user_profiles')
-            .upsert(profiles, { onConflict: 'user_id' })
-
-        if (error) {
-            console.error(`Error at offset ${offset}:`, error)
-        } else {
-            total += profiles.length
-            console.log(`Synced ${profiles.length} users (total: ${total})`)
+            if (error) {
+                console.error(`Skipped ${user.username || user.id}: ${error.message}`)
+            } else {
+                total++
+            }
         }
+        console.log(`Processed batch (total synced: ${total})`)
 
         if (users.data.length < limit) break
         offset += limit
