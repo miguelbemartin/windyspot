@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import Clerk from '@clerk/backend'
+import { createClerkClient } from '@clerk/backend'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
@@ -7,7 +7,7 @@ const clerkSecretKey = process.env.CLERK_SECRET_KEY!
 
 async function backfill() {
     const supabase = createClient(supabaseUrl, supabaseKey)
-    const clerk = Clerk({ secretKey: clerkSecretKey })
+    const clerk = createClerkClient({ secretKey: clerkSecretKey })
 
     let offset = 0
     const limit = 100
