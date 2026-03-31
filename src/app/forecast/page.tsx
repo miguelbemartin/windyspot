@@ -363,14 +363,28 @@ export default function ForecastPage() {
             return
         }
 
-        // For logged-in users, try profile location
+        // For logged-in users, try profile location from Supabase
         if (!isLoaded) return
 
-        const locationMeta = (user?.unsafeMetadata as Record<string, unknown>)?.location as
-            { text?: string; lat?: number; lon?: number } | undefined
-
-        if (locationMeta?.lat && locationMeta?.lon) {
-            loadForecast(locationMeta.lat, locationMeta.lon, locationMeta.text || '')
+        if (user) {
+            fetch('/api/user-profile')
+                .then(res => res.ok ? res.json() : null)
+                .then(profile => {
+                    if (profile?.location_lat && profile?.location_lon) {
+                        loadForecast(profile.location_lat, profile.location_lon, profile.location_text || '')
+                    } else {
+                        setNoLocation(true)
+                        setLoading(false)
+                        setWeatherLoading(false)
+                        setAlertsLoading(false)
+                    }
+                })
+                .catch(() => {
+                    setNoLocation(true)
+                    setLoading(false)
+                    setWeatherLoading(false)
+                    setAlertsLoading(false)
+                })
             return
         }
 

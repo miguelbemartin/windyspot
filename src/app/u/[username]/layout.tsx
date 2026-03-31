@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { clerkClient } from '@clerk/nextjs/server'
+import { createAdminClient } from '../../lib/supabase-server'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -10,18 +10,21 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   const { username } = await params
 
   try {
-    const client = await clerkClient()
-    const users = await client.users.getUserList({ username: [username], limit: 1 })
+    const supabase = createAdminClient()
+    const { data: profile } = await supabase
+      .from('user_profiles')
+      .select('full_name, avatar_url')
+      .eq('username', username)
+      .single()
 
-    if (users.data.length === 0) {
+    if (!profile) {
       return {
         title: 'User Not Found',
         robots: { index: false, follow: false },
       }
     }
 
-    const user = users.data[0]
-    const displayName = user.fullName || username
+    const displayName = profile.full_name || username
     const title = `${displayName} - Windsurf Profile`
     const description = `Check out ${displayName}'s windsurf spots and profile on Windy Spot.`
 
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
         title,
         description,
         url: `https://www.windyspot.com/u/${username}`,
-        images: user.imageUrl ? [{ url: user.imageUrl, width: 200, height: 200, alt: displayName }] : [],
+        images: profile.avatar_url ? [{ url: profile.avatar_url, width: 200, height: 200, alt: displayName }] : [],
       },
       twitter: {
         card: 'summary',

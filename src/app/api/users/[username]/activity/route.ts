@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { clerkClient } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../../../lib/supabase-server'
 
 export const dynamic = 'force-dynamic'
@@ -7,16 +6,19 @@ export const dynamic = 'force-dynamic'
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ username: string }> }) {
     const { username } = await params
 
-    const client = await clerkClient()
-    const users = await client.users.getUserList({ username: [username], limit: 1 })
+    const supabase = createAdminClient()
 
-    if (users.data.length === 0) {
+    const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('user_id')
+        .eq('username', username)
+        .single()
+
+    if (!profile) {
         return NextResponse.json({ error: 'User not found' }, { status: 404 })
     }
 
-    const userId = users.data[0].id
-
-    const supabase = createAdminClient()
+    const userId = profile.user_id
 
     // Fetch sessions from the last 52 weeks
     const since = new Date()

@@ -136,15 +136,8 @@ export default function FeedPage() {
     const [carouselIndexes, setCarouselIndexes] = useState<Record<string, number>>({})
     const sentinelRef = useRef<HTMLDivElement>(null)
     const loadingRef = useRef(false)
-    const profileSynced = useRef(false)
     const feedRef = useRef<ApiFeedItem[]>([])
     feedRef.current = feed
-
-    const syncProfile = useCallback(async () => {
-        if (profileSynced.current) return
-        profileSynced.current = true
-        await fetch('/api/user-profile', { method: 'POST' })
-    }, [])
 
     const fetchFeed = useCallback(async (cursor?: string, scope?: string) => {
         const params = new URLSearchParams()
@@ -155,10 +148,6 @@ export default function FeedPage() {
         if (!res.ok) return { items: [], nextCursor: null }
         return res.json()
     }, [activeTab])
-
-    useEffect(() => {
-        syncProfile()
-    }, [syncProfile])
 
     useEffect(() => {
         setLoading(true)

@@ -14,6 +14,8 @@ export async function POST(request: NextRequest) {
     const { userId, response } = await requireAuth()
     if (response) return response
 
+    const supabase = createAdminClient()
+
     const formData = await request.formData()
     const file = formData.get('file') as File | null
     const sportType = (formData.get('type') as string) || 'windsurfing'
@@ -46,7 +48,6 @@ export async function POST(request: NextRequest) {
     }
 
     const { metadata, track } = parsed
-    const supabase = createAdminClient()
 
     // Auto-match spot by proximity if not provided
     let resolvedSpotId = spotId ? parseInt(spotId, 10) : null

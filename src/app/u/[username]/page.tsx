@@ -169,25 +169,26 @@ export default function UserProfile() {
       if (!currentUser) return
       setLocationSaving(true)
       try {
-          await currentUser.update({
-              unsafeMetadata: {
-                  ...currentUser.unsafeMetadata,
+          const res = await fetch('/api/user-profile/location', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                  location_text: locationText || null,
+                  location_lat: locationLat ?? null,
+                  location_lon: locationLon ?? null,
+              }),
+          })
+          if (res.ok) {
+              setProfileUser(prev => prev ? {
+                  ...prev,
                   location: {
                       text: locationText || undefined,
                       lat: locationLat ?? undefined,
                       lon: locationLon ?? undefined,
                   },
-              },
-          })
-          setProfileUser(prev => prev ? {
-              ...prev,
-              location: {
-                  text: locationText || undefined,
-                  lat: locationLat ?? undefined,
-                  lon: locationLon ?? undefined,
-              },
-          } : prev)
-          setEditingLocation(false)
+              } : prev)
+              setEditingLocation(false)
+          }
       } catch {
           // silently fail
       }
