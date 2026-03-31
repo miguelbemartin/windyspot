@@ -8,9 +8,9 @@ export async function POST(request: NextRequest) {
     if (response) return response
 
     const body = await request.json()
-    const { text, image_url, video_url } = body
+    const { text, image_url, image_urls, video_url } = body
 
-    if (!text?.trim() && !image_url && !video_url) {
+    if (!text?.trim() && !image_url && !image_urls?.length && !video_url) {
         return NextResponse.json({ error: 'text, image, or video is required' }, { status: 400 })
     }
 
@@ -21,7 +21,8 @@ export async function POST(request: NextRequest) {
         .insert({
             user_id: userId,
             text: text?.trim() || '',
-            image_url: image_url || null,
+            image_url: image_url || (image_urls?.length ? image_urls[0] : null),
+            image_urls: image_urls?.length ? image_urls : null,
             video_url: video_url || null,
         })
         .select()

@@ -11,7 +11,7 @@ import SessionCard from '../components/session-card'
 import Footer from '../components/footer/footer'
 import BackToTop from '../components/back-to-top'
 
-import { BsHeart, BsHeartFill, BsChatDots, BsWind, BsImage, BsThreeDots, BsPencil, BsUpload } from 'react-icons/bs'
+import { BsHeart, BsHeartFill, BsChatDots, BsWind, BsImage, BsThreeDots, BsPencil, BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import CommunityPromo from '../components/community-promo'
 import { FaRegTrashCan } from 'react-icons/fa6'
 import { FaRegCompass } from 'react-icons/fa'
@@ -45,6 +45,7 @@ interface PostContent {
     id: string
     text: string
     image_url: string | null
+    image_urls: string[] | null
     video_url: string | null
 }
 
@@ -129,9 +130,10 @@ export default function FeedPage() {
     const [editingId, setEditingId] = useState<string | null>(null)
     const [editText, setEditText] = useState('')
     const [openMenuId, setOpenMenuId] = useState<string | null>(null)
-    const [selectedImage, setSelectedImage] = useState<File | null>(null)
-    const [imagePreview, setImagePreview] = useState<string | null>(null)
+    const [selectedImages, setSelectedImages] = useState<File[]>([])
+    const [imagePreviews, setImagePreviews] = useState<string[]>([])
     const imageInputRef = useRef<HTMLInputElement>(null)
+    const [carouselIndexes, setCarouselIndexes] = useState<Record<string, number>>({})
     const sentinelRef = useRef<HTMLDivElement>(null)
     const loadingRef = useRef(false)
     const profileSynced = useRef(false)
@@ -272,42 +274,56 @@ export default function FeedPage() {
     }
 
     function handleImageSelect(e: React.ChangeEvent<HTMLInputElement>) {
-        const file = e.target.files?.[0]
-        if (!file) return
-        setSelectedImage(file)
-        setImagePreview(URL.createObjectURL(file))
+        const files = e.target.files
+        if (!files || files.length === 0) return
+        const newFiles = Array.from(files)
+        setSelectedImages(prev => [...prev, ...newFiles])
+        setImagePreviews(prev => [...prev, ...newFiles.map(f => URL.createObjectURL(f))])
+        if (imageInputRef.current) imageInputRef.current.value = ''
     }
 
-    function clearImage() {
-        setSelectedImage(null)
-        setImagePreview(null)
+    function removeImage(index: number) {
+        setSelectedImages(prev => prev.filter((_, i) => i !== index))
+        setImagePreviews(prev => {
+            URL.revokeObjectURL(prev[index])
+            return prev.filter((_, i) => i !== index)
+        })
+    }
+
+    function clearImages() {
+        imagePreviews.forEach(url => URL.revokeObjectURL(url))
+        setSelectedImages([])
+        setImagePreviews([])
         if (imageInputRef.current) imageInputRef.current.value = ''
     }
 
     async function createPost() {
         const text = newPostText.trim()
-        if ((!text && !selectedImage) || posting) return
+        if ((!text && selectedImages.length === 0) || posting) return
         setPosting(true)
 
-        let imageUrl: string | null = null
-        if (selectedImage) {
+        const imageUrls: string[] = []
+        for (const file of selectedImages) {
             const formData = new FormData()
-            formData.append('file', selectedImage)
+            formData.append('file', file)
             const uploadRes = await fetch('/api/upload', { method: 'POST', body: formData })
             if (uploadRes.ok) {
                 const { url } = await uploadRes.json()
-                imageUrl = url
+                imageUrls.push(url)
             }
         }
 
         const res = await fetch('/api/posts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: text || '', image_url: imageUrl }),
+            body: JSON.stringify({
+                text: text || '',
+                image_urls: imageUrls.length > 0 ? imageUrls : undefined,
+            }),
         })
         if (res.ok) {
             setNewPostText('')
-            clearImage()
+            clearImages()
             const data = await fetchFeed()
             setFeed(data.items || [])
             setNextCursor(data.nextCursor)
@@ -374,7 +390,9 @@ export default function FeedPage() {
                 <section className="bg-light" style={{ minHeight: '100vh' }}>
                     <div className="container py-4">
                         <div className="row justify-content-center">
-                            <div className="col-xl-7 col-lg-8 col-md-10 col-12">
+                            <div className="col-xl-10 col-lg-11 col-md-12">
+                              <div className="row">
+                                <div className="col-lg-8 col-12">
 
                                 <ul className="nav nav-tabs mb-4 border-bottom">
                                     {([['all', 'All'], ['community', 'Local community']] as const).map(([key, label]) => (
@@ -421,18 +439,20 @@ export default function FeedPage() {
                                                         onChange={(e) => setNewPostText(e.target.value)}
                                                         autoFocus
                                                     />
-                                                    {imagePreview && (
-                                                        <div className="position-relative mt-2 mb-2">
-                                                            <div className="rounded-3 overflow-hidden" style={{ height: '150px' }}>
-                                                                <Image src={imagePreview} fill className="object-fit-cover rounded-3" alt="Preview" sizes="400px" />
-                                                            </div>
-                                                            <button
-                                                                className="btn btn-sm btn-dark rounded-circle position-absolute top-0 end-0 m-1 d-flex align-items-center justify-content-center"
-                                                                style={{ width: 24, height: 24, padding: 0 }}
-                                                                onClick={clearImage}
-                                                            >
-                                                                &times;
-                                                            </button>
+                                                    {imagePreviews.length > 0 && (
+                                                        <div className="d-flex gap-2 mt-2 mb-2 overflow-auto">
+                                                            {imagePreviews.map((preview, i) => (
+                                                                <div key={i} className="position-relative flex-shrink-0" style={{ width: 100, height: 100 }}>
+                                                                    <Image src={preview} fill className="object-fit-cover rounded-3" alt={`Preview ${i + 1}`} sizes="100px" />
+                                                                    <button
+                                                                        className="btn btn-sm btn-dark rounded-circle position-absolute top-0 end-0 d-flex align-items-center justify-content-center"
+                                                                        style={{ width: 20, height: 20, padding: 0, margin: 2, fontSize: '0.7rem' }}
+                                                                        onClick={() => removeImage(i)}
+                                                                    >
+                                                                        &times;
+                                                                    </button>
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                     )}
                                                     <div className="d-flex align-items-center justify-content-between mt-2">
@@ -441,6 +461,7 @@ export default function FeedPage() {
                                                                 ref={imageInputRef}
                                                                 type="file"
                                                                 accept="image/*"
+                                                                multiple
                                                                 className="d-none"
                                                                 onChange={handleImageSelect}
                                                             />
@@ -450,24 +471,18 @@ export default function FeedPage() {
                                                             >
                                                                 <BsImage size={14} /> Photo
                                                             </button>
-                                                            <Link
-                                                                href="/sessions/import"
-                                                                className="btn btn-sm btn-light rounded-pill d-flex align-items-center gap-1 text-decoration-none"
-                                                            >
-                                                                <BsUpload size={14} /> Import GPX
-                                                            </Link>
                                                         </div>
                                                         <div className="d-flex gap-2">
                                                             <button
                                                                 className="btn btn-sm btn-outline-secondary rounded-pill px-3"
-                                                                onClick={() => { setComposerOpen(false); setNewPostText(''); clearImage() }}
+                                                                onClick={() => { setComposerOpen(false); setNewPostText(''); clearImages() }}
                                                             >
                                                                 Cancel
                                                             </button>
                                                             <button
                                                                 className="btn btn-sm btn-primary rounded-pill px-3"
                                                                 onClick={() => { createPost().then(() => setComposerOpen(false)) }}
-                                                                disabled={(!newPostText.trim() && !selectedImage) || posting}
+                                                                disabled={(!newPostText.trim() && selectedImages.length === 0) || posting}
                                                             >
                                                                 {posting ? 'Posting...' : 'Post'}
                                                             </button>
@@ -581,11 +596,50 @@ export default function FeedPage() {
                                                     ) : (
                                                         <p className="mb-3" style={{ whiteSpace: 'pre-wrap' }}>{(item.content as PostContent).text}</p>
                                                     )}
-                                                    {(item.content as PostContent).image_url && (
-                                                        <div className="position-relative rounded-3 overflow-hidden mb-3" style={{ height: '300px' }}>
-                                                            <Image src={(item.content as PostContent).image_url!} fill className="object-fit-cover" alt="Post image" sizes="(max-width: 768px) 100vw, 600px" />
-                                                        </div>
-                                                    )}
+                                                    {(() => {
+                                                        const pc = item.content as PostContent
+                                                        const images = pc.image_urls?.length ? pc.image_urls : pc.image_url ? [pc.image_url] : []
+                                                        if (images.length === 0) return null
+                                                        if (images.length === 1) {
+                                                            return (
+                                                                <div className="position-relative rounded-3 overflow-hidden mb-3" style={{ height: '300px' }}>
+                                                                    <Image src={images[0]} fill className="object-fit-cover" alt="Post image" sizes="(max-width: 768px) 100vw, 600px" />
+                                                                </div>
+                                                            )
+                                                        }
+                                                        const idx = carouselIndexes[item.id] || 0
+                                                        return (
+                                                            <div className="position-relative rounded-3 overflow-hidden mb-3" style={{ height: '300px' }}>
+                                                                <Image src={images[idx]} fill className="object-fit-cover" alt={`Post image ${idx + 1}`} sizes="(max-width: 768px) 100vw, 600px" />
+                                                                <button
+                                                                    className="btn btn-dark btn-sm rounded-circle position-absolute top-50 start-0 translate-middle-y ms-2 d-flex align-items-center justify-content-center"
+                                                                    style={{ width: 32, height: 32, opacity: idx === 0 ? 0.3 : 0.7 }}
+                                                                    disabled={idx === 0}
+                                                                    onClick={() => setCarouselIndexes(prev => ({ ...prev, [item.id]: idx - 1 }))}
+                                                                >
+                                                                    <BsChevronLeft size={14} />
+                                                                </button>
+                                                                <button
+                                                                    className="btn btn-dark btn-sm rounded-circle position-absolute top-50 end-0 translate-middle-y me-2 d-flex align-items-center justify-content-center"
+                                                                    style={{ width: 32, height: 32, opacity: idx === images.length - 1 ? 0.3 : 0.7 }}
+                                                                    disabled={idx === images.length - 1}
+                                                                    onClick={() => setCarouselIndexes(prev => ({ ...prev, [item.id]: idx + 1 }))}
+                                                                >
+                                                                    <BsChevronRight size={14} />
+                                                                </button>
+                                                                <div className="position-absolute bottom-0 start-50 translate-middle-x mb-2 d-flex gap-1">
+                                                                    {images.map((_, i) => (
+                                                                        <div
+                                                                            key={i}
+                                                                            className="rounded-circle"
+                                                                            style={{ width: 8, height: 8, background: i === idx ? '#fff' : 'rgba(255,255,255,0.5)', cursor: 'pointer' }}
+                                                                            onClick={() => setCarouselIndexes(prev => ({ ...prev, [item.id]: i }))}
+                                                                        />
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })()}
                                                 </>
                                             )}
 
@@ -718,6 +772,43 @@ export default function FeedPage() {
                                     {loadingMore && <div className="spinner-border spinner-border-sm text-primary" role="status" />}
                                 </div>
 
+                                </div>
+
+                                <div className="col-lg-4 col-12">
+                                    <div className="position-lg-sticky" style={{ top: '1.5rem' }}>
+                                        <div className="card border-0 rounded-4" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+                                            <div className="card-body p-3">
+                                                <h6 className="fw-bold mb-3 d-flex align-items-center gap-2">
+                                                    <span>🏆</span> Leaderboard
+                                                </h6>
+                                                {[
+                                                    { rank: 1, name: 'Carlos M.', sessions: 24, avatar: 'C' },
+                                                    { rank: 2, name: 'Sofia K.', sessions: 19, avatar: 'S' },
+                                                    { rank: 3, name: 'Kai T.', sessions: 17, avatar: 'K' },
+                                                    { rank: 4, name: 'Luna R.', sessions: 14, avatar: 'L' },
+                                                    { rank: 5, name: 'Marco V.', sessions: 12, avatar: 'M' },
+                                                    { rank: 6, name: 'Noa P.', sessions: 10, avatar: 'N' },
+                                                    { rank: 7, name: 'Aiden W.', sessions: 9, avatar: 'A' },
+                                                    { rank: 8, name: 'Mila J.', sessions: 7, avatar: 'M' },
+                                                ].map((entry) => (
+                                                    <div key={entry.rank} className="d-flex align-items-center gap-2 mb-2">
+                                                        <span className="fw-bold text-muted" style={{ width: '20px', fontSize: '0.85rem', textAlign: 'center' }}>
+                                                            {entry.rank <= 3 ? ['🥇', '🥈', '🥉'][entry.rank - 1] : entry.rank}
+                                                        </span>
+                                                        <div className="rounded-circle bg-secondary d-flex align-items-center justify-content-center flex-shrink-0" style={{ width: 32, height: 32 }}>
+                                                            <span className="text-white" style={{ fontSize: '0.75rem', fontWeight: 600 }}>{entry.avatar}</span>
+                                                        </div>
+                                                        <div className="flex-grow-1">
+                                                            <div className="fw-medium" style={{ fontSize: '0.9rem', lineHeight: 1.2 }}>{entry.name}</div>
+                                                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>{entry.sessions} sessions this month</div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     </div>

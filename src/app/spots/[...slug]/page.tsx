@@ -13,6 +13,7 @@ import BackToTop from '../../components/back-to-top'
 import AddToMySpotsButton from '../../components/add-to-my-spots-button'
 import { EditSpotProvider, EditSpotButton, EditSpotForm } from '../../components/edit-spot-button'
 import SpotLegend from '../../components/spot-legend'
+import SpotPhotoGallery from '../../components/spot-photo-gallery'
 
 import { getSpotBySlug } from '../../lib/spots'
 import { DEFAULT_SPOT_IMAGE } from '../../lib/constants'
@@ -185,6 +186,8 @@ export default async function SpotPage({ params }: PageProps) {
                                 </div>
                             </div>
                             )}
+
+                            <SpotPhotoGallery spotId={spot.id} />
 
                             {spot.created_by && (
                                 <SpotLegend createdBy={spot.created_by} />

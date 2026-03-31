@@ -97,7 +97,7 @@ export default async function IndexTen() {
             <div className="row align-items-center justify-content-center">
                 <div className="col-xl-7 col-lg-8 col-md-11 col-sm-12">
                     <div className="secHeading-wrap text-center">
-                        <h3 className="sectionHeading">Explore Spots By <span className="text-primary">Cities</span></h3>
+                        <h3 className="sectionHeading">Explore Spots By <span className="text-primary">Locations</span></h3>
                         <p>Browse windsurf spots by region and find your next session</p>
                     </div>
                 </div>

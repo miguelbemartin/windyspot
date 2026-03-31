@@ -1,7 +1,5 @@
 import sharp from 'sharp'
 import crypto from 'crypto'
-import fs from 'fs'
-import path from 'path'
 import type { GeoJsonTrack } from './gpx-parser'
 
 const WIDTH = 760
@@ -11,7 +9,7 @@ const LINE_WIDTH = 3
 
 const TEAM_ID = process.env.APPLE_TEAM_ID || 'C7HGT5JX2Q'
 const KEY_ID = process.env.MAPKIT_KEY_ID || ''
-const PRIVATE_KEY_PATH = process.env.MAPKIT_PRIVATE_KEY_PATH || ''
+const PRIVATE_KEY = process.env.MAPKIT_PRIVATE_KEY || ''
 
 /**
  * Generate a PNG thumbnail of a GPS track overlaid on a map background.
@@ -44,7 +42,7 @@ export async function generateTrackThumbnail(track: GeoJsonTrack): Promise<Buffe
     // Fetch map background
     let mapBackground: Buffer
     let useApple = false
-    if (KEY_ID && PRIVATE_KEY_PATH) {
+    if (KEY_ID && PRIVATE_KEY) {
         try {
             mapBackground = await fetchAppleMapSnapshot(centerLat, centerLon, zoom)
             useApple = true
@@ -145,13 +143,10 @@ async function fetchAppleMapSnapshot(lat: number, lon: number, zoom: number): Pr
     const snapshotPath = `/api/v1/snapshot?${queryParams.toString()}`
 
     // Sign the URL path with the private key
-    const keyFile = path.resolve(process.cwd(), PRIVATE_KEY_PATH)
-    const privateKey = fs.readFileSync(keyFile, 'utf-8')
-
     const signature = crypto
         .createSign('SHA256')
         .update(snapshotPath)
-        .sign(privateKey, 'base64')
+        .sign(PRIVATE_KEY, 'base64')
     // URL-safe base64
     const urlSafeSignature = signature
         .replace(/\+/g, '-')
