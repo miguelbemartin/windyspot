@@ -12,8 +12,7 @@ const KEY_ID = process.env.MAPKIT_KEY_ID || ''
 const PRIVATE_KEY = process.env.MAPKIT_PRIVATE_KEY || ''
 
 /**
- * Generate a PNG thumbnail of a GPS track overlaid on a map background.
- * Uses Apple Maps Web Snapshots if configured, otherwise falls back to OSM tiles.
+ * Generate a PNG thumbnail of a GPS track overlaid on an Apple Maps background.
  */
 export async function generateTrackThumbnail(track: GeoJsonTrack): Promise<Buffer> {
     const feature = track.features[0]
@@ -39,40 +38,13 @@ export async function generateTrackThumbnail(track: GeoJsonTrack): Promise<Buffe
     const centerLon = (padMinLon + padMaxLon) / 2
     const zoom = Math.max(1, calculateZoom(padMinLat, padMaxLat, padMinLon, padMaxLon, WIDTH, HEIGHT) - 1)
 
-    // Fetch map background
-    let mapBackground: Buffer
-    let useApple = false
-    if (KEY_ID && PRIVATE_KEY) {
-        try {
-            mapBackground = await fetchAppleMapSnapshot(centerLat, centerLon, zoom)
-            useApple = true
-        } catch (err) {
-            console.error('Apple Maps snapshot failed, falling back to OSM:', err)
-            mapBackground = await fetchOsmBackground(padMinLat, padMaxLat, padMinLon, padMaxLon, zoom)
-        }
-    } else {
-        mapBackground = await fetchOsmBackground(padMinLat, padMaxLat, padMinLon, padMaxLon, zoom)
-    }
+    // Fetch map background via Apple Maps Web Snapshots (@2x)
+    const mapBackground = await fetchAppleMapSnapshot(centerLat, centerLon, zoom)
 
-    // Calculate pixel mapping for track overlay
     // Apple snapshot @2x: the requested size is (WIDTH/2 x HEIGHT/2) but the image
     // returned is (WIDTH x HEIGHT). Each Mercator pixel at this zoom = 2 image pixels.
-    // OSM path: we crop and resize to exactly WIDTH x HEIGHT so 1 Mercator pixel = 1 image pixel
-    // after our resize, but we need to account for the crop-to-resize scaling.
     const centerPx = latLonToPixel(centerLat, centerLon, zoom)
-
-    // For Apple: the snapshot covers (WIDTH/2) Mercator pixels wide, rendered to WIDTH image pixels
-    // So scale factor = 2 (the @2x). For OSM: we need to compute from the crop dimensions.
-    let pixelScale: number
-    if (useApple) {
-        pixelScale = 2
-    } else {
-        // OSM: the cropped area spans pxWidth Mercator pixels, resized to WIDTH image pixels
-        const topLeftPx = latLonToPixel(padMaxLat, padMinLon, zoom)
-        const bottomRightPx = latLonToPixel(padMinLat, padMaxLon, zoom)
-        const pxWidth = bottomRightPx.x - topLeftPx.x
-        pixelScale = WIDTH / pxWidth
-    }
+    const pixelScale = 2
 
     function toSvgPos(lon: number, lat: number): [number, number] {
         const px = latLonToPixel(lat, lon, zoom)
@@ -164,77 +136,6 @@ async function fetchAppleMapSnapshot(lat: number, lon: number, zoom: number): Pr
 
     const arrayBuffer = await res.arrayBuffer()
     return Buffer.from(arrayBuffer)
-}
-
-/**
- * Fallback: fetch OpenStreetMap tiles and stitch them together.
- */
-async function fetchOsmBackground(
-    minLat: number, maxLat: number,
-    minLon: number, maxLon: number,
-    zoom: number
-): Promise<Buffer> {
-    const topLeftPx = latLonToPixel(maxLat, minLon, zoom)
-    const bottomRightPx = latLonToPixel(minLat, maxLon, zoom)
-    const pxWidth = bottomRightPx.x - topLeftPx.x
-    const pxHeight = bottomRightPx.y - topLeftPx.y
-
-    const tileMinX = Math.floor(topLeftPx.x / TILE_SIZE)
-    const tileMaxX = Math.floor(bottomRightPx.x / TILE_SIZE)
-    const tileMinY = Math.floor(topLeftPx.y / TILE_SIZE)
-    const tileMaxY = Math.floor(bottomRightPx.y / TILE_SIZE)
-
-    const tilePromises: Promise<{ x: number; y: number; buffer: Buffer | null }>[] = []
-    for (let tx = tileMinX; tx <= tileMaxX; tx++) {
-        for (let ty = tileMinY; ty <= tileMaxY; ty++) {
-            tilePromises.push(fetchOsmTile(zoom, tx, ty))
-        }
-    }
-    const tiles = await Promise.all(tilePromises)
-
-    const stitchWidth = (tileMaxX - tileMinX + 1) * TILE_SIZE
-    const stitchHeight = (tileMaxY - tileMinY + 1) * TILE_SIZE
-
-    const composites = tiles
-        .filter(t => t.buffer !== null)
-        .map(t => ({
-            input: t.buffer!,
-            left: (t.x - tileMinX) * TILE_SIZE,
-            top: (t.y - tileMinY) * TILE_SIZE,
-        }))
-
-    const stitchedMap = await sharp({
-        create: {
-            width: stitchWidth,
-            height: stitchHeight,
-            channels: 3,
-            background: { r: 220, g: 220, b: 220 },
-        },
-    }).composite(composites).png().toBuffer()
-
-    const cropLeft = Math.max(0, Math.floor(topLeftPx.x - tileMinX * TILE_SIZE))
-    const cropTop = Math.max(0, Math.floor(topLeftPx.y - tileMinY * TILE_SIZE))
-    const cropWidth = Math.min(Math.ceil(pxWidth), stitchWidth - cropLeft)
-    const cropHeight = Math.min(Math.ceil(pxHeight), stitchHeight - cropTop)
-
-    return sharp(stitchedMap)
-        .extract({ left: cropLeft, top: cropTop, width: cropWidth, height: cropHeight })
-        .resize(WIDTH, HEIGHT, { fit: 'cover' })
-        .toBuffer()
-}
-
-async function fetchOsmTile(zoom: number, x: number, y: number): Promise<{ x: number; y: number; buffer: Buffer | null }> {
-    try {
-        const url = `https://tile.openstreetmap.org/${zoom}/${x}/${y}.png`
-        const res = await fetch(url, {
-            headers: { 'User-Agent': 'WindySpot/1.0 (track-thumbnail)' },
-        })
-        if (!res.ok) return { x, y, buffer: null }
-        const arrayBuffer = await res.arrayBuffer()
-        return { x, y, buffer: Buffer.from(arrayBuffer) }
-    } catch {
-        return { x, y, buffer: null }
-    }
 }
 
 function latLonToPixel(lat: number, lon: number, zoom: number): { x: number; y: number } {
