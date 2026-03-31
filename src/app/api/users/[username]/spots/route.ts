@@ -3,6 +3,8 @@ import { clerkClient } from '@clerk/nextjs/server'
 import { createAdminClient } from '../../../../lib/supabase-server'
 import { requireAuth } from '../../../../lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ username: string }> }) {
     const { username } = await params
 

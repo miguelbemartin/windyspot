@@ -4,6 +4,8 @@ import { createNotification } from '../../lib/notifications'
 import { requireAuth } from '../../lib/auth'
 import { FOLLOW_BACKFILL_LIMIT } from '../../lib/constants'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
     const { userId, response } = await requireAuth()
     if (response) return response

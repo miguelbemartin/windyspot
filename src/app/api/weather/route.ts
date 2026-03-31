@@ -3,6 +3,8 @@ import { SignJWT, importPKCS8 } from 'jose'
 import { getCached, setCached } from '../../lib/api-cache'
 import { rateLimit } from '../../lib/rate-limit'
 
+export const dynamic = 'force-dynamic'
+
 async function getWeatherKitToken() {
     const teamId = process.env.APPLE_TEAM_ID!
     const keyId = process.env.APPLE_WEATHERKIT_KEY_ID!

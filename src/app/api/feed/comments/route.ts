@@ -3,6 +3,8 @@ import { createAdminClient } from '../../../lib/supabase-server'
 import { createNotification } from '../../../lib/notifications'
 import { requireAuth } from '../../../lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
     const feedItemId = request.nextUrl.searchParams.get('feed_item_id')
     if (!feedItemId) {

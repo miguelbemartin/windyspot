@@ -3,6 +3,8 @@ import { getSpots } from '../../lib/spots'
 import { createAdminClient } from '../../lib/supabase-server'
 import { requireAuth } from '../../lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
     const spots = await getSpots()
     return NextResponse.json(spots)

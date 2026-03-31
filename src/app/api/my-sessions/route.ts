@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { createAdminClient } from '../../lib/supabase-server'
 import { requireAuth } from '../../lib/auth'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
     const { userId, response } = await requireAuth()
     if (response) return response
