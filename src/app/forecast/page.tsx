@@ -31,8 +31,20 @@ function getSavedLocation(): { text: string; lat: number; lon: number } | null {
     } catch { return null }
 }
 
-function saveLocation(loc: { text: string; lat: number; lon: number }) {
+function saveLocationToSession(loc: { text: string; lat: number; lon: number }) {
     try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(loc)) } catch {}
+}
+
+function saveLocationToProfile(loc: { text: string; lat: number; lon: number }) {
+    fetch('/api/user-profile/location', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            location_text: loc.text,
+            location_lat: loc.lat,
+            location_lon: loc.lon,
+        }),
+    }).catch(() => {})
 }
 
 const DEFAULT_SPOT_IMAGE = 'https://orwtlksbpmgpijcdtngr.supabase.co/storage/v1/object/public/public-images/resources/akira-hojo-ZxGdri2EWzk-unsplash.jpg'
@@ -296,7 +308,8 @@ export default function ForecastPage() {
             lat: parseFloat(result.lat),
             lon: parseFloat(result.lon),
         }
-        saveLocation(loc)
+        saveLocationToSession(loc)
+        if (user) saveLocationToProfile(loc)
         setSearchResults([])
         setSearchQuery('')
         loadForecast(loc.lat, loc.lon, loc.text)
@@ -335,7 +348,8 @@ export default function ForecastPage() {
                     }
                 } catch {}
                 const loc = { text, lat: latitude, lon: longitude }
-                saveLocation(loc)
+                saveLocationToSession(loc)
+                if (user) saveLocationToProfile(loc)
                 setGeolocating(false)
                 loadForecast(loc.lat, loc.lon, loc.text)
             },
@@ -356,16 +370,9 @@ export default function ForecastPage() {
     }
 
     useEffect(() => {
-        // Try sessionStorage first (works for both logged-in and anonymous)
-        const saved = getSavedLocation()
-        if (saved) {
-            loadForecast(saved.lat, saved.lon, saved.text)
-            return
-        }
-
-        // For logged-in users, try profile location from Supabase
         if (!isLoaded) return
 
+        // For logged-in users, try profile location from Supabase first
         if (user) {
             fetch('/api/user-profile')
                 .then(res => res.ok ? res.json() : null)
@@ -373,10 +380,16 @@ export default function ForecastPage() {
                     if (profile?.location_lat && profile?.location_lon) {
                         loadForecast(profile.location_lat, profile.location_lon, profile.location_text || '')
                     } else {
-                        setNoLocation(true)
-                        setLoading(false)
-                        setWeatherLoading(false)
-                        setAlertsLoading(false)
+                        // Fall back to sessionStorage
+                        const saved = getSavedLocation()
+                        if (saved) {
+                            loadForecast(saved.lat, saved.lon, saved.text)
+                        } else {
+                            setNoLocation(true)
+                            setLoading(false)
+                            setWeatherLoading(false)
+                            setAlertsLoading(false)
+                        }
                     }
                 })
                 .catch(() => {
@@ -385,6 +398,13 @@ export default function ForecastPage() {
                     setWeatherLoading(false)
                     setAlertsLoading(false)
                 })
+            return
+        }
+
+        // Anonymous users: try sessionStorage
+        const saved = getSavedLocation()
+        if (saved) {
+            loadForecast(saved.lat, saved.lon, saved.text)
             return
         }
 

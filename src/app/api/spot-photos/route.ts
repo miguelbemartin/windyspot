@@ -14,15 +14,27 @@ export async function GET(request: NextRequest) {
 
     const { data: photos, error } = await supabase
         .from('spot_photos')
-        .select('*, user_profiles(user_id, username, full_name, avatar_url)')
+        .select('*')
         .eq('spot_id', spotId)
-        .order('created_at', { ascending: false })
+        .order('created_at', { ascending: true })
 
     if (error) {
         return NextResponse.json({ error: 'Failed to fetch photos' }, { status: 500 })
     }
 
-    return NextResponse.json(photos)
+    const userIds = [...new Set(photos.map((p: { user_id: string }) => p.user_id))]
+    const { data: profiles } = await supabase
+        .from('user_profiles')
+        .select('user_id, username, full_name, avatar_url')
+        .in('user_id', userIds)
+
+    const profileMap = new Map((profiles || []).map((p: { user_id: string }) => [p.user_id, p]))
+    const photosWithProfiles = photos.map((photo: { user_id: string }) => ({
+        ...photo,
+        user_profile: profileMap.get(photo.user_id) || null,
+    }))
+
+    return NextResponse.json(photosWithProfiles)
 }
 
 export async function POST(request: NextRequest) {
@@ -58,12 +70,16 @@ export async function POST(request: NextRequest) {
 
     const supabase = createAdminClient()
 
+    const arrayBuffer = await file.arrayBuffer()
+    const buffer = Buffer.from(arrayBuffer)
+
     const { error: uploadError } = await supabase.storage
         .from('public-images')
-        .upload(path, file, { upsert: false })
+        .upload(path, buffer, { contentType: file.type, upsert: false })
 
     if (uploadError) {
-        return NextResponse.json({ error: 'Failed to upload file' }, { status: 500 })
+        console.error('Storage upload error:', JSON.stringify(uploadError))
+        return NextResponse.json({ error: 'Failed to upload file', details: uploadError.message }, { status: 500 })
     }
 
     const { data: urlData } = supabase.storage.from('public-images').getPublicUrl(path)
@@ -76,14 +92,21 @@ export async function POST(request: NextRequest) {
             image_url: urlData.publicUrl,
             caption: caption?.trim() || null,
         })
-        .select('*, user_profiles(user_id, username, full_name, avatar_url)')
+        .select('*')
         .single()
 
     if (error) {
-        return NextResponse.json({ error: 'Failed to save photo' }, { status: 500 })
+        console.error('DB insert error:', JSON.stringify(error))
+        return NextResponse.json({ error: 'Failed to save photo', details: error.message }, { status: 500 })
     }
 
-    return NextResponse.json(photo, { status: 201 })
+    const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('user_id, username, full_name, avatar_url')
+        .eq('user_id', userId)
+        .single()
+
+    return NextResponse.json({ ...photo, user_profile: profile || null }, { status: 201 })
 }
 
 export async function DELETE(request: NextRequest) {

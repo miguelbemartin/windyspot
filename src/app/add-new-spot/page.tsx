@@ -35,7 +35,6 @@ export default function AddNewSpot() {
     const [isNewLocation, setIsNewLocation] = useState(false)
     const [newLocationName, setNewLocationName] = useState('')
     const [newLocationCountry, setNewLocationCountry] = useState('')
-    const [windguruForecastId, setWindguruForecastId] = useState('')
     const [windguruLiveStationId, setWindguruLiveStationId] = useState('')
     const [lat, setLat] = useState('')
     const [lon, setLon] = useState('')
@@ -116,7 +115,6 @@ export default function AddNewSpot() {
             description,
             image: imageUrl,
             spot_guide: spotGuide || null,
-            windguru_forecast_id: windguruForecastId || null,
             windguru_live_station_id: windguruLiveStationId || null,
             lat: lat ? parseFloat(lat) : null,
             lon: lon ? parseFloat(lon) : null,
@@ -416,18 +414,6 @@ export default function AddNewSpot() {
                                     </div>
                                     <div className="card-body">
                                         <div className="row">
-                                            <div className="col-xl-6 col-lg-6 col-md-12">
-                                                <div className="form-group form-border">
-                                                    <label className="lableTitle">Windguru Forecast ID</label>
-                                                    <input
-                                                        type="text"
-                                                        className="form-control rounded"
-                                                        placeholder="e.g. 43723"
-                                                        value={windguruForecastId}
-                                                        onChange={(e) => setWindguruForecastId(e.target.value)}
-                                                    />
-                                                </div>
-                                            </div>
                                             <div className="col-xl-6 col-lg-6 col-md-12">
                                                 <div className="form-group form-border">
                                                     <label className="lableTitle">Windguru Live Station ID</label>

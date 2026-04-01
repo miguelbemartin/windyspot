@@ -97,7 +97,7 @@ export default function SpotsList({ page, spots, locations }: SpotsListProps) {
                 </div>
             </section>
 
-            <section className="p-0" >
+            <section className="p-0 mt-5" >
                 <MapKitMap spots={mapMarkers} />
             </section>
 

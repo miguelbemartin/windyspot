@@ -11,7 +11,7 @@ import WindyEmbed from '../../components/windy-embed'
 import Footer from '../../components/footer/footer'
 import BackToTop from '../../components/back-to-top'
 import AddToMySpotsButton from '../../components/add-to-my-spots-button'
-import { EditSpotProvider, EditSpotButton, EditSpotForm } from '../../components/edit-spot-button'
+import { EditSpotProvider, EditSpotGuideForm, EditSpotForm } from '../../components/edit-spot-button'
 import SpotLegend from '../../components/spot-legend'
 import SpotPhotoGallery from '../../components/spot-photo-gallery'
 
@@ -110,7 +110,6 @@ export default async function SpotPage({ params }: PageProps) {
                                         </div>
                                     </div>
                                     <div className="d-flex gap-2">
-                                        <EditSpotButton />
                                         <AddToMySpotsButton spotId={spot.id} />
                                     </div>
                                 </div>
@@ -130,8 +129,9 @@ export default async function SpotPage({ params }: PageProps) {
                                 initialTitle={spot.title}
                                 initialDescription={spot.description}
                                 initialSpotGuide={spot.spot_guide}
-                                initialWindguruForecastId={spot.windguru_forecast_id}
                                 initialWindguruLiveStationId={spot.windguru_live_station_id}
+                                initialLocationId={spot.location_id}
+                                initialLocationName={spot.location?.country ? `${spot.location.name}, ${spot.location.country}` : spot.location?.name || ''}
                             />
 
                             {spot.lat && spot.lon && (
@@ -174,18 +174,23 @@ export default async function SpotPage({ params }: PageProps) {
                                 </div>
                             )}
 
-                            {(spot.spot_guide || spot.description) && (
                             <div className="listingSingleblock mb-4" id="descriptions">
                                 <div className="SingleblockHeader">
                                     <Link data-bs-toggle="collapse" data-parent="#description" data-bs-target="#description" aria-controls="description" href="#" aria-expanded="false" className="collapsed"><h4 className="listingcollapseTitle">Spot Guide</h4></Link>
                                 </div>
                                 <div id="description" className="panel-collapse collapse show">
                                     <div className="card-body p-4 pt-2">
-                                        <div dangerouslySetInnerHTML={{ __html: spot.spot_guide || spot.description || '' }} />
+                                        {spot.spot_guide ? (
+                                            <>
+                                                <div dangerouslySetInnerHTML={{ __html: spot.spot_guide }} />
+                                                <EditSpotGuideForm spotId={spot.id} initialSpotGuide={spot.spot_guide} />
+                                            </>
+                                        ) : (
+                                            <EditSpotGuideForm spotId={spot.id} initialSpotGuide={spot.spot_guide} />
+                                        )}
                                     </div>
                                 </div>
                             </div>
-                            )}
 
                             <SpotPhotoGallery spotId={spot.id} />
 

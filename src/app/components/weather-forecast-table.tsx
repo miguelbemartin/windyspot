@@ -375,7 +375,6 @@ export default function WeatherForecastTable({ lat, lon }: WeatherForecastTableP
                     </tbody>
                 </table>
             </div>
-            <div className="mt-1" style={{ fontSize: '9px', color: '#bbb' }}> Apple WeatherKit</div>
         </div>
     )
 }

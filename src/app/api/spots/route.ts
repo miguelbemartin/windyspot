@@ -15,7 +15,7 @@ export async function PATCH(request: NextRequest) {
     if (response) return response
 
     const body = await request.json()
-    const { id, title, description, spot_guide, windguru_forecast_id, windguru_live_station_id } = body
+    const { id, title, description, spot_guide, windguru_forecast_id, windguru_live_station_id, location_id, new_location_name, new_location_country } = body
 
     if (!id) {
         return NextResponse.json({ error: 'Spot ID is required' }, { status: 400 })
@@ -43,6 +43,29 @@ export async function PATCH(request: NextRequest) {
     if (spot_guide !== undefined) updates.spot_guide = spot_guide || null
     if (windguru_forecast_id !== undefined) updates.windguru_forecast_id = windguru_forecast_id || null
     if (windguru_live_station_id !== undefined) updates.windguru_live_station_id = windguru_live_station_id || null
+
+    if (new_location_name) {
+        const toSlug = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+        const locationSlug = toSlug(new_location_name)
+        const { data: newLocation, error: locError } = await supabase
+            .from('locations')
+            .insert({
+                name: new_location_name,
+                slug: locationSlug,
+                country: new_location_country || null,
+                image: '',
+                big: false,
+                featured: false,
+            })
+            .select('id')
+            .single()
+        if (locError || !newLocation) {
+            return NextResponse.json({ error: 'Failed to create location' }, { status: 500 })
+        }
+        updates.location_id = newLocation.id
+    } else if (location_id !== undefined) {
+        updates.location_id = location_id
+    }
 
     const { data: spot, error } = await supabase
         .from('spots')
