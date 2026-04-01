@@ -69,11 +69,12 @@ export default function LocationsList({ locations }: LocationsListProps) {
                 <div className="container">
                     <div className="row align-items-center g-2">
                         <div className="col-lg-4 col-md-6">
-                            <div className="input-group">
-                                <span className="input-group-text bg-white border-end-0"><BsSearch /></span>
+                            <div className="position-relative">
+                                <BsSearch className="position-absolute top-50 translate-middle-y text-muted" style={{ left: '12px' }} />
                                 <input
                                     type="text"
-                                    className="form-control border-start-0"
+                                    className="form-control rounded"
+                                    style={{ paddingLeft: '36px' }}
                                     placeholder="Search locations..."
                                     value={searchQuery}
                                     onChange={(e) => handleSearchChange(e.target.value)}
