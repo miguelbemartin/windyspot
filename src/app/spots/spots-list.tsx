@@ -16,7 +16,7 @@ import { DEFAULT_SPOT_IMAGE } from '../lib/constants'
 import { BsGeoAlt } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6'
 
-const ITEMS_PER_PAGE = 9
+const ITEMS_PER_PAGE = 12
 
 interface SpotsListProps {
     page: number

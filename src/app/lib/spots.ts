@@ -8,6 +8,7 @@ export interface Location {
     big: boolean
     featured: boolean
     country: string | null
+    description: string | null
 }
 
 export interface Spot {
@@ -86,15 +87,26 @@ export async function getSpotBySlug(slug: string): Promise<SpotWithLocation | nu
     return data as SpotWithLocation
 }
 
-export async function getSpotsByLocationId(locationId: number): Promise<Spot[]> {
+export async function getLocationBySlug(slug: string): Promise<Location | null> {
+    const supabase = createAdminClient()
+    const { data, error } = await supabase
+        .from('locations')
+        .select('*')
+        .eq('slug', slug)
+        .single()
+    if (error) return null
+    return data
+}
+
+export async function getSpotsByLocationId(locationId: number): Promise<SpotWithLocation[]> {
     const supabase = createAdminClient()
     const { data, error } = await supabase
         .from('spots')
-        .select('*')
+        .select('*, location:locations(*)')
         .eq('location_id', locationId)
         .order('title')
     if (error) throw error
-    return data
+    return data as SpotWithLocation[]
 }
 
 export async function getLocationsWithSpots(): Promise<(Location & { spots: Spot[] })[]> {
