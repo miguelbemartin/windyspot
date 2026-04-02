@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '../../lib/supabase-server'
-import { requireAuth } from '../../lib/auth'
+import { requireAuth, isAdmin } from '../../lib/auth'
 
 export const dynamic = 'force-dynamic'
 
@@ -130,7 +130,8 @@ export async function DELETE(request: NextRequest) {
         return NextResponse.json({ error: 'Photo not found' }, { status: 404 })
     }
 
-    if (existing.user_id !== userId) {
+    const admin = await isAdmin()
+    if (!admin && existing.user_id !== userId) {
         return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 

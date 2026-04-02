@@ -14,6 +14,8 @@ import AddToMySpotsButton from '../../components/add-to-my-spots-button'
 import { EditSpotProvider, EditSpotGuideForm, EditSpotForm } from '../../components/edit-spot-button'
 import SpotLegend from '../../components/spot-legend'
 import SpotPhotoGallery from '../../components/spot-photo-gallery'
+import SpotVideoGallery from '../../components/spot-video-gallery'
+import SpotWebcamGallery from '../../components/spot-webcam-gallery'
 
 import { getSpotBySlug } from '../../lib/spots'
 import { DEFAULT_SPOT_IMAGE } from '../../lib/constants'
@@ -103,7 +105,7 @@ export default async function SpotPage({ params }: PageProps) {
                                                 </div>
                                                 <div className="listingsbasicInfo">
                                                     <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
-                                                        <div className="flexItem me-2"><span className="text-md fw-medium text-light"><FaLocationDot className="me-2" />{locationName}</span></div>
+                                                        <div className="flexItem me-2"><Link href={`/locations/${spot.location?.slug || ''}`} className="text-md fw-medium text-light text-decoration-none"><FaLocationDot className="me-2" />{locationName}</Link></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,6 +163,8 @@ export default async function SpotPage({ params }: PageProps) {
                                 </div>
                             )}
 
+                            <SpotWebcamGallery spotId={spot.id} />
+
                             {spot.lat && spot.lon && (
                                 <div className="listingSingleblock mb-4" id="windy">
                                     <div className="SingleblockHeader">
@@ -193,6 +197,8 @@ export default async function SpotPage({ params }: PageProps) {
                             </div>
 
                             <SpotPhotoGallery spotId={spot.id} />
+
+                            <SpotVideoGallery spotId={spot.id} />
 
                             {spot.created_by && (
                                 <SpotLegend createdBy={spot.created_by} />

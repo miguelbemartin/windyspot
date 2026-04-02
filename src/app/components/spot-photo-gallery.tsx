@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useUser } from '@clerk/nextjs'
 import { BsChevronLeft, BsChevronRight, BsCamera, BsX } from 'react-icons/bs'
 import { FaRegTrashCan } from 'react-icons/fa6'
+import { useIsAdmin } from '../lib/use-is-admin'
 
 interface SpotPhoto {
     id: string
@@ -24,6 +25,7 @@ interface SpotPhoto {
 
 export default function SpotPhotoGallery({ spotId }: { spotId: number }) {
     const { user } = useUser()
+    const admin = useIsAdmin()
     const [photos, setPhotos] = useState<SpotPhoto[]>([])
     const [loading, setLoading] = useState(true)
     const [uploading, setUploading] = useState(false)
@@ -243,7 +245,7 @@ export default function SpotPhotoGallery({ spotId }: { spotId: number }) {
                             <span className="text-white-50" style={{ fontSize: '0.85rem' }}>
                                 {activeIndex + 1} / {photos.length}
                             </span>
-                            {user?.id === photos[activeIndex].user_id && (
+                            {(admin || user?.id === photos[activeIndex].user_id) && (
                                 <button
                                     className="btn btn-sm btn-outline-danger rounded-pill d-flex align-items-center gap-1"
                                     onClick={() => { deletePhoto(photos[activeIndex].id); if (photos.length <= 1) setLightboxOpen(false) }}

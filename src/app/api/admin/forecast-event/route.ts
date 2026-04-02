@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '../../../lib/supabase-server'
-import { requireAuth } from '../../../lib/auth'
+import { requireAdmin } from '../../../lib/auth'
 import { SYSTEM_ACTOR } from '../../../lib/constants'
 
 export async function POST(request: NextRequest) {
-    const { userId, response } = await requireAuth()
+    const { userId, response } = await requireAdmin()
     if (response) return response
 
     const { spot_id, title, forecast_days } = await request.json()

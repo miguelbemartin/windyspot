@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSpots } from '../../lib/spots'
 import { createAdminClient } from '../../lib/supabase-server'
-import { requireAuth } from '../../lib/auth'
+import { requireAuth, isAdmin } from '../../lib/auth'
 
 export const dynamic = 'force-dynamic'
 
@@ -33,7 +33,8 @@ export async function PATCH(request: NextRequest) {
         return NextResponse.json({ error: 'Spot not found' }, { status: 404 })
     }
 
-    if (existing.created_by !== userId) {
+    const admin = await isAdmin()
+    if (!admin && existing.created_by !== userId) {
         return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
@@ -88,8 +89,8 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { title, description, image, spot_guide, location_id, new_location_name, new_location_country, windguru_forecast_id, windguru_live_station_id, lat, lon } = body
 
-    if (!title || !description) {
-        return NextResponse.json({ error: 'Title and description are required' }, { status: 400 })
+    if (!title) {
+        return NextResponse.json({ error: 'Title is required' }, { status: 400 })
     }
 
     if (!location_id && !new_location_name) {
@@ -142,7 +143,7 @@ export async function POST(request: NextRequest) {
         .insert({
             title,
             slug,
-            description,
+            description: description || '',
             image: image || '',
             featured: false,
             location_id: finalLocationId,

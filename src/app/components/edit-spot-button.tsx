@@ -29,8 +29,9 @@ interface EditSpotProviderProps {
 export function EditSpotProvider({ children, createdBy }: EditSpotProviderProps) {
     const { user } = useUser()
     const [editing, setEditing] = useState(false)
+    const isAdmin = user?.publicMetadata?.role === 'admin'
 
-    if (!user || user.id !== createdBy) return <>{children}</>
+    if (!user || (!isAdmin && user.id !== createdBy)) return <>{children}</>
 
     return (
         <EditSpotContext.Provider value={{ editing, setEditing }}>

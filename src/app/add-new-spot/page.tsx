@@ -197,10 +197,9 @@ export default function AddNewSpot() {
                                                     <input
                                                         type="text"
                                                         className="form-control rounded"
-                                                        placeholder="Short description of the spot"
+                                                        placeholder="Short description of the spot (optional)"
                                                         value={description}
                                                         onChange={(e) => setDescription(e.target.value)}
-                                                        required
                                                     />
                                                 </div>
                                             </div>
