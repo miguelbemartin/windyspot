@@ -2,6 +2,7 @@ import {Metadata} from 'next';
 import Script from 'next/script'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from "@vercel/analytics/next"
+import MixpanelProvider from './components/mixpanel-provider'
 import 'bootstrap/dist/css/bootstrap.css'
 import './style/scss/style.scss'
 import 'animate.css/animate.css'
@@ -94,6 +95,7 @@ export default function RootLayout({
             `}
           </Script>
           <main>{children}</main>
+          <MixpanelProvider />
           <Analytics />
         </body>
       </html>
