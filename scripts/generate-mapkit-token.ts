@@ -1,26 +1,27 @@
-#!/usr/bin/env node
+#!/usr/bin/env npx tsx
 /**
  * Generate a MapKit JS JWT token.
- * Usage: node scripts/generate-mapkit-token.js
+ * Usage: npx tsx scripts/generate-mapkit-token.ts
  *
  * Requires the .p8 private key file in the project root.
  * Output: a JWT token valid for 1 year.
  */
-const jwt = require('jsonwebtoken')
-const fs = require('fs')
-const path = require('path')
+import jwt from 'jsonwebtoken'
+import fs from 'fs'
+import path from 'path'
 
 const TEAM_ID = 'C7HGT5JX2Q'
 const KEY_ID = 'G9TA5L35U2'
 
 // Find .p8 file
-const p8File = fs.readdirSync(path.join(__dirname, '..')).find(f => f.endsWith('.p8'))
+const projectRoot = path.join(import.meta.dirname, '..')
+const p8File = fs.readdirSync(projectRoot).find((f: string) => f.endsWith('.p8'))
 if (!p8File) {
     console.error('No .p8 file found in project root')
     process.exit(1)
 }
 
-const privateKey = fs.readFileSync(path.join(__dirname, '..', p8File))
+const privateKey = fs.readFileSync(path.join(projectRoot, p8File))
 
 const token = jwt.sign({
     iss: TEAM_ID,

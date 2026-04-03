@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next'
-import { getSpots } from './lib/spots'
+import { getSpots, getLocations } from './lib/spots'
 import { resourcesData } from './data/data'
 
 const BASE_URL = 'https://www.windyspot.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const spots = await getSpots()
+  const [spots, locations] = await Promise.all([getSpots(), getLocations()])
   const lastModified = new Date()
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -36,5 +36,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }))
 
-  return [...staticPages, ...spotPages, ...resourcePages]
+  const locationPages: MetadataRoute.Sitemap = locations.map((location) => ({
+    url: `${BASE_URL}/locations/${location.slug}`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }))
+
+  return [...staticPages, ...locationPages, ...spotPages, ...resourcePages]
 }
