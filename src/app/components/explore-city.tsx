@@ -19,7 +19,7 @@ export default function ExploreCity({ locations }: { locations: LocationWithSpot
                             <span className="badge badge-xs bg-light text-dark rounded-pill">{item.spots.length} {item.spots.length === 1 ? 'Spot' : 'Spots'}</span>
                         </div>
                         <div className="position-absolute bottom-0 start-0 end-0 p-3" style={{background: 'linear-gradient(transparent 0%, rgba(0,0,0,0.85) 100%)', paddingTop: '80px'}}>
-                            <h4 className="text-white fw-bold mb-3">{item.name}</h4>
+                            <Link href={`/locations/${item.slug}`} className="text-decoration-none"><h4 className="text-white fw-bold mb-3">{item.name}</h4></Link>
                             <div className="d-flex align-items-center justify-content-start flex-wrap gap-2">
                                 {item.spots.map((spot, i) => (
                                     <Link href={`/spots/${spot.slug}`} className="badge badge-xs badge-transparent rounded-pill text-decoration-none" key={i}>{spot.title}</Link>

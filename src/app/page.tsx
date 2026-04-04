@@ -107,7 +107,7 @@ export default async function IndexTen() {
     </section>
 
     <TrackSessionsPromo />
-    <div className="text-center pb-5">
+    <div className="text-center">
         <Link href="/activity" className="btn btn-light-primary fw-medium rounded-pill px-md-5">Start tracking your sessions</Link>
     </div>
 
@@ -119,6 +119,7 @@ export default async function IndexTen() {
     </div>
 
     <CommunityPromo />
+
     <div className="text-center pb-5">
         <Link href="/community" className="btn btn-light-primary fw-medium rounded-pill px-md-5">Meet the crew</Link>
     </div>
