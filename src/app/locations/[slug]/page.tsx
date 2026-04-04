@@ -13,6 +13,7 @@ import { DEFAULT_SPOT_IMAGE } from '../../lib/constants'
 import { BsGeoAlt } from 'react-icons/bs'
 import { FaLocationDot } from 'react-icons/fa6'
 
+
 interface PageProps {
     params: Promise<{ slug: string }>
 }
@@ -137,7 +138,7 @@ export default async function LocationPage({ params }: PageProps) {
                 <div className="container">
                     {location.description && (
                         <div className="mb-4">
-                            <p className="text-muted mb-0">{location.description}</p>
+                            <p className="text-muted mb-0" style={{ whiteSpace: 'pre-line' }}>{location.description}</p>
                         </div>
                     )}
 

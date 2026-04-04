@@ -381,7 +381,7 @@ export default function FeedPage() {
                         <div className="row justify-content-center">
                             <div className="col-xl-10 col-lg-11 col-md-12">
                               <div className="row">
-                                <div className="col-lg-8 col-12">
+                                <div className="col-lg-10 col-12 mx-auto">
 
                                 <ul className="nav nav-tabs mb-4 border-bottom">
                                     {([['all', 'All'], ['community', 'Local community']] as const).map(([key, label]) => (
@@ -763,40 +763,6 @@ export default function FeedPage() {
 
                                 </div>
 
-                                <div className="col-lg-4 col-12">
-                                    <div className="position-lg-sticky" style={{ top: '1.5rem' }}>
-                                        <div className="card border-0 rounded-4" style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-                                            <div className="card-body p-3">
-                                                <h6 className="fw-bold mb-3 d-flex align-items-center gap-2">
-                                                    <span>🏆</span> Leaderboard
-                                                </h6>
-                                                {[
-                                                    { rank: 1, name: 'Carlos M.', sessions: 24, avatar: 'C' },
-                                                    { rank: 2, name: 'Sofia K.', sessions: 19, avatar: 'S' },
-                                                    { rank: 3, name: 'Kai T.', sessions: 17, avatar: 'K' },
-                                                    { rank: 4, name: 'Luna R.', sessions: 14, avatar: 'L' },
-                                                    { rank: 5, name: 'Marco V.', sessions: 12, avatar: 'M' },
-                                                    { rank: 6, name: 'Noa P.', sessions: 10, avatar: 'N' },
-                                                    { rank: 7, name: 'Aiden W.', sessions: 9, avatar: 'A' },
-                                                    { rank: 8, name: 'Mila J.', sessions: 7, avatar: 'M' },
-                                                ].map((entry) => (
-                                                    <div key={entry.rank} className="d-flex align-items-center gap-2 mb-2">
-                                                        <span className="fw-bold text-muted" style={{ width: '20px', fontSize: '0.85rem', textAlign: 'center' }}>
-                                                            {entry.rank <= 3 ? ['🥇', '🥈', '🥉'][entry.rank - 1] : entry.rank}
-                                                        </span>
-                                                        <div className="rounded-circle bg-secondary d-flex align-items-center justify-content-center flex-shrink-0" style={{ width: 32, height: 32 }}>
-                                                            <span className="text-white" style={{ fontSize: '0.75rem', fontWeight: 600 }}>{entry.avatar}</span>
-                                                        </div>
-                                                        <div className="flex-grow-1">
-                                                            <div className="fw-medium" style={{ fontSize: '0.9rem', lineHeight: 1.2 }}>{entry.name}</div>
-                                                            <div className="text-muted" style={{ fontSize: '0.75rem' }}>{entry.sessions} sessions this month</div>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                               </div>
                             </div>
                         </div>

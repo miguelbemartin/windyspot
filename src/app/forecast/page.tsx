@@ -271,7 +271,7 @@ export default function ForecastPage() {
         setDayAlerts([])
 
         const [spotsRes, weatherRes] = await Promise.all([
-            fetch(`/api/spots/nearby?lat=${lat}&lon=${lon}&limit=5`).then(r => r.ok ? r.json() : []).catch(() => []),
+            fetch(`/api/spots/nearby?lat=${lat}&lon=${lon}&limit=10`).then(r => r.ok ? r.json() : []).catch(() => []),
             fetch(`/api/weather?lat=${lat}&lon=${lon}&dataSets=currentWeather`).then(r => r.ok ? r.json() : null).catch(() => null),
         ])
 

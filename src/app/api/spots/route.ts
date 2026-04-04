@@ -15,7 +15,7 @@ export async function PATCH(request: NextRequest) {
     if (response) return response
 
     const body = await request.json()
-    const { id, title, description, spot_guide, windguru_forecast_id, windguru_live_station_id, location_id, new_location_name, new_location_country } = body
+    const { id, title, description, spot_guide, windguru_forecast_id, windguru_live_station_id, location_id, new_location_name, new_location_country, image, featured, lat, lon } = body
 
     if (!id) {
         return NextResponse.json({ error: 'Spot ID is required' }, { status: 400 })
@@ -44,6 +44,10 @@ export async function PATCH(request: NextRequest) {
     if (spot_guide !== undefined) updates.spot_guide = spot_guide || null
     if (windguru_forecast_id !== undefined) updates.windguru_forecast_id = windguru_forecast_id || null
     if (windguru_live_station_id !== undefined) updates.windguru_live_station_id = windguru_live_station_id || null
+    if (image !== undefined) updates.image = image
+    if (featured !== undefined) updates.featured = featured
+    if (lat !== undefined) updates.lat = lat
+    if (lon !== undefined) updates.lon = lon
 
     if (new_location_name) {
         const toSlug = (str: string) => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
