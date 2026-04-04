@@ -71,10 +71,11 @@ export default function MapKitMap({ spots, height = '700px' }: MapKitMapProps) {
             })
         })
 
-        map.showItems(annotations, {
-            padding: new window.mapkit.Padding(40, 40, 40, 40),
-            animate: false,
-        })
+        map.addAnnotations(annotations)
+        map.region = new window.mapkit.CoordinateRegion(
+            new window.mapkit.Coordinate(20, 0),
+            new window.mapkit.CoordinateSpan(160, 360)
+        )
     }, [])
 
     // Load script and create map instance once

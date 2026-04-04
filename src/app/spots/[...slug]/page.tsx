@@ -184,14 +184,7 @@ export default async function SpotPage({ params }: PageProps) {
                                 </div>
                                 <div id="description" className="panel-collapse collapse show">
                                     <div className="card-body p-4 pt-2">
-                                        {spot.spot_guide ? (
-                                            <>
-                                                <div dangerouslySetInnerHTML={{ __html: spot.spot_guide }} />
-                                                <EditSpotGuideForm spotId={spot.id} initialSpotGuide={spot.spot_guide} />
-                                            </>
-                                        ) : (
-                                            <EditSpotGuideForm spotId={spot.id} initialSpotGuide={spot.spot_guide} />
-                                        )}
+                                        <EditSpotGuideForm spotId={spot.id} initialSpotGuide={spot.spot_guide} />
                                     </div>
                                 </div>
                             </div>

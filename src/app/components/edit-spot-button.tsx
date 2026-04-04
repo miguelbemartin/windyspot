@@ -6,8 +6,9 @@ import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import { BsPencilSquare } from 'react-icons/bs'
 
+import SpotGuideEditor from './spot-guide-editor'
+
 const Select = dynamic(() => import('react-select'), { ssr: false })
-const Editor = dynamic(() => import('react-simple-wysiwyg').then(mod => mod.default), { ssr: false })
 
 interface LocationOption {
     value: string
@@ -80,14 +81,17 @@ export function EditSpotGuideForm({ spotId, initialSpotGuide }: { spotId: number
             )
         }
         return (
-            <div className="d-flex justify-content-end mt-3">
-                <button
-                    className="btn btn-link btn-sm text-muted text-decoration-none p-0"
-                    onClick={() => setEditing(true)}
-                >
-                    <BsPencilSquare className="me-1" /> Edit spot guide
-                </button>
-            </div>
+            <>
+                <div dangerouslySetInnerHTML={{ __html: initialSpotGuide }} />
+                <div className="d-flex justify-content-end mt-3">
+                    <button
+                        className="btn btn-link btn-sm text-muted text-decoration-none p-0"
+                        onClick={() => setEditing(true)}
+                    >
+                        <BsPencilSquare className="me-1" /> Edit spot guide
+                    </button>
+                </div>
+            </>
         )
     }
 
@@ -118,10 +122,9 @@ export function EditSpotGuideForm({ spotId, initialSpotGuide }: { spotId: number
     return (
         <div className="mt-3">
             <div className="form-group form-border mb-3">
-                <Editor
+                <SpotGuideEditor
                     value={spotGuide}
-                    onChange={(e: { target: { value: string } }) => setSpotGuide(e.target.value)}
-                    style={{ minHeight: '150px' }}
+                    onChange={setSpotGuide}
                 />
             </div>
             {error && <div className="alert alert-danger">{error}</div>}
@@ -257,10 +260,9 @@ export function EditSpotForm({ spotId, initialTitle, initialDescription, initial
                 </div>
                 <div className="form-group form-border mb-3">
                     <label className="form-label fw-medium">Spot Guide</label>
-                    <Editor
+                    <SpotGuideEditor
                         value={spotGuide}
-                        onChange={(e: { target: { value: string } }) => setSpotGuide(e.target.value)}
-                        style={{ minHeight: '150px' }}
+                        onChange={setSpotGuide}
                     />
                 </div>
                 <div className="form-group form-border mb-3">
